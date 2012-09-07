@@ -9,8 +9,8 @@
 
 /* Body */
 body {
-background: url("../images/bg.png");
-background-color: #00f;/*#6699cc;*/
+/*background: url("../images/bg.png");*/
+background-color: #69c;/*#6699cc;*/
 color: #fff;
 font-size: 100%;
 line-height: 1.5;
@@ -41,11 +41,13 @@ a img {
 border: 0px; 
 text-decoration: none;} 
 a:link, a:visited { 
-color: #f90;
+/*color: #f90;*/ /* orange */
+/*color: #9c6;*/  /* green */
+color: #00f;   /* darker blue */
 text-decoration: underline; } 
 a:hover, a:active { 
 background-color: none; 
-color: #c60; 
+color: #00f; 
 text-decoration: none; 
 text-shadow: 1px 1px 1px #333; }  
 
@@ -119,13 +121,16 @@ float: right;}
 #welcome figure iframe {
 width: 100%;
 height: 100%;}
+
 #welcome h2 {
-color: #f90; 
+/*color: #f90;*/ 
+color: #00f;
 text-decoration: underline;
 font-size: 1.714em; 
 margin-bottom: 0.333em;} 
 #welcome h3 {
-color: #f90;
+/*color: #f90;*/
+color: #00f;
 font-size: 1.429em; 
 margin-bottom: .5em;}
 
@@ -138,15 +143,18 @@ border-radius: 10px;
 -moz-border-radius: 10px; 
 -webkit-border-radius: 10px; 
 }
+
 #content h2 {
-color: #f90;}
+/*color: #f90;*/
+color: #00f;}
 .entry { 
 border-bottom: 1px solid #eee; 
 padding: 1em 0; 
 }
 #content h3 {
 font-size: 1.143em;
-color: #c60;
+/*color: #c60;*/
+color: #00f;
 padding-left: 15px;
 margin-bottom: .1em;}
 li:last-child .entry, #content > .entry {
@@ -154,16 +162,26 @@ border: 0;
 margin: 0;} 
 
 /* Extras *****************/ 
-#extras {
-margin: 0em auto 1.5em auto; 
-overflow: hidden;}  
+#extras { 
+background: #000;
+color: #fff;
+margin-bottom: 2em; 
+overflow: hidden; 
+padding: 20px; 
+width: 920px;  
+line-height: 1.5;
+border-radius: 10px; 
+-moz-border-radius: 10px; 
+-webkit-border-radius: 10px; }  
+background: #000;}  
 #extras ul {
 list-style: none; 
 margin: 0;} 
 #extras li {
 border-bottom: 1px solid #fff;} 
 #extras h2 { 
-color: #f90; 
+/*color: #f90;*/ 
+color: #00f;
 font-size: 1.429em; 
 margin-bottom: .25em; 
 padding: 0 3px; }
@@ -177,16 +195,16 @@ padding: .3em .25em; }
 /* Blogroll */ 
 #extras .blogroll { 
 float: left; 
-width: 750px; }  
-#extras .blogroll li {float: left; margin: 0 45px 0 0; width: 205px;}  
+width: 650px; }  
+#extras .blogroll li {float: left; margin: 0 0px 0 0; width: 205px;}  
 
 /* Social */ 
 #extras .social { 
-float: right; 
+float: left; 
 width: 175px; }
 #extras li:last-child, /* last <li>*/ #extras li:last-child a /* <a> of last <li> */ {border: 0}
 #extras .blogroll li:nth-last-child(2), #extras .blogroll li:nth-last-child(3), #extras .blogroll li:nth-last-child(2) a, #extras .blogroll li:nth-last-child(3) a {border: 0;}
-#extras div[class='social'] a { background-repeat: no-repeat; background-position: 3px 6px; padding-left: 25px; }  
+#extras div[class='social'] a { background-repeat: no-repeat; background-position: 3px 6px; padding-left: 0px; margin-left 1000px;}  
 /* Icons */ 
 .social a[href*='facebook.com'] {background-image: url('../images/icons/facebook.png');} 
 .social a[href*='twitter.com'] {background-image: url('../images/icons/twitter.png');}
@@ -214,7 +232,8 @@ float: right;}
 float: left; 
 width: 190px;} 
 #about .primary strong {
-color: #f90; 
+/*color: #f90;*/ 
+color: #00f;
 display: block; 
 font-size: 1.286em;} 
 #about .bio {float: right; width: 700px;}  
