@@ -10,8 +10,8 @@
 /* Body */
 body {
 /*background: url("../images/bg.png");*/
-background-color: #69c;/*#6699cc;*/
-color: #fff;
+background-color: #000;/*#6699cc;*/
+color: #000;
 font-size: 100%;
 line-height: 1.5;
 font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 
@@ -43,11 +43,11 @@ text-decoration: none;}
 a:link, a:visited { 
 /*color: #f90;*/ /* orange */
 /*color: #9c6;*/  /* green */
-color: #00f;   /* darker blue */
+color: #fc6;   /* darker blue */
 text-decoration: underline; } 
 a:hover, a:active { 
 background-color: none; 
-color: #00f; 
+color: #fc6; 
 text-decoration: none; 
 text-shadow: 1px 1px 1px #333; }  
 
@@ -84,6 +84,7 @@ display: block; }
 position: relative;
 width: 960px;
 margin: 0 auto;
+color: #000;
 }
 
 header {
@@ -98,8 +99,7 @@ border-radius: 5px;
 
 /* Welcome */ 
 #welcome { 
-background: #000;
-color: #fff;
+background: #69f;
 margin-bottom: 2em; 
 overflow: hidden; 
 padding: 20px; 
@@ -135,7 +135,7 @@ font-size: 1.429em;
 margin-bottom: .5em;}
 
 #content {
-background: #000;
+background: #69f;
 width: 920px;
 padding: 20px;
 margin-bottom: 1.5em;
@@ -163,8 +163,7 @@ margin: 0;}
 
 /* Extras *****************/ 
 #extras { 
-background: #000;
-color: #fff;
+background: #69f;
 margin-bottom: 2em; 
 overflow: hidden; 
 padding: 20px; 
@@ -186,7 +185,7 @@ font-size: 1.429em;
 margin-bottom: .25em; 
 padding: 0 3px; }
 #extras a:link, #extras a:visited { 
-color: #fff; 
+color: #000; 
 display: block; 
 border-bottom: 1px solid #F4E3E3; 
 text-decoration: none; 
@@ -213,7 +212,7 @@ width: 175px; }
 
 /* About *****************/ 
 #about { 
-background: #000;
+background: #69f;
 font-style: normal; 
 margin-bottom: 1em; 
 overflow: hidden; 
