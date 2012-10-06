@@ -14,7 +14,7 @@ body {
 background-color: #69f;
 color: #000;
 font-size: 100%;
-line-height: 1.5;
+line-height: 1;
 font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 
                'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 text-align: left;
@@ -30,21 +30,15 @@ h2, h3, h4, h5, h6 {
 font-weight: 400; 
 line-height: 1.1;
 margin-bottom: .8em; 
-}  
+}
 
-
-/* anchors */
 a:link, a:visited { 
 color: #00f;
 text-decoration: underline; } 
 a:hover, a:active { 
-color: #c60; 
-text-shadow: 1px 1px 1px #333; }  
+color: #c60;}  
 
-/* paragraphs */
-p {
-margin-bottom: 1.143em;
-}
+p { margin-bottom: 1.143em;}
 
 /* Quotes */ blockquote {font-style: italic;} cite {}  q {}  
 /* Thead */ thead th {padding: .5em .4em; text-align: left;} thead td {}  
@@ -52,7 +46,7 @@ margin-bottom: 1.143em;
 /* Tfoot */ tfoot th {} tfoot td {}
 /* HTML5 tags */ 
 header, section, footer, aside, nav, article, figure { display: block;}
-section, aside, article figure { border-bottom: 5px solid #000; }
+section, aside, article figure { border-bottom: 3px solid #00f; }
 
 #container {
 position: relative;
@@ -130,39 +124,27 @@ li:last-child .entry, #content > .entry {
 	margin: 0;
 } 
 
-/* About *****************/ 
+/* About */ 
 #about { 
-overflow: hidden; 
-padding: 20px; 
-padding-top: 0px;
-padding-bottom: 0px;
-text-align: left; 
-width: 920px;}  
-/* Footer *****************/ 
-#contentinfo {
-margin-bottom: .5em;
-padding-bottom: 0px; text-align: right;}
-#contentinfo p{
-float: right;}
+	overflow: hidden; 
+	padding: 20px; 
+	text-align: right; 
+}
+#about p { float: right;}
 #about .primary {
-float: left; 
-width: 190px;} 
-#about .primary strong {
-color: #00f; 
-display: block; 
-font-size: 1.286em;} 
+	text-align: left;
+	float: left; 
+	width: 190px;
+	color: #00f; 
+	font-size: 1.286em;
+} 
 #about .bio {float: right; width: 700px;}  
 #about .copyright {float:right; width: auto;}
 
 #media-display {
-background: #000;
-color: #fff;
-margin-bottom: 2em; 
 text-align: center;
-overflow: hidden; 
 padding: 20px; 
-width: 920px;  
-line-height: 1.5;}  
+width: 920px;}  
 #media-display figure { 
 border: 2px solid #eee;
 float: center; 
@@ -188,17 +170,10 @@ font-size: 1.429em;
 margin-bottom: .5em;}
 
 #blog-entry {
-background: #000;
-color: #fff;
 margin-bottom: 1.5em; 
 text-align: left;
 overflow: hidden; 
-padding: 20px; 
-width: 920px;  
-line-height: 1.5;
-border-radius: 10px; 
--moz-border-radius: 10px; 
--webkit-border-radius: 10px; } 
+padding: 20px; } 
 #blog-entry h2 {
 color: #00f;}
 #blog-entry h3 {
