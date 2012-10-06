@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<title>{% block title %}Eleanor Roosevelt Robotics{% endblock %}</title>
 		<link rel="icon" type="image/png" href="../images/alien-head.jpg" />
-		<link rel="stylesheet" href="../css/main.css">
+		<link rel="stylesheet" href="../css/cssv4.css">
 		<link rel="stylesheet" href="../css/nav.css">
 		<script src="../js/jquery.js"></script>
 		<script src="../js/modernizr.js"></script>		
@@ -16,16 +16,16 @@
 	</head>
 	<body class="no-js">
 		<div id="container">
-			<aside id="login">
+			<div id="login">
 				{% if user %}		
 				<div align="right"><a class="profile-link" href="/profile/{{user.username}}">{{user.username}}</a>(<a href="/logout">logout</a>)</div>
 				{% else %}
 				<div align="right"><a href="/login">User Login</a></div>
 				{% endif %}
-			</aside>
+			</div>
 			{% block banner %}
 			<header id="banner">
-				<a href="/"><img src="../images/logo/banner.gif"></a>
+				<a href="/"><img src="../images/logo/banner2.png"></a>
 			</header>
 			{% endblock %}			
 			<script>
@@ -58,6 +58,8 @@
 				  <li class="last"><a href="/gallery" title="Photo Gallery">Gallery</a></li>
 			  </ul>
 			</nav>
+		</div>
+		<div id="content-container">
 			{% block content %}
 			{% endblock %}
 			{% block extras %}			
@@ -73,7 +75,6 @@
 						The website is built and maintained by student members of the team.
 					</span><!-- /.bio -->
 				</address><!-- /#about -->
-				<p><a href="http://www.team53.org/">ERHS Robotics</a> | 2012</p>
 			</footer><!-- /#contentinfo -->			
 	        <script>
 			(function($){
