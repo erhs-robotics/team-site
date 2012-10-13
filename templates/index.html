@@ -50,9 +50,7 @@ var mygallery=new fadeSlideShow({
 	<div id="fadeshow2">   
  		<a href="http://www.2createawebsites.com">How To Create a Website</a>
   </div>
-<!-- Image Slide Show End -->
-
-		</figure>
+	</figure>
 		<hgroup>
 			<h2>Eleanor Roosevelt High School</h2>
 			<h3>Robotics Club</h3>
@@ -72,88 +70,54 @@ var mygallery=new fadeSlideShow({
 		</ul>	
 	</aside>
 	<section id="index-content">
-		<article id="left-pane">
-			<h2>Announcements</h2>
+		<div id="left-pane">
+			<span class="title"><h2>Announcements</h2></span>
 				<h3>Sponsorship Forms</h3>
-			<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
-				 Robotics Club?  If so, please take your time to download and review
-				 the following documents.  Your time and donations are much appreicated.
-				<ul>
-	        <li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
-	        <li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
-	        <li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
-        </ul>
-			</p>
-			<h3>Club Forms</h3>
-				<p>Below here are the links to the 5 forms for the club.  Please be
-				   sure to download all of them and fill out the required ones!
-			    <ul>
-				    <li><a href="./files/robotics-info.pdf" target="self">General Robotics Information document</a></li>
-				    <li><a href="/files/robotics-info-quicklist.pdf">Robotics Information quicklist</a></li>
-				    <li><a href="/files/robotics-meeting-schedule.pdf">Robotics Meeting Schedule</a></li>
-				    <li><a href="/files/robotics-parent-info.pdf">Robotics Parent Information</a></li>
-				    <li><a href="/files/robotics-safety-photography-agreement.pdf">Safety and Photography Form</a></li>
-				    <li><a href="/files/robotics-forms-2013.zip">Download all (zip)</a></li>
-			    </ul>
-				</p>	
-		</article>
-		<article id="right-pane">
-			<h2>Blog</h2>
-			Right RightRightRightRight RightRightRightRight RightRightRightRight
-		</article>
-	</section>
-	<section id="content">
-	<ol>
-		<li><article class="entry">
-			<h2>Competition</h2>
-			<p>We are proud annual participants of the FIRST FRC
-			competition as Team 53, "Area 53".Eleanor Roosevelt
-			Robotics competes in the First Robotics Challenge as Team 53.
-            We also compete in the ION Mini-Urban Challenge.  This year, we
-            will resume competing in the FIRST Tech Challenge. Additionally,
-			our team also assists others in competitions such as FIRST's 
-			FIRST Lego League (FLL) competition.</p>
-		</article></li>
-		<li><article class="entry">
-			<h2>FIRST Robotics</h2>
-			<p>FIRST (For the Inspiration and Recognition of Science and Technology) is
-			an organization dedicated to instilling the principles of the STEM field in
-			today's youth.  Their main competition, the First Robotics Competition (FRC)
-			is held every year.  A new competiton is anounced in early January every year,
-			and every team is given six weeks to build a robot that can meet the challenges
-			of competition.  Click <a href="/first">here</a> for more information</p>
-		</article></li>
-	</ol>
+					<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
+						 Robotics Club?  If so, please take your time to download and review
+						 the following documents.  Your time and donations are much appreicated.
+						<ul>
+					    <li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
+					    <li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
+					    <li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
+				    </ul>
+					</p>
+				<h3>Club Forms</h3>
+					<p>Below here are the links to the 5 forms for the club.  Please be
+						 sure to download all of them and fill out the required ones!
+					  <ul>
+						  <li><a href="./files/robotics-info.pdf" target="self">General Robotics Information</a></li>
+						  <li><a href="/files/robotics-info-quicklist.pdf">Robotics Information quicklist</a></li>
+						  <li><a href="/files/robotics-meeting-schedule.pdf">Robotics Meeting Schedule</a></li>
+						  <li><a href="/files/robotics-parent-info.pdf">Robotics Parent Information</a></li>
+						  <li><a href="/files/robotics-safety-photography-agreement.pdf">Safety and Photography Form</a></li>
+						  <li><a href="/files/robotics-forms-2013.zip">Download all (zip)</a></li>
+					  </ul>
+					</p>	
+		</div>
+		<div id="right-pane">
+			<span class="title"><h2>About</h2></span>
+				<ol>
+					<li><article class="entry">
+						<h2>Competition</h2>
+						<p>We are proud annual participants of the FIRST FRC
+						competition as Team 53, "Area 53".  We also compete in the 
+						ION Mini-Urban Challenge and the VEX Robotics Competition.  
+						This year, we will also our team also assists others in competitions 
+						such as FIRST's FIRST Lego League (FLL) competition.</p>
+					</article></li>
+					<li><article class="entry">
+						<h2>FIRST Robotics</h2>
+						<p>FIRST (For the Inspiration and Recognition of Science and Technology) is
+						an organization dedicated to instilling the principles of the STEM field in
+						today's youth.  Their main competition, the First Robotics Competition (FRC)
+						is held every year.  A new competiton is anounced in early January every year,
+						and every team is given six weeks to build a robot that can meet the challenges
+						of competition.  Click <a href="/first">here</a> for more information</p>
+					</article></li>
+				</ol>
+		</div>
 	</section>
 {% endblock %}
 {% block extras %}
-<!--
-<section id="extras"> 
-		<div class="blogroll"> 
-			<h2>links</h2> <ul>  
-			<li><a href="http://www.usfirst.org/" rel="external">FIRST site</a></li> 
-			<li><a href="http://www.usfirst.org/roboticsprograms/frc" rel="external">FRC Site</a></li> 
-			<li><a href="http://www.usfirst.org/roboticsprograms/fll" rel="external">FLL</a></li>  
-			<li><a href="http://www.mdfirst.org/" rel="external">MD FIRST</a></li> 
-			<li><a href="http://www.ion.org/outreach/muc/" rel="external">Mini-Urban Challenge</a></li> 
-			<li><a href="http://www.vexrobotics.com/" rel="external">VEX Robotics</a></li>  
-			<li><a href="http://mindstorms.lego.com/en-us/Default.aspx" rel="external">Lego Mindstorms</a></li> 
-			<li><a href="http://arduino.cc/" rel="external">Arduino</a></li> 
-			<li><a href="http://beagleboard.org/" rel="external">BeagleBoard</a></li>  
-			<li><a href="http://beagleboard.org/bone" rel="external">BeagleBone</a></li> 
-			<li><a href="http://github.com" rel="external">github</a></li> 
-			<li></li>
-			</ul>
-		</div>
-		<div class="social"> 
-			<h2>follow us</h2> <ul>  
-			<li><a href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" rel="us">facebook</a></li>  
-			<li><a href="www.flickr.com/photos/erhsrobotics/" rel="us">flickr</a></li> 
-			<li><a href="#" rel="us">twitter</a></li>  
-			<li><a href="http://www.github.com/erhs-53-hackers" rel="us">github</a></li>
-			</ul>
-		</div>
-	</section>
--->
-{% endblock %}
-			
+{% endblock %}			
