@@ -6,7 +6,7 @@
 {% endblock %}
 {% block banner%}
 	{{ super() }}
-	
+	<!--
 	<div id="photo-container">
 		<div class="photobanner">
 			<img class="first" src="../images/image-1.jpg" alt="" /> 
@@ -21,23 +21,60 @@
 			<img src="../images/image-4.jpg" alt="" /> 
 		</div>
 	</div>
-
+	-->
 {% endblock %}
 {% block content %}
 	<aside id="welcome">
 		<figure>
-			<iframe src="http://www.youtube.com/embed/h6cZtslbIIQ" frameborder="0" allowfullscreen>"</iframe>
+			<!--<iframe src="http://www.youtube.com/embed/h6cZtslbIIQ" frameborder="0" allowfullscreen>"</iframe>-->
+<script type="text/javascript" src="../js/fade-slide.js"></script>   
+<script type="text/javascript">  
+var mygallery=new fadeSlideShow({   
+ wrapperid: "fadeshow2", //ID of blank DIV on page to house Slideshow   
+ dimensions: [349, 232], //width/height of gallery in pixels. Should reflect dimensions of largest image
+      imagearray:  [     
+		    ["../images/image-1.jpg"],    
+		    ["../images/image-2.jpg"], 
+		    ["../images/image-3.jpg"],
+		    ["../images/image-4.jpg"],
+		    ["../images/image-5.jpg"],
+				["../images/image-6.jpg"]
+      ],
+      displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
+  persist: false, //remember last viewed slide and recall within same session?   
+  fadeduration: 2000, //transition duration (milliseconds)  
+  descreveal: "ondemand",
+  togglerid: ""
+  })
+ </script>
+	<div id="fadeshow2">   
+ 		<a href="http://www.2createawebsites.com">How To Create a Website</a>
+  </div>
+<!-- Image Slide Show End -->
+
 		</figure>
 		<hgroup>
 			<h2>Eleanor Roosevelt High School</h2>
 			<h3>Robotics Club</h3>
 		</hgroup>
 		<p>The Eleanor Roosevelt Robotics Club is a group
-		of about 45 bright students who come together to think of, design,
+		of about 50 bright students who come together to think of, design,
 		and develop creative solutions to a wide variety of challenges in
 		the Science, Technology, Engineering, and Mathematics (STEM)
-		Field.</p>
-		<h2>Sponsorship Forms</h2>
+		Field.  We foster our students' interests in the STEM field through encouraging
+		their use of problem-solving and critical thinking skills in a multitude of
+		challenging ways, mainly through competing in various local robotics
+		competitions</p>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>	
+	</aside>
+	<section id="index-content">
+		<article id="left-pane">
+			<h2>Announcements</h2>
+				<h3>Sponsorship Forms</h3>
 			<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
 				 Robotics Club?  If so, please take your time to download and review
 				 the following documents.  Your time and donations are much appreicated.
@@ -47,19 +84,24 @@
 	        <li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
         </ul>
 			</p>
-		<h2>Club Forms</h2>
-			<p>Below here are the links to the 5 forms for the club.  Please be
-		     sure to download all of them and fill out the required ones!
-	      <ul>
-		      <li><a href="./files/robotics-info.pdf" target="self">General Robotics Information document</a></li>
-		      <li><a href="/files/robotics-info-quicklist.pdf">Robotics Information quicklist</a></li>
-		      <li><a href="/files/robotics-meeting-schedule.pdf">Robotics Meeting Schedule</a></li>
-		      <li><a href="/files/robotics-parent-info.pdf">Robotics Parent Information</a></li>
-		      <li><a href="/files/robotics-safety-photography-agreement.pdf">Safety and Photography Form</a></li>
-		      <li><a href="/files/robotics-forms-2013.zip">Download all (zip)</a></li>
-	      </ul>
-			</p>		
-	</aside>
+			<h3>Club Forms</h3>
+				<p>Below here are the links to the 5 forms for the club.  Please be
+				   sure to download all of them and fill out the required ones!
+			    <ul>
+				    <li><a href="./files/robotics-info.pdf" target="self">General Robotics Information document</a></li>
+				    <li><a href="/files/robotics-info-quicklist.pdf">Robotics Information quicklist</a></li>
+				    <li><a href="/files/robotics-meeting-schedule.pdf">Robotics Meeting Schedule</a></li>
+				    <li><a href="/files/robotics-parent-info.pdf">Robotics Parent Information</a></li>
+				    <li><a href="/files/robotics-safety-photography-agreement.pdf">Safety and Photography Form</a></li>
+				    <li><a href="/files/robotics-forms-2013.zip">Download all (zip)</a></li>
+			    </ul>
+				</p>	
+		</article>
+		<article id="right-pane">
+			<h2>Blog</h2>
+			Right RightRightRightRight RightRightRightRight RightRightRightRight
+		</article>
+	</section>
 	<section id="content">
 	<ol>
 		<li><article class="entry">
@@ -81,8 +123,8 @@
 			and every team is given six weeks to build a robot that can meet the challenges
 			of competition.  Click <a href="/first">here</a> for more information</p>
 		</article></li>
-	</ol><!-- /#posts-list -->
-	</section><!-- /#content -->
+	</ol>
+	</section>
 {% endblock %}
 {% block extras %}
 <!--
