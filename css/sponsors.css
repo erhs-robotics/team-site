@@ -1,0 +1,16 @@
+#sponsors { 
+margin-bottom: .5em; 
+overflow: hidden; 
+padding: 20px;
+}
+
+#sponsor-block {
+display: inline-block; 
+float:left; 
+width:280px; 
+height:125px; 
+padding:10px; 
+padding-bottom:40px;
+}
+
+

@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block head %}
+	{{super()}}
+	<link rel="stylesheet" href="../css/sponsors.css">
+{% endblock %}
 {% block content %}
 	<section id="content">
 	<ol>
@@ -23,6 +27,23 @@
 				 donations.  The Robotics Club here in Eleanor Roosevelt would not be 
 				 possible without you.</p>
 		</article></li>
-	</ol><!-- /#posts-list -->
-	</section><!-- /#content -->
+	</ol>
+	</section>
+	<section id="sponsors">
+		<div id="sponsor-block"><fieldset style="border-color: white;">			
+				<legend><a href="http://www.aliodesigns.com/">Alio Designs</a></legend>
+				<img align="left" style="width:50%; height:100%;" src="../images/sponsors/alio-designs.jpg">
+				<font size="2">Solve Design Challenges Before They Become a Problem</font>
+		</fieldset></div>	
+		<div id="sponsor-block"><fieldset style="border-color: white;">			
+				<legend><a href="/linktosponsor">Sponsor2</a></legend>
+				<img align="left" style="width:50%; height:100%;" src="../images/sponsors/alio-designs.jpg">
+				<font size="2">About Sponsor2</font>
+		</fieldset></div>	
+		<div id="sponsor-block"><fieldset style="border-color: white;">			
+				<legend><a href="/linktosponsor">Sponsor3</a></legend>
+				<img align="left" style="width:50%; height:100%;" src="../images/sponsors/alio-designs.jpg">
+				<font size="2">About Sponsor3</font>
+		</fieldset></div>	
+	</section>
 {% endblock %}
