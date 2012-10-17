@@ -15,7 +15,10 @@ import json
 import logging
 import datetime
 
+CAN_POST     = 1
+CAN_MAKEUSER = 2
 
+privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users"}
 
 
 
@@ -253,7 +256,7 @@ class ProfileHandler(Handler):
         profile = db.GqlQuery("SELECT * FROM User WHERE username=:1 LIMIT 1", res)
         profile = list(profile)
         if len(profile) == 1:
-            self.render("profile.html", user = self.user, profile = profile[0])
+            self.render("profile.html", user = self.user, profile = profile[0], privileges = privileges)
         else:
             self.error(404)
             

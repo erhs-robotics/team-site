@@ -84,5 +84,12 @@
 				{% endif %}		
 			</tbody>
 		</table>
+		Privileges:
+		<form>
+			{% for num, text in privileges.iteritems() %}
+				 {{text}} <br>
+			{% endfor %}
+			<input type="submit">
+		</form>
 	</section>
 {% endblock %}
