@@ -113,7 +113,7 @@ class MembersHandler(Handler):
 
             if v_user and v_pass and v_verify and v_email and v_existing_user < 1:
                 password = make_pw_hash(username, password)
-                newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[1])
+                newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[])
                 if image: newuser.userimage = image
                 if fullname: newuser.fullname = fullname
                 newuser.put()                
@@ -440,7 +440,7 @@ class UpdatePrivilegesHandler(Handler):
     def post(self):
         self.login()
         page = "/"
-        if self.user.isadmin:
+        if self.user and self.user.isadmin:
             privs    = self.request.get_all("privileges")
             user_id = self.request.get("user")
             
