@@ -86,9 +86,9 @@
 		</table>
 		Privileges:
 		<form action="/updateprivileges" method="POST">
-			<input type="hidden" name="user" value="{{user.key().id()}}">
-			{% for num, text in privileges.iteritems() %}
-				 <input type="checkbox" name="{{num}}" value="{{num in user.privileges}}">{{text}} <br>
+			<input type="hidden" name="user" value="{{profile.key().id()}}">
+			{% for num, text in privileges.iteritems() %}					
+				 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" value="{{num}}">{{text}} <br>
 			{% endfor %}
 			<input type="submit" value="Update Privileges">
 		</form>
