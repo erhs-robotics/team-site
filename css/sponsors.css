@@ -1,29 +1,30 @@
 #sponsors { 
-margin-bottom: .5em; 
-overflow: hidden; 
+overflow: hidden;
 padding: 20px;
 }
 
 #sponsor-block {
 display: inline-block; 
 float:left; 
-width:/*280px; */ 300px;
-height:/*125px;*/ 150px;
+width: 300px;
+height:145px;
 padding:3px; 
-padding-bottom:70px;
+padding-bottom: 70px;
 }
 #sponsor-block fieldset {
-border-color: white;
+border-color: blue;
 }
 #sponsor-block fieldset img {
-padding-right: 10px;
 float: left;
-width: 45%;
+width: 48%;
 height: 100%;
 }
 #sponsor-block fieldset font {
-line-height: 1;
+float: right;
+display: block;
 font-size: 68%;
+width: 48%;
+line-height: 1.5;
 }
 
 
