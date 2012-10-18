@@ -1,7 +1,6 @@
 #sponsors { 
 overflow: hidden;
 padding: 20px;
-height: auto;
 }
 
 #sponsor-block {
@@ -23,7 +22,6 @@ height: 100%;
 #sponsor-block fieldset font {
 float: right;
 display: block;
-line-height: 1;
 font-size: 68%;
 width: 48%;
 line-height: 1.5;
