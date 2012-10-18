@@ -111,7 +111,7 @@ class MembersHandler(Handler):
 
             if v_user and v_pass and v_verify and v_email and v_existing_user < 1:
                 password = make_pw_hash(username, password)
-                newuser = User(username=username, password=password, email = email, isadmin=False)
+                newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[1])
                 if image: newuser.userimage = image
                 if fullname: newuser.fullname = fullname
                 newuser.put()                
@@ -433,6 +433,30 @@ class GalleryHandler(Handler):
         self.render("gallery.html", user = self.user)
                   
 
+class UpdatePrivilegesHandler(Handler):
+    def post(self):
+        self.login()
+        page = "/"
+        if self.user.isadmin:
+            privs    = self.request.get_all("privileges")
+            user_id = self.request.get("user")
+            
+            for i in range(len(privs)):
+                if privs[i].isdigit():
+                    privs[i] = int(privs[i])                
+           
+            if user_id.isdigit():
+                user = get_user(int(user_id))
+                if user:
+                    user.privileges = privs
+                    user.put()
+                    page = "/profile/%s" % user.username
+                    
+        self.redirect(page)
+        
+        
+        
+        
                 
         
         
@@ -460,5 +484,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/first',FirstHandler),
                                ('/mechanical', MechanicalHandler),
                                ('/about-site', WebsiteHandler),
-                               ('/gallery', GalleryHandler)],
+                               ('/gallery', GalleryHandler),
+                               ('/updateprivileges', UpdatePrivilegesHandler)],
                                debug=True)
