@@ -85,11 +85,12 @@
 			</tbody>
 		</table>
 		Privileges:
-		<form>
+		<form action="/updateprivileges" method="POST">
+			<input type="hidden" name="user" value="{{user.key().id()}}">
 			{% for num, text in privileges.iteritems() %}
-				 {{text}} <br>
+				 <input type="checkbox" name="{{num}}" value="{{num in user.privileges}}">{{text}} <br>
 			{% endfor %}
-			<input type="submit">
+			<input type="submit" value="Update Privileges">
 		</form>
 	</section>
 {% endblock %}
