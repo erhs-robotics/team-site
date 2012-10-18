@@ -84,6 +84,7 @@
 				{% endif %}		
 			</tbody>
 		</table>
+		{% if user.isadmin %}
 		Privileges:
 		<form action="/updateprivileges" method="POST">
 			<input type="hidden" name="user" value="{{profile.key().id()}}">
@@ -92,5 +93,6 @@
 			{% endfor %}
 			<input type="submit" value="Update Privileges">
 		</form>
+		{% endif %}
 	</section>
 {% endblock %}
