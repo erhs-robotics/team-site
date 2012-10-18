@@ -10,7 +10,7 @@
 	</script>
 {% endblock %}
 {% block content %}
-	{% if user %}
+	{% if user and 1 in user.privileges %}
 	<section id="new-post">
 		<form action="/newpost" method="GET">
 			<button class="button" id="submit">New Post</button>

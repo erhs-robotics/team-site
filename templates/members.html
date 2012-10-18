@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}		
 	<section id="members">
-	{% if user.isadmin %}
+	{% if user and 2 in user.privileges %}
 		<button id="createuserbutton" type="button">Create User</button>			
 		<form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">
 			<table>

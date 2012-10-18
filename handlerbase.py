@@ -30,7 +30,7 @@ class Handler(webapp2.RequestHandler):
     def login(self):
         cookie = self.request.cookies.get("user_id")
         user = get_user(authenticate_cookie(cookie))
-        self.user = user
+        self.user = user        
         
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)

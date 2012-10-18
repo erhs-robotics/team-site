@@ -34,6 +34,8 @@ class BlogHandler(Handler):
         
         #user = User(username="admin", password=make_pw_hash('admin', 'admin1234'), isadmin=True)
         #user.put()
+        logging.error(self.user.username)
+        logging.error(self.user.privileges)
         posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
         self.render("blog.html", user = self.user, posts = posts)
         
@@ -82,7 +84,7 @@ class MembersHandler(Handler):
 
      def post(self):
         self.login()        
-        if self.user and self.user.isadmin:
+        if self.user and CAN_MAKEUSER in self.user.privileges:
             username = self.request.get('username')
             password = self.request.get('password')
             verify = self.request.get('verify')
@@ -143,7 +145,7 @@ class NewpostHandler(Handler):
     def get(self):
         self.login()
         
-        if self.user:
+        if self.user and CAN_POST in self.user.privileges:
             self.render_form(user = self.user)
         else:
             self.redirect("/login")
@@ -151,7 +153,7 @@ class NewpostHandler(Handler):
 
     def post(self):
         self.login()               
-        if self.user:            
+        if self.user and CAN_POST in self.user.privileges:            
             subject = self.request.get("subject")
             content = self.request.get("content")
 
@@ -165,7 +167,7 @@ class NewpostHandler(Handler):
 class DeletepostHandler(Handler):    
     def post(self):
         self.login()            
-        if self.user:
+        if self.user and CAN_POST in self.user.privileges:
             post = self.request.get("post")
             if post.isdigit():
                 post = Post.get_by_id(int(post))
@@ -181,7 +183,7 @@ class EditPostHandler(Handler):
     def get(self, resource):
         self.login()        
         
-        if self.user and resource.isdigit():
+        if self.user and CAN_POST in self.user.privileges and resource.isdigit():
             post = Post.get_by_id(int(resource))      
             
             if post and (post.user == self.user.key().id() or self.user.isadmin):
@@ -194,7 +196,7 @@ class EditPostHandler(Handler):
     def post(self, ID):
         self.login()
         
-        if self.user and ID.isdigit():        
+        if self.user and CAN_POST in self.user.privileges and ID.isdigit():        
             post = Post.get_by_id(int(ID))           
             if post and (self.user.key().id() == post.user or self.user.isadmin):            
                 subject = self.request.get("subject")
@@ -390,6 +392,7 @@ class EditProfileHandler(Handler):
             
             if succsess:
                 profile.put()
+                update_user(profile)
                 self.redirect("/profile/%s" % res)
         else:
             self.redirect("/login")
@@ -450,6 +453,7 @@ class UpdatePrivilegesHandler(Handler):
                 if user:
                     user.privileges = privs
                     user.put()
+                    update_user(user)
                     page = "/profile/%s" % user.username
                     
         self.redirect(page)

@@ -9,6 +9,8 @@ def get_user(num):
             if user:
                 memcache.set(str(num), user)
         return user
+def update_user(user):
+    memcache.set(str(user.key().id()), user)
 
 class Post(db.Model):
     username = db.StringProperty(required = True)
