@@ -9,7 +9,7 @@ import cgi
 from cookie import authenticate_cookie
 from database import get_user
 from collections import namedtuple
-from database import gravatar
+from database import gravatar, get_user
 
 
 
@@ -41,5 +41,6 @@ class Handler(webapp2.RequestHandler):
         return t.render(params)
 
     def render(self, template, **kw):
-        kw['gravatar'] = gravatar        
+        kw['gravatar'] = gravatar
+        kw['get_user'] = get_user
         self.write(self.render_str(template, **kw))
