@@ -137,6 +137,16 @@ li:last-child .entry, #content > .entry {
 	width: 100%;
 	padding: 20px 0 20px 0;
 }
+#blog .button {
+	padding: 5px;
+	background-color: #69f;
+	color: #00f;
+	font-size: 14px;
+	margin: 0 0 5px 20px
+}
+#blog .button:hover {
+	color: #f90;
+}
 #blog-entry {
 text-align: left;
 overflow: hidden; 
@@ -156,18 +166,15 @@ text-align: left;}
 form {
 	width: 100%;}
 .label {
-color: #f90;}
+color: #00f;}
 .button {
 	padding: 5px;
-	background-color: #222;
-	color: #f90;
-	font-size: 1.143em;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	background-color: #69f;
+	color: #00f;
+	font-size: 14px;
 }
 .button:hover {
-color: #c60;}
+color: #f90;}
 .remove-button {
 	background: url(../images/delete.png) no-repeat top;
 	width: 20px;

@@ -10,14 +10,13 @@
 	</script>
 {% endblock %}
 {% block content %}
-	{% if user and 1 in user.privileges %}
-	<section id="new-post">
-		<form action="/newpost" method="GET">
-			<button class="button" id="submit">New Post</button>
-		</form>
-	</section>
-	{% endif %}
+
 	<div id="blog">
+		{% if user and 1 in user.privileges %}
+			<form action="/newpost" method="GET">
+				<button class="button" id="submit">New Post</button>
+			</form>
+		{% endif %}
 			{% for post in posts%}
 				<div id="blog-entry">
 					{% if user %}
