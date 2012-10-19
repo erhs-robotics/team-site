@@ -1,17 +1,27 @@
-#profile-pic {		
-	border-style: outset;
-	border-width: 5;
-	
-	
-	
+#profile {
+	width: 100%;
+	padding: 20px 0 20px 0;
 }
-
-
-
+#profile-pic {		
+	width: 150px;
+	height: 150px;
+	display: inline-block;
+	float: left;
+}
 #profile-name {	
 	text-decoration: underline;
 	font-size: 20px;
-	
-	
-
+	display: inline-block;
+	color: #00f;
+	padding-bottom: 5px;
 }
+#profile-about, #profile-team, #profile-currentprojects, #profile-pastprojects, 
+#profile-email, #profile-priveleges {
+	font-size: 16px;
+	display: block;
+	padding: 0 20px 5px 20px;
+}
+#profile-about { 
+	font-style: italic;
+}
+

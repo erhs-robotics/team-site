@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
 	{{super()}}
+	<link rel="stylesheet" href="../css/profile.css">
 	<script type="text/javascript">
 		function confirmDel(id) {
 			if(window.confirm("Are you sure you want to delete this user?")) {
@@ -9,88 +10,64 @@
 		}
 	</script>
 {% endblock %}	
-{% block content %}
-	<section id="content">
+{% block content %}	
+	<section id="profile">
 		{% if user.isadmin %}
-		<form method="POST" action="/deleteuser" id="deleteuser{{profile.key().id()}}">
-			<input type="hidden" name="user" value="{{profile.key().id()}}">
-			<a class="remove-button" href="#" onclick="confirmDel({{profile.key().id()}})"></a>				
-		</form>
+			<form method="POST" action="/deleteuser" id="deleteuser{{profile.key().id()}}">
+				<input type="hidden" name="user" value="{{profile.key().id()}}">
+				<a class="remove-button" href="#" onclick="confirmDel({{profile.key().id()}})"></a>				
+			</form>
 		{% endif %}
 		{% if user and profile.key().id() == user.key().id() %}
-		<a class="edit-button" href="/editprofile/{{profile.username}}" title="edit"></a>
+			<a class="edit-button" href="/editprofile/{{profile.username}}" title="edit"></a>
 		{% endif %}
-		<table border=1>		
-			<tbody>
-				<tr>
-					<td rowspan="2" style="width:150px; height:150px;">
-						
-						<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="{{gravatar(profile.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
-						
-					
-					</td>
-					<td>
-						<div id="profile-name">
-							{% if profile.fullname %}
-								{{profile.fullname}} ({{profile.username}})
-								{% else %}
-								{{profile.username}}
-							{% endif %}
-						</div>
-					</td>					
-				</tr>
-				{% if profile.quote %}
-				<tr>
-					<td>
-					{{profile.quote}}
-					</td>
-				</tr>
-				{% endif %}
-				{% if profile.team %}
-				<tr>
-					<td colspan="2">
-					Team: {{ profile.team }}
-					</td>
-				</tr>
-				{% endif %}
-				{% if profile.currentProjects %}
-				<tr>
-					<td colspan="2">
-					Current project(s): {{profile.currentProjects[0]}}
-					{% for project in profile.currentProjects[1:] %}
-					, {{project}}
-					{% endfor %}
-					</td>
-				</tr>
-				{% endif %}
-				{% if profile.pastProjects %}
-				<tr>
-					<td colspan="2">
-					Past projects: {{profile.pastProjects[0]}}
-					{% for project in profile.pastProjects[1:] %}
-					, {{project}}
-					{% endfor %}
-					</td>
-				</tr>
-				{% endif %}	
-				{% if user and profile.email %}
-				<tr>
-					<td colspan="2">
-					Email: {{profile.email}}
-					</td>							
-				</tr>
-				{% endif %}		
-			</tbody>
-		</table>
+		<img id="profile-pic" src="{{gravatar(profile.email, 
+															 default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
+		<div id="profile-name">
+			{% if profile.fullname %}
+				{{profile.fullname}} ({{profile.username}})
+				{% else %}
+				{{profile.username}}
+			{% endif %}
+		</div>
+		{% if profile.quote %}
+			<span id="profile-about">"{{profile.quote}}"</span>
+		{% endif %}
+		{% if profile.team %}
+			<span id="profile-team">Team: {{ profile.team }}</span>
+		{% endif %}
+		{% if profile.currentProjects %}
+			<span id="profile-currentprojects">
+				Current project(s): {{profile.currentProjects[0]}}
+				{% for project in profile.currentProjects[1:] %}
+				, {{project}}
+				{% endfor %}
+			</span>
+		{% endif %}
+		{% if profile.pastProjects %}
+			<span id="profile-pastprojects">
+				Past projects: {{profile.pastProjects[0]}}
+				{% for project in profile.pastProjects[1:] %}
+				, {{project}}
+				{% endfor %}
+			</span>
+		{% endif %}	
+		{% if user and profile.email %}
+			<span id="profile-email">
+				Email: {{profile.email}}
+			</span>
+		{% endif %}		
 		{% if user.isadmin %}
-		Privileges:
-		<form action="/updateprivileges" method="POST">
-			<input type="hidden" name="user" value="{{profile.key().id()}}">
-			{% for num, text in privileges.iteritems() %}					
-				 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" value="{{num}}">{{text}} <br>
-			{% endfor %}
-			<input type="submit" value="Update Privileges">
-		</form>
+			<span id="profile-priveleges">
+				Privileges:
+				<form action="/updateprivileges" method="POST">
+					<input type="hidden" name="user" value="{{profile.key().id()}}">
+					{% for num, text in privileges.iteritems() %}					
+						 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" value="{{num}}">{{text}} <br>
+					{% endfor %}
+					<input class="button" type="submit" value="Update Privileges">
+				</form>
+			</span>
 		{% endif %}
 	</section>
 {% endblock %}
