@@ -10,7 +10,7 @@ from cookie import authenticate_cookie
 from database import get_user
 from collections import namedtuple
 from database import gravatar, get_user
-
+import calendar
 
 
 
@@ -43,4 +43,5 @@ class Handler(webapp2.RequestHandler):
     def render(self, template, **kw):
         kw['gravatar'] = gravatar
         kw['get_user'] = get_user
+        kw['calendar'] = calendar
         self.write(self.render_str(template, **kw))
