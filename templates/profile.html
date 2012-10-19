@@ -26,7 +26,7 @@
 		<div id="profile-name">
 			{% if profile.fullname %}
 				{{profile.fullname}} ({{profile.username}})
-				{% else %}
+			{% else %}
 				{{profile.username}}
 			{% endif %}
 		</div>
@@ -34,11 +34,11 @@
 			<span id="profile-about">"{{profile.quote}}"</span>
 		{% endif %}
 		{% if profile.team %}
-			<span id="profile-team">Team: {{ profile.team }}</span>
+			<span id="profile-team"><strong>Team:</strong> {{ profile.team }}</span>
 		{% endif %}
 		{% if profile.currentProjects %}
 			<span id="profile-currentprojects">
-				Current project(s): {{profile.currentProjects[0]}}
+				<strong>Current projects:</strong> {{profile.currentProjects[0]}}
 				{% for project in profile.currentProjects[1:] %}
 				, {{project}}
 				{% endfor %}
@@ -46,7 +46,7 @@
 		{% endif %}
 		{% if profile.pastProjects %}
 			<span id="profile-pastprojects">
-				Past projects: {{profile.pastProjects[0]}}
+				<strong>Past projects:</strong> {{profile.pastProjects[0]}}
 				{% for project in profile.pastProjects[1:] %}
 				, {{project}}
 				{% endfor %}
@@ -54,7 +54,7 @@
 		{% endif %}	
 		{% if user and profile.email %}
 			<span id="profile-email">
-				Email: {{profile.email}}
+				<strong>Email:<strong> {{profile.email}}
 			</span>
 		{% endif %}		
 		{% if user.isadmin %}
@@ -63,7 +63,7 @@
 				<form action="/updateprivileges" method="POST">
 					<input type="hidden" name="user" value="{{profile.key().id()}}">
 					{% for num, text in privileges.iteritems() %}					
-						 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" value="{{num}}">{{text}} <br>
+						 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" 										value="{{num}}"> {{text}} <br>
 					{% endfor %}
 					<input class="button" type="submit" value="Update Privileges">
 				</form>

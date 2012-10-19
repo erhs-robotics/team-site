@@ -1,12 +1,14 @@
 #profile {
 	width: 100%;
 	padding: 20px 0 20px 0;
+	overflow: hidden;
 }
 #profile-pic {		
 	width: 150px;
 	height: 150px;
 	display: inline-block;
 	float: left;
+	padding-left: 20px;
 }
 #profile-name {	
 	text-decoration: underline;
@@ -14,14 +16,19 @@
 	display: inline-block;
 	color: #00f;
 	padding-bottom: 5px;
+	padding: 0 20px 5px 0;
 }
 #profile-about, #profile-team, #profile-currentprojects, #profile-pastprojects, 
 #profile-email, #profile-priveleges {
 	font-size: 16px;
 	display: block;
-	padding: 0 20px 5px 20px;
+	padding: 0 20px 5px 0px;
 }
 #profile-about { 
 	font-style: italic;
 }
-
+#profile-email {
+	display: none;
+}
+#profile strong {
+	font-weight: bold;}
