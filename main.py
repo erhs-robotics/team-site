@@ -35,8 +35,7 @@ class BlogHandler(Handler):
         
         #user = User(username="admin", password=make_pw_hash('admin', 'admin1234'), isadmin=True)
         #user.put()
-        logging.error(self.user.username)
-        logging.error(self.user.privileges)
+        
         posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
         self.render("blog.html", user = self.user, posts = posts)
         
