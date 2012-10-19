@@ -1,12 +1,16 @@
 #profile {
 	width: 100%;
 	padding: 20px 0 20px 0;
+	overflow: auto;
 }
 #profile-pic {		
 	width: 150px;
 	height: 150px;
 	display: inline-block;
 	float: left;
+	padding-right: 10px;
+	
+	
 }
 #profile-name {	
 	text-decoration: underline;
