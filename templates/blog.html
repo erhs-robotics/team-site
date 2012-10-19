@@ -17,7 +17,7 @@
 		</form>
 	</section>
 	{% endif %}
-	<section id="blog">
+	<div id="blog">
 			{% for post in posts%}
 				<div id="blog-entry">
 					{% if user %}
@@ -32,9 +32,9 @@
 					<h2>{{post.subject}}</h2>
 					<h3>Created by: {{post.username}}</h3>
 					<h3>Date: {{post.created}}</h3>
-					<hr>
 					<p>{{post.content}}</p>
+					<hr>
 				</div>
 			{% endfor %}
-	</section>
+	</div>
 {% endblock %}
