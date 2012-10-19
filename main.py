@@ -89,17 +89,9 @@ class MembersHandler(Handler):
             username = self.request.get('username')
             password = self.request.get('password')
             verify = self.request.get('verify')
-            email = self.request.get('email')
-            image = self.request.get('image')
-            fullname = self.request.get('fullname')
+            email = self.request.get('email')            
+            fullname = self.request.get('fullname')          
             
-            if image:
-                image = images.resize(image, 300, 300)
-                image = db.Blob(image)
-                logging.error("YES!!! image")
-            else:
-                logging.error("NO!!!! image")
-                        
             v_user = match(USER, username)
             v_pass = match(PASS, password)
             v_verify = None
@@ -115,7 +107,6 @@ class MembersHandler(Handler):
             if v_user and v_pass and v_verify and v_email and v_existing_user < 1:
                 password = make_pw_hash(username, password)
                 newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[IS_MEMBER])
-                if image: newuser.userimage = image
                 if fullname: newuser.fullname = fullname
                 newuser.put()                
                 self.redirect('/members')
@@ -325,15 +316,10 @@ class EditProfileHandler(Handler):
             currentProjs = self.request.get("currentProjects")
             pastProjs    = self.request.get("pastProjects")
             email        = self.request.get("email")
-            image        = self.request.get("image")
             fullname     = self.request.get("fullname")
             oldpass      = self.request.get("oldpass")
             newpass      = self.request.get("newpass")
             v_newpass    = self.request.get("v_newpass")
-            
-            if image:
-                image = images.resize(image, 300, 300)
-                image = db.Blob(image)
             
             currentProjs = currentProjs.split(',')
             for i in range(len(currentProjs)):
@@ -350,7 +336,7 @@ class EditProfileHandler(Handler):
             profile.email           = email
             
             if fullname: profile.fullname = fullname
-            if image: profile.userimage = image
+            
             
             succsess = True
             if oldpass:

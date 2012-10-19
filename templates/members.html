@@ -10,10 +10,6 @@
 		<form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
-				  <td class="label">User Image</td>
-				  <td><input type="file" name="image"></td>
-				</tr>
-				<tr>
 				  <td class="label">Full name (optional)</td>
 				  <td><input type="text" name="fullname" value="{{fullname}}"></td>				  
 				</tr>
@@ -65,11 +61,9 @@
 							{% endif %}
 						</a>
 					</legend>
-					{% if user.userimage %}
-					<img src="/image?id={{user.key()}}">
-					{% else %}
-					<img src="../images/alien-head.jpg">
-					{% endif %}		
+					
+					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">				
+							
 					{% if user.quote %}
 					<font>"{{user.quote}}"</font>
 					{% endif %}

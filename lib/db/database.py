@@ -15,6 +15,7 @@ def update_user(user):
     
 def gravatar(email, size=100, rating='g', default='retro', force_default=False,
              force_lower=False, use_ssl=False):
+    if not email: email = ""
     if use_ssl:
         url = "https://secure.gravatar.com/avatar/"
     else:
@@ -40,8 +41,7 @@ class User(db.Model):
     currentProjects = db.StringListProperty()
     pastProjects    = db.StringListProperty()
     team            = db.StringProperty()
-    quote           = db.TextProperty()
-    userimage       = db.BlobProperty()
+    quote           = db.TextProperty()    
     username        = db.StringProperty(required = True)
     fullname        = db.StringProperty()
     password        = db.StringProperty(required = True)

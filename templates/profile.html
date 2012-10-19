@@ -24,11 +24,9 @@
 			<tbody>
 				<tr>
 					<td rowspan="2" style="width:150px; height:150px;">
-						{% if profile.userimage %}
-						<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="/image?id={{profile.key()}}">
-						{% else %}
-						<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="/images/alien-head.jpg">		
-						{% endif %}
+						
+						<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="{{gravatar(profile.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
+						
 					
 					</td>
 					<td>

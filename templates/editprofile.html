@@ -5,14 +5,11 @@
 			<table border="1">
 				<tbody>
 					<tr>
-						<td valign="top" rowspan="2" style="width:150px; height:150px;">
-							{% if profile.userimage %}
-							<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="/image?id={{profile.key()}}">
-							{% else %}
-							<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="/images/alien-head.jpg">		
-							{% endif %}
+						<td valign="top" rowspan="2" style="width:150px; height:150px;">					
+							<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="{{gravatar(profile.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
+							
 							<br>
-							<input type="file" name="image">							
+							<a href="https://en.gravatar.com/site/login"><font size="1">Change profile pic with Gravatar</font></a>													
 						</td>
 						<td>
 							<div id="profile-name">{{profile.username}}</div>
@@ -102,7 +99,7 @@
 					</tr>
 					<tr>
 						<td>
-						Email:
+						Email: (required for Gravatar)
 						</td>
 						<td>
 						<input type="text" style="width=99%;" name="email" value="{% if profile.email %}{{profile.email}}{% endif %}">
