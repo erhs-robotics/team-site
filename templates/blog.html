@@ -31,7 +31,7 @@
 					{% endif %}
 					<h2>{{post.subject}}</h2>
 					<h3>Created by: {{post.username}}</h3>
-					<h3>Date: {{post.created}}</h3><br><br>
+					<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3><br><br>
 					<p>{{post.content}}</p>
 					<hr>
 				</div>
