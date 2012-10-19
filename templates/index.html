@@ -24,82 +24,70 @@
 	-->
 {% endblock %}
 {% block content %}
-	<aside id="welcome">
-		<figure>
-			<!--<iframe src="http://www.youtube.com/embed/h6cZtslbIIQ" frameborder="0" allowfullscreen>"</iframe>-->
-<script type="text/javascript" src="../js/fade-slide.js"></script>   
-<script type="text/javascript">  
-var mygallery=new fadeSlideShow({   
- wrapperid: "fadeshow2", //ID of blank DIV on page to house Slideshow   
- dimensions: [349, 232], //width/height of gallery in pixels. Should reflect dimensions of largest image
-      imagearray:  [     
-		    ["../images/image-1.jpg"],    
-		    ["../images/image-2.jpg"], 
-		    ["../images/image-3.jpg"],
-		    ["../images/image-4.jpg"],
-		    ["../images/image-5.jpg"],
-				["../images/image-6.jpg"]
-      ],
-      displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
-  persist: false, //remember last viewed slide and recall within same session?   
-  fadeduration: 2000, //transition duration (milliseconds)  
-  descreveal: "ondemand",
-  togglerid: ""
-  })
-</script>
-	<div id="fadeshow2">   
- 		<a href="http://www.2createawebsites.com">How To Create a Website</a>
-  </div>
+<aside id="welcome">
+	<figure>
+		<script type="text/javascript" src="../js/fade-slide.js"></script>   
+		<script type="text/javascript">  
+			var mygallery=new fadeSlideShow({   
+			 wrapperid: "photo-stream",  
+			 dimensions: [349, 232], //width x height
+						imagearray:  [     
+							["../images/image-1.jpg"],    
+							["../images/image-2.jpg"], 
+							["../images/image-3.jpg"],
+							["../images/image-4.jpg"],
+							["../images/image-5.jpg"],
+							["../images/image-6.jpg"]
+						],
+						displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
+				persist: false, //remember last viewed slide and recall within same session?   
+				fadeduration: 2000, //transition duration (milliseconds)  
+				descreveal: "ondemand",
+				togglerid: ""
+				})
+		</script>
+		<div id="photo-stream"></div>
 	</figure>
-		<hgroup>
-			<h2>Eleanor Roosevelt High School</h2>
-			<h3>Robotics Club</h3>
-		</hgroup>
-		<p>The Eleanor Roosevelt Robotics Club is a group
-		of about 50 bright students who come together to think of, design,
-		and develop creative solutions to a wide variety of challenges in
-		the Science, Technology, Engineering, and Mathematics (STEM)
-		Field.  We foster our students' interests in the STEM field through encouraging
-		their use of problem-solving and critical thinking skills in a multitude of
-		challenging ways, mainly through competing in various local robotics
-		competitions</p>
-		<ul>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>	
-	</aside>
-	<section id="index-content">
-		<div id="left-pane">
-			<span class="title"><h2>Announcements</h2></span>
-				<h3>Sponsorship Forms</h3>
-					<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
-						 Robotics Club?  If so, please take your time to download and review
-						 the following documents.  Your time and donations are much appreciated.
-						<ul>
-					    <li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
-					    <li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
-					    <li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
-				    </ul>
-					</p>
-				<h3>Club Forms</h3>
-					<p>Below here are the links to the 5 forms for the club.  Please be
-						 sure to download all of them and fill out the required ones!
-					  <ul>
-						  <li><a href="./files/robotics-info.pdf" target="self">General Robotics Information</a></li>
-						  <li><a href="/files/robotics-info-quicklist.pdf">Robotics Information quicklist</a></li>
-						  <li><a href="/files/robotics-meeting-schedule.pdf">Robotics Meeting Schedule</a></li>
-						  <li><a href="/files/robotics-parent-info.pdf">Robotics Parent Information</a></li>
-						  <li><a href="/files/robotics-safety-photography-agreement.pdf">Safety and Photography Form</a></li>
-						  <li><a href="/files/robotics-forms-2013.zip">Download all (zip)</a></li>
-					  </ul>
-					</p>	
-		</div>
-		<div id="right-pane">
-			<span class="title"><h2>Calendar</h2></span>
-			<iframe src="https://www.google.com/calendar/embed?title=Event%20and%20Meeting%20Calendar&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="450" height="600" frameborder="0" scrolling="no"></iframe>
-		</div>
-	</section>
-{% endblock %}
-{% block extras %}
-{% endblock %}			
+	<h2>Eleanor Roosevelt High School</h2>
+	<h3>Robotics Club</h3>
+	<p>The Eleanor Roosevelt Robotics Club is a group
+	of about 50 bright students who come together to think of, design,
+	and develop creative solutions to a wide variety of challenges in
+	the Science, Technology, Engineering, and Mathematics (STEM)
+	Field.  We foster our students' interests in the STEM field through encouraging
+	their use of problem-solving and critical thinking skills in a multitude of
+	challenging ways, mainly through competing in various local robotics
+	competitions</p>
+</aside>
+<section id="index-content">
+	<div id="left-pane">
+		<span class="title"><h2>Announcements</h2></span>
+			<h3>Sponsorship Forms</h3>
+				<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
+					 Robotics Club?  If so, please take your time to download and review
+					 the following documents.  Your time and donations are much appreciated.
+					<ul>
+				    <li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
+				    <li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
+				    <li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
+			    </ul>
+				</p>
+			<h3>Club Forms</h3>
+				<p>Below here are the links to the 5 forms for the club.  Please be
+					 sure to download all of them and fill out the required ones!
+				  <ul>
+					  <li><a href="./files/robotics-info.pdf" target="self">General Robotics Information</a></li>
+					  <li><a href="/files/robotics-info-quicklist.pdf">Robotics Information quicklist</a></li>
+					  <li><a href="/files/robotics-meeting-schedule.pdf">Robotics Meeting Schedule</a></li>
+					  <li><a href="/files/robotics-parent-info.pdf">Robotics Parent Information</a></li>
+					  <li><a href="/files/robotics-safety-photography-agreement.pdf">Safety and Photography Form</a></li>
+					  <li><a href="/files/robotics-forms-2013.zip">Download all (zip)</a></li>
+				  </ul>
+				</p>	
+	</div>
+	<div id="right-pane">
+		<span class="title"><h2>Calendar</h2></span>
+		<iframe src="https://www.google.com/calendar/embed?title=Event%20and%20Meeting%20Calendar&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="450" height="600" frameborder="0" scrolling="no"></iframe>
+	</div>
+</section>
+{% endblock %}		
