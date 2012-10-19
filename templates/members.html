@@ -54,7 +54,7 @@
 	{% endif %}
 	{% for user in users %}
 		<div id="member-block">
-			<fieldset style="border-color: white;">			
+			<fieldset>			
 				<legend>
 					<a href="/profile/{{user.username}}">
 						{% if user.fullname %}
@@ -65,12 +65,12 @@
 					</a>
 				</legend>
 				{% if user.userimage %}
-				<img align="left" style="width:50%; height:100%;" src="/image?id={{user.key()}}">
+				<img src="/image?id={{user.key()}}">
 				{% else %}
-				<img align="left" style="width:50%; height:100%;" src="../images/alien-head.jpg">
+				<img src="../images/alien-head.jpg">
 				{% endif %}		
 				{% if user.quote %}
-				<font size="2">"{{user.quote}}"</font>
+				<font>"{{user.quote}}"</font>
 				{% endif %}
 			</fieldset>
 		</div>		
