@@ -53,27 +53,29 @@
 		<br><br>
 	{% endif %}
 	{% for user in users %}
-		<div id="member-block">
-			<fieldset>			
-				<legend>
-					<a href="/profile/{{user.username}}">
-						{% if user.fullname %}
-							{{user.fullname}}
-						{% else %}
-							{{user.username}}
-						{% endif %}
-					</a>
-				</legend>
-				{% if user.userimage %}
-				<img src="/image?id={{user.key()}}">
-				{% else %}
-				<img src="../images/alien-head.jpg">
-				{% endif %}		
-				{% if user.quote %}
-				<font>"{{user.quote}}"</font>
-				{% endif %}
-			</fieldset>
-		</div>		
+		{% if 3 in user.privileges %}
+			<div id="member-block">
+				<fieldset>			
+					<legend>
+						<a href="/profile/{{user.username}}">
+							{% if user.fullname %}
+								{{user.fullname}}
+							{% else %}
+								{{user.username}}
+							{% endif %}
+						</a>
+					</legend>
+					{% if user.userimage %}
+					<img src="/image?id={{user.key()}}">
+					{% else %}
+					<img src="../images/alien-head.jpg">
+					{% endif %}		
+					{% if user.quote %}
+					<font>"{{user.quote}}"</font>
+					{% endif %}
+				</fieldset>
+		</div>
+		{% endif %}	
 	{% endfor %}
 	</section>
 {% endblock %}	

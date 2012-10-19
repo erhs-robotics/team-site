@@ -17,8 +17,9 @@ import datetime
 
 CAN_POST     = 1
 CAN_MAKEUSER = 2
+IS_MEMBER    = 3
 
-privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users"}
+privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users", IS_MEMBER : "is member"}
 
 
 
@@ -113,7 +114,7 @@ class MembersHandler(Handler):
 
             if v_user and v_pass and v_verify and v_email and v_existing_user < 1:
                 password = make_pw_hash(username, password)
-                newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[])
+                newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[IS_MEMBER])
                 if image: newuser.userimage = image
                 if fullname: newuser.fullname = fullname
                 newuser.put()                
