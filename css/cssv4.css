@@ -133,16 +133,20 @@ li:last-child .entry, #content > .entry {
 	height: 100%; 
 } 
 
--entry {
-margin-bottom: .5em; 
+#blog {
+	width: 100%;
+	padding: 20px 0 20px 0;
+}
+#blog-entry {
 text-align: left;
 overflow: hidden; 
-padding: 20px; } 
+padding: 0px 20px 0px 20px;} 
 #blog-entry h2 {
-color: #00f;}
-#blog-entry h3 {
 color: #00f;
-font-size: 1.143em;}
+font-size: 22px;}
+#blog-entry h3 {
+color: #69f;
+font-size: 14px;}
 #blog-entry p {
 width: 100%;
 overflow: wrap;
