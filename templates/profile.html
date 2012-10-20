@@ -54,10 +54,10 @@
 		{% endif %}	
 		{% if user and profile.email %}
 			<span id="profile-email">
-				<strong>Email:<strong> {{profile.email}}
+				<strong>Email:</strong> {{profile.email}}
 			</span>
 		{% endif %}		
-		{% if user.isadmin %}
+		{% if user.isadmin %}<br><br>
 			<span id="profile-priveleges">
 				Privileges:
 				<form action="/updateprivileges" method="POST">
