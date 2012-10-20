@@ -9,6 +9,7 @@
 	display: inline-block;
 	float: left;
 	padding-left: 20px;
+	padding-right: 10px;
 }
 #profile-name {	
 	text-decoration: underline;
