@@ -11,6 +11,9 @@ handlers:
 
 - url: /res
   static_dir: js
+
+- url: /yui
+  static_dir: yui
   
 - url: /files
   static_dir: files
