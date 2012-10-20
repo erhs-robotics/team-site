@@ -14,13 +14,13 @@ parser.add_option("-v", dest="version", help="specifies a version")
 f = open("app.yaml", "r+w")
 text = f.read()
 
-m = re.search("version:( +)(\d+).(\d+).(\d+)", text)
+m = re.search("version:( +)(\d+)-(\d+)-(\d+)", text)
 major = int(m.group(2))
 minor = int(m.group(3))
 revision = int(m.group(4))
 
 if options.version:
-	if re.match("(\d+).(\d+).(\d+)$", options.version):
+	if re.match("(\d+)-(\d+)-(\d+)$", options.version):
 		version = options.version.split('.')
 		major = int(version[0])
 		minor = int(version[1])
@@ -42,14 +42,14 @@ if options.minor:
 if options.bugfix:
 	revision += 1
 
-text = text.replace(m.group(0), "version: %s.%s.%s" % (major, minor, revision))
+text = text.replace(m.group(0), "version: %s-%s-%s" % (major, minor, revision))
 
 f.seek(0)
 f.write(text)
 f.truncate()
 f.close()
 
-print "new version: %s.%s.%s" % (major, minor, revision)
+print "new version: %s-%s-%s" % (major, minor, revision)
 		
 
 
