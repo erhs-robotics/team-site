@@ -150,8 +150,7 @@ class NewpostHandler(Handler):
 
             if subject and content:
                 post = Post(subject=subject, content=content, username = self.user.username, user = self.user.key().id())            
-                post.put()
-                logging.error(content)
+                post.put()                
                 self.redirect("/blog")
             else:
                 self.render_form(subject, content, "Please provide a title and content", user=self.user.username)
@@ -179,9 +178,9 @@ class EditPostHandler(Handler):
             post = Post.get_by_id(int(resource))      
             
             if post and (post.user == self.user.key().id() or self.user.isadmin):
-                self.render("newpost.html", user = self.user, 
+                self.render("newpost.html", user = self.user.username, 
                                             subject=post.subject, 
-                                            content=post.content, error="")
+                                            content=post.content)
         else:
             self.redirect('/login')
             
