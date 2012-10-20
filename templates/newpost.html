@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block head %}
 	{{super()}}
-	<link rel="stylesheet" type="text/css" href="yui/menu/assets/skins/sam/menu.css" />
-	<link rel="stylesheet" type="text/css" href="yui/button/assets/skins/sam/button.css" />
-	<link rel="stylesheet" type="text/css" href="yui/container/assets/skins/sam/container.css" />
-	<link rel="stylesheet" type="text/css" href="yui/editor/assets/skins/sam/editor.css" />
-	<script type="text/javascript" src="yui/yuiloader/yuiloader-min.js"></script>
-	<script type="text/javascript" src="yui/event/event-min.js"></script>
-	<script type="text/javascript" src="yui/dom/dom-min.js"></script>
-	<script type="text/javascript" src="yui/animation/animation-min.js"></script>
-	<script type="text/javascript" src="yui/element/element-min.js"></script>
-	<script type="text/javascript" src="yui/container/container-min.js"></script>
-	<script type="text/javascript" src="yui/menu/menu-min.js"></script>
-	<script type="text/javascript" src="yui/button/button-min.js"></script>
-	<script type="text/javascript" src="yui/editor/editor-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/yui/menu/assets/skins/sam/menu.css" />
+	<link rel="stylesheet" type="text/css" href="/yui/button/assets/skins/sam/button.css" />
+	<link rel="stylesheet" type="text/css" href="/yui/container/assets/skins/sam/container.css" />
+	<link rel="stylesheet" type="text/css" href="/yui/editor/assets/skins/sam/editor.css" />
+	<script type="text/javascript" src="/yui/yuiloader/yuiloader-min.js"></script>
+	<script type="text/javascript" src="/yui/event/event-min.js"></script>
+	<script type="text/javascript" src="/yui/dom/dom-min.js"></script>
+	<script type="text/javascript" src="/yui/animation/animation-min.js"></script>
+	<script type="text/javascript" src="/yui/element/element-min.js"></script>
+	<script type="text/javascript" src="/yui/container/container-min.js"></script>
+	<script type="text/javascript" src="/yui/menu/menu-min.js"></script>
+	<script type="text/javascript" src="/yui/button/button-min.js"></script>
+	<script type="text/javascript" src="/yui/editor/editor-min.js"></script>
 	<style>
     .yui-skin-sam .yui-toolbar-container .yui-toolbar-editcode span.yui-toolbar-icon {
         background-image: url( assets/html_editor.gif );
@@ -55,7 +55,7 @@
 		<label>
 			<div>Content</div>
 				<textarea id="editor" name="content" rows="20" cols="75">
-
+				{{content}}
 				</textarea>
 		</label>
 		<div class="error">{{error}}</div>

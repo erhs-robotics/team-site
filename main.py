@@ -178,9 +178,9 @@ class EditPostHandler(Handler):
             post = Post.get_by_id(int(resource))      
             
             if post and (post.user == self.user.key().id() or self.user.isadmin):
-                self.render("newpost.html", user = self.user.username, 
+                self.render("newpost.html", user = self.user, 
                                             subject=post.subject, 
-                                            content=post.content)
+                                            content=post.content, error="")
         else:
             self.redirect('/login')
             
