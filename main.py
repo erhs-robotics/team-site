@@ -150,7 +150,8 @@ class NewpostHandler(Handler):
 
             if subject and content:
                 post = Post(subject=subject, content=content, username = self.user.username, user = self.user.key().id())            
-                post.put()                
+                post.put()
+                logging.error(content)
                 self.redirect("/blog")
             else:
                 self.render_form(subject, content, "Please provide a title and content", user=self.user.username)
