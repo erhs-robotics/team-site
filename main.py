@@ -153,7 +153,7 @@ class NewpostHandler(Handler):
                 post.put()                
                 self.redirect("/blog")
             else:
-                self.render_form(subject, content, "Please provide a title and content", user=self.user.username)
+                self.render_form(subject, content, "Please provide a title and content", user=self.user)
 
 class DeletepostHandler(Handler):    
     def post(self):
@@ -178,7 +178,7 @@ class EditPostHandler(Handler):
             post = Post.get_by_id(int(resource))      
             
             if post and (post.user == self.user.key().id() or self.user.isadmin):
-                self.render("newpost.html", user = self.user.username, 
+                self.render("newpost.html", user = self.user, 
                                             subject=post.subject, 
                                             content=post.content)
         else:
