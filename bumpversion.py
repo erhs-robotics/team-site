@@ -7,6 +7,7 @@ parser = OptionParser()
 parser.add_option("-M", "--major", action="store_true", dest="major", help="bumps a.b.c to (a+1).0.0")
 parser.add_option("-m", "--minor", action="store_true", dest="minor", help="bumps a.b.c to a.(b+1).0")
 parser.add_option("-f", "--bugfix", action="store_true", dest="bugfix", help="bumps a.b.c to a.b.(c+1)")
+parser.add_option("-s", "--show", action="store_true", dest="show", help="show current version")
 parser.add_option("-v", dest="version", help="specifies a version")
 
 (options, args) = parser.parse_args()
@@ -18,6 +19,9 @@ m = re.search("version:( +)(\d+)-(\d+)-(\d+)", text)
 major = int(m.group(2))
 minor = int(m.group(3))
 revision = int(m.group(4))
+if options.show:
+	print "current version: %s-%s-%s" % (major, minor, revision)
+	exit()
 
 if options.version:
 	if re.match("(\d+)-(\d+)-(\d+)$", options.version):
