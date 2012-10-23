@@ -21,53 +21,58 @@
 		{% if user and profile.key().id() == user.key().id() %}
 			<a class="edit-button" href="/editprofile/{{profile.username}}" title="edit"></a>
 		{% endif %}
-		<img id="profile-pic" src="{{gravatar(profile.email, 
-															 default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
-		<div id="profile-name">
-			{% if profile.fullname %}
-				{{profile.fullname}} ({{profile.username}})
-			{% else %}
-				{{profile.username}}
+		<div id="profile-pic-and-priveleges-container">
+			<img id="profile-pic" src="{{gravatar(profile.email, 
+																 default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
+			{% if user.isadmin %}<br><br>
+				<span id="profile-priveleges">
+					Privileges:
+					<form action="/updateprivileges" method="POST">
+						<input type="hidden" name="user" value="{{profile.key().id()}}">
+						{% for num, text in privileges.iteritems() %}					
+							 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" 										value="{{num}}"> {{text}} <br>
+						{% endfor %}
+						<input class="button" type="submit" value="Update Privileges">
+					</form>
+				</span>
 			{% endif %}
-		</div>
-		{% if profile.quote %}
-			<span id="profile-about">"{{profile.quote}}"</span>
-		{% endif %}
-		{% if profile.team %}
-			<span id="profile-team"><strong>Team:</strong> {{ profile.team }}</span>
-		{% endif %}
-		{% if profile.currentProjects %}
-			<span id="profile-currentprojects">
-				<strong>Current projects:</strong> {{profile.currentProjects[0]}}
-				{% for project in profile.currentProjects[1:] %}
-				, {{project}}
-				{% endfor %}
-			</span>
-		{% endif %}
-		{% if profile.pastProjects %}
-			<span id="profile-pastprojects">
-				<strong>Past projects:</strong> {{profile.pastProjects[0]}}
-				{% for project in profile.pastProjects[1:] %}
-				, {{project}}
-				{% endfor %}
-			</span>
-		{% endif %}	
-		{% if user and profile.email %}
-			<span id="profile-email">
-				<strong>Email:</strong> {{profile.email}}
-			</span>
-		{% endif %}		
-		{% if user.isadmin %}<br><br>
-			<span id="profile-priveleges">
-				Privileges:
-				<form action="/updateprivileges" method="POST">
-					<input type="hidden" name="user" value="{{profile.key().id()}}">
-					{% for num, text in privileges.iteritems() %}					
-						 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" 										value="{{num}}"> {{text}} <br>
+		</div><!--./#profile-pic-and-priveleges-container-->
+		<div id="profile-content-container">
+			<div id="profile-name">
+				{% if profile.fullname %}
+					{{profile.fullname}} ({{profile.username}})
+				{% else %}
+					{{profile.username}}
+				{% endif %}
+			</div>
+			{% if profile.quote %}
+				<span id="profile-about">"{{profile.quote}}"</span>
+			{% endif %}
+			{% if profile.team %}
+				<span id="profile-team"><strong>Team:</strong> {{ profile.team }}</span>
+			{% endif %}
+			{% if profile.currentProjects %}
+				<span id="profile-currentprojects">
+					<strong>Current projects:</strong> {{profile.currentProjects[0]}}
+					{% for project in profile.currentProjects[1:] %}
+					, {{project}}
 					{% endfor %}
-					<input class="button" type="submit" value="Update Privileges">
-				</form>
-			</span>
-		{% endif %}
+				</span>
+			{% endif %}
+			{% if profile.pastProjects %}
+				<span id="profile-pastprojects">
+					<strong>Past projects:</strong> {{profile.pastProjects[0]}}
+					{% for project in profile.pastProjects[1:] %}
+					, {{project}}
+					{% endfor %}
+				</span>
+			{% endif %}	
+			{% if user and profile.email %}
+				<span id="profile-email">
+					<strong>Email:</strong> {{profile.email}}
+				</span>
+			{% endif %}		
+		</div><!--./#profile-content-container-->
+
 	</section>
 {% endblock %}
