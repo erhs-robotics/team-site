@@ -38,7 +38,7 @@ text-decoration: underline; }
 a:hover, a:active { 
 color: #f90;}  
 
-p { margin-bottom: .8em;}
+p { margin-bottom: 1.3em;}
 
 /* Quotes */ blockquote {font-style: italic;} cite {}  q {}  
 /* Thead */ thead th {padding: .5em .4em; text-align: left;} thead td {}  
@@ -51,7 +51,7 @@ section, footer, aside, div {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;}
-section{ border-bottom: 3px solid #00f; }
+
 #top { background: none;}
 login { background: none;}
 
@@ -79,10 +79,6 @@ header img, header a img {
 	width: 100%;
 }
 
-#welcome { 
-	padding: 20px; 
-	padding-bottom: 0px;
-}  
 #welcome figure, #welcome figure img, #welcome figure iframe { 
 	border: 2px solid #eee;
 	float: right; 
@@ -98,6 +94,14 @@ header img, header a img {
 	padding-bottom: 0px;
 	margin-bottom: .5em;
 }
+
+.content {
+	padding: 20px;
+	padding-top: 20px;
+	padding-bottom: 5px;
+	margin-top: 1.3em;
+}
+
 #index-content {
 	overflow: hidden;
 	padding: 20px; 
