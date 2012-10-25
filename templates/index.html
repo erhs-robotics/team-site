@@ -43,28 +43,14 @@
 <section id="index-content">
 	<div id="left-pane">
 		<span class="title"><h2>Announcements</h2></span>
-			<h3>Sponsorship Forms</h3>
-				<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
-					 Robotics Club?  If so, please take your time to download and review
-					 the following documents.  Your time and donations are much appreciated.
-					<ul>
-				    <li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
-				    <li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
-				    <li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
-			    </ul>
-				</p>
-			<h3>Club Forms</h3>
-				<p>Below here are the links to the 5 forms for the club.  Please be
-					 sure to download all of them and fill out the required ones!
-				  <ul>
-					  <li><a href="./files/robotics-info.pdf" target="self">General Robotics Information</a></li>
-					  <li><a href="/files/robotics-info-quicklist.pdf">Robotics Information quicklist</a></li>
-					  <li><a href="/files/robotics-meeting-schedule.pdf">Robotics Meeting Schedule</a></li>
-					  <li><a href="/files/robotics-parent-info.pdf">Robotics Parent Information</a></li>
-					  <li><a href="/files/robotics-safety-photography-agreement.pdf">Safety and Photography Form</a></li>
-					  <li><a href="/files/robotics-forms-2013.zip">Download all (zip)</a></li>
-				  </ul>
-				</p>	
+			{% if post|count >= 1 %}
+			<h3>{{post[0].subject}}</h3>
+				<div class="blog">{{post[0].content}}</div>
+			{% endif %}
+			{% if post|count >= 2 %}
+			<h3>{{post[1].subject}}</h3>
+				<div class="blog">{{post[1].content}}</div>
+			{% endif %}			
 	</div>
 	<div id="right-pane">
 		<span class="title"><h2>Calendar</h2></span>
