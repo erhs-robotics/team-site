@@ -46,7 +46,11 @@ p { margin-bottom: .8em;}
 /* Tfoot */ tfoot th {} tfoot td {}
 /* HTML5 tags */ 
 header, section, footer, aside, nav, article, figure, login{ display: block;} 
-section, footer, aside, article, figure, div { background: white;}
+section, footer, aside, article, figure, div { background: white; }
+section, footer, aside, div {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;}
 section{ border-bottom: 3px solid #00f; }
 #top { background: none;}
 login { background: none;}
