@@ -62,10 +62,14 @@
 <section id="index-content">
 	<div id="left-pane">
 		<span class="title"><h2>Announcements</h2></span>
+			{% if post|count >= 1 %}
 			<h3>{{post[0].subject}}</h3>
 				{{post[0].content}}
+			{% endif %}
+			{% if post|count >= 2 %}
 			<h3>{{post[1].subject}}</h3>
-				{{post[1].content}}			
+				{{post[1].content}}
+			{% endif %}			
 	</div>
 	<div id="right-pane">
 		<span class="title"><h2>Calendar</h2></span>
