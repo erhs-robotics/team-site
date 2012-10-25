@@ -64,11 +64,11 @@
 		<span class="title"><h2>Announcements</h2></span>
 			{% if post|count >= 1 %}
 			<h3>{{post[0].subject}}</h3>
-				{{post[0].content}}
+				<div class="blog">{{post[0].content}}</div>
 			{% endif %}
 			{% if post|count >= 2 %}
 			<h3>{{post[1].subject}}</h3>
-				{{post[1].content}}
+				<div class="blog">{{post[1].content}}</div>
 			{% endif %}			
 	</div>
 	<div id="right-pane">
