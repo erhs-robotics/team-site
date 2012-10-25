@@ -167,6 +167,7 @@ font-size: 22px;}
 color: #69f;
 font-size: 14px;}
 #blog-entry p {
+display: block;
 width: 100%;
 overflow: wrap;
 text-align: left;} 
