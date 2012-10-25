@@ -26,8 +26,8 @@ privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users", IS_MEMBE
 class MainHandler(Handler):
     def get(self):
         self.login()            
-        
-        self.render("index.html", user = self.user)
+        posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
+        self.render("index.html", user = self.user, post = posts)
 class BlogHandler(Handler):
     def get(self):
         self.login()
@@ -37,7 +37,7 @@ class BlogHandler(Handler):
         #user.put()
         
         posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
-        self.render("blog.html", user = self.user, posts = posts)
+        self.render("blog.html", user = self.user, posts = list(posts))
         
 class LoginHandler(Handler):
      def get(self):
