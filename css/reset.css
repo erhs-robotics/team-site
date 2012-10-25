@@ -24,7 +24,6 @@ time, mark, audio, video {
 	line-height: 1.4;
 
 }
-
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -33,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol:not(.blog > *), ul:not(.blog > *) {
+section ol, section ul {
 	list-style: none;	
 }
 
