@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="../css/extras.css">
 {% endblock %}
 {% block content %}
-<aside id="welcome">
+<aside class="content" id="welcome">
 	<figure>
 		<script type="text/javascript" src="../js/fade-slide.js"></script>   
 		<script type="text/javascript">  
@@ -40,8 +40,8 @@
 	challenging ways, mainly through competing in various local robotics
 	competitions</p>
 </aside>
-<div id="index-content">
-	<div id="left-pane">
+<div class="content">
+	
 		<span class="title"><h2>Announcements</h2></span>
 			{% if post|count >= 1 %}
 			<h3>{{post[0].subject}}</h3>
@@ -50,11 +50,13 @@
 			{% if post|count >= 2 %}
 			<h3>{{post[1].subject}}</h3>
 				<div class="blog">{{post[1].content}}</div>
-			{% endif %}			
-	</div>
-	<div id="right-pane">
+			{% endif %}
+		
+</div>
+<div class="content">
+	
 		<span class="title"><h2>Calendar</h2></span>
-		<iframe src="https://www.google.com/calendar/embed?title=Event%20and%20Meeting%20Calendar&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="450" height="600" frameborder="0" scrolling="no"></iframe>
-	</div>
+		<iframe src="https://www.google.com/calendar/embed?title=Event%20and%20Meeting%20Calendar&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0; width:100%; height: 400px;" frameborder="0" scrolling="no"></iframe>
+	
 </div>
 {% endblock %}		
