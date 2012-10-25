@@ -48,9 +48,9 @@ p { margin-bottom: 1.3em;}
 header, section, footer, aside, nav, article, figure, login{ display: block;} 
 section, footer, aside, article, figure, div { background: white; }
 section, footer, aside, div {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;}
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;}
 
 #top { background: none;}
 login { background: none;}
@@ -99,7 +99,7 @@ header img, header a img {
 	padding: 20px;
 	padding-top: 20px;
 	padding-bottom: 5px;
-	margin-top: 1.3em;
+	margin-top: 1.1em;
 }
 
 #index-content {
@@ -121,9 +121,7 @@ li:last-child .entry, #content > .entry {
 }
 
 #about { 
-	background: #fff;
-	margin-top: .5em;
-	margin-bottom: .5em;
+	background: #fff;	
 	overflow: hidden; 
 	padding: 20px; 
 	text-align: right; 
