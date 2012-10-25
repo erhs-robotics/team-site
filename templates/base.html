@@ -18,9 +18,9 @@
 		<div id="container">
 			<div id="login">
 				{% if user %}		
-				<div align="right"><a class="profile-link" href="/profile/{{user.username}}">{{user.username}}</a>(<a href="/logout">logout</a>)</div>
+				<a class="profile-link" href="/profile/{{user.username}}">{{user.username}}</a>(<a href="/logout">logout</a>)
 				{% else %}
-				<div align="right"><a href="/login">User Login</a></div>
+				<a href="/login">User Login</a>
 				{% endif %}
 			</div>
 			{% block banner %}
@@ -37,16 +37,15 @@
 					<link rel="stylesheet" href="../css/ie.css">
 				<![endif]-->
 			</noscript>
-			<!--<nav id="topNav" class="menu">
-				<!--
-				<ul>
+			<nav>
+				<ul class="menu">
 					<li><a href="/">Home</a></li>
 					<li><a href="/about">About</a>
 						<ul>
 							<li><a href="/team-history" title="Team History">Team History</a></li>
 							<li><a href="/first" title="FIRST">FIRST</a></li>
-							<li><a href="/mechanical" title="Mechanical Team">Mechanical Team</a></li>
-							<li><a href="/programming" title="Programming Team">Programming Team</a></li>
+							<li><a href="/mechanical" title="Mechanical">Mechanical</a></li>
+							<li><a href="/programming" title="Programming">Programming</a></li>
 							<li class="last"><a href="/about-site" title="Website">Website</a></li>
 						</ul>
 					</li>
@@ -56,35 +55,17 @@
 				  <li><a href="/calendar">Calendar</a></li>
 				  <li><a href="/members">Members</a></li>
 				  <li><a href="/gallery">Gallery</a></li>
-					<li class="last"><a href="/first">FIRST</a></li>
-			  </ul> -->
-		<ul class="menu">
- 
-    <li><a href="#">My dashboard</a></li>
-    <li><a href="#">Likes</a></li>
-    <li><a href="#">Views</a>
- 
-      <ul>
-          <li><a href="#" class="documents">Documents</a></li>
-          <li><a href="#" class="messages">Messages</a></li>
-          <li><a href="#" class="signout">Sign Out</a></li>
-      </ul>
-	 
-		  </li>
-		  <li><a href="#">Uploads</a></li>
-		  <li><a href="#">Videos</a></li>
-		  <li><a href="#">Documents</a></li>
- 
-		</ul>
-			<!--</nav>-->
-		</div>
-		<div id="content-container">
+					<li><a href="/first">FIRST</a></li>
+			  </ul>
+			</nav>
+
+
+
+
 			{% block content %}
 			{% endblock %}
 			{% block extras %}			
 			{% endblock %}
-		</div>
-		<div id="container">
 			<footer id="about">
 				<span class="primary">
 					<strong>Eleanor Roosevelt Robotics</strong>
