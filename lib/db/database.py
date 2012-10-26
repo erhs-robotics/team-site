@@ -14,7 +14,7 @@ def update_user(user):
     memcache.set(str(user.key().id()), user)
     
 def gravatar(email, size=100, rating='g', default='retro', force_default=False,
-             force_lower=False, use_ssl=False):
+             force_lower=False, use_ssl=True):
     if not email: email = ""
     if use_ssl:
         url = "https://secure.gravatar.com/avatar/"
