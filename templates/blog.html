@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
 
-	<div id="blog">
+	<div class="content" id="blog">
 		{% if user and 1 in user.privileges %}
 			<form action="/newpost" method="GET">
 				<button class="button" id="submit">New Post</button>
