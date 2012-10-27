@@ -443,6 +443,12 @@ class UpdatePrivilegesHandler(Handler):
                     page = "/profile/%s" % user.username
                     
         self.redirect(page)
+
+class ResourcesHandler(Handler):
+    def get(self):
+        self.login()        
+        
+        self.render("resources.html", user = self.user)
         
         
         
@@ -475,5 +481,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/mechanical', MechanicalHandler),
                                ('/about-site', WebsiteHandler),
                                ('/gallery', GalleryHandler),
-                               ('/updateprivileges', UpdatePrivilegesHandler)],
+                               ('/updateprivileges', UpdatePrivilegesHandler),
+															 ('/resources', ResourcesHandler)],
                                debug=True)
