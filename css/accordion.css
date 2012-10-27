@@ -40,3 +40,9 @@ body { margin: 0; font-size: 13px; line-height: 1.231; font-family: sans-serif; 
 	-ms-transform: rotate(0deg);
 	transform: rotate(0deg); 
 }
+
+.horizontal section h3, .horizontal section ol {
+	display: none;}
+
+.horizontal section:target h3, .horizontal section:target ol {
+	display: block;}
