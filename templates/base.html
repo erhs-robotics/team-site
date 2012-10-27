@@ -24,8 +24,30 @@
 				{% endif %}
 			</div>
 			{% block banner %}
-			<header id="banner">
-				<a href="/"><img src="../images/logo/banner3.png"></a>
+			<header>
+				<!--<a href="/"><img src="../images/logo/banner3.png"></a>-->
+				<script type="text/javascript" src="../js/fade-slide.js"></script>   
+				<script type="text/javascript">  
+					var mygallery=new fadeSlideShow({   
+					 wrapperid: "banner-stream",  
+					 dimensions: [650, 280],//[349, 232], //width x height
+								imagearray:  [     
+									["../images/image-1.jpg"],    
+									["../images/image-2.jpg"], 
+									["../images/image-3.jpg"],
+									["../images/image-4.jpg"],
+									["../images/image-5.jpg"],
+									["../images/image-6.jpg"]
+								],
+								displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
+						persist: false, //remember last viewed slide and recall within same session?   
+						fadeduration: 2000, //transition duration (milliseconds)  
+						descreveal: "ondemand",
+						togglerid: ""
+						})
+				</script>
+				<a href="/"><img id="banner-logo" src="../images/logo/favicon.png" /></a>
+				<div id="banner-stream">
 			</header>
 			{% endblock %}			
 			<script>

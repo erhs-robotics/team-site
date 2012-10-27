@@ -14,7 +14,7 @@ body { margin: 0; font-size: 13px; line-height: 1.231; font-family: sans-serif; 
 .accordion section:hover {background:#00d;}
 .accordion section p { display:none; }
 
-.horizontal section{ width:5%; height:500px; 
+.horizontal section{ width:5%; height:410px; 
 	-moz-transition:width 0.2s ease; 
 	-webkit-transition:width 0.2s ease;
   -o-transition:width 0.2s ease;
@@ -32,7 +32,7 @@ body { margin: 0; font-size: 13px; line-height: 1.231; font-family: sans-serif; 
 	width:240px; position:relative; left:-100px; top:100px;
 } 
 
-.horizontal :target{ width:73%;height:480px; }
+.horizontal :target{ width:73%;height:390px; }
 .horizontal section:target h2{ top:0px;left:0;
 	-webkit-transform:rotate(0deg);
 	-moz-transform:rotate(0deg);

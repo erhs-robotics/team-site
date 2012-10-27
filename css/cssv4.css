@@ -64,8 +64,13 @@ section, footer, aside, div {
 	background: none;
 }
 
-header img, header a img {
-	width: 100%;
+#banner-logo {
+	width: 300px;
+	display: inline-block;
+}
+#banner-stream {
+	display: inline-block;
+	top: 0px;
 }
 
 #welcome figure, #welcome figure img, #welcome figure iframe { 
