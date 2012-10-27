@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="../css/members.css">
 {% endblock %}
 {% block content %}		
-	<section id="members">
+	<section class="content" id="members">
 	{% if user and 2 in user.privileges %}
 		<button id="createuserbutton" type="button">Create User</button>			
 		<form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">

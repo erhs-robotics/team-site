@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
 
-	<div id="blog">
+	<div class="content" id="blog">
 		{% if user and 1 in user.privileges %}
 			<form action="/newpost" method="GET">
 				<button class="button" id="submit">New Post</button>
@@ -31,7 +31,8 @@
 					{% endif %}
 					<h2>{{post.subject}}</h2>
 					<h3>Created by: {{post.username}}</h3>
-					<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3><br><br>
+					<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
+					<br>
 					<p>{{post.content}}</p>
 					<hr>
 				</div>

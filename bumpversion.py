@@ -25,7 +25,7 @@ if options.show:
 
 if options.version:
 	if re.match("(\d+)-(\d+)-(\d+)$", options.version):
-		version = options.version.split('.')
+		version = options.version.split('-')
 		major = int(version[0])
 		minor = int(version[1])
 		revision = int(version[2])

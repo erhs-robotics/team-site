@@ -6,7 +6,7 @@
 		<title>{% block title %}Eleanor Roosevelt Robotics{% endblock %}</title>
 		<link rel="icon" type="image/png" href="../images/logo/favicon.png" />
 		<link rel="stylesheet" href="../css/cssv4.css">
-		<link rel="stylesheet" href="../css/nav.css">
+		<!--<link rel="stylesheet" href="../css/nav.css">-->
 		<script src="../js/jquery.js"></script>
 		<script src="../js/modernizr.js"></script>		
 		<!--[if IE]>
@@ -18,9 +18,9 @@
 		<div id="container">
 			<div id="login">
 				{% if user %}		
-				<div align="right"><a class="profile-link" href="/profile/{{user.username}}">{{user.username}}</a>(<a href="/logout">logout</a>)</div>
+				<a class="profile-link" href="/profile/{{user.username}}">{{user.username}}</a>(<a href="/logout">logout</a>)
 				{% else %}
-				<div align="right"><a href="/login">User Login</a></div>
+				<a href="/login">User Login</a>
 				{% endif %}
 			</div>
 			{% block banner %}
@@ -37,19 +37,17 @@
 					<link rel="stylesheet" href="../css/ie.css">
 				<![endif]-->
 			</noscript>
-			<nav id="topNav">
-				<ul>
+			<nav>
+				<ul class="menu">
 					<li><a href="/">Home</a></li>
 					<li><a href="/about">About</a>
-						<!--
 						<ul>
 							<li><a href="/team-history" title="Team History">Team History</a></li>
 							<li><a href="/first" title="FIRST">FIRST</a></li>
-							<li><a href="/mechanical" title="Mechanical Team">Mechanical Team</a></li>
-							<li><a href="/programming" title="Programming Team">Programming Team</a></li>
+							<li><a href="/mechanical" title="Mechanical">Mechanical</a></li>
+							<li><a href="/programming" title="Programming">Programming</a></li>
 							<li class="last"><a href="/about-site" title="Website">Website</a></li>
-						</ul>        
-						-->
+						</ul>
 					</li>
 				  <li><a href="/blog">Blog</a></li>
 				  <li><a href="/contact">Contact</a></li>
@@ -57,18 +55,18 @@
 				  <li><a href="/calendar">Calendar</a></li>
 				  <li><a href="/members">Members</a></li>
 				  <li><a href="/gallery">Gallery</a></li>
-					<li class="last"><a href="/first">FIRST</a></li>
+					<li><a href="/first">FIRST</a></li>
 			  </ul>
 			</nav>
-		</div>
-		<div id="content-container">
+
+
+
+
 			{% block content %}
 			{% endblock %}
 			{% block extras %}			
 			{% endblock %}
-		</div>
-		<div id="container">
-			<footer id="about">
+			<footer class="content" id="about">
 				<span class="primary">
 					<strong>Eleanor Roosevelt Robotics</strong>
 				</span>
@@ -79,30 +77,7 @@
 				</span>
 				<span class="copyright"></span>
 			</footer>			
-	        <script>
-			(function($){
-				
-				//cache nav
-				var nav = $("#topNav");
-				
-				//add indicator and hovers to submenu parents
-				nav.find("li").each(function() {
-					if ($(this).find("ul").length > 0) {
-						$("<span>").text("^").appendTo($(this).children(":first"));
 
-						//show subnav on hover
-						$(this).mouseenter(function() {
-							$(this).find("ul").stop(true, true).slideDown();
-						});
-						
-						//hide submenus on exit
-						$(this).mouseleave(function() {
-							$(this).find("ul").stop(true, true).slideUp();
-						});
-					}
-				});
-			})(jQuery);
-		    </script>
 		</div>
 	</body>
 </html>
