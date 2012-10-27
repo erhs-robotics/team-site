@@ -203,23 +203,7 @@ class EditPostHandler(Handler):
         else:
             self.redirect("/login")
         
-class CalendarHandler(Handler):
-    def get(self):
-        self.login()           
-            
-        self.render("calendar.html", user = self.user)
-        
-class AboutHandler(Handler):
-    def get(self):
-        self.login()        
-            
-        self.render("about.html", user = self.user)
 
-class ContactHandler(Handler):
-    def get(self):
-        self.login()
-                
-        self.render("contact.html", user = self.user)
 
 class SponsorsHandler(Handler):
     def get(self):
@@ -227,11 +211,6 @@ class SponsorsHandler(Handler):
 
         self.render("sponsors.html", user = self.user)
 
-class ProgrammingHandler(Handler):
-    def get(self):
-        self.login()        
-        
-        self.render("programming.html", user = self.user)
 
         
 class ImageHandler(Handler):
@@ -396,25 +375,10 @@ class DeleteUserHandler(Handler):
         else:
             self.redirect("/login")
         
-class TeamHistoryHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("teamhistory.html", user = self.user)
-        
 class FirstHandler(Handler):
     def get(self):
         self.login()
         self.render("first.html", user = self.user)
-
-class MechanicalHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("mechanical.html", user = self.user)
-        
-class WebsiteHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("about-site.html", user = self.user)
         
 class GalleryHandler(Handler):
     def get(self):
@@ -450,36 +414,20 @@ class ResourcesHandler(Handler):
         
         self.render("resources.html", user = self.user)
         
-        
-        
-        
-                
-        
-        
-        
-        
-
 app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/blog', BlogHandler),
                                ('/login', LoginHandler),
                                ('/logout', LogoutHandler),
                                ('/newpost', NewpostHandler),
                                ('/members', MembersHandler),
-                               ('/contact', ContactHandler),
                                ('/sponsors', SponsorsHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
-                               ('/calendar', CalendarHandler),
                                ('/image', ImageHandler),
-                               ('/about', AboutHandler),
                                ('/profile/(.+)', ProfileHandler),
                                ('/editprofile/(.+)', EditProfileHandler),
-                               ('/programming', ProgrammingHandler),
                                ('/deleteuser', DeleteUserHandler),
-                               ('/team-history', TeamHistoryHandler),
                                ('/first',FirstHandler),
-                               ('/mechanical', MechanicalHandler),
-                               ('/about-site', WebsiteHandler),
                                ('/gallery', GalleryHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),
 															 ('/resources', ResourcesHandler)],
