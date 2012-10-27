@@ -6,29 +6,27 @@
 	<link rel="stylesheet" href="../css/accordion.css">
 {% endblock %}
 {% block content %}
-	<figure>
-		<script type="text/javascript" src="../js/fade-slide.js"></script>   
-		<script type="text/javascript">  
-			var mygallery=new fadeSlideShow({   
-			 wrapperid: "photo-stream",  
-			 dimensions: [349, 232], //width x height
-						imagearray:  [     
-							["../images/image-1.jpg"],    
-							["../images/image-2.jpg"], 
-							["../images/image-3.jpg"],
-							["../images/image-4.jpg"],
-							["../images/image-5.jpg"],
-							["../images/image-6.jpg"]
-						],
-						displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
-				persist: false, //remember last viewed slide and recall within same session?   
-				fadeduration: 2000, //transition duration (milliseconds)  
-				descreveal: "ondemand",
-				togglerid: ""
-				})
-		</script>
-		<div id="photo-stream"></div>
-	</figure>
+<script type="text/javascript" src="../js/fade-slide.js"></script>   
+<script type="text/javascript">  
+	var mygallery=new fadeSlideShow({   
+	 wrapperid: "photo-stream",  
+	 dimensions: [960, 232],//[349, 232], //width x height
+				imagearray:  [     
+					["../images/image-1.jpg"],    
+					["../images/image-2.jpg"], 
+					["../images/image-3.jpg"],
+					["../images/image-4.jpg"],
+					["../images/image-5.jpg"],
+					["../images/image-6.jpg"]
+				],
+				displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
+		persist: false, //remember last viewed slide and recall within same session?   
+		fadeduration: 2000, //transition duration (milliseconds)  
+		descreveal: "ondemand",
+		togglerid: ""
+		})
+</script>
+<div id="photo-stream"></div>
 
 <div class="accordion horizontal">
 	<section id="erhs">
@@ -44,9 +42,8 @@
 	</section>
 	<section id="aboutus">
 		<h2><a href="#aboutus">About</a></h2>
-		<p><ol>
+		<ol>
 			<li><article class="entry">
-				<h3>About Us</h3>
 				<p>The Robotics Club located at Eleanor Roosevelt High School in Greenbelt,
 					 MD is a group of approximately 50 students who together to develop solutions
 					 to a wide number of problems in the STEM field. We strive to encourage 
@@ -60,26 +57,26 @@
 					 <a href="/first">here</a>.  We also have robotics teams which compete in
 					 VEX Robotics and the ION Mini Urban Challenge
 			</article></li>
-		</ol></p>
-		  </section>
-		  <section id="indexblog">
-		      <h2><a href="#indexblog">Blog</a></h2>
-		      <p>			{% if post|count >= 1 %}
+		</ol>
+	</section>
+	<section id="indexblog">
+		<h2><a href="#indexblog">Blog</a></h2>
+	  {% if post|count >= 1 %}
 			<h3>{{post[0].subject}}</h3>
-				<div class="blog">{{post[0].content}}</div>
-			{% endif %}
-			{% if post|count >= 2 %}
+			<div class="blog">{{post[0].content}}</div>
+		{% endif %}
+		{% if post|count >= 2 %}
 			<h3>{{post[1].subject}}</h3>
-				<div class="blog">{{post[1].content}}</div>
-			{% endif %}</p>
-		</section>
-		<section id="calendar">
-			<h2><a href="#calendar">Calendar</a></h2>
-			<p><iframe src="https://www.google.com/calendar/embed?title=Event%20and%20Meeting%20Calendar&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0; width:100%; height: 400px;" frameborder="0" scrolling="no"></iframe></p>
-		</section>
-		<section id="contact">
-			<h2><a href="#contact">Contact</a></h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id lobortis massa. Nunc viverra velit leo, sit amet elementum mi. Fusce posuere nunc a mi tempus malesuada. Curabitur facilisis rhoncus eros eget placerat. Aliquam semper mauris sit amet justo tempor nec lacinia magna molestie. Etiam placerat congue dolor vitae adipiscing. Aliquam ac erat lorem, ut iaculis justo. Etiam mattis dignissim gravida. Aliquam nec justo ante, non semper mi. Nulla consectetur interdum massa, vel porta enim vulputate sed. Maecenas elit quam, egestas eget placerat non, fringilla vel eros. Nam vehicula elementum nulla sed consequat. Phasellus eu erat enim. Praesent at magna non massa dapibus scelerisque in eu lorem.</p>
-		</section>
+			<div class="blog">{{post[1].content}}</div>
+		{% endif %}
+	</section>
+	<section id="calendar">
+		<h2><a href="#calendar">Calendar</a></h2>
+		<p><iframe src="https://www.google.com/calendar/embed?title=Event%20and%20Meeting%20Calendar&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0; width:100%; height: 400px;" frameborder="0" scrolling="no"></iframe></p>
+	</section>
+	<section id="contact">
+		<h2><a href="#contact">Contact</a></h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id lobortis massa. Nunc viverra velit leo, sit amet elementum mi. Fusce posuere nunc a mi tempus malesuada. Curabitur facilisis rhoncus eros eget placerat. Aliquam semper mauris sit amet justo tempor nec lacinia magna molestie. Etiam placerat congue dolor vitae adipiscing. Aliquam ac erat lorem, ut iaculis justo. Etiam mattis dignissim gravida. Aliquam nec justo ante, non semper mi. Nulla consectetur interdum massa, vel porta enim vulputate sed. Maecenas elit quam, egestas eget placerat non, fringilla vel eros. Nam vehicula elementum nulla sed consequat. Phasellus eu erat enim. Praesent at magna non massa dapibus scelerisque in eu lorem.</p>
+	</section>
 </div><!--/.accordion-->
 {% endblock %}		
