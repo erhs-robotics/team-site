@@ -1,5 +1,18 @@
 var GROUP_ID = 158519044177128;
 var PAGE_ID  = 184052998344999;
+var month=new Array();
+month[0]="January";
+month[1]="February";
+month[2]="March";
+month[3]="April";
+month[4]="May";
+month[5]="June";
+month[6]="July";
+month[7]="August";
+month[8]="September";
+month[9]="October";
+month[10]="November";
+month[11]="December";
 
 function getGroupPhotos(id) {
 	var xmlHttp = new XMLHttpRequest();
@@ -10,7 +23,7 @@ function getGroupPhotos(id) {
 
 function getPhoto(id) {
 	var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", "http://graph.facebook.com/fql?q=SELECT pid, src, created FROM photo WHERE pid=\"" + id + "\"", false);
+  xmlHttp.open( "GET", "http://graph.facebook.com/fql?q=SELECT pid, src_big, created FROM photo WHERE pid=\"" + id + "\"", false);
   xmlHttp.send( null );
   return $.parseJSON(xmlHttp.responseText);	
 	
@@ -40,7 +53,7 @@ function loadGallery() {
 	//store the group's wall photos
 	for(i=0;i<group_photos.data.length;i++) {
 		var src = getPhoto(group_photos.data[i].pid);
-		photos.push({"src" :src.data[0].src, "created" : new Date(src.data[0].created * 1000 /* x1000 for conversion*/)})
+		photos.push({"src" :src.data[0].src_big, "created" : new Date(src.data[0].created * 1000 /* x1000 for conversion*/)})
 	}
 
 	var page_albums = getPageAlbums(PAGE_ID);//for page's albums
@@ -55,8 +68,9 @@ function loadGallery() {
 	photos.sort(function(a,b){return new Date(b.created - a.created)});	
 	
 	for(i=0;i<photos.length;i++) {
+		var date = month[photos[i].created.getMonth()] + " " + photos[i].created.getDate() + ", " + photos[i].created.getFullYear();
 		
-		$("#img_gallery").append("<img src=\"" + photos[i].src + "\">");
+		$("#img_gallery").append("<span class=\"gallery_photo\"><img src=\"" + photos[i].src + "\"></img><div>Uploaded: " + date + "</div></span>");
 		
 
 	}
