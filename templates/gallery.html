@@ -1,1 +1,17 @@
 {% extends "base.html" %}
+{% block head %}
+	{{super()}}
+	<link rel="stylesheet" href="/css/gallery.css">
+	<script src="/js/fb.js"></script>
+	<script>
+		$(document).ready(function(){
+			loadGallery();
+		});
+	</script>
+{% endblock %}
+{% block content %}
+<section id="img_gallery" class="content">
+
+</section>
+
+{% endblock %}
