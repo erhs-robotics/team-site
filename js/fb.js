@@ -1,5 +1,13 @@
 var GROUP_ID = 158519044177128;
 var PAGE_ID  = 184052998344999;
+var debug;
+
+function sortDate(a,b)
+{
+    var a = new Date(a.created.startDateTime),
+        b = new Date(b.created.startDateTime);
+    return (a.getTime() - b.getTime());
+}
 
 function getGroupPhotos(id) {
 	var xmlHttp = new XMLHttpRequest();
@@ -40,7 +48,7 @@ function loadGallery() {
 	//store the group's wall photos
 	for(i=0;i<group_photos.data.length;i++) {
 		var src = getPhoto(group_photos.data[i].pid);
-		photos.push({ "src" :src.data[0].src, "created" : src.data[0].created })
+		photos.push({"src" :src.data[0].src, "created" : new Date(src.data[0].created * 1000 /* x1000 for conversion*/)})
 	}
 
 	var page_albums = getPageAlbums(PAGE_ID);//for page's albums
@@ -48,9 +56,12 @@ function loadGallery() {
 	for(i=0;i<page_albums.data.length;i++) {
 		var photo = getPhotosFromAlbum(page_albums.data[i].id);
 		for(a=0;a<photo.data.length;a++) {
-			photos.push({"src" : photo.data[a].source, "created" : photo.data[a].updated_time});
+			photos.push({"src" : photo.data[a].source, "created" : new Date(photo.data[a].updated_time)});
 		}
 	}
+
+	photos.sort(function(a,b){return new Date(b.created - a.created)})
+	debug = photos;
 
 	
 
