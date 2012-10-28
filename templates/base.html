@@ -16,15 +16,8 @@
 	</head>
 	<body class="no-js">
 		<div id="container">
-			<div id="login">
-				{% if user %}		
-					<a href="/profile/{{user.username}}">{{user.username}}</a>(<a href="/logout">logout</a>)
-				{% else %}
-					<a href="/login">User Login</a>
-				{% endif %}
-			</div>
 			{% block banner %}
-			<header>
+			<header id="banner">
 				<a href="/"><img id="banner-logo" src="../images/logo/banner3.png"></a>
 				<!--<script type="text/javascript" src="../js/fade-slide.js"></script>   
 				<script type="text/javascript">  
@@ -68,6 +61,18 @@
 					<li><a href="/first">FIRST&#174;</a></li>
 				  <li><a href="/gallery">Gallery</a></li>
 					<li><a href="/resources">Resources</a></li>
+					<li>
+						{% if user %}		
+						<a href="/profile/{{user.username}}">User Profile ({{user.username}})</a>
+						{% else %}
+						<a href="/login">User Login</a>
+						{% endif %}
+					</li>
+					<li>
+						{% if user %}
+						<a href="/logout">logout</a>
+						{% endif %}
+					</li>
 			  </ul>
 			</nav>
 			{% block content %}

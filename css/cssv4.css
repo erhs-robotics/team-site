@@ -64,14 +64,8 @@ section, footer, aside, div {
 	background: none;
 }
 
-#banner-logo {
-	width: 300px;
-	display: inline-block;
+header img, header a img {
 	width: 100%;
-}
-#banner-stream {
-	display: inline-block;
-	top: 0px;
 }
 
 #welcome figure, #welcome figure img, #welcome figure iframe { 
@@ -91,8 +85,8 @@ section, footer, aside, div {
 }
 
 .entry { 
-	border-bottom: 2px solid #000; 
-	padding: .5em 0;
+	/*border-bottom: 2px solid #000; */
+	padding: .1em 0;
 }
 li:last-child .entry, #content > .entry {
 	border: 0; 
@@ -103,7 +97,7 @@ li:last-child .entry, #content > .entry {
 	background: #fff;	
 	overflow: hidden; 
 	padding: 20px; 
-	text-align: right; 
+	text-align: right;
 }
 #about p { float: right;}
 #about .primary {
