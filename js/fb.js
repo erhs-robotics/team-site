@@ -1,6 +1,5 @@
 var GROUP_ID = 158519044177128;
 var PAGE_ID  = 184052998344999;
-var debug;
 
 function getGroupPhotos(id) {
 	var xmlHttp = new XMLHttpRequest();
@@ -53,13 +52,7 @@ function loadGallery() {
 		}
 	}
 
-	photos.sort(function(a,b){return new Date(b.created - a.created)})
-	debug = photos;
-
-	
-
-	
-	
+	photos.sort(function(a,b){return new Date(b.created - a.created)});	
 	
 	for(i=0;i<photos.length;i++) {
 		
