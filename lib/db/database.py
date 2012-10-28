@@ -49,4 +49,7 @@ class User(db.Model):
     isadmin         = db.BooleanProperty(required = True)
     privileges      = db.ListProperty(int)
 
-    
+class Message(db.Model):
+    name = db.StringProperty()
+    email = db.StringProperty()
+    message = db.StringProperty()

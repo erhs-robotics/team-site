@@ -21,13 +21,36 @@ IS_MEMBER    = 3
 
 privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users", IS_MEMBER : "is member"}
 
-
+rand_word = ''
 
 class MainHandler(Handler):
     def get(self):
         self.login()            
         posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
         self.render("index.html", user = self.user, post = posts)
+
+class ContactHandler(Handler):
+    #def genRandomWord(self):
+    #    theword = ""
+    #    for i in range(6):
+    #        theword += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
+    #    return theword
+    def get(self):
+        self.login()  
+        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
+        messages = db.GqlQuery("SELECT * FROM Message")# ORDER BY ID")
+        self.render("contact.html", user = self.user, messages = list(messages), posts = list(posts))
+    def post(self):
+        self.login()
+        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
+        messages = db.GqlQuery("SELECT * FROM Message")# ORDER BY ID")
+        sender_name = self.request.get('sender_name')
+        sender_email = self.request.get('sender_email')
+        sender_message = self.request.get('sender_message')
+        if sender_message != "":
+            newMessage = Message(name=sender_name, email=sender_email, message=sender_message)
+            newMessage.put()
+        self.render("contact.html", user=self.user, messages = list(messages), posts = list(posts))
 class BlogHandler(Handler):
     def get(self):
         self.login()
@@ -430,5 +453,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/first',FirstHandler),
                                ('/gallery', GalleryHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),
-															 ('/resources', ResourcesHandler)],
+							   ('/resources', ResourcesHandler),
+                               ('/contact', ContactHandler)],
                                debug=True)
