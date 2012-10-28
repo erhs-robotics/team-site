@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+    <form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">
+	    <table>
+		    <tr>
+		      <td class="label">Name</td>
+		      <td><input type="text" name="sender_name" value="{{sender_name}}"></td>	
+		    </tr>
+		    <tr>
+		      <td class="label">Email</td>
+		      <td><input type="text" name="sender_email" value="{{sender_email}}"></td>
+		    </tr>
+		    <tr>
+		      <td class="label">Message</td>
+              <td><textarea name="sender_message" cols="25" rows="5">Enter your comments here...</textarea></td>
+		    </tr>
+	    </table>
+        <input type="submit">
+        {{sender_verify}}
+    </form><br>
+    {% if user.isadmin %}
+    {% for message in messages %}
+        <i>Name</i>: {{message.name}}<t>
+        <b>Email</b>: {{message.email}}<br>
+        <b>Message</b>: {{message.message}}
+        <hr>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
