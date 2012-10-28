@@ -19,11 +19,13 @@
         <input type="submit">
         {{sender_verify}}
     </form><br>
+    {% if user.isadmin %}
     {% for message in messages %}
         <i>Name</i>: {{message.name}}<t>
         <b>Email</b>: {{message.email}}<br>
         <b>Message</b>: {{message.message}}
         <hr>
     {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}
