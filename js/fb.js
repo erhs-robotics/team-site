@@ -2,13 +2,6 @@ var GROUP_ID = 158519044177128;
 var PAGE_ID  = 184052998344999;
 var debug;
 
-function sortDate(a,b)
-{
-    var a = new Date(a.created.startDateTime),
-        b = new Date(b.created.startDateTime);
-    return (a.getTime() - b.getTime());
-}
-
 function getGroupPhotos(id) {
 	var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", "http://graph.facebook.com/fql?q=SELECT pid FROM photo_tag WHERE subject=" + id, false);
