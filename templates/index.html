@@ -66,17 +66,18 @@
 		</li>
 		<li>
 			<input type="radio" id="vert-3" name="vert-accordion" />
-			<label for="vert-3">Blog&nbsp;</label>
+			<label for="vert-3">Announcements</label>
 			<div class="ac-content">
-				<h3>ERHS Robotics Club Blog</h3>
+				<h3>Club Announcements</h3>
 	  {% if post|count >= 1 %}
 			<h3>{{post[0].subject}}</h3>
-			<div class="blog">{{post[0].content}}</div>
+			<div class="blog">{{post[0].content}}</div><hr>
 		{% endif %}
 		{% if post|count >= 2 %}
 			<h3>{{post[1].subject}}</h3>
-			<div class="blog">{{post[1].content}}</div>
+			<div class="blog">{{post[1].content}}</div><hr>
 		{% endif %}
+        <p>For more info, see the <a href="/blog">blog</a> page.
 			</div>
 			</li>
 			<li>
