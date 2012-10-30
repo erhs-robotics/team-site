@@ -1,37 +1,17 @@
 {% extends "base.html" %}
 {% block head %}
 	{{ super() }}
-	<link rel="stylesheet" href="../css/banner.css">
-	<link rel="stylesheet" href="../css/extras.css">
+	<link rel="stylesheet" href="../css/accordion2.css">
 {% endblock %}
 {% block content %}
-<aside class="content" id="welcome">
-	<figure>
-		<script type="text/javascript" src="../js/fade-slide.js"></script>   
-		<script type="text/javascript">  
-			var mygallery=new fadeSlideShow({   
-			 wrapperid: "photo-stream",  
-			 dimensions: [349, 232], //width x height
-						imagearray:  [     
-							["../images/image-1.jpg"],    
-							["../images/image-2.jpg"], 
-							["../images/image-3.jpg"],
-							["../images/image-4.jpg"],
-							["../images/image-5.jpg"],
-							["../images/image-6.jpg"]
-						],
-						displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
-				persist: false, //remember last viewed slide and recall within same session?   
-				fadeduration: 2000, //transition duration (milliseconds)  
-				descreveal: "ondemand",
-				togglerid: ""
-				})
-		</script>
-		<div id="photo-stream"></div>
-	</figure>
-	<h2>Eleanor Roosevelt High School</h2>
-	<h3>Robotics Club</h3>
-	<p>The Eleanor Roosevelt Robotics Club is a group
+<div class="accordion horizontal">
+	<ul>
+		<li>
+			<input type="radio" id="vert-1" name="vert-accordion" checked="checked" />
+			<label for="vert-1">ERHS&nbsp;Robotics</label>
+			<div class="ac-content">
+				<h3>Welcome to ERHS Robotics</h3>
+				<p>The Eleanor Roosevelt Robotics Club is a group
 	of about 50 bright students who come together to think of, design,
 	and develop creative solutions to a wide variety of challenges in
 	the Science, Technology, Engineering, and Mathematics (STEM)
@@ -39,24 +19,92 @@
 	their use of problem-solving and critical thinking skills in a multitude of
 	challenging ways, mainly through competing in various local robotics
 	competitions</p>
-</aside>
-<div class="content">
-	
-		<span class="title"><h2>Announcements</h2></span>
-			{% if post|count >= 1 %}
+			</div>
+		</li>
+		<li>
+			<input type="radio" id="vert-2" name="vert-accordion" />
+			<label for="vert-2">About&nbsp;</label>
+			<div class="ac-content">
+				<h3>About the ERHS Robotics Club</h3>
+		<ol>
+			<li><article class="entry">
+				<p>The Robotics Club located at Eleanor Roosevelt High School in Greenbelt,
+					 MD is a group of approximately 50 students who together to develop solutions
+					 to a wide number of problems in the STEM field. We strive to encourage 
+					creativity and teach real-world skills to	our students.</p>
+			</article></li>
+			<li><article class="entry">
+				<h3>Team History</h3>
+				<p>The Eleanor Roosevelt High School Robotics Club was founded in 1998 for the original intent of expanding the science and technology oriented enrichment programs at our school. Since the pilot year of this program, we have branched out from the original focus of our club and have begun to contribute more to the general community. From encouraging students to participate in the prestigious FIRST Robotics Competition to launching science and technology enrichment programs at local elementary schools, our team has a proven history of inspiring students to pursue STEM careers and engaging in the community.</p>
+			</article></li>
+			<li><article class="entry">
+				<h3>Competition</h3>
+				<p>Our Club is made up of a number of robotics teams which compete at various
+					 local competitions.  Our largest and most important competition every year
+					 is the FIRST Robotics Competition (FRC).  For more information, click
+					 <a href="/first">here</a>.  We also have robotics teams which compete in
+					 VEX Robotics and the ION Mini Urban Challenge
+			</article></li>
+			<li><article class="entry">
+				<h3>Mechanical Team</h3>
+				<p>The Mechanical Team is responsible for building the physical systems of the robots.</p>
+			</article></li>
+			<li><article class="entry">
+				<h3>Programming Team</h3>
+				<p>The Programming Subteam of the ERHS Robotics is responsible for a wide variety 
+					 of functions of the team. Under the Programming/System Controls Subteam 
+					 there are several miniteams. These include Software Engineering, and Electrical Engineering
+					 Additionally, the programming team works with the business team to help develop 
+					 the club website.</p>
+			</article></li>
+			<li><article class="entry">
+				<h3>Website</h3>
+				<p></p>
+			</article></li>
+		</ol>
+		</div>
+		</li>
+		<li>
+			<input type="radio" id="vert-3" name="vert-accordion" />
+			<label for="vert-3">Announcements</label>
+			<div class="ac-content">
+				<h3>Club Announcements</h3>
+	  {% if post|count >= 1 %}
 			<h3>{{post[0].subject}}</h3>
-				<div class="blog">{{post[0].content}}</div>
-			{% endif %}
-			{% if post|count >= 2 %}
+			<div class="blog">{{post[0].content}}</div><hr>
+		{% endif %}
+		{% if post|count >= 2 %}
 			<h3>{{post[1].subject}}</h3>
-				<div class="blog">{{post[1].content}}</div>
-			{% endif %}
-		
-</div>
-<div class="content">
-	
-		<span class="title"><h2>Calendar</h2></span>
-		<iframe src="https://www.google.com/calendar/embed?title=Event%20and%20Meeting%20Calendar&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0; width:100%; height: 400px;" frameborder="0" scrolling="no"></iframe>
-	
-</div>
+			<div class="blog">{{post[1].content}}</div><hr>
+		{% endif %}
+        <p>For more info, see the <a href="/blog">blog</a> page.
+			</div>
+			</li>
+			<li>
+				<input type="radio" id="vert-4" name="vert-accordion" />
+				<label for="vert-4">Calendar&nbsp;</label>
+				<div class="ac-content">
+					<h3>ERHS Robotics Calendar/Schedule</h3>
+					<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=360&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="750" height="380" frameborder="0" scrolling="no"></iframe>
+				</div>
+			</li>
+			<li>
+				<input type="radio" id="vert-5" name="vert-accordion" />
+				<label for="vert-5">Contact&nbsp;Us</label>
+				<div class="ac-content">
+					<h3>Contact Us</h3>
+							<p>
+		Please contact us at the following email addresses:
+		<ol>
+			<li>ERHS Team Sponsor, Dr. Davida Taylor at: Davida.Taylor@pgcps.org</li>
+			<li>ERHS Team Manager, Patrick Healey at: mentor@erhsroboticsclub.org</li>
+			<li>Club President, Vishnu Rachakonda at: president@erhsroboticsclub.org</li><li></li>
+      <li>Or contact the webmaster by filling out this <a href="/contact">form</a></li>
+        </ol>
+		</p>
+        <p></p>
+				</div>
+			</li>
+    </ul>
+</div>​
 {% endblock %}		

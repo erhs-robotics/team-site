@@ -6,7 +6,7 @@
 		<title>{% block title %}Eleanor Roosevelt Robotics{% endblock %}</title>
 		<link rel="icon" type="image/png" href="../images/logo/favicon.png" />
 		<link rel="stylesheet" href="../css/cssv4.css">
-		<!--<link rel="stylesheet" href="../css/nav.css">-->
+		<link rel="stylesheet" href="../css/nav.css">
 		<script src="../js/jquery.js"></script>
 		<script src="../js/modernizr.js"></script>		
 		<!--[if IE]>
@@ -16,55 +16,57 @@
 	</head>
 	<body class="no-js">
 		<div id="container">
-			<div id="login">
-				{% if user %}		
-				<a class="profile-link" href="/profile/{{user.username}}">{{user.username}}</a>(<a href="/logout">logout</a>)
-				{% else %}
-				<a href="/login">User Login</a>
-				{% endif %}
-			</div>
 			{% block banner %}
 			<header id="banner">
-				<a href="/"><img src="../images/logo/banner3.png"></a>
+				<a href="/"><img id="banner-logo" src="../images/logo/banner3.png"></a>
+				<!--<script type="text/javascript" src="../js/fade-slide.js"></script>   
+				<script type="text/javascript">  
+					var mygallery=new fadeSlideShow({   
+					 wrapperid: "banner-stream",  
+					 dimensions: [650, 280],//[349, 232], //width x height
+								imagearray:  [     
+									["../images/image-1.jpg"],    
+									["../images/image-2.jpg"], 
+									["../images/image-3.jpg"],
+									["../images/image-4.jpg"],
+									["../images/image-5.jpg"],
+									["../images/image-6.jpg"]
+								],
+								displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
+						persist: false, //remember last viewed slide and recall within same session?   
+						fadeduration: 2000, //transition duration (milliseconds)  
+						descreveal: "ondemand",
+						togglerid: ""
+						})
+				</script>-
+				<a href="/"><img id="banner-logo" src="../images/logo/favicon.png" /></a>-->
+				<div id="banner-stream">
 			</header>
 			{% endblock %}			
-			<script>
-				var el = document.getElementsByTagName("body")[0];
-				el.className = "";
-			</script>
-			<noscript>
-				<!--[if IE]>
-					<link rel="stylesheet" href="../css/ie.css">
-				<![endif]-->
-			</noscript>
 			<nav>
 				<ul class="menu">
 					<li><a href="/">Home</a></li>
-					<li><a href="/about">About</a>
-						<ul>
-							<li><a href="/team-history" title="Team History">Team History</a></li>
-							<li><a href="/first" title="FIRST">FIRST</a></li>
-							<li><a href="/mechanical" title="Mechanical">Mechanical</a></li>
-							<li><a href="/programming" title="Programming">Programming</a></li>
-							<li class="last"><a href="/about-site" title="Website">Website</a></li>
-						</ul>
-					</li>
 				  <li><a href="/blog">Blog</a></li>
-				  <li><a href="/contact">Contact</a></li>
 				  <li><a href="/sponsors">Sponsors</a></li>
-				  <li><a href="/calendar">Calendar</a></li>
 				  <li><a href="/members">Members</a></li>
+					<li><a href="/first">FIRST&#174;</a></li>
 				  <li><a href="/gallery">Gallery</a></li>
-					<li><a href="/first">FIRST</a></li>
+					<li><a href="/resources">Resources</a></li>
+					<li>
+						{% if user %}		
+						<a href="/profile/{{user.username}}">User Profile ({{user.username}})</a>
+						{% else %}
+						<a href="/login">User Login</a>
+						{% endif %}
+					</li>
+					<li>
+						{% if user %}
+						<a href="/logout">logout</a>
+						{% endif %}
+					</li>
 			  </ul>
 			</nav>
-
-
-
-
 			{% block content %}
-			{% endblock %}
-			{% block extras %}			
 			{% endblock %}
 			<footer class="content" id="about">
 				<span class="primary">
@@ -77,7 +79,6 @@
 				</span>
 				<span class="copyright"></span>
 			</footer>			
-
 		</div>
 	</body>
 </html>
