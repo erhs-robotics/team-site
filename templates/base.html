@@ -43,15 +43,6 @@
 				<div id="banner-stream">
 			</header>
 			{% endblock %}			
-			<script>
-				var el = document.getElementsByTagName("body")[0];
-				el.className = "";
-			</script>
-			<noscript>
-				<!--[if IE]>
-					<link rel="stylesheet" href="../css/ie.css">
-				<![endif]-->
-			</noscript>
 			<nav>
 				<ul class="menu">
 					<li><a href="/">Home</a></li>
@@ -77,8 +68,6 @@
 			</nav>
 			{% block content %}
 			{% endblock %}
-			{% block extras %}			
-			{% endblock %}
 			<footer class="content" id="about">
 				<span class="primary">
 					<strong>Eleanor Roosevelt Robotics</strong>
@@ -90,7 +79,6 @@
 				</span>
 				<span class="copyright"></span>
 			</footer>			
-
 		</div>
 	</body>
 </html>
