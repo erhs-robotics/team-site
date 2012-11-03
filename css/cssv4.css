@@ -101,10 +101,12 @@ header img, header a img {
 #about .copyright {float:right; width: auto;}
 
 .blog-entry h2 {
-	color: #00f;}
+	color: #00f;
+}
 .blog-entry h3 {
 	color: #69f;
-	font-size: 14px;}
+	font-size: 14px;
+}
 
 /* Login *****************/
 form {
@@ -128,9 +130,9 @@ color: #f90;}
 	border: none;	
 	padding-top: 1px;
 	-o-background-size:100% 100%;				/*  Opera  		*/
-  -webkit-background-size:100% 100%;	/*  Safari	 	*/
-  -khtml-background-size:100% 100%;		/*  Konqueror	*/
-  -moz-background-size:100% 100%;			/*	Firefox		*/
+	-webkit-background-size:100% 100%;	/*  Safari	 	*/
+	-khtml-background-size:100% 100%;		/*  Konqueror	*/
+	-moz-background-size:100% 100%;			/*	Firefox		*/
 }
 .remove-button:hover {
 	color:#FF001E;	
@@ -144,9 +146,9 @@ color: #f90;}
 	border: none;	
 	padding-top: 1px;
 	-o-background-size:100% 100%;				/*  Opera  		*/
-  -webkit-background-size:100% 100%;	/*  Safari	 	*/
-  -khtml-background-size:100% 100%;		/*  Konqueror	*/
-  -moz-background-size:100% 100%;			/*	Firefox		*/
+	-webkit-background-size:100% 100%;	/*  Safari	 	*/
+	-khtml-background-size:100% 100%;		/*  Konqueror	*/
+	-moz-background-size:100% 100%;			/*	Firefox		*/
 }
 
 .menu, .menu ul, .menu li, .menu a {
