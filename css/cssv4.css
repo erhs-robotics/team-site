@@ -100,40 +100,17 @@ header img, header a img {
 #about .bio {float: right; width: 700px;}  
 #about .copyright {float:right; width: auto;}
 
-#blog {
-	width: 100%;
-	padding: 20px 0 20px 0;
-}
-#blog .button {
-	padding: 5px;
-	background-color: #69f;
-	color: #00f;
-	font-size: 14px;
-	margin: 0 0 5px 20px
-}
-#blog .button:hover {
-	color: #f90;
-}
-#blog-entry {
-	text-align: left;
-	overflow: hidden; 
-	padding: 0px 20px 0px 20px;} 
-#blog-entry h2 {
-	color: #00f;
-	font-size: 22px;}
-#blog-entry h3 {
+.blog-entry h2 {
+	color: #00f;}
+.blog-entry h3 {
 	color: #69f;
 	font-size: 14px;}
-#blog-entry p {
-	display: block;
-	width: 100%;
-	text-align: left;} 
 
 /* Login *****************/
 form {
 	width: 100%;}
 .label {
-color: #00f;}
+	color: #00f;}
 .button {
 	padding: 5px;
 	background-color: #69f;
