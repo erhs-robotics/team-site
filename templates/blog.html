@@ -10,32 +10,31 @@
 	</script>
 {% endblock %}
 {% block content %}
-
-	<div class="content" id="blog">
-		{% if user and 1 in user.privileges %}
-			<form action="/newpost" method="GET">
-				<button class="button" id="submit">New Post</button>
-			</form>
-		{% endif %}
-			{% for post in posts%}
-				<div id="blog-entry">
-					<img style="float:left; width:100px; height:100px; " src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
-					{% if user %}
-					{% if user.key().id() == post.user or user.isadmin %}
-						<form method="POST" action="/deletepost" id="deletepost{{post.key().id()}}">
-							<input type="hidden" name="post" value="{{post.key().id()}}">
-							<a class="remove-button" href="#" onclick="confirmDel({{post.key().id()}})"></a>				
-						</form>
-						<a class="edit-button" href="/editpost/{{post.key().id()}}"></a>
-					{% endif %}
-					{% endif %}
-					<h2>{{post.subject}}</h2>
-					<h3>Created by: {{post.username}}</h3>
-					<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
-					<br>
-					<p>{{post.content}}</p>
-					<hr>
-				</div>
-			{% endfor %}
-	</div>
+<div class="content" id="blog">
+	{% if user and 1 in user.privileges %}
+		<form action="/newpost" method="GET">
+			<button class="button" id="submit">New Post</button>
+		</form>
+	{% endif %}
+	{% for post in posts%}
+		<div id="blog-entry">
+			<img style="float:left; width:100px; height:100px; " src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
+			{% if user %}
+				{% if user.key().id() == post.user or user.isadmin %}
+					<form method="POST" action="/deletepost" id="deletepost{{post.key().id()}}">
+						<input type="hidden" name="post" value="{{post.key().id()}}">
+						<a class="remove-button" href="#" onclick="confirmDel({{post.key().id()}})"></a>				
+					</form>
+					<a class="edit-button" href="/editpost/{{post.key().id()}}"></a>
+				{% endif %}
+			{% endif %}
+			<h2>{{post.subject}}</h2>
+			<h3>Created by: {{post.username}}</h3>
+			<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
+			<br>
+			<p>{{post.content}}</p>
+			<hr>
+		</div><!-- /.blog-entry -->
+	{% endfor %}
+</div>
 {% endblock %}
