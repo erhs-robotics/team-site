@@ -1,9 +1,6 @@
 /* Shared for all accordion types */
 .accordion {
     margin: 0;
-    border-radius:10px;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
     width:940px;
     padding:10px;
     background:#00f;
@@ -34,9 +31,6 @@
     text-transform:uppercase;
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
-		border-radius: 5px;
-		-webkit-border-radius: 5px;
-		-moz-border-radius: 5px;
 }
 .accordion ul li label:hover, .accordion [type=radio]:checked ~ label, .accordion [type=checkbox]:checked ~ label {
     color:#FFF;

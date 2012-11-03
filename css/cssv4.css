@@ -9,23 +9,26 @@
 
 @import url("../css/reset.css");
 
-/* Body */
 body {
-	background: url("../images/bg.png");
+	background: linear-gradient(top, #69f, 0%, #00a 100%);
+	background: -webkit-linear-gradient(top, #69f 0%, #33f 100%);
+	background: -moz-linear-gradient(top, #69f 0%, #00a 100%);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 	color: #000;
 	font-size: 110%;
 	line-height: 1;
-	font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 
-		           'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-family: Ubuntu, sans-serif;
 	text-align: left;
+	min-height: 1000px;
 }
 
 /* Headings */ 
-h2 {font-size: 1.571em;	color: #00f;}	/* 22px */ 
-h3 {font-size: 1.429em; color: #00f}	/* 20px */ 
-h4 {font-size: 1.286em}								/* 18px */ 
-h5 {font-size: 1.143em}								/* 16px */
-h6 {font-size: 1em}	   								/* 14px */  
+h2 {font-size: 22px; color: #00f;}
+h3 {font-size: 20px; color: #00f}
+h4 {font-size: 18px;}
+h5 {font-size: 16px;}
+h6 {font-size: 14px;}
 h2, h3, h4, h5, h6 { 
 	font-weight: 400; 
 	line-height: 1.1;
@@ -38,19 +41,11 @@ a:link, a:visited {
 a:hover, a:active { 
 	color: #f90;}  
 
-p { margin-bottom: 1em;}
+p { margin-bottom: .2em;}
 
-/* Quotes */ blockquote {font-style: italic;} cite {}  q {}  
-/* Thead */ thead th {padding: .5em .4em; text-align: left;} thead td {}  
-/* Tbody */ tbody td {padding: .5em .4em;} tbody th {}  tbody .alt td {} tbody .alt th {}  
-/* Tfoot */ tfoot th {} tfoot td {}
 /* HTML5 tags */ 
 header, section, footer, aside, nav, article, figure, login{ display: block;} 
-section, footer, aside, article, figure, div { background: white; }
-section, footer, aside, div {
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;}
+section, footer, aside, article, figure, div { background: white;}
 
 #container {
 	position: relative;
@@ -67,18 +62,25 @@ header img, header a img {
 	padding: 20px;
 	padding-top: 20px;
 	padding-bottom: 5px;
-	margin-top: 1.1em;
 }
 
 .entry { 
-	padding: .1em 0;
+	padding: .2em 0;
+}
+.entry p {
+	padding-bottom: 1em;
 }
 
 #about { 
 	background: #fff;	
+		background: linear-gradient: (top, #fff 0%, #bbb 100%);
+		background: -webkit-linear-gradient(top, #fff 0%, #ddd 100%);
 	overflow: hidden; 
 	padding: 20px; 
-	text-align: right;
+	text-align: left;
+	border-top: 1px solid black;
+	opacity: .9;
+	margin-bottom: .5em;
 }
 #about p { float: right;}
 #about .primary {
@@ -172,20 +174,17 @@ color: #f90;}
 }
  
 .menu {
-    height: 40px;
-    width: 960px;
+	height: 40px;
+	width: 960px;
  
-    background: #fff;
-	  background: -webkit-linear-gradient(top, #fff 0%,#ccc 100%);
-		background: -moz-linear-gradient(top, #fff 0%,#ccc 100%);
-		background: -o-linear-gradient(top, #fff 0%,#ccc 100%);
-		background: -ms-linear-gradient(top, #fff 0%,#ccc 100%);
-		background: linear-gradient(top, #fffa 0%,#ccc 100%);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-		border: 1px solid black;
-		margin-bottom: .5em;
+	background: #fff;
+	background: -webkit-linear-gradient(top, #fff 0%,#bbb 100%);
+	background: -moz-linear-gradient(top, #fff 0%,#bbb 100%);
+	background: -o-linear-gradient(top, #fff 0%,#bbb 100%);
+	background: -ms-linear-gradient(top, #fff 0%,#bbb 100%);
+	background: linear-gradient(top, #fffa 0%,#bbb 100%);
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
 }
  
 .menu li {
