@@ -24,9 +24,9 @@ body {
 }
 
 /* Headings */ 
-h2 {font-size: 22px; color: #00f;}
-h3 {font-size: 20px; color: #00f}
-h4 {font-size: 18px;}
+h2 {font-size: 26px; color: #00f;}
+h3 {font-size: 24px; color: #00f}
+h4 {font-size: 20px;}
 h5 {font-size: 16px;}
 h6 {font-size: 14px;}
 h2, h3, h4, h5, h6 { 
@@ -70,8 +70,12 @@ header img, header a img {
 .entry { 
 	padding: .2em 0;
 }
-.entry p {
-	padding-bottom: 1em;
+#welcome figure, #welcome figure img, #welcome figure iframe { 
+	border: 2px solid #ddd;
+	float: right; 
+	margin-left: 50px;
+	width: 349px; 
+	height: 232px;
 }
 
 #about { 
@@ -123,7 +127,6 @@ header img, header a img {
 #blog-entry p {
 	display: block;
 	width: 100%;
-	overflow: wrap;
 	text-align: left;} 
 
 /* Login *****************/

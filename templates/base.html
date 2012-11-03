@@ -5,8 +5,8 @@
 		<meta charset="utf-8">
 		<title>{% block title %}Eleanor Roosevelt Robotics{% endblock %}</title>
 		<link rel="icon" type="image/png" href="../images/logo/favicon.png" />
-		<link rel="stylesheet" href="../css/cssv4.css">
-		<link rel="stylesheet" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/cssv4.css">
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
 		<script src="../js/jquery.js"></script>
 		<script src="../js/modernizr.js"></script>		
 		<!--[if IE]>
@@ -18,29 +18,19 @@
 		<div id="container">
 			{% block banner %}
 			<header id="banner">
+				<aside id="login" style="text-align: right; background: none;">
+					{% if user %}
+						{% if user.fullname %}
+							Logged in as: {{user.fullname}} (<a href="/profile/{{user.username}}">{{user.username}}</a>)
+						{% else %}
+							Logged in as: <a href="/profile/{{user.username}}">{{user.username}}</a>
+						{% endif %}
+					{% else %}
+						<a href="/logout">Logout</a>
+					{% endif %}
+				</aside><!-- /#login -->
 				<a href="/"><img id="banner-logo" src="../images/logo/banner3.png"></a>
-				<!--<script type="text/javascript" src="../js/fade-slide.js"></script>   
-				<script type="text/javascript">  
-					var mygallery=new fadeSlideShow({   
-					 wrapperid: "banner-stream",  
-					 dimensions: [650, 280],//[349, 232], //width x height
-								imagearray:  [     
-									["../images/image-1.jpg"],    
-									["../images/image-2.jpg"], 
-									["../images/image-3.jpg"],
-									["../images/image-4.jpg"],
-									["../images/image-5.jpg"],
-									["../images/image-6.jpg"]
-								],
-								displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
-						persist: false, //remember last viewed slide and recall within same session?   
-						fadeduration: 2000, //transition duration (milliseconds)  
-						descreveal: "ondemand",
-						togglerid: ""
-						})
-				</script>
-				<div id="banner-stream">-->
-			</header>
+			</header><!-- /#banner -->
 			{% endblock %}			
 			<nav id="top-navigation">
 				<ul class="menu">
@@ -51,16 +41,6 @@
 					<li><a href="/first">FIRST&#174;</a></li>
 					<li><a href="/gallery">Gallery</a></li>
 					<li><a href="/resources">Resources</a></li>
-					<li>
-						{% if user %}		
-						<a href="/profile/{{user.username}}">User Profile</a>
-						{% else %}
-						<a href="/login">User Login</a>
-						{% endif %}
-					</li>
-					{% if user %}
-						<li><a href="/logout">Logout</a></li>
-					{% endif %}
 					<li><a href="/parents">Parents</a></li>
 				</ul><!-- /.menu -->
 			</nav><!-- /#top-navigation -->

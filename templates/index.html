@@ -2,27 +2,47 @@
 {% block head %}
 	{{ super() }}
 	<link rel="stylesheet" href="css/accordion2.css">
+	<script type="text/javascript" src="js/fade-slide.js"></script>   
 {% endblock %}
 {% block content %}
+<aside class="content" id="welcome">
+	<figure>
+		<script type="text/javascript">  
+			var mygallery=new fadeSlideShow({   
+			 wrapperid: "photo-stream",  
+			 dimensions: [349, 232], //width x height
+						imagearray:  [     
+							["../images/image-1.jpg"],    
+							["../images/image-2.jpg"], 
+							["../images/image-3.jpg"],
+							["../images/image-4.jpg"],
+							["../images/image-5.jpg"],
+							["../images/image-6.jpg"]
+						],
+						displaymode: {type:'auto', pause:1000, cycles:0, wraparound:false},   
+				persist: false, //remember last viewed slide and recall within same session?   
+				fadeduration: 2000, //transition duration (milliseconds)  
+				descreveal: "ondemand",
+				togglerid: ""
+				})
+		</script>
+		<div id="photo-stream"></div>
+	</figure>
+	<h2>Eleanor Roosevelt High School</h2>
+	<h3>Robotics Club</h3>
+	<p>The Eleanor Roosevelt Robotics Club is a group
+	of about 50 bright students who come together to think of, design,
+	and develop creative solutions to a wide variety of challenges in
+	the Science, Technology, Engineering, and Mathematics (STEM)
+	Field.  We foster our students' interests in the STEM field through encouraging
+	their use of problem-solving and critical thinking skills in a multitude of
+	challenging ways, mainly through competing in various local robotics
+	competitions</p>
+</aside><!-- /#welcome -->
 <div class="accordion horizontal">
 <ul>
 	<li class="accordion-section">
-		<input type="radio" id="vert-1" name="vert-accordion" checked="checked" />
-		<label for="vert-1">ERHS&nbsp;Robotics</label>
-		<div class="ac-content">
-			<h3>Welcome to ERHS Robotics</h3>
-			<p>The Eleanor Roosevelt Robotics Club is a group
-			of about 50 bright students who come together to think of, design,
-			and develop creative solutions to a wide variety of challenges in
-			the Science, Technology, Engineering, and Mathematics (STEM)
-			Field.  We foster our students' interests in the STEM field through encouraging
-			their use of problem-solving and critical thinking skills in a multitude of
-			challenging ways, mainly through competing in various local robotics
-			competitions</p>
-		</div>
-	</li><!-- /.accordion-section -->
-	<li class="accordion-section">
-		<input type="radio" id="vert-2" name="vert-accordion" />
+		<input type="radio" id="vert-2" name="vert-accordion" checked="checked" />
 		<label for="vert-2">About&nbsp;</label>
 		<div class="ac-content">
 			<h3>About the ERHS Robotics Club</h3>
