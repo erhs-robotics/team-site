@@ -18,7 +18,7 @@
 	{% endif %}
 	{% for post in posts%}
 		<div class="blog-entry">
-			<img style="float:left; width:100px; height:100px; " src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
+			<img style="float:left; width:100px; height:100px; " src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
 			{% if user %}
 				{% if user.key().id() == post.user or user.isadmin %}
 					<form method="POST" action="/deletepost" id="deletepost{{post.key().id()}}">
