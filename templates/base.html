@@ -24,8 +24,9 @@
 						{% else %}
 							Logged in as: <a href="/profile/{{user.username}}">{{user.username}}</a>
 						{% endif %}
+						| <a href="/logout">Logout</a>
 					{% else %}
-						<a href="/logout">Logout</a>
+						<a href="/login">Login</a>
 					{% endif %}
 				</aside><!-- /#login -->
 				<a href="/"><img id="banner-logo" src="../images/logo/banner3.png" alt="ERHS Robotics Banner"></a>
