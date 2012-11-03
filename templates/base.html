@@ -51,19 +51,20 @@
 				  <li><a href="/members">Members</a></li>
 					<li><a href="/first">FIRST&#174;</a></li>
 				  <li><a href="/gallery">Gallery</a></li>
-					<li><a href="/resources">Resources</a></li>
-					<li>
+				  <li><a href="/resources">Resources</a></li>
+				  <li>
 						{% if user %}		
 						<a href="/profile/{{user.username}}">User Profile ({{user.username}})</a>
 						{% else %}
 						<a href="/login">User Login</a>
 						{% endif %}
-					</li>
-					<li>
+			      </li>
+				  <li>
 						{% if user %}
 						<a href="/logout">logout</a>
 						{% endif %}
-					</li>
+				  </li>
+				  <li><a href="/parents">Parents</a></li>
 			  </ul>
 			</nav>
 			{% block content %}

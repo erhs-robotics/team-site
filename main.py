@@ -437,6 +437,11 @@ class ResourcesHandler(Handler):
         
         self.render("resources.html", user = self.user)
         
+class ParentsHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("parents.html", user = self.user)
+        
 app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/blog', BlogHandler),
                                ('/login', LoginHandler),
@@ -454,5 +459,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/gallery', GalleryHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),
 							   ('/resources', ResourcesHandler),
-                               ('/contact', ContactHandler)],
+                               ('/contact', ContactHandler),
+							   ('/parents', ParentsHandler)],
                                debug=True)
