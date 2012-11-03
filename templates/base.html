@@ -14,7 +14,7 @@
 		<![endif]-->
 		{% endblock %}
 	</head>
-	<body class="no-js">
+	<body>
 		<div id="container">
 			{% block banner %}
 			<header id="banner">
@@ -38,35 +38,32 @@
 						descreveal: "ondemand",
 						togglerid: ""
 						})
-				</script>-
-				<a href="/"><img id="banner-logo" src="../images/logo/favicon.png" /></a>-->
-				<div id="banner-stream">
+				</script>
+				<div id="banner-stream">-->
 			</header>
 			{% endblock %}			
-			<nav>
+			<nav id="top-navigation">
 				<ul class="menu">
 					<li><a href="/">Home</a></li>
-				  <li><a href="/blog">Blog</a></li>
-				  <li><a href="/sponsors">Sponsors</a></li>
-				  <li><a href="/members">Members</a></li>
+					<li><a href="/blog">Blog</a></li>
+					<li><a href="/sponsors">Sponsors</a></li>
+					<li><a href="/members">Members</a></li>
 					<li><a href="/first">FIRST&#174;</a></li>
-				  <li><a href="/gallery">Gallery</a></li>
-				  <li><a href="/resources">Resources</a></li>
-				  <li>
+					<li><a href="/gallery">Gallery</a></li>
+					<li><a href="/resources">Resources</a></li>
+					<li>
 						{% if user %}		
-						<a href="/profile/{{user.username}}">User Profile ({{user.username}})</a>
+						<a href="/profile/{{user.username}}">User Profile</a>
 						{% else %}
 						<a href="/login">User Login</a>
 						{% endif %}
-			      </li>
-				  <li>
-						{% if user %}
-						<a href="/logout">logout</a>
-						{% endif %}
-				  </li>
-				  <li><a href="/parents">Parents</a></li>
-			  </ul>
-			</nav>
+					</li>
+					{% if user %}
+						<li><a href="/logout">Logout</a></li>
+					{% endif %}
+					<li><a href="/parents">Parents</a></li>
+				</ul><!-- /.menu -->
+			</nav><!-- /#top-navigation -->
 			{% block content %}
 			{% endblock %}
 			<footer class="content" id="about">
@@ -78,8 +75,7 @@
 					information to team members, mentors, parents, and the public.  
 					The website is built and maintained by student members of the team.
 				</span>
-				<span class="copyright"></span>
-			</footer>			
-		</div>
+			</footer><!-- /.content #about -->	
+		</div><!-- /#container -->
 	</body>
 </html>
