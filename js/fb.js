@@ -69,8 +69,8 @@ function loadGallery() {
 	
 	for(i=0;i<photos.length;i++) {
 		var date = month[photos[i].created.getMonth()] + " " + photos[i].created.getDate() + ", " + photos[i].created.getFullYear();
-		
-		$("#img_gallery").append("<a rel=\"group\" href=\"" + photos[i].src + "\"class=\"gallery_photo\"><img src=\"" + photos[i].src + "\"></img><div>Uploaded: " + date + "</div></a>");
+		var img = $("<img>", { "src" : photos[i].src });
+		$("#img_gallery").append($("<a/>", {"rel" : "group", "href" : photos[i].src, "class" : "gallery_photo"}).html(img));
 		
 
 	}
