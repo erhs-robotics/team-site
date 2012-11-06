@@ -21,8 +21,10 @@
 
 .album {
 	border: 1px solid black; 
-	height: 240px; 
+	height: 500px; 
 	overflow: auto;
+	padding: 1em;
+	margin: 2em;
 }
 
 
