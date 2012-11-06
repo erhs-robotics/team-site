@@ -19,3 +19,10 @@
 	text-indent: 0;
 }
 
+.album {
+	border: 1px solid black; 
+	height: 240px; 
+	overflow: auto;
+}
+
+
