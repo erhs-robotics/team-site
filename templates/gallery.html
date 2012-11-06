@@ -6,6 +6,7 @@
 	<script src="/js/fb.js"></script>
 	<script>
 		$(document).ready(function() {
+			loadGallery();
 			/* This is basic - uses default settings */
 			$("a.gallery_photo").fancybox();
 		});
@@ -17,6 +18,6 @@
 {% endblock %}
 {% block content %}
 <section id="img_gallery" class="content">
-	<a id="image0" href="http://sphotos-b.xx.fbcdn.net/hphotos-ash3/s720x720/541574_269075959842702_1244945646_n.jpg" class="gallery_photo"><img src="http://sphotos-b.xx.fbcdn.net/hphotos-ash3/s720x720/541574_269075959842702_1244945646_n.jpg"></a>
+	<a href="http://sphotos-b.xx.fbcdn.net/hphotos-ash3/s720x720/541574_269075959842702_1244945646_n.jpg" class="gallery_photo"><img src="http://sphotos-b.xx.fbcdn.net/hphotos-ash3/s720x720/541574_269075959842702_1244945646_n.jpg"></a>
 </section>
 {% endblock %}
