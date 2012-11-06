@@ -13,6 +13,7 @@ month[8]="September";
 month[9]="October";
 month[10]="November";
 month[11]="December";
+var debug;
 
 function getGroupPhotos(id) {
 	var xmlHttp = new XMLHttpRequest();
@@ -31,7 +32,7 @@ function getPhoto(id) {
 
 function getPageAlbums(id) {
 	var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", "http://graph.facebook.com/" + id + "/albums?fields=id", false);
+  xmlHttp.open( "GET", "http://graph.facebook.com/" + id + "/albums?fields=id,name", false);
   xmlHttp.send( null );
   return $.parseJSON(xmlHttp.responseText);	
 }
@@ -51,31 +52,48 @@ function loadGallery() {
 	var photos = new Array();//for all photos
 
 	//store the group's wall photos
+	var group_wall = new Array();
 	for(i=0;i<group_photos.data.length;i++) {
 		var src = getPhoto(group_photos.data[i].pid);
-		photos.push({"src" :src.data[0].src_big, "created" : new Date(src.data[0].created * 1000 /* x1000 for conversion*/)})
+		group_wall.push({"src" :src.data[0].src_big, "created" : new Date(src.data[0].created * 1000 /* x1000 for conversion*/)})
 	}
+	group_wall.sort(function(a,b){return new Date(b.created - a.created)});
+	photos.push({"name": "Group Wall Photos", "images": group_wall});
 
 	var page_albums = getPageAlbums(PAGE_ID);//for page's albums
 	//store the page's album photos
 	for(i=0;i<page_albums.data.length;i++) {
 		var photo = getPhotosFromAlbum(page_albums.data[i].id);
+		var album = new Array();
 		for(a=0;a<photo.data.length;a++) {
-			photos.push({"src" : photo.data[a].source, "created" : new Date(photo.data[a].updated_time)});
+			album.push({"src" : photo.data[a].source, "created" : new Date(photo.data[a].updated_time)});
 		}
+		album.sort(function(a,b){return new Date(b.created - a.created)});
+		photos.push({"name": page_albums.data[i].name, "images": album});
 	}
 
-	photos.sort(function(a,b){return new Date(b.created - a.created)});	
+
+	
+	debug = photos;
 	
 	for(i=0;i<photos.length;i++) {
-		var date = month[photos[i].created.getMonth()] + " " + photos[i].created.getDate() + ", " + photos[i].created.getFullYear();
-		var img = $("<img>", { "src" : photos[i].src });
-		$("#img_gallery").append($("<a/>", {"rel" : "group", "href" : photos[i].src, "class" : "gallery_photo"}).html(img));
+		var album = $("<div/>", {"class": "content, album"});
+		album.append($("<h2>" + photos[i].name + "</h2>"));
+		for(x=0;x<photos[i].images.length;x++) {
+			//<div id="Homecoming-2012" class="content" style="border: 1px solid black; height: 240px; overflow: auto">
+			//	<h2>Homecoming 2012</h2>
+			//</div>	
+			//var date = month[photos[i].created.getMonth()] + " " + photos[i].created.getDate() + ", " + photos[i].created.getFullYear();
+			var img = $("<img/>", { "src" : photos[i].images[x].src });
+			var gallery_photo = $("<a/>", {"rel" : "group", "href" : photos[i].src, "class" : "gallery_photo"}).append(img);
+			album.append(gallery_photo);			
+		}
+
+		$("#img_gallery").append(album);
 		
 
 	}
-	
-	
+
 
 
 }
