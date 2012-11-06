@@ -1,21 +1,21 @@
 .gallery_photo {
-  width: 30%;
-  margin: 0.5em;
-  padding: 0.5em;
-	
-	
+	display: inline-block;
+	border: 1px solid blue;
+	width: 200px;
+	height: 200px;
+	padding: 5px;
+	margin: 7px;
 }
 
 .gallery_photo img {	
-	padding: 1em;	
-	max-width: 200px;
-	max-height: 200px;
+	width: 200px;
+	height: 200px;
 }
 
 .gallery_photo div {
-	display: none;
+	display:none;
 	font-style: italic;
-  font-size: smaller;
-  text-indent: 0;
+	font-size: smaller;
+	text-indent: 0;
 }
 
