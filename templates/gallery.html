@@ -32,13 +32,27 @@
                 }
             }
     });
+    $(document).ready(function() {
+        var files = {'jpg':4}, pageName = "Homecoming-2012", container = $('#Homecoming-2012');
+            for (var i = 232; i <= 253; i++)
+            {
+                var src = "/images/gallery/" + pageName + "/DSCF0" + i + ".jpg" ;
+                if(urlExists(src)) {
+					var img = $('<img src="'+src+'" width=100 height=100 />'); 
+					//container.append($('<li/>').html($('<a/>', {'href':'#'}).html(img)));
+					container.append($('<a/>', {'href':src, 'class':'lytebox', 'data-lyte-options':'group:homecoming-2012'}).html(img));
+					//container.append($('<img/>', {'href':src, 'style':'width:150px; height: 100px;'}));
+				
+                }
+            }
+    });
     </script>
     <script type="text/javascript" language="javascript" src="/js/lytebox/lytebox.js"></script>
 	<link rel="stylesheet" href="/js/lytebox/lytebox.css" type="text/css" media="screen" />
 {% endblock %}
 {% block content %}
 
-<div id="VEX-first-competition-2012" class="content">
+<div id="VEX-first-competition-2012" class="content" style="border: 1px solid black; height: 240px; overflow: auto">
 	<h2>VEX Competition - 2012</h2>
 	<!--<a href="images/image-1.jpg" class="lytebox" data-lyte-options="group:orion1">
 	   <img src="images/image-1.jpg" style="width: 150px; height: 100px;" alt="Orion Nebula #1">
@@ -49,6 +63,9 @@
 	<a href="images/image-3.jpg" class="lytebox" data-lyte-options="group:orion1">
 	   <img src="images/image-3.jpg" style="width: 150px; height: 100px;" alt="Picture from Vex Competition">
 	</a>-->
+</div>
+<div id="Homecoming-2012" class="content" style="border: 1px solid black; height: 240px; overflow: auto">
+	<h2>Homecoming 2012</h2>
 </div>
 
 <!--<section id="img_gallery" class="content"></section>-->
