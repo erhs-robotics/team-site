@@ -20,6 +20,9 @@ handlers:
 
 - url: /images
   static_dir: images
+
+- url: /fancybox
+  static_dir: fancybox
   
 - url: /js
   static_dir: js

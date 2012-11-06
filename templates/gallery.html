@@ -2,12 +2,14 @@
 {% block head %}
 	{{super()}}
 	<link rel="stylesheet" href="/css/gallery.css">
-	<!--<script src="/js/fb.js"></script>
+	<script src="/js/fb.js"></script>
 	<script>
-		$(document).ready(function(){
+		$(document).ready(function() {
 			loadGallery();
+			/* This is basic - uses default settings */
+			$("a.gallery_photo").fancybox();
 		});
-	</script>-->
+	</script>
 	<script type="text/javascript">
 	function urlExists(testUrl) {
 	 var http = jQuery.ajax({
@@ -49,6 +51,8 @@
     </script>
     <script type="text/javascript" language="javascript" src="/js/lytebox/lytebox.js"></script>
 	<link rel="stylesheet" href="/js/lytebox/lytebox.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="/fancybox/jquery.fancybox.js?v=2.1.3"></script>
+	<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css?v=2.1.2" media="screen" />
 {% endblock %}
 {% block content %}
 
@@ -66,8 +70,7 @@
 </div>
 <div id="Homecoming-2012" class="content" style="border: 1px solid black; height: 240px; overflow: auto">
 	<h2>Homecoming 2012</h2>
-</div>
+</div>	
 
-<!--<section id="img_gallery" class="content"></section>-->
-	
+<section id="img_gallery" class="content"></section>
 {% endblock %}
