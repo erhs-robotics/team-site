@@ -5,15 +5,13 @@
 }
 #profile-pic-and-priveleges-container {
 	float: left;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin: 0 20px;
 	display: block;
-	width: 190px;
+	width: 150px;
 }
 
 #profile-content-container {
-	float: right;
-	margin-right: 20px;
+	float: left;
 	display: inline-block;
 	width: 710px;
 }
