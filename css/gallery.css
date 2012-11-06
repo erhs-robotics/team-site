@@ -4,7 +4,7 @@
 	width: 200px;
 	height: 200px;
 	padding: 5px;
-	margin: 7px;
+	margin: 5px 20px;
 }
 
 .gallery_photo img {	
@@ -21,9 +21,9 @@
 
 .album {
 	border: 1px solid black; 
-	height: 500px; 
+	max-height: 500px; 
 	overflow: auto;
-	padding: 1em;
+	padding: 2em;
 	margin: 2em;
 }
 
