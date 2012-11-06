@@ -85,7 +85,7 @@ function loadGallery() {
 			//</div>	
 			//var date = month[photos[i].created.getMonth()] + " " + photos[i].created.getDate() + ", " + photos[i].created.getFullYear();
 			var img = $("<img/>", { "src" : photos[i].images[x].src });
-			var gallery_photo = $("<a/>", {"rel" : "group", "href" : photos[i].src, "class" : "gallery_photo"}).append(img);
+			var gallery_photo = $("<a/>", {"rel" : "group" + i, "href" : photos[i].src, "class" : "gallery_photo"}).append(img);
 			album.append(gallery_photo);			
 		}
 
