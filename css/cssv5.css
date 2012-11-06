@@ -10,9 +10,9 @@
 @import url("../css/reset.css");
 
 body {
-	background: linear-gradient(top, #69f, 0%, #00a 100%);
+	background: linear-gradient(top, #69f, 0%, #33f 100%);
 	background: -webkit-linear-gradient(top, #69f 0%, #33f 100%);
-	background: -moz-linear-gradient(top, #69f 0%, #00a 100%);
+	background: -moz-linear-gradient(top, #69f 0%, #33f 100%);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	color: #000;
