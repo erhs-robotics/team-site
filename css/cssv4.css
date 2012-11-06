@@ -47,6 +47,10 @@ p { margin-bottom: 1em;}
 /* HTML5 tags */ 
 header, section, footer, aside, nav, article, figure, login{ display: block;}
 /*section, footer, aside, article, figure, div { background: white; }*/
+section, footer, aside, div {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;}
 
 
 #container {
