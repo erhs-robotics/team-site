@@ -48,7 +48,7 @@ p { margin-bottom: .2em;}
 /* Tfoot */ tfoot th {} tfoot td {}
 /* HTML5 tags */ 
 header, section, footer, aside, nav, article, figure, login{ display: block;} 
-section, footer, aside, article, figure, div { background: white;}
+/*section, footer, aside, article, figure, div { background: white;}*/
 
 #container {
 	position: relative;
@@ -65,6 +65,7 @@ section, footer, aside, article, figure, div { background: white;}
 	padding: 20px;
 	padding-top: 20px;
 	padding-bottom: 5px;
+	background-color: #fff;
 }
 .entry { 
 	padding: .2em 0;
