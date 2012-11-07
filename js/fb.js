@@ -13,35 +13,39 @@ month[8]="September";
 month[9]="October";
 month[10]="November";
 month[11]="December";
-var debug;
+var isIE = window.XDomainRequest ? true : false;
 
+function request(req, str, b) {
+	var xmlHttp;
+	if(isIE) {
+		xmlHttp = new window.XDomainRequest();		
+	} else {
+		xmlHttp = new XMLHttpRequest();			
+	}
+	xmlHttp.open(req, str, b);
+	xmlHttp.send(null);
+	return xmlHttp.responseText;	
+
+}
 function getGroupPhotos(id) {
-	var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", "http://graph.facebook.com/fql?q=SELECT pid FROM photo_tag WHERE subject=" + id, false);
-  xmlHttp.send( null );
-  return $.parseJSON(xmlHttp.responseText);	
+	var response = request("GET", "http://graph.facebook.com/fql?q=SELECT pid FROM photo_tag WHERE subject=" + id, false);
+  return $.parseJSON(response);	
 }
 
 function getPhoto(id) {
-	var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", "http://graph.facebook.com/fql?q=SELECT pid, src_big, created FROM photo WHERE pid=\"" + id + "\"", false);
-  xmlHttp.send( null );
-  return $.parseJSON(xmlHttp.responseText);	
+	var response = request("GET", "http://graph.facebook.com/fql?q=SELECT pid, src_big, created FROM photo WHERE pid=\"" + id + "\"", false);
+  return $.parseJSON(response);	
 	
 }
 
 function getPageAlbums(id) {
-	var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", "http://graph.facebook.com/" + id + "/albums?fields=id,name", false);
-  xmlHttp.send( null );
-  return $.parseJSON(xmlHttp.responseText);	
+	var response = request("GET", "http://graph.facebook.com/" + id + "/albums?fields=id,name", false);
+  return $.parseJSON(response);	
 }
 
 function getPhotosFromAlbum(id) {
-	var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", "http://graph.facebook.com/" + id + "/photos", false);
-  xmlHttp.send( null );
-  return $.parseJSON(xmlHttp.responseText);		
+	var response = request("GET", "http://graph.facebook.com/" + id + "/photos", false);
+  return $.parseJSON(response);		
 }
 
 
