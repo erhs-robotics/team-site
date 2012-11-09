@@ -47,21 +47,22 @@ function getPhotosFromAlbum(id) {
 
 
 function loadGallery() {	
-	var group_photos = getGroupPhotos(GROUP_ID);//for the group's wall photos
-
 	var photos = new Array();//for all photos
 
 	//store the group's wall photos
+	/*
+	var group_photos = getGroupPhotos(GROUP_ID);//for the group's wall photos
 	var group_wall = new Array();
 	for(i=0;i<group_photos.data.length;i++) {
 		var src = getPhoto(group_photos.data[i].pid);
-		group_wall.push({"src" :src.data[0].src_big, "created" : new Date(src.data[0].created * 1000 /* x1000 for conversion*/)})
+		group_wall.push({"src" :src.data[0].src_big, "created" : new Date(src.data[0].created * 1000)})  // x 1000 for conversion
 	}
 	group_wall.sort(function(a,b){return new Date(b.created - a.created)});
 	photos.push({"name": "Group Wall Photos", "images": group_wall});
+	*/
 
-	var page_albums = getPageAlbums(PAGE_ID);//for page's albums
 	//store the page's album photos
+	var page_albums = getPageAlbums(PAGE_ID);//for page's albums
 	for(i=0;i<page_albums.data.length;i++) {
 		var photo = getPhotosFromAlbum(page_albums.data[i].id);
 		var album = new Array();
@@ -71,29 +72,21 @@ function loadGallery() {
 		album.sort(function(a,b){return new Date(b.created - a.created)});
 		photos.push({"name": page_albums.data[i].name, "images": album});
 	}
-
-
-	
-	debug = photos;
-	
-	for(i=0;i<photos.length;i++) {
-		var album = $("<div/>", {"class": "content, album"});
-		album.append($("<h2>" + photos[i].name + "</h2>"));
-		for(x=0;x<photos[i].images.length;x++) {
-			//<div id="Homecoming-2012" class="content" style="border: 1px solid black; height: 240px; overflow: auto">
-			//	<h2>Homecoming 2012</h2>
-			//</div>	
-			//var date = month[photos[i].created.getMonth()] + " " + photos[i].created.getDate() + ", " + photos[i].created.getFullYear();
-			var img = $("<img/>", { "src" : photos[i].images[x].src });
-			var gallery_photo = $("<a/>", {"rel" : "group" + i, "href" : photos[i].images[x].src, "class" : "gallery_photo"}).append(img);
-			album.append(gallery_photo);			
-		}
-
-		$("#img_gallery").append(album);
 		
-
+	for(i=0;i<photos.length;i++) 
+	{
+		if (photos[i].name != "Cover Photos" && photos[i].name != "Profile Pictures")
+		{
+			var album = $("<div/>", {"class": "content, album"});
+			album.append($("<h2>" + photos[i].name + "</h2>"));
+			for(x=0;x<photos[i].images.length;x++) 
+			{	
+				var img = $("<img/>", { "src" : photos[i].images[x].src });
+				var gallery_photo = $("<a/>", {"rel" : "group" + i, "href" : photos[i].images[x].src, "class" : "gallery_photo"}).append(img);
+				album.append(gallery_photo);			
+			}
+			$("#img_gallery").append(album);
+		}	
 	}
-
-
 
 }
