@@ -9,22 +9,22 @@ float:left;
 width: 300px;
 height:145px;
 padding:3px; 
-padding-bottom: 70px;
+padding-bottom: 50px;
 }
 #sponsor-block fieldset {
 border-color: blue;
 }
 #sponsor-block fieldset img {
 float: left;
-width: 48%;
+width: 58%;
 height: 100%;
 }
 #sponsor-block fieldset font {
 float: right;
 display: block;
 font-size: 68%;
-width: 48%;
-line-height: 1.5;
+width: 38%;
+line-height: 1;
 }
 
 
