@@ -50,7 +50,9 @@
 	{% endif %}
 	{% for user in users %}
 		{% if 3 in user.privileges %}
-			<div id="member-block">
+			{% if user.team == "Programming" %}
+				<div class="members-block"><h2>Programming Team</h2>
+				<div id="member-block">
 				<fieldset>			
 					<legend>
 						<a href="/profile/{{user.username}}">
@@ -68,7 +70,73 @@
 					<font>"{{user.quote}}"</font>
 					{% endif %}
 				</fieldset>
-		</div>
+				</div></div>
+			{% endif %}
+			{% if user.team == "Mechanical" or user.team == None %}
+				<div class="members-block"><h2>Mechanical Team</h2>
+				<div id="member-block">
+				<fieldset><legend>
+					<a href="/profile/{{user.username}}">
+						{% if user.fullname %}
+							{{user.fullname}}
+						{% else %}
+							{{user.username}}
+						{% endif %}
+					</a>
+					</legend>
+					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">	
+					{% if user.quote %}
+					<font>"{{user.quote}}"</font>
+					{% endif %}
+				</fieldset>
+				</div></div>
+			{% endif %}
+			{% if user.team == "Management" %}
+				<div class="members-block"><h2>Management/Business Team</h2>
+				<div id="member-block">
+				<fieldset>			
+					<legend>
+						<a href="/profile/{{user.username}}">
+							{% if user.fullname %}
+								{{user.fullname}}
+							{% else %}
+								{{user.username}}
+							{% endif %}
+						</a>
+					</legend>
+					
+					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">				
+							
+					{% if user.quote %}
+					<font>"{{user.quote}}"</font>
+					{% endif %}
+				</fieldset>
+			</div>
+				</div>
+			{% endif %}
+			{% if user.team == "Outreach" %}
+				<div class="members-block"><h2>Outreach Team</h2>
+				<div id="member-block">
+				<fieldset>			
+					<legend>
+						<a href="/profile/{{user.username}}">
+							{% if user.fullname %}
+								{{user.fullname}}
+							{% else %}
+								{{user.username}}
+							{% endif %}
+						</a>
+					</legend>
+					
+					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">				
+							
+					{% if user.quote %}
+					<font>"{{user.quote}}"</font>
+					{% endif %}
+				</fieldset>
+			</div>
+				</div>
+			{% endif %}
 		{% endif %}	
 	{% endfor %}
 	</section>

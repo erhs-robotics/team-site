@@ -3,6 +3,12 @@ overflow: hidden;
 padding: 20px;
 }
 
+.members-block {
+	width: 100%;
+	display: block;
+	min-height: 250px;
+}
+
 #member-block {
 display: inline-block; 
 float:left; 
