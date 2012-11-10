@@ -48,33 +48,11 @@
 		</script>
 		<br><br>
 	{% endif %}
-	{% for user in users %}
+	<div class="members-block">
+	<h2>Programming Team</h2>
+	{% for user in programmers %}
 		{% if 3 in user.privileges %}
-			<div class="members-block"><h2>Programming Team</h2>
-			{% if user.team == "Programming" %}
-				<div id="member-block">
-				<fieldset>			
-					<legend>
-						<a href="/profile/{{user.username}}">
-							{% if user.fullname %}
-								{{user.fullname}}
-							{% else %}
-								{{user.username}}
-							{% endif %}
-						</a>
-					</legend>
-					
-					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">				
-							
-					{% if user.quote %}
-					<font>"{{user.quote}}"</font>
-					{% endif %}
-				</fieldset>
-				</div></div>
-			{% endif %}
-			<div class="members-block"><h2>Mechanical Team</h2>
-			{% if user.team == "Mechanical" or user.team == None %}
-				<div id="member-block">
+			<div id="member-block">
 				<fieldset><legend>
 					<a href="/profile/{{user.username}}">
 						{% if user.fullname %}
@@ -83,62 +61,62 @@
 							{{user.username}}
 						{% endif %}
 					</a>
-					</legend>
-					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">	
-					{% if user.quote %}
+				</legend>
+				<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
+				{% if user.quote %}
 					<font>"{{user.quote}}"</font>
-					{% endif %}
-				</fieldset>
-				</div></div>
-			{% endif %}
-			<div class="members-block"><h2>Management/Business Team</h2>
-			{% if user.team == "Management" %}
-				<div id="member-block">
-				<fieldset>			
-					<legend>
-						<a href="/profile/{{user.username}}">
-							{% if user.fullname %}
-								{{user.fullname}}
-							{% else %}
-								{{user.username}}
-							{% endif %}
-						</a>
-					</legend>
-					
-					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">				
-							
-					{% if user.quote %}
-					<font>"{{user.quote}}"</font>
-					{% endif %}
+				{% endif %}
 				</fieldset>
 			</div>
-				</div>
-			{% endif %}
-			<div class="members-block"><h2>Outreach Team</h2>
-			{% if user.team == "Outreach" %}
-				<div id="member-block">
-				<fieldset>			
-					<legend>
-						<a href="/profile/{{user.username}}">
-							{% if user.fullname %}
-								{{user.fullname}}
-							{% else %}
-								{{user.username}}
-							{% endif %}
-						</a>
-					</legend>
-					
-					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">				
-							
-					{% if user.quote %}
-					<font>"{{user.quote}}"</font>
-					{% endif %}
-				</fieldset>
-			</div>
-				</div>
-			{% endif %}
 		{% endif %}	
 	{% endfor %}
+	</div>
+	<div class="members-block">
+	<h2>Mechanical Team</h2>
+	{% for user in mechies %}
+		{% if 3 in user.privileges %}
+			<div id="member-block">
+				<fieldset><legend>
+					<a href="/profile/{{user.username}}">
+						{% if user.fullname %}
+							{{user.fullname}}
+						{% else %}
+							{{user.username}}
+						{% endif %}
+					</a>
+				</legend>
+				<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
+				{% if user.quote %}
+					<font>"{{user.quote}}"</font>
+				{% endif %}
+				</fieldset>
+			</div>
+		{% endif %}	
+	{% endfor %}
+	</div>
+	<div class="members-block">
+	<h2>Management/Business Team</h2>
+		{% for user in managers %}
+			{% if 3 in user.privileges %}
+				<div id="member-block">
+					<fieldset><legend>
+						<a href="/profile/{{user.username}}">
+							{% if user.fullname %}
+								{{user.fullname}}
+							{% else %}
+								{{user.username}}
+							{% endif %}
+						</a>
+					</legend>
+					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
+					{% if user.quote %}
+						<font>"{{user.quote}}"</font>
+					{% endif %}
+					</fieldset>
+				</div>
+			{% endif %}	
+		{% endfor %}
+	</div>
 	</section>
 {% endblock %}	
 	

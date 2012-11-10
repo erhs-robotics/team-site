@@ -100,9 +100,24 @@ class MembersHandler(Handler):
         members = db.GqlQuery("SELECT * FROM User")
         members = list(members)    
         members = sorted(members, key=lambda member: member.username.lower())
+        programmers = []
+        mechies = []
+        managers = []
+        outreachers = []
+        for member in members:
+			if member.team == "Programming":
+				programmers.append(member)
+			if member.team == "Mechanical" or member.team == None:
+				mechies.append(member)
+			if member.team == "Management":
+				managers.append(member)
+			if member.team == "Outreach":
+				outreachers.append(member)
+				
        
         
-        self.render("members.html", user = self.user, users=members, display="none")
+        self.render("members.html", user = self.user, users=members, display="none", programmers = programmers,
+					mechies = mechies, managers = managers, outreachers = outreachers)
         
 
      def post(self):
