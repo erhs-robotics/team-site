@@ -1,0 +1,99 @@
+.accordion {
+    margin: 0;
+    width:940px;
+    padding:10px;
+    background:#00f;
+}
+.accordion ul {
+    list-style:none;
+    margin:0;
+    padding:0;    
+}
+.accordion li {
+	list-style: none;
+	margin:0;
+	padding:0;
+}
+.accordion [type=radio] {
+    display:none;
+}
+.accordion label {
+    display:block;
+    font-size:16px;
+    line-height:16px;
+    background:#009;
+		background: -webkit-linear-gradient(left, #008 0%,#00b 100%);
+    color:#fff;
+    text-shadow:1px 1px 1px rgba(255,255,255,0.3);
+    font-weight:700;
+    cursor:pointer;
+    text-transform:uppercase;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+}
+.accordion ul li label:hover, .accordion [type=radio]:checked ~ label, .accordion [type=checkbox]:checked ~ label {
+    color:#FFF;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.5);
+}
+.accordion .ac-content {
+    padding:0 10px;
+    overflow:hidden;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    background: #fff;
+}
+.accordion .ac-content ol, .accordion .ac-content ol li {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	line-height: 1.4;}
+.accordion p {
+    margin:0 0 10px;
+}
+.accordion h3 {
+    color:#00f;
+    padding:0;
+    margin:10px 0;
+		font-size: 26px;
+}
+
+.horizontal {
+    overflow:hidden;
+    height:450px;
+}
+.horizontal ul li {
+    float:left;
+    margin:0 1px 0 0;
+}
+.horizontal ul li label {
+    word-wrap:break-word;
+    letter-spacing:10px;
+    text-align:center;
+    height:430px;
+    padding:10px 0 10px 5px;
+    width:25px;
+    float:left;
+}
+.horizontal ul li .ac-content {
+    height:450px;
+    padding:0;
+    display:inline-block; /* Makes its work in FF */
+    visibility:hidden; /* Chrome bug cant show width < 1px for some reason so need to toggle visibility */
+    width:1px;
+    border-left:0;
+		overflow: auto;
+}
+.horizontal [type=radio]:checked ~ label {
+    border-right:0;    
+}
+.horizontal ul li label:hover {
+		background: #00d;
+}
+.horizontal [type=radio]:checked ~ label ~ .ac-content {    
+    visibility:visible;
+    width:745px;
+    padding:0 10px;
+    border-left:0;    
+}​

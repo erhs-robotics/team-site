@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
 	{{super()}}
-	<link rel="stylesheet" href="../css/profile.css">
+	<link rel="stylesheet" href="/css/profile.css">
 	<script type="text/javascript">
 		function confirmDel(id) {
 			if(window.confirm("Are you sure you want to delete this user?")) {
@@ -11,7 +11,7 @@
 	</script>
 {% endblock %}	
 {% block content %}	
-	<section class="profile" id="profile">
+	<section class="profile content" id="profile">
 		{% if user.isadmin %}
 			<form method="POST" action="/deleteuser" id="deleteuser{{profile.key().id()}}">
 				<input type="hidden" name="user" value="{{profile.key().id()}}">
