@@ -8,6 +8,7 @@ padding: 20px;
 	display: block;
 	min-height: 250px;
 	min-width: 900px;
+	overflow: auto;
 }
 
 #member-block {
