@@ -59,11 +59,27 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	margin: 0 auto;
 	background: none;
 }
-
-#banner img, #banner a img {
-	width: 100%;
+#banner {
+    overflow: auto;
 }
-
+#banner img, #banner a img {
+    display: inline-block;
+    width: 648px;
+    padding-right: 0px;
+}
+#banner .login-and-fb {
+    width: 300px;
+    float: right;
+    overflow: hidden;
+}
+#banner .login-and-fb #login, #banner .login-and-fb .fb-like, #banner .login-and-fb h5 {
+    display: inline-block;
+    float: left;
+    padding: 25px 5px 0 0;
+    margin: 0;
+	line-height: 1;
+}
+#banner .login-and-fb #login { width: 302px; }
 .content {
 	padding: 20px;
 	padding-top: 20px;

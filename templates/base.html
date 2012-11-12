@@ -8,6 +8,12 @@
 		<link rel="stylesheet" type="text/css" href="/css/cssv5.css">
 		<script src="/js/jquery-1.8.2.min.js "></script>
 		<script src="/js/modernizr.js"></script>
+        <meta property="og:title" content="ERHS Robotics Club" />
+        <meta property="og:type" content="non_profit" />
+        <meta property="og:url" content="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" />
+        <meta property="og:image" content="http://www.erhsroboticsclub.org/images/logo/favicon.png" />
+        <meta property="og:site_name" content="ERHS Robotics Club" />
+        <meta property="fb:admins" content="100002221793440" />
 		<!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -19,22 +25,36 @@
 		{% endblock %}
 	</head>
 	<body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 		<div id="container">
 			{% block banner %}
 			<header id="banner">
-				<aside id="login" style="text-align: right; background: none;">
-					{% if user %}
-						{% if user.fullname %}
-							Logged in as: {{user.fullname}} (<a href="/profile/{{user.username}}">{{user.username}}</a>)
-						{% else %}
-							Logged in as: <a href="/profile/{{user.username}}">{{user.username}}</a>
-						{% endif %}
-						| <a href="/logout">Logout</a>
-					{% else %}
-						<a href="/login">Login</a>
-					{% endif %}
-				</aside><!-- /#login -->
 				<a href="/"><img id="banner-logo" src="../images/logo/banner3.png" alt="ERHS Robotics Banner"></a>
+                <aside class="login-and-fb">
+                    <aside id="login">
+                        {% if user %}
+                            {% if user.fullname %}
+                                {{user.fullname}} <a href="/profile/{{user.username}}">{{user.username}}</a>
+                            {% else %}
+                                User: <a href="/profile/{{user.username}}">{{user.username}}</a>
+                            {% endif %}
+                            | <a href="/logout">Logout</a>
+                        {% else %}
+                            <a href="/login">Login</a>
+                        {% endif %}
+                    </aside><!-- /#login -->
+                    <h5>Like Us On Facebook!</h5>
+                    <div class="fb-like" data-href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" 
+                         data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" 
+                         data-font="segoe ui"></div>
+                </aside>
 			</header><!-- /#banner -->
 			{% endblock %}			
 			<nav id="top-navigation">
