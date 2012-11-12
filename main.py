@@ -94,7 +94,7 @@ class LogoutHandler(Handler):
         self.redirect("/login")
             
 class MembersHandler(Handler):
-     def get(self):        
+    def get(self):        
         self.login()
         
         members = db.GqlQuery("SELECT * FROM User")
@@ -105,22 +105,20 @@ class MembersHandler(Handler):
         managers = []
         outreachers = []
         for member in members:
-			if member.team == "Programming":
-				programmers.append(member)
-			if member.team == "Mechanical" or member.team == None:
-				mechies.append(member)
-			if member.team == "Management":
-				managers.append(member)
-			if member.team == "Outreach":
-				outreachers.append(member)
-				
-       
+            if member.team == "Programming":
+                programmers.append(member)
+            elif member.team == "Mechanical" or member.team == None:
+                mechies.append(member)
+            if member.team == "Management":
+                managers.append(member)
+            if member.team == "Outreach":
+                outreachers.append(member)
         
         self.render("members.html", user = self.user, users=members, display="none", programmers = programmers,
 					mechies = mechies, managers = managers, outreachers = outreachers)
         
 
-     def post(self):
+    def post(self):
         self.login()        
         if self.user and CAN_MAKEUSER in self.user.privileges:
             username = self.request.get('username')
@@ -158,6 +156,21 @@ class MembersHandler(Handler):
                 if not v_email: m_email = 'not a valid email.'
                 if v_existing_user > 0: m_user = 'That user already exists.'
                 members = db.GqlQuery("SELECT * FROM User")
+                members = list(members)    
+                members = sorted(members, key=lambda member: member.username.lower())
+                programmers = []
+                mechies = []
+                managers = []
+                outreachers = []
+                for member in members:
+                    if member.team == "Programming":
+                        programmers.append(member)
+                    elif member.team == "Mechanical" or member.team == None:
+                        mechies.append(member)
+                    if member.team == "Management":
+                        managers.append(member)
+                    if member.team == "Outreach":
+                        outreachers.append(member)
                 self.render("members.html", user = self.user,
                             email = m_email,
                             username = m_user,
@@ -166,7 +179,8 @@ class MembersHandler(Handler):
                             mail = email,
                             fullname = fullname,
                             display = "block",
-                            users=members)
+                            users=members, programmers=programmers, mechies=mechies, managers=managers,
+                            outreachers=outreachers)
 
 class NewpostHandler(Handler):
     def render_form(self, subject="", content="", error="",user=None):
