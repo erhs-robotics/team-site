@@ -473,12 +473,6 @@ class ViewPostHandler(Handler):
         
         if resource.isdigit():
             post = Post.get_by_id(int(resource))
-            
-        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")     
-        
-        for post in posts:
-            if post.key == resource:
-                post = post
                         
         if post:
             self.render("viewpost.html", user = self.user, post = post)
