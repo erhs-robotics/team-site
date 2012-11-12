@@ -9,11 +9,11 @@
                 <a class="remove-button" href="#" onclick="confirmDel({{post.key().id()}})"></a>				
             </form>
             <a class="edit-button" href="/editpost/{{post.key().id()}}"></a>
-            <div class="fb-like" data-href="http://facebook.erhs-team53.appspot.com/viewpost/{{post.key().id()}}" 
-                 data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" 
-                 data-font="segoe ui" style="float:right; padding-right: 20px;"></div>
         {% endif %}
     {% endif %}
+    <div class="fb-like" data-href="http://facebook.erhs-team53.appspot.com/viewpost/{{post.key().id()}}" 
+         data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" 
+         data-font="segoe ui" style="float:right; padding-right: 20px;"></div>
     <h2>{{post.subject}}</h2>
     <h3>Created by: {{post.username}}</h3>
     <h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
