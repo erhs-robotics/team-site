@@ -51,6 +51,7 @@ class ContactHandler(Handler):
             newMessage = Message(name=sender_name, email=sender_email, message=sender_message)
             newMessage.put()
         self.render("contact.html", user=self.user, messages = list(messages), posts = list(posts))
+        
 class BlogHandler(Handler):
     def get(self):
         self.login()
@@ -255,16 +256,12 @@ class EditPostHandler(Handler):
         else:
             self.redirect("/login")
         
-
-
 class SponsorsHandler(Handler):
     def get(self):
         self.login()        
 
         self.render("sponsors.html", user = self.user)
 
-
-        
 class ImageHandler(Handler):
     def get(self):
         user = db.get(self.request.get("id"))
@@ -436,7 +433,6 @@ class GalleryHandler(Handler):
     def get(self):
         self.login()
         self.render("gallery.html", user = self.user)
-                  
 
 class UpdatePrivilegesHandler(Handler):
     def post(self):
@@ -471,6 +467,23 @@ class ParentsHandler(Handler):
 		self.login()
 		self.render("parents.html", user = self.user)
         
+class ViewPostHandler(Handler):
+    def get(self, resource):
+        self.login()        
+        
+        if resource.isdigit():
+            post = Post.get_by_id(int(resource))
+            
+        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")     
+        
+        for post in posts:
+            if post.key == resource:
+                post = post
+                        
+        if post:
+            self.render("viewpost.html", user = self.user, post = post)
+        
+        
 app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/blog', BlogHandler),
                                ('/login', LoginHandler),
@@ -489,5 +502,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),
 							   ('/resources', ResourcesHandler),
                                ('/contact', ContactHandler),
-							   ('/parents', ParentsHandler)],
+							   ('/parents', ParentsHandler),
+                               ('/viewpost/(\d+)', ViewPostHandler)],
                                debug=True)

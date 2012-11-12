@@ -17,7 +17,7 @@ import calendar
 def guess_autoescape(template_name):
     if template_name is None or '.' not in template_name:
         return False
-    if template_name == "blog.html" or template_name == "index.html":
+    if template_name == "blog.html" or template_name == "index.html" or template_name == "viewpost.html":
         return False
     ext = template_name.rsplit('.', 1)[1]
     return ext in ('html', 'htm', 'xml')
