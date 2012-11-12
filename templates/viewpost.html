@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-    <section class="content">
-    {{post.subject}}<hr>
-    {{post.content}}
-    </section>
+<div class="blog-entry content">
+    <img style="float:left; width:100px; height:100px; " src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
+    {% if user %}
+        {% if user.key().id() == post.user or user.isadmin %}
+            <form method="POST" action="/deletepost" id="deletepost{{post.key().id()}}">
+                <input type="hidden" name="post" value="{{post.key().id()}}">
+                <a class="remove-button" href="#" onclick="confirmDel({{post.key().id()}})"></a>				
+            </form>
+            <a class="edit-button" href="/editpost/{{post.key().id()}}"></a>
+        {% endif %}
+    {% endif %}
+    <h2>{{post.subject}}</h2>
+    <h3>Created by: {{post.username}}</h3>
+    <h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
+    <br>
+    <p>{{post.content}}</p>
+</div><!-- /.blog-entry -->
 {% endblock %}
