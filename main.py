@@ -23,18 +23,13 @@ privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users", IS_MEMBE
 
 rand_word = ''
 
+### FRONTENDS HANDLERS ###
+
 class MainHandler(Handler):
     def get(self):
         self.login()            
         posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
-        self.render("index.html", user = self.user, post = posts)
-        
- 									#('/about/history', HistoryHandler),
-									#('/about/subteams', SubteamsHandler),
-									#('/about/outreach', OutreachHandler),
-									#('/about/students', StudentsHandler),
-									#('/about/mentors', MentorsHandler),
-									#('/about/website', WebsiteHandler),       
+        self.render("index.html", user = self.user, post = posts)       
         
 class AboutHandler(Handler):
 	def get(self):
@@ -153,6 +148,57 @@ class WebsiteHandler(Handler):
 	def get(self):
 		self.login()
 		self.render("website.html", user=self.user)
+		
+class FirstHandler(Handler):
+    def get(self):
+        self.login()
+        self.render("first.html", user = self.user)
+        
+class VexHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("about.html", user = self.user)
+		
+class MucHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("muc.html", user = self.user)
+		
+class BlogHandler(Handler):
+    def get(self):
+        self.login()
+        
+        
+        #user = User(username="admin", password=make_pw_hash('admin', 'admin1234'), isadmin=True)
+        #user.put()
+        
+        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
+        self.render("blog.html", user = self.user, posts = list(posts))
+        
+class SponsorsHandler(Handler):
+    def get(self):
+        self.login()        
+        self.render("sponsors.html", user = self.user)
+        
+class GalleryHandler(Handler):
+    def get(self):
+        self.login()
+        self.render("gallery.html", user = self.user)
+
+class ResourcesHandler(Handler):
+    def get(self):
+        self.login()        
+        self.render("resources.html", user = self.user)
+        
+class ParentsHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("parents.html", user = self.user)
+
+class DocsHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("docs.html", user = self.user)
 
 class ContactHandler(Handler):
     #def genRandomWord(self):
@@ -176,17 +222,9 @@ class ContactHandler(Handler):
             newMessage = Message(name=sender_name, email=sender_email, message=sender_message)
             newMessage.put()
         self.render("contact.html", user=self.user, messages = list(messages), posts = list(posts))
-class BlogHandler(Handler):
-    def get(self):
-        self.login()
-        
-        
-        #user = User(username="admin", password=make_pw_hash('admin', 'admin1234'), isadmin=True)
-        #user.put()
-        
-        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
-        self.render("blog.html", user = self.user, posts = list(posts))
-        
+       
+### BACKENDS HANDLERS ###
+
 class LoginHandler(Handler):
      def get(self):
         self.login()
@@ -380,16 +418,6 @@ class EditPostHandler(Handler):
         else:
             self.redirect("/login")
         
-
-
-class SponsorsHandler(Handler):
-    def get(self):
-        self.login()        
-
-        self.render("sponsors.html", user = self.user)
-
-
-        
 class ImageHandler(Handler):
     def get(self):
         user = db.get(self.request.get("id"))
@@ -550,18 +578,7 @@ class DeleteUserHandler(Handler):
                     del_user.delete()
                 self.redirect("/members")
         else:
-            self.redirect("/login")
-        
-class FirstHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("first.html", user = self.user)
-        
-class GalleryHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("gallery.html", user = self.user)
-                  
+            self.redirect("/login")               
 
 class UpdatePrivilegesHandler(Handler):
     def post(self):
@@ -584,18 +601,7 @@ class UpdatePrivilegesHandler(Handler):
                     page = "/profile/%s" % user.username
                     
         self.redirect(page)
-
-class ResourcesHandler(Handler):
-    def get(self):
-        self.login()        
-        
-        self.render("resources.html", user = self.user)
-        
-class ParentsHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("parents.html", user = self.user)
-        
+      
 app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/about', AboutHandler),
 									('/about/history', HistoryHandler),
@@ -604,20 +610,26 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 									('/about/students', StudentsHandler),
 									('/about/mentors', MentorsHandler),
 									('/about/website', WebsiteHandler),
+							   ('/first',FirstHandler),
+							   ('/vex', VexHandler),
+							   ('/muc', MucHandler),
                                ('/blog', BlogHandler),
+                               ('/sponsors', SponsorsHandler),
+                               ('/gallery', GalleryHandler),
+                               ('/resources', ResourcesHandler),
+									('/resources/parents', ParentsHandler),
+									('/resources/docs', DocsHandler),
+									('/resources/contact', ContactHandler),
                                ('/login', LoginHandler),
                                ('/logout', LogoutHandler),
                                ('/newpost', NewpostHandler),
                                ('/members', MembersHandler),
-                               ('/sponsors', SponsorsHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
                                ('/image', ImageHandler),
                                ('/profile/(.+)', ProfileHandler),
                                ('/editprofile/(.+)', EditProfileHandler),
                                ('/deleteuser', DeleteUserHandler),
-                               ('/first',FirstHandler),
-                               ('/gallery', GalleryHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),
 							   ('/resources', ResourcesHandler),
                                ('/contact', ContactHandler),
