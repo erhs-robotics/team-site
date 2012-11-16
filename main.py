@@ -23,11 +23,182 @@ privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users", IS_MEMBE
 
 rand_word = ''
 
+### FRONTENDS HANDLERS ###
+
 class MainHandler(Handler):
     def get(self):
         self.login()            
         posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
-        self.render("index.html", user = self.user, post = posts)
+        self.render("index.html", user = self.user, post = posts)       
+        
+class AboutHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("about.html", user=self.user)
+		
+class HistoryHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("history.html", user=self.user)
+		
+class SubteamsHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("subteams.html", user=self.user)
+
+class OutreachHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("outreach.html", user=self.user)
+		
+class StudentsHandler(Handler):
+    def get(self):        
+        self.login()
+        
+        members = db.GqlQuery("SELECT * FROM User")
+        members = list(members)    
+        members = sorted(members, key=lambda member: member.username.lower())
+        programmers = []
+        mechies = []
+        managers = []
+        outreachers = []
+        for member in members:
+            if member.team == "Programming":
+                programmers.append(member)
+            elif member.team == "Mechanical" or member.team == None:
+                mechies.append(member)
+            if member.team == "Management":
+                managers.append(member)
+            if member.team == "Outreach":
+                outreachers.append(member)
+        
+        self.render("students.html", user = self.user, users=members, display="none", programmers = programmers,
+					mechies = mechies, managers = managers, outreachers = outreachers)
+        
+    def post(self):
+        self.login()        
+        if self.user and CAN_MAKEUSER in self.user.privileges:
+            username = self.request.get('username')
+            password = self.request.get('password')
+            verify = self.request.get('verify')
+            email = self.request.get('email')            
+            fullname = self.request.get('fullname')          
+            
+            v_user = match(USER, username)
+            v_pass = match(PASS, password)
+            v_verify = None
+            if password == verify:
+                v_verify = 1       
+
+            v_email = 1
+            if email: v_email = match(EMAIL, email)
+
+            v_existing_user = db.GqlQuery('SELECT * FROM User WHERE username=:1', username)
+            v_existing_user = v_existing_user.count()
+
+            if v_user and v_pass and v_verify and v_email and v_existing_user < 1:
+                password = make_pw_hash(username, password)
+                newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[IS_MEMBER])
+                if fullname: newuser.fullname = fullname
+                newuser.put()                
+                self.redirect('/about/students')
+            else:
+                m_user = ''
+                m_pass = ''
+                m_verify = ''
+                m_email = ''
+                if not v_user: m_user = 'not a valid username.'            
+                if not v_pass: m_pass = 'not a valid password.'
+                if not v_verify: m_verify = 'passwords do not match.'
+                if not v_email: m_email = 'not a valid email.'
+                if v_existing_user > 0: m_user = 'That user already exists.'
+                members = db.GqlQuery("SELECT * FROM User")
+                members = list(members)    
+                members = sorted(members, key=lambda member: member.username.lower())
+                programmers = []
+                mechies = []
+                managers = []
+                outreachers = []
+                for member in members:
+                    if member.team == "Programming":
+                        programmers.append(member)
+                    elif member.team == "Mechanical" or member.team == None:
+                        mechies.append(member)
+                    if member.team == "Management":
+                        managers.append(member)
+                    if member.team == "Outreach":
+                        outreachers.append(member)
+                self.render("students.html", user = self.user,
+                            email = m_email,
+                            username = m_user,
+                            password =  m_pass,
+                            verify = m_verify,
+                            mail = email,
+                            fullname = fullname,
+                            display = "block",
+                            users=members, programmers=programmers, mechies=mechies, managers=managers,
+                            outreachers=outreachers)
+
+class MentorsHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("mentors.html", user=self.user)
+		
+class WebsiteHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("website.html", user=self.user)
+		
+class FirstHandler(Handler):
+    def get(self):
+        self.login()
+        self.render("first.html", user = self.user)
+        
+class VexHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("vex.html", user = self.user)
+		
+class MucHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("muc.html", user = self.user)
+		
+class BlogHandler(Handler):
+    def get(self):
+        self.login()
+        
+        
+        #user = User(username="admin", password=make_pw_hash('admin', 'admin1234'), isadmin=True)
+        #user.put()
+        
+        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
+        self.render("blog.html", user = self.user, posts = list(posts))
+        
+class SponsorsHandler(Handler):
+    def get(self):
+        self.login()        
+        self.render("sponsors.html", user = self.user)
+        
+class GalleryHandler(Handler):
+    def get(self):
+        self.login()
+        self.render("gallery.html", user = self.user)
+
+class ResourcesHandler(Handler):
+    def get(self):
+        self.login()        
+        self.render("resources.html", user = self.user)
+        
+class ParentsHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("parents.html", user = self.user)
+
+class DocsHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("docs.html", user = self.user)
 
 class ContactHandler(Handler):
     #def genRandomWord(self):
@@ -51,18 +222,9 @@ class ContactHandler(Handler):
             newMessage = Message(name=sender_name, email=sender_email, message=sender_message)
             newMessage.put()
         self.render("contact.html", user=self.user, messages = list(messages), posts = list(posts))
-        
-class BlogHandler(Handler):
-    def get(self):
-        self.login()
-        
-        
-        #user = User(username="admin", password=make_pw_hash('admin', 'admin1234'), isadmin=True)
-        #user.put()
-        
-        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
-        self.render("blog.html", user = self.user, posts = list(posts))
-        
+       
+### BACKENDS HANDLERS ###
+
 class LoginHandler(Handler):
      def get(self):
         self.login()
@@ -256,12 +418,6 @@ class EditPostHandler(Handler):
         else:
             self.redirect("/login")
         
-class SponsorsHandler(Handler):
-    def get(self):
-        self.login()        
-
-        self.render("sponsors.html", user = self.user)
-
 class ImageHandler(Handler):
     def get(self):
         user = db.get(self.request.get("id"))
@@ -423,16 +579,6 @@ class DeleteUserHandler(Handler):
                 self.redirect("/members")
         else:
             self.redirect("/login")
-        
-class FirstHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("first.html", user = self.user)
-        
-class GalleryHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("gallery.html", user = self.user)
 
 class UpdatePrivilegesHandler(Handler):
     def post(self):
@@ -455,17 +601,6 @@ class UpdatePrivilegesHandler(Handler):
                     page = "/profile/%s" % user.username
                     
         self.redirect(page)
-
-class ResourcesHandler(Handler):
-    def get(self):
-        self.login()        
-        
-        self.render("resources.html", user = self.user)
-        
-class ParentsHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("parents.html", user = self.user)
         
 class ViewPostHandler(Handler):
     def get(self, resource):
@@ -476,23 +611,35 @@ class ViewPostHandler(Handler):
                         
         if post:
             self.render("viewpost.html", user = self.user, post = post)
-        
-        
+
 app = webapp2.WSGIApplication([('/', MainHandler),
+							   ('/about', AboutHandler),
+									('/about/history', HistoryHandler),
+									('/about/subteams', SubteamsHandler),
+									('/about/outreach', OutreachHandler),
+									('/about/members', MembersHandler),
+									('/about/mentors', MentorsHandler),
+									('/about/website', WebsiteHandler),
+							   ('/first',FirstHandler),
+							   ('/vex', VexHandler),
+							   ('/muc', MucHandler),
                                ('/blog', BlogHandler),
+                               ('/sponsors', SponsorsHandler),
+                               ('/gallery', GalleryHandler),
+                               ('/resources', ResourcesHandler),
+									('/resources/parents', ParentsHandler),
+									('/resources/docs', DocsHandler),
+									('/resources/contact', ContactHandler),
                                ('/login', LoginHandler),
                                ('/logout', LogoutHandler),
                                ('/newpost', NewpostHandler),
                                ('/members', MembersHandler),
-                               ('/sponsors', SponsorsHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
                                ('/image', ImageHandler),
                                ('/profile/(.+)', ProfileHandler),
                                ('/editprofile/(.+)', EditProfileHandler),
                                ('/deleteuser', DeleteUserHandler),
-                               ('/first',FirstHandler),
-                               ('/gallery', GalleryHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),
 							   ('/resources', ResourcesHandler),
                                ('/contact', ContactHandler),
