@@ -157,7 +157,7 @@ class FirstHandler(Handler):
 class VexHandler(Handler):
 	def get(self):
 		self.login()
-		self.render("about.html", user = self.user)
+		self.render("vex.html", user = self.user)
 		
 class MucHandler(Handler):
 	def get(self):
