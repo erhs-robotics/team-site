@@ -11,7 +11,7 @@
 	</script>
 {% endblock %}	
 {% block content %}	
-	<section class="profile content" id="profile">
+	<section class="content profile">
 		{% if user.isadmin %}
 			<form method="POST" action="/deleteuser" id="deleteuser{{profile.key().id()}}">
 				<input type="hidden" name="user" value="{{profile.key().id()}}">

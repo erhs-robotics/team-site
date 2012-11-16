@@ -1,11 +1,9 @@
-#profile {
-	width: 100%;
-	padding: 20px 0 20px 0;
+profile {
 	overflow: hidden;
 }
 #profile-pic-and-priveleges-container {
 	float: left;
-	margin: 0 20px;
+	margin: 0 20px 0 5px;
 	display: block;
 	width: 150px;
 }
@@ -42,4 +40,4 @@
 	display: none;
 }
 #profile strong {
-i	font-weight: bold;}
+	font-weight: bold;}
