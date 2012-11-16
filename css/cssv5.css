@@ -78,15 +78,14 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 }
 
 #about { 
-	background: #fff;	
+	background: #fff;
 		background: linear-gradient(top, #fff 0%, #bbb 100%);
-		background: -webkit-linear-gradient(top, #69f 0%, #36a 100%);
-	background: #69f;
+		background: -webkit-linear-gradient(top, #dff 0%, #69f 100%);
 	overflow: hidden; 
 	padding: 20px; 
 	text-align: left;
 	border-top: 1px solid black;
-	opacity: .9;
+	opacity: 1;
 	margin-bottom: .5em;
 }
 #about p { float: right;}
@@ -206,7 +205,7 @@ color: #f90;}
 .menu li:first-child a { border-left: none; }
 .menu li:last-child a{ border-right: none; }
  
-.menu li:hover > a { color: #8fde62; }
+.menu li:hover > a { color: #69f; }
 
 .menu ul {
     position: absolute;
