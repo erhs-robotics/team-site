@@ -11,57 +11,70 @@
 		<!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<!--[if IE]>
-			<script type="text/css">
-				background:  #69f;
-			</script>
-		<![endif]-->
 		{% endblock %}
 	</head>
 	<body>
-		<div id="container">
-			{% block banner %}
-			<header id="banner">
-				<aside id="login" style="text-align: right; background: none;">
-					{% if user %}
-						{% if user.fullname %}
-							Logged in as: {{user.fullname}} (<a href="/profile/{{user.username}}">{{user.username}}</a>)
-						{% else %}
-							Logged in as: <a href="/profile/{{user.username}}">{{user.username}}</a>
-						{% endif %}
-						| <a href="/logout">Logout</a>
+		{% block banner %}
+		<header id="banner" class="center">
+			<aside id="login" style="text-align: right; background: none;">
+				{% if user %}
+					{% if user.fullname %}
+						Logged in as: {{user.fullname}} (<a href="/profile/{{user.username}}">{{user.username}}</a>)
 					{% else %}
-						<a href="/login">Login</a>
+						Logged in as: <a href="/profile/{{user.username}}">{{user.username}}</a>
 					{% endif %}
-				</aside><!-- /#login -->
-				<a href="/"><img id="banner-logo" src="../images/logo/banner3.png" alt="ERHS Robotics Banner"></a>
-			</header><!-- /#banner -->
-			{% endblock %}			
-			<nav id="top-navigation">
-				<ul class="menu">
-					<li><a href="/">Home</a></li>
-					<li><a href="/blog">Blog</a></li>
-					<li><a href="/sponsors">Sponsors</a></li>
-					<li><a href="/members">Members</a></li>
-					<li><a href="/first">FIRST&#174;</a></li>
-					<li><a href="/gallery">Gallery</a></li>
-					<li><a href="/resources">Resources</a></li>
-					<li><a href="/parents">Parents</a></li>
-				</ul><!-- /.menu -->
-			</nav><!-- /#top-navigation -->
-			{% block content %}
-			{% endblock %}
-			<footer class="content" id="about">
-				<span class="primary">
-					<strong>Eleanor Roosevelt Robotics</strong>
-				</span>
-				<span class="bio">
-					The Eleanor Roosevelt Robotics website offers 
-					information to team members, mentors, parents, and the public.  
-					The website is built and maintained by student members of the team.
-				</span>
-				<span class="copyright">(c) 2012 | Eleanor Roosevelt High School Robotics</span>
-			</footer><!-- /.content #about -->	
-		</div><!-- /#container -->
+					| <a href="/logout">Logout</a>
+				{% else %}
+					<a href="/login">Login</a>
+				{% endif %}
+			</aside><!-- /#login -->
+			<a href="/"><img id="banner-logo" src="../images/logo/banner3.png" alt="ERHS Robotics Banner"></a>
+		</header><!-- /#banner -->
+		{% endblock %}			
+		<nav>
+			<ul class="menu">
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">About Us</a>
+					<ul>
+						<li><a href="/about/history">Team History</a></li>
+						<li><a href="/about/subteams">Subteams</a></li>
+						<li><a href="/about/outreach">Outreach</a></li>
+						<li><a href="/about/students">Students</a></li>
+						<li><a href="/about/mentors">Mentors</a></li>
+						<li><a href="/about/website">Website</a></li>
+					</ul>
+				</li>
+				<li><a href="/competition">Competitions</a>
+					<ul>
+						<li><a href="/about/first">FIRST&#174;</a></li>
+						<li><a href="/about/vex">VEX&#174;</a></li>
+						<li><a href="/about/muc">MUC&#174;</a></li>
+					</ul>
+				<li/>
+				<li><a href="/blog">Blog</a></li>
+				<li><a href="/sponsors">Sponsors</a></li>
+				<li><a href="/gallery">Gallery</a></li>
+				<li><a href="/resources">Resources</a>
+					<ul>
+						<li><a href="/resources/parents">Parents</a></li>
+						<li><a href="/resources/documents">Helpful Docs</a></li>
+						<li><a href="/resouces/contact">Contact Us</a></li>
+					</ul>
+				</li>
+			</ul><!-- /.menu -->
+		</nav><!-- /#top-navigation -->
+		{% block content %}
+		{% endblock %}
+		<footer class="content" id="about">
+			<span class="primary">
+				<strong>Eleanor Roosevelt Robotics</strong>
+			</span>
+			<span class="bio">
+				The Eleanor Roosevelt Robotics website offers 
+				information to team members, mentors, parents, and the public.  
+				The website is built and maintained by student members of the team.
+			</span>
+			<span class="copyright">(c) 2012 | Eleanor Roosevelt High School Robotics</span>
+		</footer><!-- /.content #about -->	
 	</body>
 </html>
