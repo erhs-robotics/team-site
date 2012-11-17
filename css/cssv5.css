@@ -100,6 +100,8 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	background: #fff;
 		background: linear-gradient(top, #fff 0%, #bbb 100%);
 		background: -webkit-linear-gradient(top, #dff 0%, #69f 100%);
+		background: -moz-linear-gradient(top, #dff 0%, #69f 100%);
+		background: -o-linear-gradient(top, #dff 0%, #69f 100%);
 	overflow: hidden; 
 	padding: 20px; 
 	text-align: left;
