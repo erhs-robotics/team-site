@@ -32,9 +32,11 @@ h2, h3, h4, h5, h6 {
 
 a:link, a:visited { 
 	color: #00f;
-	text-decoration: underline; } 
+	text-decoration: underline;
+}
 a:hover, a:active { 
-	color: #0f0;}  
+	color: #006;
+}  
 
 p { margin-bottom: .2em;}
 
