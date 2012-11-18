@@ -11,9 +11,10 @@
             <a class="edit-button" href="/editpost/{{post.key().id()}}"></a>
         {% endif %}
     {% endif %}
-    <div class="fb-like" data-href="http://facebook.erhs-team53.appspot.com/viewpost/{{post.key().id()}}" 
+    <!--<div class="fb-like" data-href="http://www.erhsroboticsclub.org/viewpost/{{post.key().id()}}" 
          data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" 
-         data-font="segoe ui" style="float:right; padding-right: 20px;"></div>
+         data-font="segoe ui" style="float:right; padding-right: 20px;"></div>-->
+    <fb:like href="http://3-4-0.erhs-roboticsclub.appspot.com/viewpost/{{post.key().id()}}"></fb:like>
     <h2>{{post.subject}}</h2>
     <h3>Created by: {{post.username}}</h3>
     <h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
