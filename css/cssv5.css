@@ -23,7 +23,7 @@ h2 {font-size: 26px; color: #00f;}
 h3 {font-size: 24px; color: #00f}
 h4 {font-size: 20px;}
 h5 {font-size: 16px;}
-h6 {font-size: 14px;}
+h6 {font-size: 14px; color: #00f; text-align: center; font-style: italic;}
 h2, h3, h4, h5, h6 { 
 	font-weight: 400; 
 	line-height: 1;
@@ -74,7 +74,8 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	margin: 0 auto;
 	overflow: auto;
 	padding: 20px 20px 5px 20px;
-	background-color: #fff;
+	background-color: #fcfcfc;
+	overflow: hidden;
 }
 .center {
 	position: relative;
@@ -83,16 +84,31 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	overflow: auto;
 	padding: 20px 20px 5px 20px;
 	background-color: none;
+	overflow: hidden;
 }
 .entry { 
 	padding: .2em 0;
 }
+.divide {
+	position: relative;
+	width: 1000px;
+	margin: 0 auto;
+	height: 4px;
+	background-color: #666;
+	/*border-top: 2px solid blue;
+	border-bottom: 2px solid blue;*/
+}
+
+#welcome {
+	background-color: #2a2a2a;
+	color: #ccc;
+}
+#welcome h2, #welcome h3 { color: #fff; margin-bottom: .5em;}
 
 #welcome figure, #welcome figure img, #welcome figure iframe { 
-	border: 2px solid #ddd;
 	float: right; 
-	margin-left: 50px;
-	width: 349px; 
+	margin-left: 10px;
+	width: 320px; 
 	height: 232px;
 }
 
@@ -278,6 +294,40 @@ color: #f90;}
 }
  
 .menu ul li:last-child a { border: none; }
+
+.blogfeed {
+	float: right;
+	width: 304px;
+	height: 500px;
+	overflow: auto;
+	overflow-x: hidden;
+	padding: 0 5px;
+	border: 1px solid black;
+	margin-left: 5px;
+}
+.maincontent {
+	float: left;
+	width: 624px;
+	height: 500px;
+	padding: 0 5px;
+	margin-right: 5px;
+}
+.maincontent .top {
+	height: 244px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid black;
+}
+.maincontent .bottom {
+	height: 245px;
+	padding-top: 5px;
+}
+.maincontent .top img, .maincontent .bottom img {
+	width: 270px;
+	display: inline-block;
+	float: left;
+	padding-left: 177px;
+	margin-right: 177px;
+}
 
 nav {
 	position: relative;
