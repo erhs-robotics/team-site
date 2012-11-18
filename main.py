@@ -144,6 +144,11 @@ class MentorsHandler(Handler):
 		self.login()
 		self.render("mentors.html", user=self.user)
 		
+class CompetitionsHandler(Handler):
+	def get(self):
+		self.login()
+		self.render("competitions.html", user=self.user)
+		
 class WebsiteHandler(Handler):
 	def get(self):
 		self.login()
@@ -620,9 +625,10 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 									('/about/members', MembersHandler),
 									('/about/mentors', MentorsHandler),
 									('/about/website', WebsiteHandler),
-							   ('/first',FirstHandler),
-							   ('/vex', VexHandler),
-							   ('/muc', MucHandler),
+							   ('/competitions', CompetitionsHandler),
+								   ('/first',FirstHandler),
+								   ('/vex', VexHandler),
+								   ('/muc', MucHandler),
                                ('/blog', BlogHandler),
                                ('/sponsors', SponsorsHandler),
                                ('/gallery', GalleryHandler),
