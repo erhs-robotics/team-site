@@ -4,34 +4,20 @@
 	<link rel="stylesheet" href="../css/sponsors.css">
 {% endblock %}
 {% block content %}
-	<section class="content" id="content">
-	<ol>
-		<li><article class="entry">
-			<h2>Sponsorships</h2>
-			<p>Running a Robotics Club demands large amounts of supplies and monetary
-				 support.  Our club receives the bulk of its funding from generous corporate
-				 sponsors, many of which are part of the STEM community.</p>
-		</article></li>
-		<li><article class="entry">
-			<h2>Proposal Forms</h2>
-			<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
-				 Robotics Club?  If so, please take your time to download and review
-				 the following documents.  Your time and donations are much appreciated.
-				<ul>
-	        <li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
-	        <li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
-	        <li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
-        </ul></p>
-		</article></li>
-		<li><article class="entry">
-			<h2>Thank You to Our Sponsors!</h2>
-			<p>We would like to thank all of our current Sponsors for their generous
-				 donations.  The Robotics Club here at Eleanor Roosevelt would not be 
-				 possible without you.</p>
-		</article></li>
-	</ol>
-	</section>
-	<section class="content" id="sponsors">
+<section class="content">
+	<div class="sponsors">
+		<div class="sponsor-level" id="platinum-sponsors">
+			<h2>Platinum Sponsors - Greater than $2,500 Donation</h2>
+		</div>
+		<div class="sponsor-level" id="gold-sponsors">
+			<h2>Gold Sponsors - $1,000 to $2,500 Donation</h2>
+		</div>
+		<div class="sponsor-level" id="silver-sponsors">
+			<h2>Silver Sponsors - $500 to $1000 Donation</h2>
+		</div>
+		<div class="sponsor-level" id="bronze-sponsors">
+			<h2>Bronze Sponsors - Up to $500 Donation</h2>
+		</div>
 		<div id="sponsor-block"><fieldset>			
 				<legend><a href="http://www.aliodesigns.com/">Alio Designs</a></legend>
 				<img src="/images/sponsors/alio-designs.jpg">
@@ -41,13 +27,13 @@
 				<legend><a href="http://www.mdspace.org/msbr_content/welcome.htm">MSBR</a></legend>
 				<img src="/images/sponsors/msbr.jpg">
 				<font>The Maryland Space Business Roundtable encourages the growth 
- 							and development of aerospace-related business in Maryland.</font>
+					  and development of aerospace-related business in Maryland.</font>
 		</fieldset></div>	
 		<div id="sponsor-block"><fieldset>			
 				<legend><a href="http://www.scigrp.com/">SCI Group</a></legend>
 				<img src="/images/sponsors/sci-group.jpg">
 				<font>Provides strategic advisory services, web solutions, learning solutions, 
-							and application development and maintenance</font>
+					  and application development and maintenance</font>
 		</fieldset></div>	
 		<div id="sponsor-block"><fieldset>
 			<legend><a href="http://www.meitechinc.com/">MEI Technologies</a></legend>
@@ -56,5 +42,37 @@
 				  systems design and development, applied engineering, cyber, and research 
 				  and development.</font>			
 		</fieldset></div>
-	</section>
+	</div>
+	<div class="sponsor-info">
+		<div class="sponsor-thanks">
+			<h2>Thank you to our sponsors!</h2>
+			<p>Running a robotics program such as ours would not be
+			   possible without the generous donations received from
+			   you!</p>
+		</div>
+		<div class="sponsor-appeal">
+			<article class="entry">
+				<h2>Sponsorships</h2>
+				<p>Running a Robotics Club demands large amounts of supplies and monetary
+					 support.  Our club receives the bulk of its funding from generous corporate
+					 sponsors, many of which are part of the STEM community.</p>
+			</article>
+			<article class="entry">
+				<h2>Proposal Forms</h2>
+				<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
+					 Robotics Club?  If so, please take your time to download and review
+					 the following documents.  Your time and donations are much appreciated.
+				<ul>
+					<li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
+					<li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
+					<li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
+				</ul>
+					If you have any questions, please contact our club president Vishnu Rachakonda at
+					president@erhsroboticsclub.org
+				</p>
+			</article>
+		</div>
+	</div>
+</section>
+
 {% endblock %}
