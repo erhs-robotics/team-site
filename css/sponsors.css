@@ -1,8 +1,3 @@
-#sponsors { 
-overflow: hidden;
-padding: 20px;
-}
-
 .sponsors {
 	float: left;
 	width: 630px;
@@ -12,7 +7,12 @@ padding: 20px;
 .sponsors .sponsor-level {
 	width: 100%;
 	height: 100px;
+	-webkit-transition: .1s ease;
 }
+
+.sponsors label.sponsor-name { color: #00f; font-size: 26px;}
+.sponsors .toggle {display: none;}
+.sponsors .toggle:checked+div {height: auto;}
 
 .sponsor-info {
 	float: right;
@@ -29,24 +29,8 @@ padding: 20px;
 
 }
 
-.maincontent .top {
-	height: 244px;
-	padding-bottom: 5px;
-	border-bottom: 1px solid black;
-}
-.maincontent .bottom {
-	height: 245px;
-	padding-top: 5px;
-}
-.maincontent .top img, .maincontent .bottom img {
-	width: 270px;
-	display: inline-block;
-	float: left;
-	padding-left: 177px;
-	margin-right: 177px;
-}
 
-#sponsor-block {
+.sponsor-block {
 display: inline-block; 
 float:left; 
 width: 300px;
@@ -55,15 +39,15 @@ padding:3px;
 padding-bottom: 50px;
 }
 
-#sponsor-block fieldset {
+.sponsor-block fieldset {
 border-color: blue;
 }
-#sponsor-block fieldset img {
+.sponsor-block fieldset img {
 float: left;
 width: 58%;
 height: 100%;
 }
-#sponsor-block fieldset font {
+.sponsor-block fieldset font {
 float: right;
 display: block;
 font-size: 68%;

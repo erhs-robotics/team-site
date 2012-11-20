@@ -6,42 +6,54 @@
 {% block content %}
 <section class="content">
 	<div class="sponsors">
-		<div class="sponsor-level" id="platinum-sponsors">
-			<h2>Platinum Sponsors - Greater than $2,500 Donation</h2>
-		</div>
-		<div class="sponsor-level" id="gold-sponsors">
-			<h2>Gold Sponsors - $1,000 to $2,500 Donation</h2>
-		</div>
-		<div class="sponsor-level" id="silver-sponsors">
-			<h2>Silver Sponsors - $500 to $1000 Donation</h2>
-		</div>
-		<div class="sponsor-level" id="bronze-sponsors">
-			<h2>Bronze Sponsors - Up to $500 Donation</h2>
-		</div>
-		<div id="sponsor-block"><fieldset>			
+		<label for="platinum-sponsors-check" class="sponsor-name">Platinum Sponsors - Greater than $2,500 Donation</label>
+			<input checked="checked" id="platinum-sponsors-check" type="checkbox" class="toggle"/>
+			<div class="sponsor-level" id="platinum-sponsors">
+				This is where the platinum sponsor stuff will be located
+			</div>
+		<label for="gold-sponsors-check" class="sponsor-name">Gold Sponsors - $1,000 to $2,500 Donation</label>
+			<input checked="checked" id="gold-sponsors-check" type="checkbox" class="toggle" />
+			<div class="sponsor-level" id="gold-sponsors">
+				This is where the gold sponsor stuff will be located
+			</div>
+		<label for="silver-sponsors-check" class="sponsor-name">Silver Sponsors - $500 to $1000 Donation</label>
+			<input checked="checked" id="silver-sponsors-check" type="checkbox" class="toggle" />
+			<div class="sponsor-level" id="silver-sponsors">
+				This is where the silver sponsor stuff will be located
+			</div>
+		<label for="bronze-sponsor-check" class="sponsor-name">Bronze Sponsors - Up to $500 Donation</label>
+			<input checked="checked" id="bronze-sponsor-check" type="checkbox" class="toggle" />
+			<div class="sponsor-level" id="bronze-sponsors">
+				This is where the bronze sponsor stuff will be located
+			</div>
+		<div class="sponsor-block"><fieldset>			
 				<legend><a href="http://www.aliodesigns.com/">Alio Designs</a></legend>
 				<img src="/images/sponsors/alio-designs.jpg">
 				<font>Solve Design Challenges Before They Become a Problem</font>
 		</fieldset></div>	
-		<div id="sponsor-block"><fieldset>			
+		<div class="sponsor-block"><fieldset>			
 				<legend><a href="http://www.mdspace.org/msbr_content/welcome.htm">MSBR</a></legend>
 				<img src="/images/sponsors/msbr.jpg">
 				<font>The Maryland Space Business Roundtable encourages the growth 
 					  and development of aerospace-related business in Maryland.</font>
 		</fieldset></div>	
-		<div id="sponsor-block"><fieldset>			
+		<div class="sponsor-block"><fieldset>			
 				<legend><a href="http://www.scigrp.com/">SCI Group</a></legend>
 				<img src="/images/sponsors/sci-group.jpg">
 				<font>Provides strategic advisory services, web solutions, learning solutions, 
 					  and application development and maintenance</font>
 		</fieldset></div>	
-		<div id="sponsor-block"><fieldset>
+		<div class="sponsor-block"><fieldset>
 			<legend><a href="http://www.meitechinc.com/">MEI Technologies</a></legend>
 			<img src="/images/sponsors/meit.jpg">
 			<font>MEI Technologies offers innovative, best-value services and solutions in 
 				  systems design and development, applied engineering, cyber, and research 
 				  and development.</font>			
 		</fieldset></div>
+	<label for="mytoggle" class="toggle">Toggle Div visibility...</label>
+	<input id="mytoggle" type="checkbox" class="toggle" />
+	<div>Content here</div>
+	
 	</div>
 	<div class="sponsor-info">
 		<div class="sponsor-thanks">

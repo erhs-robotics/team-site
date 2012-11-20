@@ -88,6 +88,7 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 }
 .entry { 
 	padding: .2em 0;
+	overflow: auto;
 }
 .divide {
 	position: relative;
@@ -97,6 +98,14 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	background-color: #666;
 	/*border-top: 2px solid blue;
 	border-bottom: 2px solid blue;*/
+}
+img.left, iframe.left {
+	float: left;
+	padding-right: 5px;
+}
+img.right, iframe.right {
+	float: right;
+	padding-left: 5px;
 }
 
 #welcome {
