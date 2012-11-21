@@ -57,7 +57,7 @@ p { margin-bottom: .2em;}
 .center {
 	margin: 0 auto;
 	width: 100%;
-	background-color: none;
+	background: none;
 }
 .entry { 
 	padding: .2em 0;
