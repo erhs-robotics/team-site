@@ -46,28 +46,15 @@ p { margin-bottom: .2em;}
 /* HTML5 tags */ 
 header, section, footer, aside, nav, article, figure, login{ display: block;} 
 /*section, footer, aside, article, figure, div { background: white;}*/
-/*
+
 #banner {
-    overflow: auto;
+	overflow: auto;
+    overflow-x: hidden;
+    padding-bottom: 10px;
 }
-#banner img, #banner a img {
-    display: inline-block;
-    width: 648px;
-    padding-right: 0px;
+#banner .login {
+	padding-top: 30px;
 }
-#banner .login-and-fb {
-    width: 300px;
-    float: right;
-    overflow: hidden;
-}
-#banner .login-and-fb #login, #banner .login-and-fb .fb-like, #banner .login-and-fb h5 {
-    display: inline-block;
-    float: left;
-    padding: 25px 5px 0 0;
-    margin: 0;
-	line-height: 1;
-}
-#banner .login-and-fb #login { width: 302px; }*/
 .content {
 	position: relative;
 	overflow: auto;

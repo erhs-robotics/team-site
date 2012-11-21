@@ -39,10 +39,10 @@
 			  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));</script>
 				{% block banner %}
-				<header>
+				<header id="banner">
 					<a href="/"><img class="grid_8" src="../images/logo/banner3.png" alt="ERHS Robotics Banner"></a>
 					<aside class="grid_4">
-						<aside id="login">
+						<aside class="login">
 							{% if user %}
 								{% if user.fullname %}
 									{{user.fullname}} <a href="/profile/{{user.username}}">{{user.username}}</a>
@@ -60,6 +60,7 @@
 							 data-font="segoe ui"></div>
 					</aside>
 				</header><!-- /#banner -->
+				<div class="clear"></div>
 				{% endblock %}					
 			<nav>
 				<ul class="menu">
