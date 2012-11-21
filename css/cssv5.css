@@ -127,6 +127,7 @@ img.right, iframe.right {
 		background: -webkit-linear-gradient(top, #dff 0%, #69f 100%);
 		background: -moz-linear-gradient(top, #dff 0%, #69f 100%);
 		background: -o-linear-gradient(top, #dff 0%, #69f 100%);
+		background: -ms-linear-gradient(top, #dff 0%, #69f 100%);
 	overflow: hidden; 
 	padding: 20px; 
 	text-align: left;
