@@ -5,11 +5,23 @@
 {% endblock %}
 {% block content %}
 <aside class="content" id="welcome">	
-	<figure>
+	<span class="grid_8">
+		<h2>Eleanor Roosevelt High School</h2>
+		<h3>Robotics Club</h3>
+		<p>The Eleanor Roosevelt Robotics Club is a group
+		of about 50 bright students who come together to think of, design,
+		and develop creative solutions to a wide variety of challenges in
+		the Science, Technology, Engineering, and Mathematics (STEM)
+		Field.  We foster our students' interests in the STEM field through encouraging
+		their use of problem-solving and critical thinking skills in a multitude of
+		challenging ways, mainly through competing in various local robotics
+		competitions</p>
+	</span>
+	<figure class="grid_4">
 		<script type="text/javascript">  
 			var mygallery=new fadeSlideShow({   
 			 wrapperid: "photo-stream",  
-			 dimensions: [/*349*/ 320, 232], //width x height
+			 dimensions: [/*349*/ 300, 232], //width x height
 						imagearray:  [     
 							["../images/image-1.jpg"],    
 							["../images/image-2.jpg"], 
@@ -27,37 +39,11 @@
 		</script>
 		<div id="photo-stream"></div>
 	</figure>
-	<h2>Eleanor Roosevelt High School</h2>
-	<h3>Robotics Club</h3>
-	<p>The Eleanor Roosevelt Robotics Club is a group
-	of about 50 bright students who come together to think of, design,
-	and develop creative solutions to a wide variety of challenges in
-	the Science, Technology, Engineering, and Mathematics (STEM)
-	Field.  We foster our students' interests in the STEM field through encouraging
-	their use of problem-solving and critical thinking skills in a multitude of
-	challenging ways, mainly through competing in various local robotics
-	competitions</p>
 </aside><!-- /#welcome -->
+<div class="clear"></div>
 <div class="divide"></div>
 <section class="content">
-	<aside class="blogfeed">
-		<h2>Recent Announcements</h2>
-		<br>
-		{% if post|count >= 1 %}
-			<h3>{{post[0].subject}}</h3>
-			<div class="blog">{{post[0].content}}</div><hr>
-		{% endif %}
-		{% if post|count >= 2 %}
-			<h3>{{post[1].subject}}</h3>
-			<div class="blog">{{post[1].content}}</div><hr>
-		{% endif %}
-		{% if post|count >= 3 %}
-			<h3>{{post[2].subject}}</h3>
-			<div class="blog">{{post[2].content}}</div><hr>
-		{% endif %}
-		<p>For more announcements, see the <a href="/blog">blog</a> page.</p>
-	</aside>
-	<section class="maincontent">
+	<section class="maincontent grid_8">
 		<article class="top">
 			<img src="/images/first.jpg">
 			<h6>FRC Team 53 - "Area 53"</h6>
@@ -79,10 +65,28 @@
 			<a href="/vex">here</a>.</p>
 		</article>
 	</section>
-	<div class="center" id="calendar">
+	<aside class="blogfeed grid_4">
+		<h2>Recent Announcements</h2>
+		<br>
+		{% if post|count >= 1 %}
+			<h3>{{post[0].subject}}</h3>
+			<div class="blog">{{post[0].content}}</div><hr>
+		{% endif %}
+		{% if post|count >= 2 %}
+			<h3>{{post[1].subject}}</h3>
+			<div class="blog">{{post[1].content}}</div><hr>
+		{% endif %}
+		{% if post|count >= 3 %}
+			<h3>{{post[2].subject}}</h3>
+			<div class="blog">{{post[2].content}}</div><hr>
+		{% endif %}
+		<p>For more announcements, see the <a href="/blog">blog</a> page.</p>
+	</aside>
+	<div class="clear"></div>
+	<div class="center grid_12" id="calendar">
 		<h2>Team Schedule/Calendar</h2>
 		<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;height=360&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" 
-				style=" border-width:0; overflow-y: hidden;" width="920" height="500">
+				style=" border-width:0; overflow-y: hidden;" width="100%" height="500">
 		</iframe>
 	</div>
 </section>

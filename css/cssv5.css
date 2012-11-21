@@ -10,7 +10,7 @@
 @import url("../css/reset.css");
 
 body {
-	background-color: #69f;
+	background-color: #9cf;
 	color: #000;
 	font-size: 100%;
 	line-height: 1;
@@ -46,7 +46,7 @@ p { margin-bottom: .2em;}
 /* HTML5 tags */ 
 header, section, footer, aside, nav, article, figure, login{ display: block;} 
 /*section, footer, aside, article, figure, div { background: white;}*/
-
+/*
 #banner {
     overflow: auto;
 }
@@ -67,32 +67,21 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
     margin: 0;
 	line-height: 1;
 }
-#banner .login-and-fb #login { width: 302px; }
+#banner .login-and-fb #login { width: 302px; }*/
 .content {
 	position: relative;
-	width: 960px;
-	margin: 0 auto;
 	overflow: auto;
-	padding: 20px 20px 5px 20px;
 	background-color: #fcfcfc;
-	overflow: hidden;
-}
-.center {
-	position: relative;
-	width: 960px;
-	margin: 0 auto;
-	overflow: auto;
-	padding: 20px 20px 5px 20px;
-	background: none;
-	overflow: hidden;
+	padding: 10px 0 10px 0;
 }
 .entry { 
 	padding: .2em 0;
+	margin: 0 10px 0 10px;
 	overflow: auto;
 }
 .divide {
 	position: relative;
-	width: 1000px;
+	width: 960px;
 	margin: 0 auto;
 	height: 4px;
 	background-color: #666;
@@ -114,25 +103,15 @@ img.right, iframe.right {
 }
 #welcome h2, #welcome h3 { color: #fff; margin-bottom: .5em;}
 
-#welcome figure, #welcome figure img, #welcome figure iframe { 
-	float: right; 
-	margin-left: 10px;
-	width: 320px; 
-	height: 232px;
-}
-
 #about { 
 	background: #fff;
-		background: linear-gradient(top, #fff 0%, #bbb 100%);
-		background: -webkit-linear-gradient(top, #dff 0%, #69f 100%);
-		background: -moz-linear-gradient(top, #dff 0%, #69f 100%);
-		background: -o-linear-gradient(top, #dff 0%, #69f 100%);
-		background: -ms-linear-gradient(top, #dff 0%, #69f 100%);
-	overflow: hidden; 
-	padding: 20px; 
+		background: linear-gradient(top, #dff 0%, #9cf 100%);
+		background: -webkit-linear-gradient(top, #dff 0%, #9cf 100%);
+		background: -moz-linear-gradient(top, #dff 0%, #9cf 100%);
+		background: -o-linear-gradient(top, #dff 0%, #9cf 100%);
+		background: -ms-linear-gradient(top, #dff 0%, #9cf 100%);
 	text-align: left;
 	border-top: 1px solid black;
-	opacity: 1;
 	margin-bottom: .5em;
 }
 #about p { float: right;}
@@ -308,20 +287,13 @@ color: #f90;}
 
 .blogfeed {
 	float: right;
-	width: 304px;
 	height: 500px;
 	overflow: auto;
 	overflow-x: hidden;
-	padding: 0 5px;
-	border: 1px solid black;
-	margin-left: 5px;
 }
 .maincontent {
 	float: left;
-	width: 624px;
 	height: 500px;
-	padding: 0 5px;
-	margin-right: 5px;
 }
 .maincontent .top {
 	height: 244px;
@@ -338,11 +310,4 @@ color: #f90;}
 	float: left;
 	padding-left: 177px;
 	margin-right: 177px;
-}
-
-nav {
-	position: relative;
-	width: 1000px;
-	margin: 0 auto;
-	padding: 20px 20px 5px 20px;
 }
