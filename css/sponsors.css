@@ -11,7 +11,7 @@
 }
 
 .sponsors label.sponsor-name { color: #00f; font-size: 26px;}
-.sponsors .toggle {display: none;}
+.sponsors .toggle { display: none;}
 .sponsors .toggle:checked+div {height: auto;}
 
 .sponsor-info {
@@ -24,11 +24,9 @@
 .sponsor-info .sponsor-thanks {
 	border-bottom: 1px solid black;
 }
-
 .sponsor-info .sponsor-appeal {
 
 }
-
 
 .sponsor-block {
 display: inline-block; 
@@ -38,7 +36,6 @@ height:145px;
 padding:3px; 
 padding-bottom: 50px;
 }
-
 .sponsor-block fieldset {
 border-color: blue;
 }

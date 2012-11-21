@@ -194,7 +194,8 @@ color: #f90;}
 	-webkit-background-size:100% 100%;	/*  Safari	 	*/
 	-khtml-background-size:100% 100%;		/*  Konqueror	*/
 	-moz-background-size:100% 100%;			/*	Firefox		*/
-}
+}	
+
 .menu, .menu ul, .menu li, .menu a {
     margin: 0;
     padding: 0;
