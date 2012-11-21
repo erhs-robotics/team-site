@@ -141,9 +141,18 @@ class MembersHandler(Handler):
                             outreachers=outreachers)
 
 class MentorsHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("mentors.html", user=self.user)
+    def get(self):        
+        self.login()
+        
+        members = db.GqlQuery("SELECT * FROM User")
+        members = list(members)    
+        members = sorted(members, key=lambda member: member.username.lower())
+        mentors = []
+        for member in members:
+            if member.team == "Mentoring":
+                mentors.append(member)
+        
+        self.render("mentors.html", user = self.user, mentors=mentors)
 		
 class CompetitionsHandler(Handler):
 	def get(self):
@@ -384,6 +393,7 @@ class EditProfileHandler(Handler):
                 mec  = ""
                 out  = ""
                 mang = ""
+                ment = ""
                 
                 if profile.team == "Programming":
                     prog = 'selected="selected"'
@@ -393,6 +403,8 @@ class EditProfileHandler(Handler):
                     out  = 'selected="selected"'
                 elif profile.team == "Management":
                     mang = 'selected="selected"'
+                elif profile.team == "Mentoring":
+					ment = 'selected="selected"'
                     
                 currentProjects = self.genCurrentProjects(profile)
                 pastProjects    = self.genPastProjects(profile)
@@ -400,7 +412,7 @@ class EditProfileHandler(Handler):
                 
                 self.render("editprofile.html", user = self.user, profile = profile,
                             currentProjects=currentProjects ,pastProjects=pastProjects,
-                            prog=prog, mec=mec, out=out, mang=mang, display="none")
+                            prog=prog, mec=mec, out=out, mang=mang, ment=ment, display="none")
             else:
                 self.redirect("/login")
         else:
@@ -460,6 +472,7 @@ class EditProfileHandler(Handler):
                     mec  = ""
                     out  = ""
                     mang = ""
+                    ment = ""
                     
                     if profile.team == "Programming":
                         prog = 'selected="selected"'
@@ -469,10 +482,12 @@ class EditProfileHandler(Handler):
                         out  = 'selected="selected"'
                     elif profile.team == "Management":
                         mang = 'selected="selected"'
+                    elif profile.team == "Mentoring":
+						ment = 'selected="selected"'
                         
                     self.render("editprofile.html", user = self.user, profile = profile,
                             currentProjects=currentProjects ,pastProjects=pastProjects,
-                            prog=prog, mec=mec, out=out, mang=mang, display="block",
+                            prog=prog, mec=mec, out=out, mang=mang, ment=ment, display="block",
                             old_err=m_old, valid_err=m_valid, match_err=m_match)                 
                         
                 

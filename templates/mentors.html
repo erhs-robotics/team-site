@@ -1,6 +1,33 @@
 {% extends "base.html" %}
-{% block content %}
-<section class="content">
-
-</section>
+{% block head %}
+	{{super()}}
+	<link rel="stylesheet" href="../css/members.css">
 {% endblock %}
+{% block content %}		
+	<section class="content" id="members">
+	<div class="members-block">
+	<h2>Club Mentors</h2>
+	{% for mentor in mentors %}
+		{% if 3 in mentor.privileges %}
+			<div id="member-block">
+				<fieldset><legend>
+					<a href="/profile/{{user.username}}">
+						{% if mentor.fullname %}
+							{{mentor.fullname}}
+						{% else %}
+							{{mentor.username}}
+						{% endif %}
+					</a>
+				</legend>
+				<img src="{{gravatar(mentor.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
+				{% if mentor.quote %}
+					<font>"{{mentor.quote}}"</font>
+				{% endif %}
+				</fieldset>
+			</div>
+		{% endif %}	
+	{% endfor %}
+	</div>
+</section>
+{% endblock %}	
+	
