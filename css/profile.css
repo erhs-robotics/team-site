@@ -3,7 +3,6 @@ profile {
 }
 #profile-pic-and-priveleges-container {
 	float: left;
-	margin: 0 20px 0 5px;
 	display: block;
 	width: 150px;
 }
@@ -15,8 +14,8 @@ profile {
 }
 
 #profile-pic {		
-	width: 150px;
-	height: 150px;
+	width: 140px;
+	height: 140px;
 	float: left;
 }
 #profile-name {	
@@ -25,13 +24,11 @@ profile {
 	display: inline-block;
 	color: #00f;
 	padding-bottom: 5px;
-	padding: 0 20px 5px 0;
 }
 #profile-about, #profile-team, #profile-currentprojects, #profile-pastprojects, 
 #profile-email, #profile-priveleges {
 	font-size: 16px;
 	display: block;
-	padding: 0 20px 5px 0px;
 }
 #profile-about { 
 	font-style: italic;
