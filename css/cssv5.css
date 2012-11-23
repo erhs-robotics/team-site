@@ -89,7 +89,8 @@ img.right, iframe.right {
 }
 #welcome h2, #welcome h3 { color: #fff; margin-bottom: .5em;}
 
-#about { 
+#footer {
+	font-size: 12px;
 	background: #fff;
 		background: linear-gradient(top, #dff 0%, #9cf 100%);
 		background: -webkit-linear-gradient(top, #dff 0%, #9cf 100%);
@@ -98,18 +99,12 @@ img.right, iframe.right {
 		background: -ms-linear-gradient(top, #dff 0%, #9cf 100%);
 	text-align: left;
 	border-top: 1px solid black;
-	margin-bottom: .5em;
 }
-#about p { float: right;}
-#about .primary {
-	text-align: left;
-	float: left; 
-	width: 190px;
-	color: #00f; 
-	font-size: 1.286em;
-} 
-#about .bio {float: right; width: 700px;}  
-#about .copyright {float:right; width: auto;}
+
+.footer_col h2 { font-size: 16px; color: #006; }
+.footer_col ul { list-style: none; }
+.footer_col ul li a { color: #006; text-decoration: none; font-size: 12px;}
+.footer_col ul li a:hover, .footer_col ul li a:active { color: #004; text-shadow:}
 
 .blog-entry h2 {
 	color: #00f;
