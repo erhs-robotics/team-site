@@ -185,19 +185,49 @@ class MucHandler(Handler):
 		self.render("muc.html", user = self.user)
 		
 class BlogHandler(Handler):
-    def get(self):
+    def getTotalPosts(self, post_list):
+        post_count = 0
+        for post in post_list:
+             post_count += 1
+        return post_count
+    
+    def get(self, resource):
         self.login()
     
         #user = User(username="admin", password=make_pw_hash('admin', 'admin1234'), isadmin=True)
         #user.put()
                         
-        query = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")
-        cursor = self.request.get('cursor')
-        if cursor: query.with_cursor(cursor)
-        posts = query.fetch(2)
-        cursor = query.cursor()
+        #query = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")
+        #cursor = self.request.get('cursor')
+        #if cursor: query.with_cursor(cursor)
+        #posts = query.fetch(2)
+        #cursor = query.cursor()
+        
+        #self.render("blog.html", user=self.user, posts=list(posts), cursor=cursor)
+        
+        posts = Post.all()
+        
+        currentPage = int(resource)
+        POSTS_PER_PAGE = 5
+        TOTAL_POSTS = self.getTotalPosts(list(posts))
+        TOTAL_PAGES = TOTAL_POSTS / POSTS_PER_PAGE
+        if TOTAL_POSTS % POSTS_PER_PAGE != 0:
+			TOTAL_PAGES += 1
+			
+        hasPreviousPage = False
+        hasNextPage = False
+		
+        if currentPage != 1: hasPreviousPage = True
+        if currentPage != TOTAL_PAGES: hasNextPage = True
+        
+        posts = Post.all()
+        posts.order("-created")
+        active_posts = []
+        for post in posts.run(limit=POSTS_PER_PAGE, offset=(POSTS_PER_PAGE * (currentPage - 1))):
+			 active_posts.append(post)
 
-        self.render("blog.html", user = self.user, posts = list(posts), cursor = cursor)                    
+        self.render("blog.html", user=self.user, posts=active_posts, TOTAL_POSTS=TOTAL_POSTS, TOTAL_PAGES=TOTAL_PAGES, 
+					hasNextPage=hasNextPage, hasPreviousPage=hasPreviousPage, currentPage=currentPage)               
         
 class SponsorsHandler(Handler):
     def get(self):
@@ -563,7 +593,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 										#('/vex/game', VexGameHandler),
 								   ('/muc', MucHandler),
 										#
-                               ('/blog', BlogHandler),
+                               ('/blog/(\d+)', BlogHandler),
                                ('/sponsors', SponsorsHandler),
                                ('/gallery', GalleryHandler),
                                ('/resources', ResourcesHandler),

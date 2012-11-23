@@ -39,9 +39,13 @@
 			<hr>
 		</div><!-- /.blog-entry -->
 	{% endfor %}
-	<div class="grid_3 push_9">
-	<a style="color: blue; text-decoration: underline; cursor: pointer;" onclick="history.go(-1)">Previous Page</a>
-	<a href="/blog?cursor={{cursor}}">Next Page</a>
+	<div style="text-align: right" class="grid_3 push_9" id="page-navigation">
+		{% if hasPreviousPage %}
+			<a href="/blog/{{currentPage - 1}}">Previous Page</a>
+		{% endif %}
+		{% if hasNextPage %}
+			<a href="/blog/{{currentPage + 1 }}">Next Page</a>
+		{% endif %}
 	</div>
 </div>
 {% endblock %}
