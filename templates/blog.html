@@ -39,5 +39,9 @@
 			<hr>
 		</div><!-- /.blog-entry -->
 	{% endfor %}
+	<div class="grid_3 push_9">
+	<a style="color: blue; text-decoration: underline; cursor: pointer;" onclick="history.go(-1)">Previous Page</a>
+	<a href="/blog?cursor={{cursor}}">Next Page</a>
+	</div>
 </div>
 {% endblock %}

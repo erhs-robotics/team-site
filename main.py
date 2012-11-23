@@ -187,13 +187,17 @@ class MucHandler(Handler):
 class BlogHandler(Handler):
     def get(self):
         self.login()
-        
-        
+    
         #user = User(username="admin", password=make_pw_hash('admin', 'admin1234'), isadmin=True)
         #user.put()
-        
-        posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
-        self.render("blog.html", user = self.user, posts = list(posts))
+                        
+        query = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")
+        cursor = self.request.get('cursor')
+        if cursor: query.with_cursor(cursor)
+        posts = query.fetch(2)
+        cursor = query.cursor()
+
+        self.render("blog.html", user = self.user, posts = list(posts), cursor = cursor)                    
         
 class SponsorsHandler(Handler):
     def get(self):
