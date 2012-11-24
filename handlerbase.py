@@ -11,6 +11,7 @@ from database import get_user
 from collections import namedtuple
 from database import gravatar, get_user
 import calendar
+import logging
 
 
 
@@ -37,11 +38,25 @@ class Handler(webapp2.RequestHandler):
         self.response.out.write(*a, **kw)
 
     def render_str(self, template, **params):
-        t = env.get_template(template)
-        return t.render(params)
+        t = False
+        try:
+            t = env.get_template(template)
+            t = t.render(params)
+        except:
+            pass      
+        
+        return t
 
     def render(self, template, **kw):
         kw['gravatar'] = gravatar
         kw['get_user'] = get_user
         kw['calendar'] = calendar
-        self.write(self.render_str(template, **kw))
+        v = self.render_str(template, **kw)
+        if v == False:# v will be false if the page was not found
+            self.error(404)
+        else:
+            self.write(self.render_str(template, **kw))
+
+
+
+

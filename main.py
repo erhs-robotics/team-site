@@ -29,28 +29,14 @@ class MainHandler(Handler):
     def get(self):
         self.login()            
         posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
-        self.render("index.html", user = self.user, post = posts)       
+        self.render("index.html", user = self.user, post = posts)
         
-class AboutHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("about.html", user=self.user)
-		
-class HistoryHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("history.html", user=self.user)
-		
-class SubteamsHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("subteams.html", user=self.user)
-
-class OutreachHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("outreach.html", user=self.user)
-		
+class GenericHandler(Handler):
+    def get(self, resource):
+        self.login()
+        logging.error(resource)
+        self.render(resource + ".html", user=self.user)             
+        
 class MembersHandler(Handler):
     def get(self):        
         self.login()
@@ -154,36 +140,8 @@ class MentorsHandler(Handler):
         
         self.render("mentors.html", user = self.user, mentors=mentors)
 		
-class CompetitionsHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("competitions.html", user=self.user)
-		
-class WebsiteHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("website.html", user=self.user)
-		
-class FirstHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("first.html", user = self.user)
+
         
-class FirstGameHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("firstgame.html", user=self.user)
-        
-class VexHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("vex.html", user = self.user)
-		
-class MucHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("muc.html", user = self.user)
-		
 class BlogHandler(Handler):
     def get(self):
         self.login()
@@ -195,31 +153,8 @@ class BlogHandler(Handler):
         posts = db.GqlQuery("SELECT * FROM Post ORDER BY created DESC")      
         self.render("blog.html", user = self.user, posts = list(posts))
         
-class SponsorsHandler(Handler):
-    def get(self):
-        self.login()        
-        self.render("sponsors.html", user = self.user)
+
         
-class GalleryHandler(Handler):
-    def get(self):
-        self.login()
-        self.render("gallery.html", user = self.user)
-
-class ResourcesHandler(Handler):
-    def get(self):
-        self.login()        
-        self.render("resources.html", user = self.user)
-        
-class ParentsHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("parents.html", user = self.user)
-
-class DocsHandler(Handler):
-	def get(self):
-		self.login()
-		self.render("docs.html", user = self.user)
-
 class ContactHandler(Handler):
     def get(self):
         self.login()  
@@ -405,7 +340,7 @@ class EditProfileHandler(Handler):
                     mang = 'selected="selected"'
                 elif profile.team == "Mentoring":
 					ment = 'selected="selected"'
-                    
+
                 currentProjects = self.genCurrentProjects(profile)
                 pastProjects    = self.genPastProjects(profile)
                 
@@ -545,27 +480,7 @@ class ViewPostHandler(Handler):
             self.render("viewpost.html", user = self.user, post = post)
 
 app = webapp2.WSGIApplication([('/', MainHandler),
-							   ('/about', AboutHandler),
-									('/about/history', HistoryHandler),
-									('/about/subteams', SubteamsHandler),
-									('/about/outreach', OutreachHandler),
-									('/about/members', MembersHandler),
-									('/about/mentors', MentorsHandler),
-									('/about/website', WebsiteHandler),
-							   ('/competitions', CompetitionsHandler),
-								   ('/first',FirstHandler),
-										#('/first/game', FirstGameHandler),
-								   ('/vex', VexHandler),
-										#('/vex/game', VexGameHandler),
-								   ('/muc', MucHandler),
-										#
                                ('/blog', BlogHandler),
-                               ('/sponsors', SponsorsHandler),
-                               ('/gallery', GalleryHandler),
-                               ('/resources', ResourcesHandler),
-									('/resources/parents', ParentsHandler),
-									('/resources/docs', DocsHandler),
-									('/resources/contact', ContactHandler),
                                ('/login', LoginHandler),
                                ('/logout', LogoutHandler),
                                ('/newpost', NewpostHandler),
@@ -576,10 +491,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/profile/(.+)', ProfileHandler),
                                ('/editprofile/(.+)', EditProfileHandler),
                                ('/deleteuser', DeleteUserHandler),
-                               ('/updateprivileges', UpdatePrivilegesHandler),
-							   ('/resources', ResourcesHandler),
-									('/resources/documents', DocsHandler),
-                               ('/contact', ContactHandler),
-							   ('/parents', ParentsHandler),
-                               ('/viewpost/(\d+)', ViewPostHandler)],
+                               ('/updateprivileges', UpdatePrivilegesHandler),                            
+                               ('/viewpost/(\d+)', ViewPostHandler),
+                               ('/(.+)', GenericHandler)],
                                debug=True)
