@@ -220,7 +220,6 @@ class BlogHandler(Handler):
         if currentPage != 1: hasPreviousPage = True
         if currentPage != TOTAL_PAGES: hasNextPage = True
         
-        posts = Post.all()
         posts.order("-created")
         active_posts = []
         for post in posts.run(limit=POSTS_PER_PAGE, offset=(POSTS_PER_PAGE * (currentPage - 1))):
