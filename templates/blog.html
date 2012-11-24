@@ -41,12 +41,16 @@
 				<hr>
 		</div><!-- /.blog-entry -->
 	{% endfor %}
-	<div style="text-align: right" class="grid_3 push_9" id="page-navigation">
+	<div class="grid_12" id="page-navigation">
 		{% if hasPreviousPage %}
+			<div class="grid_2 alpha">
 			<a href="/blog/{{currentPage - 1}}">Previous Page</a>
+			</div>
 		{% endif %}
 		{% if hasNextPage %}
+			<div style="float:right; text-align:right;" class="grid_2 omega">
 			<a href="/blog/{{currentPage + 1 }}">Next Page</a>
+			</div>
 		{% endif %}
 	</div>
 </div>
