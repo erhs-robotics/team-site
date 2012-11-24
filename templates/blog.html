@@ -12,12 +12,13 @@
 {% block content %}
 <div class="content" id="blog">
 	{% if user and 1 in user.privileges %}
-		<form style="padding-left: 9px;" action="/newpost" method="GET">
+		<form class="grid_2" action="/newpost" method="GET">
 			<button class="button" id="submit">New Post</button>
 		</form>
+		<div class="clear"></div>
 	{% endif %}
 	{% for post in posts%}
-		<div class="blog-entry">
+		<div class="blog-entry" style="overflow: hidden">
 			<aside class="grid_12">
 				<img style="float:left; width:100px; height:100px; margin-right: 10px;" src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
 				{% if user %}
@@ -29,10 +30,10 @@
 						<a class="edit-button" href="/editpost/{{post.key().id()}}"></a>
 					{% endif %}
 				{% endif %}
-				<div class="fb-like" data-href="http://facebook.erhs-team53.appspot.com/viewpost/{{post.key().id()}}" 
+				<!--<div class="fb-like" data-href="http://facebook.erhs-team53.appspot.com/viewpost/{{post.key().id()}}" 
 					 data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" 
 					 data-font="segoe ui" style="float:right; padding-right: 20px;">
-				</div>
+				</div>-->
 				<h2><a href="/viewpost/{{post.key().id()}}">{{post.subject}}</a></h2>
 				<h3>Created by: {{post.username}}</h3>
 				<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
