@@ -12,33 +12,35 @@
 {% block content %}
 <div class="content" id="blog">
 	{% if user and 1 in user.privileges %}
-		<form action="/newpost" method="GET">
+		<form style="padding-left: 9px;" action="/newpost" method="GET">
 			<button class="button" id="submit">New Post</button>
 		</form>
 	{% endif %}
 	{% for post in posts%}
 		<div class="blog-entry">
-			<aside class="grid_12" id="blog-info">
-				<img style="float:left; width:100px; height:100px; " src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
+			<aside class="grid_12">
+				<img style="float:left; width:100px; height:100px; margin-right: 10px;" src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
 				{% if user %}
 					{% if user.key().id() == post.user or user.isadmin %}
 						<form method="POST" action="/deletepost" id="deletepost{{post.key().id()}}">
-							<input type="hidden" name="post" value="{{post.key().id()}}">
+							<input type="hidden" name="post" value="{{post.key().id()}}" />
 							<a class="remove-button" href="#" onclick="confirmDel({{post.key().id()}})"></a>			
 						</form>
 						<a class="edit-button" href="/editpost/{{post.key().id()}}"></a>
 					{% endif %}
 				{% endif %}
-				<!--<div class="fb-like" data-href="http://facebook.erhs-team53.appspot.com/viewpost/{{post.key().id()}}" 
+				<div class="fb-like" data-href="http://facebook.erhs-team53.appspot.com/viewpost/{{post.key().id()}}" 
 					 data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" 
-					 data-font="segoe ui" style="float:right; padding-right: 20px;"></div>-->
-				<h2><a href="/viewpost/{{post.key().id()}}"</a>{{post.subject}}</a></h2>
+					 data-font="segoe ui" style="float:right; padding-right: 20px;">
+				</div>
+				<h2><a href="/viewpost/{{post.key().id()}}">{{post.subject}}</a></h2>
 				<h3>Created by: {{post.username}}</h3>
 				<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
 			</aside>
-			<section class="grid_12" id="blog-content">
+			<section class="grid_12">
 				<p class="grid_12" >{{post.content}}</p>
 				<hr>
+			</section>
 		</div><!-- /.blog-entry -->
 	{% endfor %}
 	<div class="grid_12" id="page-navigation">
