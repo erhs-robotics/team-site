@@ -9,7 +9,7 @@
 	-ms-transition: .1s ease;
 }
 
-#sponsors label.sponsor-name { color: #00f; font-size: 26px;}
+#sponsors .sponsor-name { color: #00f; font-size: 26px; text-decoration: underline; cursor: pointer;}
 #sponsors .toggle { display: none;}
 #sponsors .toggle:checked+div {height: auto;}
 
