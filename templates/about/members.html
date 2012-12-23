@@ -6,37 +6,38 @@
 {% block content %}		
 <section class="grid_12 content" id="members">
 {% if user and 2 in user.privileges %}
-	<button id="createuserbutton" type="button">Create User</button>			
-	<form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">
-		<table>
-			<tr>
-			  <td class="label">Full name (optional)</td>
-			  <td><input type="text" name="fullname" value="{{fullname}}"></td>				  
-			</tr>
-			<tr>
-			  <td class="label">Username</td>
-			  <td><input type="text" name="username" value="{{name}}"></td>
-			  <td>{{username}}</td>
-			</tr>
-			<tr>
-			  <td class="label">Password</td>
-			  <td><input type="password" name="password" value=""></td>
-			  <td>{{password}}</td>
-			</tr>
-			<tr>
-			  <td class="label">Verify Password</td>
-			  <td><input type="password" name="verify" value=""></td>
-			  <td>{{verify}}</td>
-			</tr>
-			<tr>
-			  <td class="label">Email (optional)</td>
-			  <td><input type="text" name="email" value="{{mail}}"></td>
-			  <td>{{email}}</td>
-			</tr>
-		</table>
-	<input type="submit">
-	</form>
-	<script>
+	<aside id="createuser" class="entry">
+		<button id="createuserbutton" type="button">Create User</button>			
+		<form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td class="label">Full name (optional)</td>
+					<td><input type="text" name="fullname" value="{{fullname}}"></td>				  
+				</tr>
+				<tr>
+					<td class="label">Username</td>
+					<td><input type="text" name="username" value="{{name}}"></td>
+					<td>{{username}}</td>
+				</tr>
+				<tr>
+					<td class="label">Password</td>
+					<td><input type="password" name="password" value=""></td>
+					<td>{{password}}</td>
+				</tr>
+				<tr>
+					<td class="label">Verify Password</td>
+					<td><input type="password" name="verify" value=""></td>
+					<td>{{verify}}</td>
+				</tr>
+				<tr>
+					<td class="label">Email (optional)</td>
+					<td><input type="text" name="email" value="{{mail}}"></td>
+					<td>{{email}}</td>
+				</tr>
+			</table>
+		<input type="submit">
+		</form>
+		<script>
 		(function($){
 		$("#createuserbutton").toggle(function(){
 				$("#createuser").show('medium');
@@ -46,9 +47,9 @@
 		 );
 		 })(jQuery);
 	</script>
-	<br><br>
+	</aside>
 {% endif %}
-<div class="members-block">
+<div class="members-block entry">
 <h2>Programming Team</h2>
 {% for user in programmers %}
 	{% if 3 in user.privileges %}
@@ -71,7 +72,7 @@
 	{% endif %}	
 {% endfor %}
 </div>
-<div class="members-block">
+<div class="members-block entry">
 <h2>Mechanical Team</h2>
 {% for user in mechies %}
 	{% if 3 in user.privileges %}
@@ -94,7 +95,7 @@
 	{% endif %}	
 {% endfor %}
 </div>
-<div class="members-block">
+<div class="members-block entry">
 <h2>Management/Business Team</h2>
 	{% for user in managers %}
 		{% if 3 in user.privileges %}

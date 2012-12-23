@@ -70,19 +70,17 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 .nav-logo { 
 	display: block;
 	position: absolute;
-	height: 140px;
-	width: 130px;
-	margin-top: -55px;
+	height: 130px;
+	width: 120px;
+	margin-top: -35px;
 	z-index: 9998;	
 	margin-left: -20px;
 }
-.blog-feed { height: 500px; }
-.maincontent {
-	height: 450px;
-}
+.blog-feed { height: 500px; overflow: auto;}
+.maincontent { height: 450px; }
 
 .content {
-	margin: 10px 0 10px 0;
+	margin: 10px 0;
 	background-color: white;
 }
 .entry { 
@@ -111,6 +109,9 @@ img.right, iframe.right {
 .footer_col ul li a { color: #006; text-decoration: none; font-size: 12px;}
 .footer_col ul li a:hover, .footer_col ul li a:active { color: #004; text-shadow:}
 
+.blog-entry {
+	background-color: white;
+}
 .blog-entry h2 {
 	color: #00f;
 }
@@ -163,10 +164,9 @@ color: #f90;}
 }	
  
 .menu {
-	width: 870px;
+	width: 875px;
 	position: relative;
-	margin: 0px auto 10px auto;
-	margin-right: 0px;
+	margin: 10px auto 15px auto;
 	float: right;
 	height: 40px; 
 	background: #4c4e5a;

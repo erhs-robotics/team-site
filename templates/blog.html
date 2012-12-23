@@ -10,16 +10,15 @@
 	</script>
 {% endblock %}
 {% block content %}
-<div class="content" id="blog">
 	{% if user and 1 in user.privileges %}
-		<form class="grid_2" action="/newpost" method="GET">
-			<button class="button" id="submit">New Post</button>
+		<form class="grid_12 content" style="margin: 20px 0 0px 10px;" action="/newpost" method="GET">
+			<button class="button" style="margin: 10px 0 0 10px;" id="submit">New Post</button>
 		</form>
 		<div class="clear"></div>
 	{% endif %}
 	{% for post in posts%}
-		<div class="blog-entry" style="overflow: hidden">
-			<aside class="grid_12">
+		<div class="grid_12 blog-entry" style="overflow: hidden">
+			<aside class="entry">
 				<img style="float:left; width:100px; height:100px; margin-right: 10px;" src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
 				{% if user %}
 					{% if user.key().id() == post.user or user.isadmin %}
@@ -38,8 +37,9 @@
 				<h3>Created by: {{post.username}}</h3>
 				<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
 			</aside>
-			<section class="grid_12">
-				<p class="grid_12" >{{post.content}}</p>
+			<div class="clear"></div>
+			<section class="entry">
+				<p>{{post.content}}</p>
 				<hr>
 			</section>
 		</div><!-- /.blog-entry -->
@@ -56,5 +56,4 @@
 			</div>
 		{% endif %}
 	</div>
-</div>
 {% endblock %}
