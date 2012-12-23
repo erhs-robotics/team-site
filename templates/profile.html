@@ -11,71 +11,69 @@
 	</script>
 {% endblock %}	
 {% block content %}	
-	<section class="content profile">
-		<!--<section class="grid_12">-->
-			<div class="grid_2"><!--id="profile-pic-and-priveleges-container"-->
-				<img id="profile-pic" src="{{gravatar(profile.email, 
-										   default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
-				{% if user.isadmin %}<br><br>
-					<span id="profile-priveleges">
-						Privileges:
-						<form action="/updateprivileges" method="POST">
-							<input type="hidden" name="user" value="{{profile.key().id()}}">
-							{% for num, text in privileges.iteritems() %}					
-								 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" 										value="{{num}}"> {{text}} <br>
-							{% endfor %}
-							<input class="button" type="submit" value="Update Privileges">
-						</form>
-					</span>
-				{% endif %}
-			</div><!--./#profile-pic-and-priveleges-container-->
-			<div class="grid_9"><!--id="profile-content-container"-->
-				<div id="profile-name">
-					{% if profile.fullname %}
-						{{profile.fullname}} ({{profile.username}})
-					{% else %}
-						{{profile.username}}
-					{% endif %}
-				</div>
-				{% if profile.quote %}
-					<span id="profile-about">"{{profile.quote}}"</span>
-				{% endif %}
-				{% if profile.team %}
-					<span id="profile-team"><strong>Team:</strong> {{ profile.team }}</span>
-				{% endif %}
-				{% if profile.currentProjects %}
-					<span id="profile-currentprojects">
-						<strong>Current projects:</strong> {{profile.currentProjects[0]}}
-						{% for project in profile.currentProjects[1:] %}
-						, {{project}}
-						{% endfor %}
-					</span>
-				{% endif %}
-				{% if profile.pastProjects %}
-					<span id="profile-pastprojects">
-						<strong>Past projects:</strong> {{profile.pastProjects[0]}}
-						{% for project in profile.pastProjects[1:] %}
-						, {{project}}
-						{% endfor %}
-					</span>
-				{% endif %}	
-				{% if user and profile.email %}
-					<span id="profile-email">
-						<strong>Email:</strong> {{profile.email}}
-					</span>
-				{% endif %}		
-			</div><!--./#profile-content-container-->
-			<aside id="editbuttons" class="grid_1">
-				{% if user.isadmin %}
-					<form method="POST" action="/deleteuser" id="deleteuser{{profile.key().id()}}">
+<section class="grid_12 content profile">
+		<div class="grid_2 entry"><!--id="profile-pic-and-priveleges-container"-->
+			<img id="profile-pic" src="{{gravatar(profile.email, 
+										             default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
+			{% if user.isadmin %}<br><br>
+				<span id="profile-priveleges">
+					Privileges:
+					<form action="/updateprivileges" method="POST">
 						<input type="hidden" name="user" value="{{profile.key().id()}}">
-						<a class="remove-button" href="#" onclick="confirmDel({{profile.key().id()}})"></a>				
+						{% for num, text in privileges.iteritems() %}					
+							 <input type="checkbox" {% if num in profile.privileges %}checked="True"{% endif %} name="privileges" 										value="{{num}}"> {{text}} <br>
+						{% endfor %}
+						<input class="button" type="submit" value="Update Privileges">
 					</form>
+				</span>
+			{% endif %}
+		</div><!--./#profile-pic-and-priveleges-container-->
+		<div class="grid_9 alpha entry"><!--id="profile-content-container"-->
+			<div id="profile-name">
+				{% if profile.fullname %}
+					{{profile.fullname}} ({{profile.username}})
+				{% else %}
+					{{profile.username}}
 				{% endif %}
-				{% if user and profile.key().id() == user.key().id() %}
-					<a class="edit-button" href="/editprofile/{{profile.username}}" title="edit"></a>
-				{% endif %}
-			</aside>
-		<!--</section>-->
-	</section>
+			</div>
+			{% if profile.quote %}
+				<span id="profile-about">"{{profile.quote}}"</span>
+			{% endif %}
+			{% if profile.team %}
+				<span id="profile-team"><strong>Team:</strong> {{ profile.team }}</span>
+			{% endif %}
+			{% if profile.currentProjects %}
+				<span id="profile-currentprojects">
+					<strong>Current projects:</strong> {{profile.currentProjects[0]}}
+					{% for project in profile.currentProjects[1:] %}
+					, {{project}}
+					{% endfor %}
+				</span>
+			{% endif %}
+			{% if profile.pastProjects %}
+				<span id="profile-pastprojects">
+					<strong>Past projects:</strong> {{profile.pastProjects[0]}}
+					{% for project in profile.pastProjects[1:] %}
+					, {{project}}
+					{% endfor %}
+				</span>
+			{% endif %}	
+			{% if user and profile.email %}
+				<span id="profile-email">
+					<strong>Email:</strong> {{profile.email}}
+				</span>
+			{% endif %}		
+		</div><!--./#profile-content-container-->
+		<aside id="editbuttons" class="grid_1 omega entry">
+			{% if user.isadmin %}
+				<form method="POST" action="/deleteuser" id="deleteuser{{profile.key().id()}}">
+					<input type="hidden" name="user" value="{{profile.key().id()}}">
+					<a class="remove-button" href="#" onclick="confirmDel({{profile.key().id()}})"></a>				
+				</form>
+			{% endif %}
+			{% if user and profile.key().id() == user.key().id() %}
+				<a class="edit-button" href="/editprofile/{{profile.username}}" title="edit"></a>
+			{% endif %}
+		</aside>
+</section>
 {% endblock %}

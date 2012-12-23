@@ -255,3 +255,8 @@ color: #f90;}
     border-bottom: 1px solid #353539;
 }
 .menu ul li:last-child a { border: none; }
+
+#twitter-widget-0 {
+	width: 340px;
+	margin: 0 auto;
+}
