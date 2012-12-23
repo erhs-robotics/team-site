@@ -4,119 +4,119 @@
 	<link rel="stylesheet" href="../css/members.css">
 {% endblock %}
 {% block content %}		
-	<section class="content" id="members">
-	{% if user and 2 in user.privileges %}
-		<button id="createuserbutton" type="button">Create User</button>			
-		<form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">
-			<table>
-				<tr>
-				  <td class="label">Full name (optional)</td>
-				  <td><input type="text" name="fullname" value="{{fullname}}"></td>				  
-				</tr>
-				<tr>
-				  <td class="label">Username</td>
-				  <td><input type="text" name="username" value="{{name}}"></td>
-				  <td>{{username}}</td>
-				</tr>
-				<tr>
-				  <td class="label">Password</td>
-				  <td><input type="password" name="password" value=""></td>
-				  <td>{{password}}</td>
-				</tr>
-				<tr>
-				  <td class="label">Verify Password</td>
-				  <td><input type="password" name="verify" value=""></td>
-				  <td>{{verify}}</td>
-				</tr>
-				<tr>
-				  <td class="label">Email (optional)</td>
-				  <td><input type="text" name="email" value="{{mail}}"></td>
-				  <td>{{email}}</td>
-				</tr>
-			</table>
-		<input type="submit">
-		</form>
-		<script>
-			(function($){
-			$("#createuserbutton").toggle(function(){
-					$("#createuser").show('medium');
-				}, function(){
-					$("#createuser").hide('fast');
-				}
-			 );
-			 })(jQuery);
-		</script>
-		<br><br>
-	{% endif %}
-	<div class="members-block">
-	<h2>Programming Team</h2>
-	{% for user in programmers %}
-		{% if 3 in user.privileges %}
-			<div id="member-block">
-				<fieldset><legend>
-					<a href="/profile/{{user.username}}">
-						{% if user.fullname %}
-							{{user.fullname}}
-						{% else %}
-							{{user.username}}
-						{% endif %}
-					</a>
-				</legend>
-				<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
-				{% if user.quote %}
-					<font>"{{user.quote}}"</font>
-				{% endif %}
-				</fieldset>
-			</div>
-		{% endif %}	
-	{% endfor %}
-	</div>
-	<div class="members-block">
-	<h2>Mechanical Team</h2>
-	{% for user in mechies %}
-		{% if 3 in user.privileges %}
-			<div id="member-block">
-				<fieldset><legend>
-					<a href="/profile/{{user.username}}">
-						{% if user.fullname %}
-							{{user.fullname}}
-						{% else %}
-							{{user.username}}
-						{% endif %}
-					</a>
-				</legend>
-				<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
-				{% if user.quote %}
-					<font>"{{user.quote}}"</font>
-				{% endif %}
-				</fieldset>
-			</div>
-		{% endif %}	
-	{% endfor %}
-	</div>
-	<div class="members-block">
-	<h2>Management/Business Team</h2>
-		{% for user in managers %}
-			{% if 3 in user.privileges %}
-				<div id="member-block">
-					<fieldset><legend>
-						<a href="/profile/{{user.username}}">
-							{% if user.fullname %}
-								{{user.fullname}}
-							{% else %}
-								{{user.username}}
-							{% endif %}
-						</a>
-					</legend>
-					<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
-					{% if user.quote %}
-						<font>"{{user.quote}}"</font>
+<section class="grid_12 content" id="members">
+{% if user and 2 in user.privileges %}
+	<button id="createuserbutton" type="button">Create User</button>			
+	<form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">
+		<table>
+			<tr>
+			  <td class="label">Full name (optional)</td>
+			  <td><input type="text" name="fullname" value="{{fullname}}"></td>				  
+			</tr>
+			<tr>
+			  <td class="label">Username</td>
+			  <td><input type="text" name="username" value="{{name}}"></td>
+			  <td>{{username}}</td>
+			</tr>
+			<tr>
+			  <td class="label">Password</td>
+			  <td><input type="password" name="password" value=""></td>
+			  <td>{{password}}</td>
+			</tr>
+			<tr>
+			  <td class="label">Verify Password</td>
+			  <td><input type="password" name="verify" value=""></td>
+			  <td>{{verify}}</td>
+			</tr>
+			<tr>
+			  <td class="label">Email (optional)</td>
+			  <td><input type="text" name="email" value="{{mail}}"></td>
+			  <td>{{email}}</td>
+			</tr>
+		</table>
+	<input type="submit">
+	</form>
+	<script>
+		(function($){
+		$("#createuserbutton").toggle(function(){
+				$("#createuser").show('medium');
+			}, function(){
+				$("#createuser").hide('fast');
+			}
+		 );
+		 })(jQuery);
+	</script>
+	<br><br>
+{% endif %}
+<div class="members-block">
+<h2>Programming Team</h2>
+{% for user in programmers %}
+	{% if 3 in user.privileges %}
+		<div id="member-block">
+			<fieldset><legend>
+				<a href="/profile/{{user.username}}">
+					{% if user.fullname %}
+						{{user.fullname}}
+					{% else %}
+						{{user.username}}
 					{% endif %}
-					</fieldset>
-				</div>
-			{% endif %}	
-		{% endfor %}
-	</div>
-	</section>
+				</a>
+			</legend>
+			<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
+			{% if user.quote %}
+				<font>"{{user.quote}}"</font>
+			{% endif %}
+			</fieldset>
+		</div>
+	{% endif %}	
+{% endfor %}
+</div>
+<div class="members-block">
+<h2>Mechanical Team</h2>
+{% for user in mechies %}
+	{% if 3 in user.privileges %}
+		<div id="member-block">
+			<fieldset><legend>
+				<a href="/profile/{{user.username}}">
+					{% if user.fullname %}
+						{{user.fullname}}
+					{% else %}
+						{{user.username}}
+					{% endif %}
+				</a>
+			</legend>
+			<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
+			{% if user.quote %}
+				<font>"{{user.quote}}"</font>
+			{% endif %}
+			</fieldset>
+		</div>
+	{% endif %}	
+{% endfor %}
+</div>
+<div class="members-block">
+<h2>Management/Business Team</h2>
+	{% for user in managers %}
+		{% if 3 in user.privileges %}
+			<div id="member-block">
+				<fieldset><legend>
+					<a href="/profile/{{user.username}}">
+						{% if user.fullname %}
+							{{user.fullname}}
+						{% else %}
+							{{user.username}}
+						{% endif %}
+					</a>
+				</legend>
+				<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
+				{% if user.quote %}
+					<font>"{{user.quote}}"</font>
+				{% endif %}
+				</fieldset>
+			</div>
+		{% endif %}	
+	{% endfor %}
+</div>
+</section>
 {% endblock %}	
 	

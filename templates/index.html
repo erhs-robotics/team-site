@@ -77,25 +77,38 @@
 		</div>
 	</article>
 </section>
-<aside class="grid_8 content">
-	<div class="entry">
-		<h2>Recent Announcements</h2>
-		<br>
-		{% if post|count >= 1 %}
-			<h3>{{post[0].subject}}</h3>
-			<div class="blog">{{post[0].content}}</div><hr>
-		{% endif %}
-		{% if post|count >= 2 %}
-			<h3>{{post[1].subject}}</h3>
-			<div class="blog">{{post[1].content}}</div><hr>
-		{% endif %}
-		{% if post|count >= 3 %}
-			<h3>{{post[2].subject}}</h3>
-			<div class="blog">{{post[2].content}}</div><hr>
-		{% endif %}
-		<p>For more announcements, see the <a href="/blog">blog</a> page.</p>
-	</div>
-</aside>
+<section class="grid_12">
+	<aside class="grid_8 alpha content">
+		<div class="blog-feed entry">
+			<h2>Recent Announcements</h2>
+			<br>
+			{% if post|count >= 1 %}
+				<h3>{{post[0].subject}}</h3>
+				<div class="blog">{{post[0].content}}</div><hr>
+			{% endif %}
+			{% if post|count >= 2 %}
+				<h3>{{post[1].subject}}</h3>
+				<div class="blog">{{post[1].content}}</div><hr>
+			{% endif %}
+			{% if post|count >= 3 %}
+				<h3>{{post[2].subject}}</h3>
+				<div class="blog">{{post[2].content}}</div><hr>
+			{% endif %}
+			<p>For more announcements, see the <a href="/blog">blog</a> page.</p>
+		</div>
+	</aside>
+	<aside class="grid_4 omega content">
+		<div class="blog-feed entry">
+			<h2>Stay Connected</h2>
+			<p>Make sure you can find all our team updates, especially as we
+			approach the main competition season for the FIRST Robotics
+			Competition</p>
+			<a href="http://www.facebook.com/"><img src="/images/logo/facebook.jpg" style="display: inline-block"/></a> Follow Us on Facebook<br/>
+			<a href="http://www.github.com/erhs-robotics"><img src="/images/logo/github.jpg" style="height: 20px;"/></a> Find our Programming team's code on Github<br/>
+			<a href="http://www.youtube.com/"><img src="/images/logo/youtube.jpg" style="height:20px"/></a> Watch our Youtube Videos<br/>
+		</div>
+	</aside>
+</section>
 <div class="clear"></div>
 <div class="grid_12 content" id="calendar">
 	<div class="entry">

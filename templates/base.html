@@ -32,29 +32,24 @@
 		}(document, 'script', 'facebook-jssdk'));</script>
 		{% block banner %}
 		<div class="container_12">
+			<aside class="grid_12 login" align="right">
+				{% if user %}
+					{% if user.fullname %}
+						{{user.fullname}} <a href="/profile/{{user.username}}">{{user.username}}</a>
+					{% else %}
+						User: <a href="/profile/{{user.username}}">{{user.username}}</a>
+					{% endif %}
+					| <a href="/logout">Logout</a>
+				{% else %}
+					<a href="/login">Login</a>
+				{% endif %}
+			</aside><!-- /#login -->
+			<div class="clear"></div>
 			<header id="banner">
-				<a class="grid_8 push_1" href="/">
+				<a class="grid_8 push_2" href="/">
 					<span>ERHS Robotics Club</span><!--<img class="grid_8" src="../images/logo/banner3.png" alt="ERHS Robotics Banner">--><br/>
 					<font>FRC Team 53 from Greenbelt, Maryland</font>
 				</a>
-				<aside class="grid_3 push_1">
-					<aside class="login">
-						{% if user %}
-							{% if user.fullname %}
-								{{user.fullname}} <a href="/profile/{{user.username}}">{{user.username}}</a>
-							{% else %}
-								User: <a href="/profile/{{user.username}}">{{user.username}}</a>
-							{% endif %}
-							| <a href="/logout">Logout</a>
-						{% else %}
-							<a href="/login">Login</a>
-						{% endif %}
-					</aside><!-- /#login -->
-					<h5>Like Us On Facebook!</h5>
-					<div class="fb-like" data-href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" 
-						 data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" 
-						 data-font="segoe ui"></div>
-				</aside>
 			</header><!-- /#banner -->
 		</div>
 		<div class="clear"></div>

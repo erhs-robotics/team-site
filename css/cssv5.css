@@ -13,7 +13,10 @@ body {
 	background-color: #9cf;
 	background-attachment: fixed !important;
 	background-repeat: no-repeat !important;
-	background: -webkit-linear-gradient(top, #bef 20%, #258 70%);
+	background: linear-gradient(top, #bef 20%, #7ad 70%);
+		background: -webkit-linear-gradient(top, #bef 20%, #7ad 70%);
+		background: -moz-linear-gradient(top, #bef 20%, #7ad 70%);
+		background: -o-linear-gradient(top, #bef 20%, #7ad 70%);
 	color: #000;
 	font-size: 100%;
 	line-height: 1;
@@ -50,14 +53,6 @@ p { margin-bottom: .2em;}
 header, section, footer, aside, nav, article, figure, login{ display: block;} 
 /*section, footer, aside, article, figure, div { background: white;}*/
 
-#banner {
-	margin-bottom: -20px;
-	margin-left: 50px;
-	padding-right: -50px;
-	overflow: auto;
-    overflow-x: hidden;
-    padding-bottom: 20px;
-}
 #banner a { text-decoration: none; }
 #banner a span {
 	text-decoration: none;
@@ -66,16 +61,17 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	z-index: 9999;
 	text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;  
 	font-family: "Comic Sans MS", cursive, sans-serif;
+	text-align: center;
+	margin-bottom: 0;
 }
 #banner a font {
 	color: black;
 	font-size: 14px;
 	padding-left: 100px;
 	font-style: italic;
+	text-align: center;
 }
-#banner .login {
-	padding-top: 30px;
-}
+
 .nav-logo { 
 	display: block;
 	position: absolute;
@@ -84,6 +80,7 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	margin-top: -60px;
 	z-index: 9998;	
 }
+.blog-feed { height: 500px; }
 .content {
 	padding-top: 10px;
 	margin: 10px 0 10px 0;
@@ -95,15 +92,6 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 .entry { 
 	background-color: white;
 	margin: 10px;
-}
-.divide {
-	position: relative;
-	width: 960px;
-	margin: 0 auto;
-	height: 4px;
-	background-color: #666;
-	/*border-top: 2px solid blue;
-	border-bottom: 2px solid blue;*/
 }
 
 b { font-weight: bold; }
@@ -193,7 +181,7 @@ color: #f90;}
 }
  
 .menu {
-	width: 845px;
+	width: 840px;
 	position: relative;
 	margin: 0 auto;
 	margin-right: 10px;
@@ -205,8 +193,6 @@ color: #f90;}
 		background: -o-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
 		background: -ms-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
 		background: linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
-    /*border-top-left-radius: 5px;
-    border-top-right-radius: 5px;  */  
 }
  
 .menu li {
@@ -291,13 +277,11 @@ color: #f90;}
     width: 100px;
     padding: 4px;
     margin: 0;
- 
     border-bottom: 1px solid #353539;
 }
  
 .menu ul li:last-child a { border: none; }
 
 .maincontent {
-	float: left;
 	height: 450px;
 }
