@@ -91,14 +91,13 @@
 				<img src="/images/logo/main-logo.png" class="nav-logo">		
 			</div>
 		{% endblock %}	
-		<div class="container_12">
+		<section id="content" class="container_12">
 			{% block content %}
 			{% endblock %}
-		</div>
+		</section>
 		{% block footer %}
-			<div class="container_12">
-				<footer class="grid_12 content" id="footer">
-					<section id="sitemap">
+				<footer class="container_12" id="footer">
+					<section class="grid_12 content" id="sitemap" style="margin-bottom: 0px">
 						<span class="grid_2 footer_col alpha"><img width=95% height=100% src="/images/logo/favicon.png"></span>
 						<span class="grid_2 footer_col">
 							<h2>ERHS Robotics</h2>
@@ -144,8 +143,8 @@
 							<li><a href="/resources/contact">Contact Us</a></li>
 						</ul>
 					</span>
-					</section>
-					<section id="about" style="width:940px;">
+					</section><!-- /#sitemap -->
+					<section class="grid_12 content" id="about" style="margin-top: 0px;">
 						<span class="grid_11">
 							© 2012 Eleanor Roosevelt Robotics Club | All Rights Reserved | 
 							More Information About This Site <a href="/about/website">Here</a>
@@ -154,9 +153,8 @@
 							The Eleanor Roosevelt Robotics Club website is built
 							and maintained by the students of the club
 						</span>
-					</section>
+					</section><!-- /#about -->
 				</footer>
-			</div>
 		{% endblock %}
 	</body>
 </html>

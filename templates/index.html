@@ -4,8 +4,8 @@
 	<script type="text/javascript" src="js/fade-slide.js"></script>   
 {% endblock %}
 {% block content %}
-<aside class="grid_12 container" id="welcome">	
-	<figure class="grid_6 alpha content" style="height: 327px">
+<aside id="welcome">	
+	<figure class="grid_6 content" style="height: 327px">
 		<script type="text/javascript">  
 			var mygallery=new fadeSlideShow({   
 			 wrapperid: "photo-stream",  
@@ -25,9 +25,9 @@
 				togglerid: ""
 				})
 		</script>
-		<div id="photo-stream" class="entry"></div>
+		<div id="photo-stream"></div>
 	</figure>
-	<span class="grid_6 omega content" style="height: 327px;">
+	<span class="grid_6 content" style="height: 327px;">
 		<div class="entry">
 			<h2>Eleanor Roosevelt High School</h2>
 			<h3>Robotics Club</h3>
@@ -44,9 +44,8 @@
 		</div>
 	</span>
 </aside><!-- /#welcome -->
-<div class="clear"></div>
-<section class="grid_12">
-	<article class="grid_4 alpha maincontent content">
+<section>
+	<article class="grid_4 maincontent content">
 		<div class="entry">
 			<img src="/images/first.jpg" alt="FIRST Logo" style="width:100%;">
 			<h6>FRC Team 53 - "Area 53"</h6>
@@ -70,15 +69,15 @@
 			<a href="/vex">here</a>.</p>
 		</div>
 	</article>
-	<article class="grid_4 omega  maincontent content">
+	<article class="grid_4 maincontent content">
 		<div class="entry">
 			<h2>Woohoo, this is a filler space!</h2>
 			<p>Filler space, filler space, maybe sponsors go here</p>
 		</div>
 	</article>
 </section>
-<section class="grid_12">
-	<aside class="grid_8 alpha content">
+<section>
+	<aside class="grid_8 content">
 		<div class="blog-feed entry">
 			<h2>Recent Announcements</h2>
 			<br>
@@ -97,7 +96,7 @@
 			<p>For more announcements, see the <a href="/blog">blog</a> page.</p>
 		</div>
 	</aside>
-	<aside class="grid_4 omega content">
+	<aside class="grid_4 content">
 		<div class="blog-feed entry">
 			<h2>Stay Connected</h2>
 			<p>Make sure you can find all our team updates, especially as we
@@ -109,13 +108,14 @@
 		</div>
 	</aside>
 </section>
-<div class="clear"></div>
-<div class="grid_12 content" id="calendar">
-	<div class="entry">
-		<h2>Team Schedule/Calendar</h2>
-		<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;height=360&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" 
-				style=" border-width:0; overflow-y: hidden;" width="100%" height="500">
-		</iframe>
+<div id="calendar">
+	<div class="grid_12 content">
+		<div class="entry">
+			<h2>Team Schedule/Calendar</h2>
+			<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;height=360&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" 
+					style=" border-width:0; overflow-y: hidden;" width="100%" height="500">
+			</iframe>
+		</div>
 	</div>
 </div>
 {% endblock %}		
