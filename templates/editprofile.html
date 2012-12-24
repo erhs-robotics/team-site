@@ -1,125 +1,124 @@
 {% extends "base.html" %}
 {% block content %}
-	<section class="content" id="content">
-		<form method="POST" enctype="multipart/form-data">
-			<table border="1">
-				<tbody>
-					<tr>
-						<td valign="top" rowspan="2" style="width:150px; height:150px;">					
-							<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="{{gravatar(profile.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
-							
+<section class="grid_12 content">
+	<form method="POST" enctype="multipart/form-data">
+		<table border="1">
+			<tbody>
+				<tr>
+					<td valign="top" rowspan="2" style="width:150px; height:150px;">					
+						<img style="max-width: 100%; max-height: 100%;" id="profile-pic" src="{{gravatar(profile.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">
+						
+						<br>
+						<a href="https://en.gravatar.com/site/login"><font size="1">Change profile pic with Gravatar</font></a>													
+					</td>
+					<td>
+						<div id="profile-name">{{profile.username}}</div>
+						Full name: <input type="text" name="fullname" value="{% if profile.fullname %}{{profile.fullname}}{% endif %}">
+						<br><br>
+						<button id="changepassbutton" type="button">Change Password</button>
+						<div id="changepassform" style="display: {{display}}">
 							<br>
-							<a href="https://en.gravatar.com/site/login"><font size="1">Change profile pic with Gravatar</font></a>													
-						</td>
-						<td>
-							<div id="profile-name">{{profile.username}}</div>
-							Full name: <input type="text" name="fullname" value="{% if profile.fullname %}{{profile.fullname}}{% endif %}">
-							<br><br>
-							<button id="changepassbutton" type="button">Change Password</button>
-							<div id="changepassform" style="display: {{display}}">
-								<br>
-								<table>
-									<tbody>
-										<tr>
-											<td>
-												Old Password:
-											</td>
-											<td>
-												<input type="password" name="oldpass">
-											</td>
-											<td>
-												<div class="error">{{old_err}}</div>
-											</td>										
-										</tr>
-										<tr>
-											<td>
-												New Password:
-											</td>
-											<td>
-												<input type="password" name="newpass">
-											</td>
-											<td>
-												<div class="error">{{valid_err}}</div>
-											</td>										
-										</tr>
-										<tr>
-											<td>
-												Confirm New Password:
-											</td>
-											<td>
-												<input type="password" name="v_newpass">
-											</td>
-											<td>
-												<div class="error">{{match_err}}</div>
-											</td>									
-										</tr>									
-									</tbody>
-								</table>
-								<br>
-							</div>
-						</td>										
-					</tr>						
-					<tr>
-						<td>
-						Quote:<br>
-						<textarea name="quote" rows="5" cols="50">{% if profile.quote %}{{profile.quote}}{% endif %}</textarea>
-						</td>								
-					</tr>						
-					
-					<tr>
-						<td>
-						Team:
-						</td>
-						<td>
-						<select name="team">
-							<option value="Programming" {{prog}}>Programming</option>
-							<option value="Mechanical" {{mec}}>Mechanical</option>
-							<option value="Outreach" {{out}}>Outreach</option>
-							<option value="Management" {{mang}}>Management</option>
-							<option value="Mentoring" {{ment}}>Mentoring</option>
-						</select>
-						</td>
-					</tr>
-					
-					
-					<tr>
-						<td>
-						Current project(s):
-						</td>
-						<td>
-						<input type="text" style="width:99%;" name="currentProjects" value="{{currentProjects}}">
-						</td>
-					</tr>
-					<tr>
-						<td>								
-						Past projects:
-						</td>
-						<td>
-						<textarea name="pastProjects" rows="6" cols="60">{{pastProjects}}</textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						Email: (required for Gravatar)
-						</td>
-						<td>
-						<input type="text" style="width=99%;" name="email" value="{% if profile.email %}{{profile.email}}{% endif %}">
-						</td>
-					</tr>
-								
-				</tbody>
-			</table>
-			<input type="submit" value="Save Profile">
-		</form>
-	</section>
-	<script>
-			(function($){
-			$("#changepassbutton").toggle(function(){
-					$("#changepassform").show('medium');
-				}, function(){
-					$("#changepassform").hide('fast');
-				}
-			 );
-			 })(jQuery);
-	</script>
+							<table>
+								<tbody>
+									<tr>
+										<td>
+											Old Password:
+										</td>
+										<td>
+											<input type="password" name="oldpass">
+										</td>
+										<td>
+											<div class="error">{{old_err}}</div>
+										</td>										
+									</tr>
+									<tr>
+										<td>
+											New Password:
+										</td>
+										<td>
+											<input type="password" name="newpass">
+										</td>
+										<td>
+											<div class="error">{{valid_err}}</div>
+										</td>										
+									</tr>
+									<tr>
+										<td>
+											Confirm New Password:
+										</td>
+										<td>
+											<input type="password" name="v_newpass">
+										</td>
+										<td>
+											<div class="error">{{match_err}}</div>
+										</td>									
+									</tr>									
+								</tbody>
+							</table>
+							<br>
+						</div>
+					</td>										
+				</tr>						
+				<tr>
+					<td>
+					Quote:<br>
+					<textarea name="quote" rows="5" cols="50">{% if profile.quote %}{{profile.quote}}{% endif %}</textarea>
+					</td>								
+				</tr>						
+				
+				<tr>
+					<td>
+					Team:
+					</td>
+					<td>
+					<select name="team">
+						<option value="Programming" {{prog}}>Programming</option>
+						<option value="Mechanical" {{mec}}>Mechanical</option>
+						<option value="Outreach" {{out}}>Outreach</option>
+						<option value="Management" {{mang}}>Management</option>
+						<option value="Mentoring" {{ment}}>Mentoring</option>
+					</select>
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td>
+					Current project(s):
+					</td>
+					<td>
+					<input type="text" style="width:99%;" name="currentProjects" value="{{currentProjects}}">
+					</td>
+				</tr>
+				<tr>
+					<td>								
+					Past projects:
+					</td>
+					<td>
+					<textarea name="pastProjects" rows="6" cols="60">{{pastProjects}}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Email: (required for Gravatar)
+					</td>
+					<td>
+					<input type="text" style="width=99%;" name="email" value="{% if profile.email %}{{profile.email}}{% endif %}">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="Save Profile">
+	</form>
+</section>
+<script>
+		(function($){
+		$("#changepassbutton").toggle(function(){
+				$("#changepassform").show('medium');
+			}, function(){
+				$("#changepassform").hide('fast');
+			}
+		 );
+		 })(jQuery);
+</script>
 {% endblock %}		
