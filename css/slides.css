@@ -53,7 +53,7 @@
 }
 
 .pagination {
-	margin:26px auto 0;
+	margin:12px auto 0;
 	width:100px;
 }
 .pagination li {
@@ -66,7 +66,7 @@
 	width:12px;
 	height:0;
 	padding-top:12px;
-	background-image:url(../img/pagination.png);
+	background-image:url(../images/slides/pagination.png);
 	background-position:0 0;
 	float:left;
 	overflow:hidden;
