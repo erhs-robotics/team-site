@@ -2,13 +2,25 @@
 {% block head %}
 	{{super()}}
 	<link rel="stylesheet" href="../css/members.css">
+	<script>
+	$(document).ready(function(){
+		$("#createuserbutton").toggle(
+			function(){
+				$("#createuserform").show('medium');
+			}, function(){
+				$("#createuserform").hide('fast');
+			}
+		 );
+	});
+	</script>
 {% endblock %}
 {% block content %}		
 <section class="grid_12 content" id="members">
 {% if user and 2 in user.privileges %}
+	
 	<aside id="createuser" class="entry">
-		<button id="createuserbutton" type="button">Create User</button>			
-		<form id="createuser" style="display: {{display}};" method="post" enctype="multipart/form-data">
+		<button id="createuserbutton" type="button">Create User</button>				
+		<form id="createuserform" style="display: {{display}};" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td class="label">Full name (optional)</td>
@@ -35,19 +47,9 @@
 					<td>{{email}}</td>
 				</tr>
 			</table>
-		<input type="submit">
-		</form>
-		<script>
-		(function($){
-		$("#createuserbutton").toggle(function(){
-				$("#createuser").show('medium');
-			}, function(){
-				$("#createuser").hide('fast');
-			}
-		 );
-		 })(jQuery);
-	</script>
-	</aside>
+		<input type="submit">		
+		</form>		
+	</aside>	
 {% endif %}
 <div class="members-block entry">
 <h2>Programming Team</h2>

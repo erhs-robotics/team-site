@@ -58,7 +58,7 @@ class MembersHandler(Handler):
             if member.team == "Outreach":
                 outreachers.append(member)
         
-        self.render("members.html", user = self.user, users=members, display="none", programmers = programmers,
+        self.render("about/members.html", user = self.user, users=members, display = "none", programmers = programmers,
 					mechies = mechies, managers = managers, outreachers = outreachers)
         
 
@@ -88,7 +88,7 @@ class MembersHandler(Handler):
                 newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[IS_MEMBER])
                 if fullname: newuser.fullname = fullname
                 newuser.put()                
-                self.redirect('/members')
+                self.redirect('/about/members')
             else:
                 m_user = ''
                 m_pass = ''
@@ -472,7 +472,7 @@ class DeleteUserHandler(Handler):
                 del_user = User.get_by_id(int(del_user))
                 if del_user:
                     del_user.delete()
-                self.redirect("/members")
+                self.redirect("/about/members")
         else:
             self.redirect("/login")
 
@@ -513,7 +513,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/login', LoginHandler),
                                ('/logout', LogoutHandler),
                                ('/newpost', NewpostHandler),
-                               ('/members', MembersHandler),
+                               ('/about/members', MembersHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
                                ('/image', ImageHandler),
