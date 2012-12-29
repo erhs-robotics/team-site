@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="blog-entry content">
+<div class="grid_12 content">
+	<div class="entry blog-entry">
     <img style="float:left; width:100px; height:100px; " src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
     {% if user %}
         {% if user.key().id() == post.user or user.isadmin %}
@@ -14,11 +15,12 @@
     <!--<div class="fb-like" data-href="http://www.erhsroboticsclub.org/viewpost/{{post.key().id()}}" 
          data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" 
          data-font="segoe ui" style="float:right; padding-right: 20px;"></div>-->
-    <fb:like show-faces="false" href="http://3-4-0.erhs-roboticsclub.appspot.com/viewpost/{{post.key().id()}}"></fb:like>
+    <!--<fb:like show-faces="false" href="http://www.erhsroboticsclub.org/viewpost/{{post.key().id()}}"></fb:like>-->
     <h2>{{post.subject}}</h2>
     <h3>Created by: {{post.username}}</h3>
     <h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
     <br><br>
     <p>{{post.content}}</p>
+   </div>
 </div><!-- /.blog-entry -->
 {% endblock %}

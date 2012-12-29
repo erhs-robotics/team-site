@@ -11,13 +11,13 @@
 {% endblock %}
 {% block content %}
 	{% if user and 1 in user.privileges %}
-		<form class="grid_12 content" style="margin: 20px 0 0px 10px;" action="/newpost" method="GET">
+		<form class="grid_12 content" style="margin: 20px 0 0 10px; padding: 0;" action="/newpost" method="GET">
 			<button class="button" style="margin: 10px 0 0 10px;" id="submit">New Post</button>
 		</form>
 		<div class="clear"></div>
 	{% endif %}
 	{% for post in posts%}
-		<div class="grid_12 blog-entry" style="overflow: hidden">
+		<div class="grid_12 blog-entry entry" style="margin-bottom: 0px;">
 			<aside class="entry">
 				<img style="float:left; width:100px; height:100px; margin-right: 10px;" src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
 				{% if user %}
