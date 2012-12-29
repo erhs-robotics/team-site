@@ -39,65 +39,43 @@
 	</script>
 {% endblock %}
 {% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <aside id="welcome">
 	<div id="container" class="grid_6 content" style="height: 327px">
 			<div class="entry">
 				<div id="slides">
 					<div class="slides_container">
 						<div class="slide">
-							<a href="http://www.flickr.com/photos/jliba/4665625073/" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" target="_blank">
-								<img src="images/image-1.jpg" width="420" height="270" alt="Slide 1">
+							<a href="http://www.flickr.com/photos/jliba/4665625073/" target="_blank">
+								<img src="images/image-1.jpg" width="420" height="270" 
+								     alt="The Programming Team Hard at Work">
 							</a>
 							<div class="caption" style="bottom:0">
 								<p>The Programming Team hard at work</p>
 							</div>
 						</div>
 						<div class="slide">
-							<a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" target="_blank">
+							<a href="http://www.usfirst.org/roboticsprograms/frc" target="_blank">
+								<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ8kJbY0frmMliUxFbtbNf0fsvV9qQktpc_RjZZ1aTMMjy1Oeg_" 
+										 width="420" height="270" alt="Slide 3">
+							</a>
+							<div class="caption">
+								<p>Are you ready for the upcoming FIRST Robotics Competition?  Kickoff day is January 5, 2013</p>
+							</div>
+						</div>
+						<div class="slide">
+							<a href="/" title="Taxi | Flickr - Photo Sharing!" target="_blank">
 								<img src="images/image-2.jpg" width="420" height="270" alt="Slide 2">
 							</a>
 							<div class="caption">
 								<p>Mr. Healey explaining how an FRC robot works</p>
-							</div>
-						</div>
-						<div class="slide">
-							<a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank">
-								<img src="images/slides/slide-3.jpg" width="420" height="270" alt="Slide 3">
-							</a>
-							<div class="caption">
-								<p>Happy Bokeh raining Day.  I want to test a REALL LONG Caption, like OMG yes, really long</p>
-							</div>
-						</div>
-						<div class="slide">
-							<a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" target="_blank">
-								<img src="images/slides/slide-4.jpg" width="420" height="270" alt="Slide 4">
-							</a>
-							<div class="caption">
-								<p>We Eat Light</p>
-							</div>
-						</div>
-						<div class="slide">
-							<a href="http://www.flickr.com/photos/bu7amd/3447416780/" title="&ldquo;I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.&rdquo; | Flickr - Photo Sharing!" target="_blank">
-								<img src="images/slides/slide-5.jpg" width="420" height="270" alt="Slide 5">
-							</a>
-							<div class="caption">
-								<p>&ldquo;I must go down to the sea again, to the lonely sea and the sky...&rdquo;</p>
-							</div>
-						</div>
-						<div class="slide">
-							<a href="http://www.flickr.com/photos/streetpreacher/2078765853/" title="twelve.inch | Flickr - Photo Sharing!" target="_blank">
-								<img src="images/slides/slide-6.jpg" width="420" height="270" alt="Slide 6">
-							</a>
-							<div class="caption">
-								<p>twelve.inch</p>
-							</div>
-						</div>
-						<div class="slide">
-							<a href="http://www.flickr.com/photos/aftab/3152515428/" title="Save my love for loneliness | Flickr - Photo Sharing!" target="_blank">
-								<img src="images/slides/slide-7.jpg" width="420" height="270" alt="Slide 7">
-							</a>
-							<div class="caption">
-								<p>Save my love for loneliness</p>
 							</div>
 						</div>
 					</div>
@@ -132,7 +110,7 @@
 			is an international organization dedicated to the teaching of the 
 			STEM field to students. The organization was founded in 1989 by 
 			Dean Kamen and has since grown into one of the largest and most 
-			successful robotics high school robotics programs in the world.  Click <a href="/first">here</a>
+			successful high school robotics programs in the world.  Click <a href="/first">here</a>
 			to learn more about FIRST.</p>
 		</div>
 	</article>
@@ -150,9 +128,11 @@
 	</article>
 	<article id="muc" class="grid_4 maincontent content">
 		<div class="entry">
-			<img src="/images/muc.png" alt="Mini Urban Challenge" style="width: 270px; height: 120px">
-			<p>The MiniUrban Challenge is a completely a completely autonomous robotics competition
-			where robots must be built and programmed to self-navigate a model city.</p>
+			<img src="/images/muc.jpg" style="padding: 0 40px; height: 160px; width: 200px;" alt="Mini Urban Challenge" style="width: 270px; height: 120px">
+			<p>The Mini-Urban Challenge is a completely a completely autonomous robotics competition
+			where robots must be built and programmed to self-navigate a model city. Find out more
+			information about MUC <a href="/muc">here</a> or visit the official
+			<a href="http://www.miniurbanchallenge.com">website</a>.</p>
 		</div>
 	</article>
 </section>
@@ -179,11 +159,19 @@
 	<aside class="grid_5 content">
 		<div class="blog-feed entry">
 			<h2>Stay Connected</h2>
-			<p>Make sure you can find all our team updates</p>
-			<a href="http://www.facebook.com/"><img src="/images/logo/facebook.jpg" style="display: inline-block"/></a> Follow Us on Facebook<br/>
-			</br/><br/>
+			<a href="https://twitter.com/ERHSRobotics53" target="_blank"><img src="/images/logo/twitter.jpg"></a>
+			Follow Us On Twitter
 			<a class="twitter-timeline" href="https://twitter.com/ERHSRobotics53" data-widget-id="283036805325004803">Tweets by @ERHSRobotics53</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			<br><br>
+			<a href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" target="_blank">
+				<img src="/images/logo/facebook.jpg" style="display: inline-block"/>
+			</a> 
+			Like Us On Facebook
+			<div id="like-box" 	class="fb-like" data-href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" 
+			     data-send="true" data-layout="button_count" data-width="250" data-show-faces="false" data-font="verdana" 
+			     data-colorscheme="light">
+			</div>
 		</div>
 	</aside>
 </section>

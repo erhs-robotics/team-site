@@ -17,6 +17,7 @@ body {
 		background: -webkit-linear-gradient(top, #bef 20%, #7ad 70%);
 		background: -moz-linear-gradient(top, #bef 20%, #7ad 70%);
 		background: -o-linear-gradient(top, #bef 20%, #7ad 70%);
+		background: -ms-linear-gradient(top, #bef 20%, #7ad 70%);
 	color: #000;
 	font-size: 100%;
 	line-height: 1;
@@ -259,4 +260,10 @@ color: #f90;}
 #twitter-widget-0 {
 	width: 360px;
 	margin: 0 auto;
+}
+
+div#like-box {
+    height: 20px;
+    overflow: hidden;
+    padding: 0;
 }
