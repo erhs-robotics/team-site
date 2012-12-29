@@ -54,13 +54,13 @@ tfoot th {} tfoot td {}
 header, section, footer, aside, nav, article, figure, login{ display: block;} 
 
 #banner a { text-decoration: none; }
-#banner a span {
+#banner a .maintitle {
 	color: blue;
 	font-size: 60px;
 	text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;  
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
-#banner a font {
+#banner a .subtitle{
 	color: black;
 	font-size: 14px;
 	font-style: italic;

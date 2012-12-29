@@ -22,17 +22,9 @@
 		{% endblock %}
 	</head>
 	<body>
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
 		{% block banner %}
 			<header id="banner" class="container_12">
-				<aside class="grid_12 login" align="right">
+				<aside class="grid_12 login">
 					{% if user %}
 						{% if user.fullname %}
 							{{user.fullname}} <a href="/profile/{{user.username}}">{{user.username}}</a>
@@ -44,10 +36,10 @@
 						<a href="/login">Login</a>
 					{% endif %}
 				</aside><!-- /#login -->
-				<div id="banner">
+				<div id="text-banner">
 					<a class="grid_12" style="text-align: center" href="/">
-						<span>ERHS Robotics Club</span><!--<img class="grid_8" src="../images/logo/banner3.png" alt="ERHS Robotics Banner">--><br/>
-						<font>FRC Team 53 from Greenbelt, Maryland</font>
+						<span class="maintitle">ERHS Robotics Club</span><!--<img class="grid_8" src="../images/logo/banner3.png" alt="ERHS Robotics Banner">--><br/>
+						<span class="subtitle">FRC Team 53 from Greenbelt, Maryland</span>
 					</a>
 				</div><!-- /#banner -->
 			</header>
@@ -99,8 +91,8 @@
 		{% block footer %}
 			<footer id="footer" class="container_12">
 				<section id="sitemap" class="grid_12 content" style="margin-bottom: 0px">
-					<span class="grid_2 footer_col alpha"><img width=95% height=100% src="/images/logo/favicon.png"></span>
-					<span class="grid_2 footer_col">
+					<div class="grid_2 footer_col alpha"><img src="/images/logo/favicon.png" alt="Robotics Club Logo"></div>
+					<div class="grid_2 footer_col">
 						<h2>ERHS Robotics</h2>
 						<ul>
 							<li><a href="/">Home</a></li>
@@ -109,8 +101,8 @@
 							<li><a href="/mentors">Mentors</a></li>
 							<li><a href="/sponsors">Sponsors</a></li>
 						</ul>
-					</span>
-					<span class="grid_2 footer_col">
+					</div>
+					<div class="grid_2 footer_col">
 						<h2>About Us</h2>
 						<ul>
 							<li><a href="/about/history">History</a></li>
@@ -118,16 +110,16 @@
 							<li><a href="/about/outreach">Outreach</a></li>
 							<li><a href="/about/website">Website</a></li>
 						</ul>
-					</span>
-					<span class="grid_2 footer_col">
+					</div>
+					<div class="grid_2 footer_col">
 						<h2>Competitions</h2>
 						<ul>
 							<li><a href="/first">FIRST</a></li>
 							<li><a href="/vex">Vex</a></li>
 							<li><a href="/muc">Mini-Urban</a></li>
 						</ul>
-					</span>
-					<span class="grid_2 footer_col">
+					</div>
+					<div class="grid_2 footer_col">
 						<h2>Media</h2>
 						<ul>
 							<li><a href="/gallery">Photo Gallery</a></li>
@@ -135,15 +127,15 @@
 							<li><a href="http://www.youtube.com/user/Area53Robotics">Team Youtube</a></li>
 							<li><a href="http://www.youtube.com/user/erhs53hackers">Programming Youtube</a></li>
 						</ul>
-					</span>
-					<span class="grid_2 footer_col omega">
+					</div>
+					<div class="grid_2 footer_col omega">
 					<h2>Resources</h2>
 					<ul>
 						<li><a href="http://time.erhsroboticsclub.org">Attendance Clock</a></li>
 						<li><a href="/resources/parents">Parents</a></li>
 						<li><a href="/resources/contact">Contact Us</a></li>
 					</ul>
-				</span>
+					</div>
 				</section><!-- /#sitemap -->
 				<section id="about" class="grid_12 content" style="margin-top: 0px;">
 					<span class="grid_11">
