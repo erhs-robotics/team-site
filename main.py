@@ -23,6 +23,14 @@ privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users", IS_MEMBE
 
 rand_word = ''
 
+def get_page(resource):
+    pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
+    pages = list(pages)
+    if pages:
+        return pages[0]
+    else:
+		return None
+
 ### FRONTENDS HANDLERS ###
 
 class MainHandler(Handler):
@@ -35,7 +43,12 @@ class GenericHandler(Handler):
     def get(self, resource):
         self.login()
         logging.error(resource)
-        self.render(resource + ".html", user=self.user)             
+        page_location = resource + ".html"
+        page = get_page(resource)
+        if page or not page:
+            self.render(page_location, page=page, user=self.user)
+        else:
+            self.render("pagenotfound.html", user=self.user)
         
 class MembersHandler(Handler):
     def get(self):        
@@ -507,6 +520,42 @@ class ViewPostHandler(Handler):
                         
         if post:
             self.render("viewpost.html", user = self.user, post = post)
+        
+class EditPageHandler(Handler):
+    def get(self, resource):
+        self.login()        
+        
+        if self.user and CAN_POST in self.user.privileges:
+            page = get_page(resource)
+            
+            if page and ():
+                self.render("newpage.html", user = self.user, 
+											title = page.title,
+											location = page.location,
+											content = page.content)
+        else:
+            self.redirect('/login')
+            
+    def post(self, resource):
+        self.login()
+        
+        if self.user and CAN_POST in self.user.privileges and ID.isdigit():        
+            page = get_page(resource)
+            if page:     
+                title = self.request.get("title")
+                location = self.request.get("location")
+                content = self.request.get("content")              
+
+                if title and location and content:                
+                    page.title = title
+                    page.location = location
+                    page.content = content
+                    page.put()
+                    self.redirect("/" + resource)              
+                else:
+                    self.render_form(subject, content, "Please provide a title and content", user=user)
+        else:
+            self.redirect("/login")
 
 app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/blog/(\d+)', BlogHandler),
@@ -522,5 +571,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/deleteuser', DeleteUserHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),                            
                                ('/viewpost/(\d+)', ViewPostHandler),
+                               ('/editpage/(\d+)', EditPageHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)

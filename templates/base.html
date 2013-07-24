@@ -81,6 +81,12 @@
 		{% endblock %}	
 		<section id="content" class="container_12">
 			{% block content %}
+				{% block dynamic %}
+					{% if user %}
+						<a href="/editpage">Edit Page</a>
+					{% endif %}
+					{{page.content}}
+				{% endblock %}
 			{% endblock %}
 		</section>
 		{% block footer %}
