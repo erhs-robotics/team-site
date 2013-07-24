@@ -53,3 +53,8 @@ class Message(db.Model):
     name = db.StringProperty()
     email = db.StringProperty()
     message = db.StringProperty()
+
+class Page(db.Model):
+	title = db.StringProperty()
+	location = db.StringProperty(required = True)
+	content = db.TextProperty(required = True)
