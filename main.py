@@ -42,13 +42,12 @@ class MainHandler(Handler):
 class GenericHandler(Handler):
     def get(self, resource):
         self.login()
-        logging.error(resource)
         page_location = resource + ".html"
         page = get_page(resource)
         if page or not page:
-            self.render(page_location, page=page, user=self.user)
+            self.render(page_location, location=resource, page=page, user=self.user)
         else:
-            self.render("pagenotfound.html", user=self.user)
+            self.render(page_location, location=resource, user=self.user)
         
 class MembersHandler(Handler):
     def get(self):        
@@ -259,7 +258,6 @@ class NewpostHandler(Handler):
         else:
             self.redirect("/login")
         
-
     def post(self):
         self.login()               
         if self.user and CAN_POST in self.user.privileges:            
@@ -520,26 +518,59 @@ class ViewPostHandler(Handler):
                         
         if post:
             self.render("viewpost.html", user = self.user, post = post)
+   
+class NewPageHandler(Handler):
+    def render_form(self, title="", location="", content="", error="",user=None):
+        self.render("newpage.html", title=title, location=location, content=content, error=error, user=user)
+	
+    def get(self):
+        self.login()
         
+        if self.user and CAN_POST in self.user.privileges:
+            self.render_form(user = self.user)
+        else:
+            self.redirect("/login")
+        
+    def post(self):
+        self.login()               
+        if self.user and CAN_POST in self.user.privileges:            
+            title = self.request.get("title")
+            location = self.request.get("location")
+            content = self.request.get("content")
+
+            if title and location and content:
+                page = Page(title=title, location=location, content=content)            
+                page.put()                
+                self.redirect("/" + location)
+            else:
+                self.render_form(title, location, content, "Please provide a title and content", user=self.user)
+     
 class EditPageHandler(Handler):
+    def render_form(self, title="", location="", content="", error="",user=None):
+        self.render("newpage.html", title=title, location=location, content=content, error=error, user=user)
+	
     def get(self, resource):
         self.login()        
         
         if self.user and CAN_POST in self.user.privileges:
             page = get_page(resource)
             
-            if page and ():
+            if page:
                 self.render("newpage.html", user = self.user, 
 											title = page.title,
 											location = page.location,
-											content = page.content)
+											content = page.content,
+											error = "")
+				
+            #else:
+            #    self.render("newpage.html", user=self.user, title="", location="", content="", error="")
         else:
             self.redirect('/login')
             
     def post(self, resource):
         self.login()
         
-        if self.user and CAN_POST in self.user.privileges and ID.isdigit():        
+        if self.user and CAN_POST in self.user.privileges:        
             page = get_page(resource)
             if page:     
                 title = self.request.get("title")
@@ -553,7 +584,7 @@ class EditPageHandler(Handler):
                     page.put()
                     self.redirect("/" + resource)              
                 else:
-                    self.render_form(subject, content, "Please provide a title and content", user=user)
+                    self.render_form(title, location, content, "Please provide a title, location, and content", user=user)
         else:
             self.redirect("/login")
 
@@ -571,6 +602,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/deleteuser', DeleteUserHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),                            
                                ('/viewpost/(\d+)', ViewPostHandler),
-                               ('/editpage/(\d+)', EditPageHandler),
+                               ('/newpage', NewPageHandler),
+                               ('/editpage/(.+)', EditPageHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)

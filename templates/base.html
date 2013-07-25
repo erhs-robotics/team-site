@@ -82,9 +82,14 @@
 		<section id="content" class="container_12">
 			{% block content %}
 				{% block dynamic %}
-					{% if user %}
-						<a href="/editpage">Edit Page</a>
+					{% if user and 1 in user.privileges %}
+						{% if page != None %}
+						<a href="/editpage/{{location}}">Edit</a>
+						{% else %}
+						<a href="/newpage">Edit</a>
+						{% endif %}
 					{% endif %}
+					<h2>{{page.title}}</h2>
 					{{page.content}}
 				{% endblock %}
 			{% endblock %}

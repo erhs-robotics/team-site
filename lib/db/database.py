@@ -56,5 +56,5 @@ class Message(db.Model):
 
 class Page(db.Model):
 	title = db.StringProperty()
-	location = db.StringProperty(required = True)
-	content = db.TextProperty(required = True)
+	location = db.StringProperty()
+	content = db.TextProperty()
