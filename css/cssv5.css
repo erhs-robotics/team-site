@@ -16,9 +16,9 @@ body {
 	background-repeat: no-repeat !important;
 	background: linear-gradient(top, #bef 20%, #7ad 70%);
 		background: -webkit-linear-gradient(top, #adf 50%, #7ad 70%);
-		background-color: -moz-linear-gradient(top, #adf 50%, #7ad 70%);
-		background-color: -o-linear-gradient(top, #adf 50%, #7ad 70%);
-		background-color: -ms-linear-gradient(top, #bef 20%, #7ad 70%);
+		background: -moz-linear-gradient(top, #adf 50%, #7ad 70%);
+		background: -o-linear-gradient(top, #adf 50%, #7ad 70%);
+		background: -ms-linear-gradient(top, #bef 20%, #7ad 70%);
 		
 	color: #000;
 	font-size: 100%;
