@@ -1,5 +1,5 @@
 application: erhs-team53
-version: 4-2-0
+version: 5-0-0-beta
 runtime: python27
 api_version: 1
 threadsafe: yes
