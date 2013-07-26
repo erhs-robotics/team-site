@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="grid_12 content">
+	{% block dynamic %}
+		{{super()}}
+	{% endblock %}
 	<article id="history-overview" class="entry">
 		<h2>Team History</h2>
 		<p>The Eleanor Roosevelt High School Robotics Club was founded in 

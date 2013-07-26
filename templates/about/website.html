@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="grid_12 content">
+	{% block dynamic %}
+		{{super()}}
+	{% endblock %}
 	<article class="entry">
 		<h2>Student Designed, Hand Coded</h2>
 		<p>This website was designed and coded by students from the robotics
