@@ -209,6 +209,14 @@ color: #f90;}
     -ms-transition: color .2s ease-in-out;
     transition: color .2s ease-in-out;
 }
+.menu li a img {
+	display: inline;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	float: right;
+}
 .menu li:first-child a { border-left: none;}
 .menu li:last-child a{ border-right: none; }
 .menu li:hover > a { color: #69f; }
