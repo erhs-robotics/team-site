@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="grid_12 content">
+	{% block dynamic %}
+		{{super()}}
+	{% endblock %}
 	<article class="entry">
 		<h2>Competitions</h2>
 		<p>The primary focus of our robotics club is to compete in robotics
