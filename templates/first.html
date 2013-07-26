@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="grid_12 content">
+	{% block dynamic %}
+		{{super()}}
+	{% endblock %}
 	<article id="whatisfirst" class="entry">
 		<h2>What is FIRST&#174;?</h2>
 		<img alt="FIRST Logo" src="http://www.usfirst.org/sites/all/themes/first_core/logo.png" class="left">
@@ -33,7 +36,6 @@
 			the end of the game, robots can earn additional points by climbing 
 			to different levels of a pyramid
 			</p>
-
 		</article>
 		<article id="robot" class="entry">
 			<h3>Our Robot</h3>
