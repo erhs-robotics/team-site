@@ -17,7 +17,6 @@
 {% block content %}		
 <section class="grid_12 content" id="members">
 {% if user and 2 in user.privileges %}
-	
 	<aside id="createuser" class="entry">
 		<button id="createuserbutton" type="button">Create User</button>				
 		<form id="createuserform" style="display: {{display}};" method="post" enctype="multipart/form-data">
@@ -51,75 +50,6 @@
 		</form>		
 	</aside>	
 {% endif %}
-<div class="members-block entry">
-<h2>Programming Team</h2>
-{% for user in programmers %}
-	{% if 3 in user.privileges %}
-		<div id="member-block">
-			<fieldset><legend>
-				<a href="/profile/{{user.username}}">
-					{% if user.fullname %}
-						{{user.fullname}}
-					{% else %}
-						{{user.username}}
-					{% endif %}
-				</a>
-			</legend>
-			<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
-			{% if user.quote %}
-				<font>"{{user.quote}}"</font>
-			{% endif %}
-			</fieldset>
-		</div>
-	{% endif %}	
-{% endfor %}
-</div>
-<div class="members-block entry">
-<h2>Mechanical Team</h2>
-{% for user in mechies %}
-	{% if 3 in user.privileges %}
-		<div id="member-block">
-			<fieldset><legend>
-				<a href="/profile/{{user.username}}">
-					{% if user.fullname %}
-						{{user.fullname}}
-					{% else %}
-						{{user.username}}
-					{% endif %}
-				</a>
-			</legend>
-			<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
-			{% if user.quote %}
-				<font>"{{user.quote}}"</font>
-			{% endif %}
-			</fieldset>
-		</div>
-	{% endif %}	
-{% endfor %}
-</div>
-<div class="members-block entry">
-<h2>Management/Business Team</h2>
-	{% for user in managers %}
-		{% if 3 in user.privileges %}
-			<div id="member-block">
-				<fieldset><legend>
-					<a href="/profile/{{user.username}}">
-						{% if user.fullname %}
-							{{user.fullname}}
-						{% else %}
-							{{user.username}}
-						{% endif %}
-					</a>
-				</legend>
-				<img src="{{gravatar(user.email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}">		
-				{% if user.quote %}
-					<font>"{{user.quote}}"</font>
-				{% endif %}
-				</fieldset>
-			</div>
-		{% endif %}	
-	{% endfor %}
-</div>
 </section>
 {% endblock %}	
 	
