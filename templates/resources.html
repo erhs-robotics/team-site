@@ -2,8 +2,10 @@
 {% block content %}
 <section class="grid_12 content">
 	<article class="grid_8 alpha">
+		{% block dynamic %}
+			{{super()}}
+		{% endblock %}
 		<div class="entry">
-			
 			<h2>FIRST Robotics Competition</h2>
 			<ul class="list entry" id="frc">
 				<li><h3><a href="http://www.usfirst.org/roboticsprograms/frc">FRC Homepage</a></h3>
@@ -17,31 +19,31 @@
 					The most active forum for FRC discussion.  Have a question about FRC?  This is the
 					place to ask.
 				</li>
-				<li><h3><a href="http://robotics.francisparker.org/javadoc/">FRC Java API</a></h2>
+				<li><h3><a href="http://robotics.francisparker.org/javadoc/">FRC Java API</a></h3>
 					Javadoc for the 2013 FRC Java Library.  Useful for programmers on FRC teams.
 				</li>
 			</ul>
 			
 			<h2>Arduino</h2>
 			<ul class="list entry" id="arduino">
-				<li><h3><a href="http://arduino.cc/en/Guide/HomePage">Arduino Homepage</a></h2>
+				<li><h3><a href="http://arduino.cc/en/Guide/HomePage">Arduino Homepage</a></h3>
 					Homepage for Arduino.
 				</li>
-				<li><h3><a href="http://www.instructables.com/tag/type-id/category-technology/channel-arduino/">Arduino Instructables</a></h2>
+				<li><h3><a href="http://www.instructables.com/tag/type-id/category-technology/channel-arduino/">Arduino Instructables</a></h3>
 					Instructables Page for Arduino.
 				</li>
 			</ul>
 				
 			<h2>Computer Science</h2>
 			<ul class="list entry" id="compsci">
-				<li><h3><a href="http:www.udacity.com">Udacity</a></h2>
+				<li><h3><a href="http:www.udacity.com">Udacity</a></h3>
 					A free online university offering top level instruction focusing on
 					computer science.  A vast array of courses are available, from basic
 					introduction to <b class="label">Programming and Computer Science</b>
 					courses to advanced topics in <b class="label">Artificial Intelligence,
 					Parallel Processing, Web Development, and Cryptography.</b>
 				</li>
-				<li><h3><a href="http://learncodethehardway.org/">Learn Code the Hard Way</a></h2>
+				<li><h3><a href="http://learncodethehardway.org/">Learn Code the Hard Way</a></h3>
 					A site with free textbooks to teach your how to code!  Rather than bog
 					you down with tons of theory, the exercises encourage you to explore 
 					the programming language by writing, debugging, and exploring programs.

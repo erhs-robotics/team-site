@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="grid_12 content">
+	{% block dynamic %}
+		{{super()}}
+	{% endblock %}
 	<div class="entry">
 		<p>Please contact us at the following email addresses:</p>
 		<table>
