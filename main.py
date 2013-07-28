@@ -332,7 +332,8 @@ class EditPostHandler(Handler):
         
 class ImageHandler(Handler):
     def get(self):
-		entity = db.get(self.request.GET.get("img_id"))
+		#entity = db.get(self.request.GET.get("img_id"))
+		entity = db.get(db.Key(encoded=self.request.get("img_id")))
 		if entity.image:
 			self.response.headers['Content-Type'] = "image/jpg"
 			self.response.out.write(entity.image)
