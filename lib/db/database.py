@@ -58,3 +58,8 @@ class Page(db.Model):
 	title = db.StringProperty()
 	location = db.StringProperty()
 	content = db.TextProperty()
+
+class Slide(db.Model):
+	image = db.BlobProperty()
+	caption = db.StringProperty(multiline=True)
+	link = db.StringProperty()
