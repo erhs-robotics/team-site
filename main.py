@@ -74,7 +74,6 @@ class MembersHandler(Handler):
         self.render("about/members.html", user = self.user, users=members, display = "none", programmers = programmers,
 					mechies = mechies, managers = managers, outreachers = outreachers)
         
-
     def post(self):
         self.login()        
         if self.user and CAN_MAKEUSER in self.user.privileges:
@@ -138,20 +137,6 @@ class MembersHandler(Handler):
                             display = "block",
                             users=members, programmers=programmers, mechies=mechies, managers=managers,
                             outreachers=outreachers)
-
-class MentorsHandler(Handler):
-    def get(self):        
-        self.login()
-        
-        members = db.GqlQuery("SELECT * FROM User")
-        members = list(members)    
-        members = sorted(members, key=lambda member: member.username.lower())
-        mentors = []
-        for member in members:
-            if member.team == "Mentoring":
-                mentors.append(member)
-        
-        self.render("mentors.html", user = self.user, mentors=mentors)
         
 class BlogHandler(Handler):
     def getTotalPosts(self, post_list):
