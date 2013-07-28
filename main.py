@@ -37,7 +37,8 @@ class MainHandler(Handler):
     def get(self):
         self.login()            
         posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
-        self.render("index.html", user = self.user, post = posts)
+        slides = Slide.all()
+        self.render("index.html", user = self.user, post = posts, slides=slides)
         
 class GenericHandler(Handler):
     def get(self, resource):
@@ -73,7 +74,6 @@ class MembersHandler(Handler):
         self.render("about/members.html", user = self.user, users=members, display = "none", programmers = programmers,
 					mechies = mechies, managers = managers, outreachers = outreachers)
         
-
     def post(self):
         self.login()        
         if self.user and CAN_MAKEUSER in self.user.privileges:
@@ -137,20 +137,6 @@ class MembersHandler(Handler):
                             display = "block",
                             users=members, programmers=programmers, mechies=mechies, managers=managers,
                             outreachers=outreachers)
-
-class MentorsHandler(Handler):
-    def get(self):        
-        self.login()
-        
-        members = db.GqlQuery("SELECT * FROM User")
-        members = list(members)    
-        members = sorted(members, key=lambda member: member.username.lower())
-        mentors = []
-        for member in members:
-            if member.team == "Mentoring":
-                mentors.append(member)
-        
-        self.render("mentors.html", user = self.user, mentors=mentors)
         
 class BlogHandler(Handler):
     def getTotalPosts(self, post_list):
@@ -588,6 +574,46 @@ class EditPageHandler(Handler):
         else:
             self.redirect("/login")
 
+class ControlHandler(Handler):
+	def get(self):
+		self.login()
+		slides = Slide.all()
+		self.render("control.html", user=self.user, slides=slides)
+	def post(self):
+		self.login()
+		slide = Slide()
+		#image = self.request.get("image")
+		image = images.resize(self.request.get('image'), 420, 270)
+		caption = self.request.get("caption")
+		link = self.request.get("link")
+		slide.image = db.Blob(image)
+		slide.caption = caption
+		slide.link = link
+		slide.put()
+		self.redirect("/control")
+		
+class DeleteEntityHandler(Handler):
+    def post(self):
+        self.login()
+        entity_key = self.request.get("entity")
+        if self.user and self.user.isadmin:
+            if entity_key:
+                del_entity = db.get(entity_key)
+                if del_entity:
+                    del_entity.delete()
+                self.redirect(self.request.host_url)
+        else:
+            self.redirect("/login")
+
+class Image(Handler):
+    def get(self):
+		entity = db.get(self.request.get("img_id"))
+		if entity.image:
+			self.response.headers['Content-Type'] = "image/jpg"
+			self.response.out.write(entity.image)
+		else:
+			self.response.out.write("No Image")
+
 app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/blog/(\d+)', BlogHandler),
                                ('/login', LoginHandler),
@@ -596,7 +622,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/about/members', MembersHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
-                               ('/image', ImageHandler),
+                               #('/image', ImageHandler),
                                ('/profile/(.+)', ProfileHandler),
                                ('/editprofile/(.+)', EditProfileHandler),
                                ('/deleteuser', DeleteUserHandler),
@@ -604,5 +630,8 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/viewpost/(\d+)', ViewPostHandler),
                                ('/newpage', NewPageHandler),
                                ('/editpage/(.+)', EditPageHandler),
+							   ("/image", Image),
+							   ("/control", ControlHandler),
+							   ('/deleteentity', DeleteEntityHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)
