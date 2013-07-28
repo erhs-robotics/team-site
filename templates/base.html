@@ -31,6 +31,9 @@
 						{% else %}
 							User: <a href="/profile/{{user.username}}">{{user.username}}</a>
 						{% endif %}
+						{% if user.isadmin or 1 in user.priveleges %}
+							| <a href="/control">Control Center</a>
+						{% endif %}
 						| <a href="/logout">Logout</a>
 					{% else %}
 						<a href="/login">Login</a>

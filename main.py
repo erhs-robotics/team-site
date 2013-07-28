@@ -199,6 +199,31 @@ class ContactHandler(Handler):
             newMessage = Message(name=sender_name, email=sender_email, message=sender_message)
             newMessage.put()
         self.render("contact.html", user=self.user, messages = list(messages), posts = list(posts))
+        
+class ControlHandler(Handler):
+	def get(self):
+		self.login()
+		slides = Slide.all()
+		self.render("control.html", user=self.user, slides=slides)
+	def post(self):
+		self.login()
+		if self.user and (CAN_POST in self.user.privileges or self.user.isadmin):
+			slide = Slide()
+			#image = self.request.get("image")
+			image = self.request.get('image')
+			caption = self.request.get("caption")
+			link = self.request.get("link")
+			if image and caption:
+				image = images.resize(self.request.get('image'), 420, 270)
+				slide.image = db.Blob(image)
+				slide.caption = caption
+				slide.link = link
+				slide.put()
+				self.redirect("/control")
+			else:
+				self.render("control.html", user=self.user, slides=Slide.all(), 
+				            image=image, caption=caption, link=link, 
+				            error="Please provide an image and a caption")
        
 ### BACKENDS HANDLERS ###
 
@@ -307,12 +332,12 @@ class EditPostHandler(Handler):
         
 class ImageHandler(Handler):
     def get(self):
-        user = db.get(self.request.get("id"))
-        if user.userimage:
-            self.response.headers['Content-Type'] = "image/png"
-            self.response.out.write(user.userimage)
-        else:
-            self.error(404)
+		entity = db.get(self.request.GET.get("img_id"))
+		if entity.image:
+			self.response.headers['Content-Type'] = "image/jpg"
+			self.response.out.write(entity.image)
+		else:
+			self.response.out.write("No Image")
             
 class ProfileHandler(Handler):
     def get(self, res):
@@ -573,24 +598,6 @@ class EditPageHandler(Handler):
                     self.render_form(title, location, content, "Please provide a title, location, and content", user=user)
         else:
             self.redirect("/login")
-
-class ControlHandler(Handler):
-	def get(self):
-		self.login()
-		slides = Slide.all()
-		self.render("control.html", user=self.user, slides=slides)
-	def post(self):
-		self.login()
-		slide = Slide()
-		#image = self.request.get("image")
-		image = images.resize(self.request.get('image'), 420, 270)
-		caption = self.request.get("caption")
-		link = self.request.get("link")
-		slide.image = db.Blob(image)
-		slide.caption = caption
-		slide.link = link
-		slide.put()
-		self.redirect("/control")
 		
 class DeleteEntityHandler(Handler):
     def post(self):
@@ -604,16 +611,7 @@ class DeleteEntityHandler(Handler):
                 self.redirect(self.request.host_url)
         else:
             self.redirect("/login")
-
-class Image(Handler):
-    def get(self):
-		entity = db.get(self.request.get("img_id"))
-		if entity.image:
-			self.response.headers['Content-Type'] = "image/jpg"
-			self.response.out.write(entity.image)
-		else:
-			self.response.out.write("No Image")
-
+            
 app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/blog/(\d+)', BlogHandler),
                                ('/login', LoginHandler),
@@ -630,7 +628,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/viewpost/(\d+)', ViewPostHandler),
                                ('/newpage', NewPageHandler),
                                ('/editpage/(.+)', EditPageHandler),
-							   ("/image", Image),
+							   ("/image", ImageHandler),
 							   ("/control", ControlHandler),
 							   ('/deleteentity', DeleteEntityHandler),
                                ('/(.+)', GenericHandler)],
