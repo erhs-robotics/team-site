@@ -214,7 +214,7 @@ class ControlHandler(Handler):
 			caption = self.request.get("caption")
 			link = self.request.get("link")
 			if image and caption:
-				image = images.resize(self.request.get('image'), 420, 270)
+				image = images.resize(self.request.get('image'), 440, 270)
 				slide.image = db.Blob(image)
 				slide.caption = caption
 				slide.link = link
@@ -333,7 +333,10 @@ class EditPostHandler(Handler):
 class ImageHandler(Handler):
     def get(self):
 		#entity = db.get(self.request.GET.get("img_id"))
-		entity = db.get(db.Key(encoded=self.request.get("img_id")))
+		#entity = db.get(db.Key(encoded=self.request.get(imgId)))
+		#imgId = db.Key(urllib.unquote(self.request.get("img_id").split("?")[0]))
+		imgId = self.request.get("img_id").split("?")[0]
+		entity = db.get(imgId)
 		if entity.image:
 			self.response.headers['Content-Type'] = "image/jpg"
 			self.response.out.write(entity.image)

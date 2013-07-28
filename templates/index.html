@@ -54,20 +54,14 @@
 					<div class="slides_container">
 						{% for slide in slides %}
 							<div class="slide">
+								<img src="/image?img_id={{slide.key()}}">
 								<a href="/">
 									<img src="/image?img_id={{slide.key()}}" width="420" height="270">
 								</a>
-								<div class="caption" style="bottom:0">
+								<div class="caption">
 									<p>{{slide.caption}}</p>
 								</div>
 							</div>
-							<!--
-							<tr>
-								<td><img src="/image?img_id={{slide.key()}}" width="50%"></img></td>
-								<td>{{slide.caption}}</td>
-								<td>{% if slide.link %} <a href="{{slide.link}}" target="_blank">Link</a> {% else %} None {% endif %}</td>
-							</tr>
-							-->
 						{% endfor %}
 						<!--
 						<div class="slide">
