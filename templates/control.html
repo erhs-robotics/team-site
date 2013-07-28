@@ -1,42 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="grid_12 content">
-	<form method="post" enctype="multipart/form-data">
-		<label>
-			<div>Image File</div>
-			<input type="file" name="image">
-		</label>
-		<label>
-			<div>Caption</div>
-			<textarea style="width:920px; height:75px" name="caption">{{caption}}</textarea>
-		</label>
-		<label>
-			<div>Link</div>
-			<input type="text" value="{{link}}" name="link">
-		</label>
-		<div class="error">{{error}}</div>
-		<input type="submit">
-	</form>
-	
-	<table>
-		<tr>
-			<th>Image</th>
-			<th>Caption</th>
-			<th>Link</th>
-			<th>Delete?</th>
-		</tr>
-		{% for slide in slides %}
+	<section class="entry" id="todo">
+		<h2>Control Center</h2>
+		<h3>Things to do</h3>
+		<ul>
+			<li>Edit a page</li>
+			<li><a href="/newpost">Make a blog post</a></li>
+			<li><a href="#slideshow">Edit Slideshow Pictures</a></li>
+			<li><a href="#createuser">Make a new user account</a></li>
+			<li><a href="/sponsors">Future: Edit Sponsors</a></li>
+		</ul>
+	</section>
+	<section class="entry" id="slideshow">
+		<h2>Slideshow</h2>
+		<form method="post" enctype="multipart/form-data">
+			<label>
+				<div>Image File</div>
+				<input type="file" name="image">
+			</label>
+			<label>
+				<div>Caption</div>
+				<textarea style="width:920px; height:75px" name="caption">{{caption}}</textarea>
+			</label>
+			<label>
+				<div>Link</div>
+				<input type="text" value="{{link}}" name="link">
+			</label>
+			<div class="error">{{error}}</div>
+			<input type="submit">
+		</form>
+		<table>
 			<tr>
-				<td><img src="/image?img_id={{slide.key()}}" width="50%"></img></td>
-				<td>{{slide.caption}}</td>
-				<td>{% if slide.link %} <a href="{{slide.link}}" target="_blank">Link</a> {% else %} None {% endif %}</td>
-				<td><form method="POST" action="/deleteentity">
-							<input type="hidden" name="entity" value="{{slide.key()}}" />
-							<input type="submit" class="remove-button" value=""><!--<a class="remove-button" href="#" onclick="submit"></a>			-->
-					</form>
-				</td>
+				<th>Image</th>
+				<th>Caption</th>
+				<th>Link</th>
+				<th>Delete?</th>
 			</tr>
-		{% endfor %}
-	</table>
+			{% for slide in slides %}
+				<tr>
+					<td><img src="/image?img_id={{slide.key()}}" width="50%"></img></td>
+					<td>{{slide.caption}}</td>
+					<td>{% if slide.link %} <a href="{{slide.link}}" target="_blank">Link</a> {% else %} None {% endif %}</td>
+					<td><form method="POST" action="/deleteentity">
+								<input type="hidden" name="entity" value="{{slide.key()}}" />
+								<input type="submit" class="remove-button" value=""><!--<a class="remove-button" href="#" onclick="submit"></a>			-->
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</section>
 </section>
 {% endblock %}
