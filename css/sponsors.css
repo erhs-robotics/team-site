@@ -49,6 +49,7 @@ line-height: 1;
 
 .sponsor .image img {
 	height: 150px;
+	max-width: 220px;
 	margin: 0 auto; 
 	display: block;
 }
