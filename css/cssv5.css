@@ -84,7 +84,7 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	background-color: white;
 }
 .entry { 
-	background-color: white;
+	/*background-color: white;*/
 	margin: 10px;
 }
 
