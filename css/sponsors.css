@@ -48,9 +48,14 @@ line-height: 1;
 }
 
 .sponsor .image img {
-	height: 150px;
-	max-width: 220px;
+	height: 200px;
+	max-width: 250px;
 	margin: 0 auto; 
 	display: block;
+}
+
+.major .image img {
+	height: 300px;
+	max-width: 350px;
 }
 
