@@ -180,6 +180,13 @@ class ControlHandler(Handler):
 								mail = email,
 								fullname = fullname,
 								display = "block")
+								
+class SponsorsHandler(Handler):
+	def get(self):
+		self.login()
+		
+		
+		self.render("sponsors.html", user=self.user)
 			
 #########################  
 ### BACKENDS HANDLERS ###
@@ -582,5 +589,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/image', ImageHandler),
 							   ('/control', ControlHandler),
 							   ('/deleteentity', DeleteEntityHandler),
+							   ('/sponsors', SponsorsHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)
