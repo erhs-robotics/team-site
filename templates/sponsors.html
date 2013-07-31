@@ -11,11 +11,11 @@
 				<form method="post" enctype="multipart/form-data">
 					<label>
 						<div>Sponsor Name</div>
-						<input type="text" value="{{name}}" name="name">
+						<input type="text" name="name">
 					</label>
 					<label>
 						<div>HTML Link</div>
-						<input type="text" value="{{link}}" name="link">
+						<input type="text" name="link">
 					</label>
 					<label>
 						<div>Image File</div>
@@ -23,13 +23,13 @@
 					</label>
 					<label>
 						<div>Description</div>
-						<textarea style="width:920px; height:75px" name="description">{{description}}</textarea>
+						<textarea style="width:920px; height:75px" name="description"></textarea>
 					</label>
-					<div class="error">{{error}}</div>
+					<div class="error"></div>
 					<input type="submit" name="slideshow_submit">
 				</form>
 			</div>
-		{% end if %}
+		{% endif %}
 		<div class="entry">
 		<!--
 			<label for="platinum-sponsors-check" class="sponsor-name">Platinum Sponsors</label>
