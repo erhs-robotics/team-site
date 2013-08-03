@@ -200,6 +200,23 @@ class ControlHandler(Handler):
 					self.render("control.html", user=self.user, slides=Slide.all(),
 								image=image, name=name, link=link,
 								error="Please provide an image and a name")
+								
+class SponsorsHandler(Handler):
+	def get(self):
+		self.login()
+		sponsors = Sponsor.all()
+		platinum, gold, silver, bronze = [], [], [], []
+		for sponsor in sponsors:
+			if sponsor.level == "Platinum":
+				platinum.append(sponsor)
+			elif sponsor.level == "Gold":
+				gold.append(sponsor)
+			elif sponsor.level == "Silver":
+				silver.append(sponsor)
+			else:
+				bronze.append(sponsor)
+		self.render("sponsors.html", user=self.user, platinum=platinum,
+					gold=gold, silver=silver, bronze=bronze)
 			
 #########################  
 ### BACKENDS HANDLERS ###
@@ -601,6 +618,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/editpage/(.+)', EditPageHandler),
 							   ('/image', ImageHandler),
 							   ('/control', ControlHandler),
+							   ('/sponsors', SponsorsHandler),
 							   ('/deleteentity', DeleteEntityHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)
