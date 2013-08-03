@@ -6,30 +6,6 @@
 {% block content %}
 <section class="grid_12 content">
 	<div id="sponsors" class="grid_8 alpha">
-		{% if user.isadmin or 1 in user.privileges %}
-			<div class="entry" id="create-sponsor">
-				<form method="post" enctype="multipart/form-data">
-					<label>
-						<div>Sponsor Name</div>
-						<input type="text" name="name">
-					</label>
-					<label>
-						<div>HTML Link</div>
-						<input type="text" name="link">
-					</label>
-					<label>
-						<div>Image File</div>
-						<input type="file" name="image">
-					</label>
-					<label>
-						<div>Description</div>
-						<textarea style="width:920px; height:75px" name="description"></textarea>
-					</label>
-					<div class="error"></div>
-					<input type="submit" name="slideshow_submit">
-				</form>
-			</div>
-		{% endif %}
 		<div class="entry">
 		<!--
 			<label for="platinum-sponsors-check" class="sponsor-name">Platinum Sponsors</label>

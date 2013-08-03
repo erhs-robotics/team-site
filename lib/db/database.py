@@ -65,7 +65,8 @@ class Slide(db.Model):
 	link = db.StringProperty()
 	
 class Sponsor(db.Model):
-	name = db.StringProperty(required=True)
+	name = db.StringProperty()
 	link = db.StringProperty()
 	image = db.BlobProperty()
+	level = db.StringProperty()
 	description = db.StringProperty(multiline=True)

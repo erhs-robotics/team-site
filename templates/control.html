@@ -9,7 +9,7 @@
 			<li><a href="/newpost">Make a blog post</a></li>
 			<li><a href="#slideshow">Edit slideshow pictures</a></li>
 			<li><a href="#createuser">Make a new user account</a></li>
-			<li><a href="/sponsors">Future: Edit sponsors</a></li>
+			<li><a href="#sponsors">Edit sponsors</a></li>
 		</ul>
 	</section>
 	<section class="entry" id="slideshow">
@@ -89,6 +89,60 @@
 			</form>
 		{% else %}
 			<p>You don't have permission to create users</p>
+		{% endif %}
+	</section>
+	<section class="entry" id="sponsors">
+		<h2>Sponsors</h2>
+		{% if 1 in user.privileges or user.isadmin %}
+			<form method="post" enctype="multipart/form-data">
+				<label>
+					<div>Image</div>
+					<input type="file" name="image">
+				</label>
+				<label>
+					<div>Name</div>
+					<input type="text" value="{{name}}" name="name">
+				</label>
+				<label>
+					<div>Link</div>
+					<input type="text" value="{{link}}" name="link">
+				</label>
+				<label>
+					<div>Sponsor Level</div>
+					<select name="level">
+						<option value="Platinum">Platinum</option>
+						<option value="Gold">Gold</option>
+						<option value="Silver">Silver</option>
+						<option value="Bronze">Bronze</option>
+					</select>
+				</label>
+				<div class="error">{{error}}</div>
+				<input type="submit" name="sponsors_submit">
+			</form>
+			<table>
+				<tr>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Link</th>
+					<th>Level</th>
+					<th>Delete?</th>
+				</tr>
+				{% for sponsor in sponsors %}
+					<tr>
+						<td><img src="/image?img_id={{sponsor.key()}}" width="50%"></img></td>
+						<td>{{sponsor.name}}</td>
+						<td>{% if sponsor.link %} <a href="{{sponsor.link}}" target="_blank">Link</a> {% else %} None {% endif %}</td>
+						<td>{{sponsor.level}}</td>
+						<td><form method="POST" action="/deleteentity">
+									<input type="hidden" name="entity" value="{{sponsor.key()}}" />
+									<input type="submit" class="remove-button" value="">
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p>You don't have permission to edit the sponsors</p>
 		{% endif %}
 	</section>
 </section>

@@ -113,11 +113,13 @@ class ControlHandler(Handler):
 	def get(self):
 		self.login()
 		slides = Slide.all()
-		self.render("control.html", user=self.user, slides=slides)
+		sponsors = Sponsor.all()
+		self.render("control.html", user=self.user, slides=slides, sponsors=sponsors)
 	def post(self):
 		self.login()
 		slideshow_submit = self.request.get("slideshow_submit")
 		createuser_submit = self.request.get("createuser_submit")
+		sponsors_submit = self.request.get("sponsors_submit")
 		if slideshow_submit:
 			if self.user and (CAN_POST in self.user.privileges or self.user.isadmin):
 				slide = Slide()
@@ -180,13 +182,24 @@ class ControlHandler(Handler):
 								mail = email,
 								fullname = fullname,
 								display = "block")
-								
-class SponsorsHandler(Handler):
-	def get(self):
-		self.login()
-		
-		
-		self.render("sponsors.html", user=self.user)
+		if sponsors_submit:
+			if self.user and (CAN_POST in self.user.privileges or self.user.isadmin):
+				name = self.request.get("name")
+				link = self.request.get("link")
+				image = self.request.get("image")
+				level = self.request.get("level")
+				if name and image:
+					sponsor = Sponsor()
+					sponsor.image = db.Blob(image)
+					sponsor.name = name
+					sponsor.link = link
+					sponsor.level = level
+					sponsor.put()
+					self.redirect("/control")
+				else:
+					self.render("control.html", user=self.user, slides=Slide.all(),
+								image=image, name=name, link=link,
+								error="Please provide an image and a name")
 			
 #########################  
 ### BACKENDS HANDLERS ###
@@ -589,6 +602,5 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/image', ImageHandler),
 							   ('/control', ControlHandler),
 							   ('/deleteentity', DeleteEntityHandler),
-							   ('/sponsors', SponsorsHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)
