@@ -58,7 +58,11 @@
 				<div class="grid_8 alpha omega sponsor major">
 					<div class="name" style="text-align: center">{{sponsor.name}}</div>
 					<div class="image">
-						<img src="/image?img_id={{sponsor.key()}}">
+						{% if sponsor.link %}
+							<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+						{% else %}
+							<img src="/image?img_id={{sponsor.key()}}">
+						{% endif %}
 					</div>
 				</div>
 			{% endfor %}
@@ -66,7 +70,11 @@
 				<div class="grid_8 alpha omega sponsor major">
 					<div class="name" style="text-align: center">{{sponsor.name}}</div>
 					<div class="image">
-						<img src="/image?img_id={{sponsor.key()}}">
+						{% if sponsor.link %}
+							<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+						{% else %}
+							<img src="/image?img_id={{sponsor.key()}}">
+						{% endif %}
 					</div>
 				</div>
 			{% endfor %}
@@ -74,7 +82,11 @@
 				<div class="grid_4 alpha omega sponsor">
 					<div class="name">{{sponsor.name}}</div>
 					<div class="image">
-						<img src="/image?img_id={{sponsor.key()}}">
+						{% if sponsor.link %}
+							<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+						{% else %}
+							<img src="/image?img_id={{sponsor.key()}}">
+						{% endif %}
 					</div>
 				</div>
 			{% endfor %}
@@ -82,7 +94,11 @@
 				<div class="grid_4 alpha omega sponsor">
 					<div class="name">{{sponsor.name}}</div>
 					<div class="image">
-						<img src="/image?img_id={{sponsor.key()}}">
+						{% if sponsor.link %}
+							<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+						{% else %}
+							<img src="/image?img_id={{sponsor.key()}}">
+						{% endif %}
 					</div>
 				</div>
 			{% endfor %}
