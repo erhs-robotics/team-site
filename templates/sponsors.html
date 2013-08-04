@@ -7,7 +7,8 @@
 <section class="grid_12 content">
 	<div id="sponsors" class="grid_8 alpha">
 		<div class="entry">
-		<!--
+			
+			<!--
 			<label for="platinum-sponsors-check" class="sponsor-name">Platinum Sponsors</label>
 				<input id="platinum-sponsors-check" type="checkbox" class="toggle" checked="checked"/>
 				<div class="sponsor-level" id="platinum-sponsors">
@@ -21,7 +22,7 @@
 					</div>	
 				</div><!-- /#platinum-sponsors.sponsor-level -->
 
-				
+			<!--
 			<div style="width:100%">
 				<div style="background-color:#E5E4E2;">
 					<h2 class="entry" style="margin-bottom:0;"><a href="http://www.arl.army.mil/www/default.cfm">Army Research Lab</a></h2>
@@ -37,7 +38,9 @@
 						  laboratory.
 				</p></div>
 			</div>
+			-->
 			
+			<!--
 			<div class="grid_8 alpha omega sponsor major">
 				<div class="name" style="text-align: center">Army Research Laboratory</div>
 				<div class="image">
@@ -49,19 +52,42 @@
 				<div class="image">
 					<img src="http://www.mdspace.org/msbr_content/images/msbr_inside_shell_ir_01.gif">
 				</div>
-			</div>			
-			<div class="grid_4 alpha omega sponsor">
-				<div class="name">Gantech</div>
-				<div class="image">
-					<img src="/images/sponsors/gantech.png">
+			-->
+			
+			{% for sponsor in platinum %}
+				<div class="grid_8 alpha omega sponsor major">
+					<div class="name" style="text-align: center">{{sponsor.name}}</div>
+					<div class="image">
+						<img src="/image?img_id={{sponsor.key()}}">
+					</div>
 				</div>
-			</div>
-			<div class="grid_4 alpha omega sponsor">
-				<div class="name">SCI Group</div>
-				<div class="image">
-					<img src="/images/sponsors/sci-grp.jpg">
+			{% endfor %}
+			{% for sponsor in gold %}
+				<div class="grid_8 alpha omega sponsor major">
+					<div class="name" style="text-align: center">{{sponsor.name}}</div>
+					<div class="image">
+						<img src="/image?img_id={{sponsor.key()}}">
+					</div>
 				</div>
-			</div>
+			{% endfor %}
+			{% for sponsor in silver %}
+				<div class="grid_4 alpha omega sponsor">
+					<div class="name">{{sponsor.name}}</div>
+					<div class="image">
+						<img src="/image?img_id={{sponsor.key()}}">
+					</div>
+				</div>
+			{% endfor %}
+			{% for sponsor in bronze %}
+				<div class="grid_4 alpha omega sponsor">
+					<div class="name">{{sponsor.name}}</div>
+					<div class="image">
+						<img src="/image?img_id={{sponsor.key()}}">
+					</div>
+				</div>
+			{% endfor %}
+			
+			<div class="clear"></div>
 			
 		</div>
 	</div>
