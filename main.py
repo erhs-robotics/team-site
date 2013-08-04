@@ -28,6 +28,11 @@ def get_page(resource):
         return pages[0]
     else:
 		return None
+		
+def can_post(user):
+	if user and (CAN_POST in user.privileges or user.isadmin):
+		return True
+	return False
 
 ##########################
 ### FRONTENDS HANDLERS ###
@@ -45,10 +50,7 @@ class GenericHandler(Handler):
         self.login()
         page_location = resource + ".html"
         page = get_page(resource)
-        if page or not page:
-            self.render(page_location, location=resource, page=page, user=self.user)
-        else:
-            self.render(page_location, location=resource, user=self.user)
+        self.render(page_location, page=page, user=self.user)
                 
 class BlogHandler(Handler):
     def getTotalPosts(self, post_list):
@@ -84,22 +86,32 @@ class BlogHandler(Handler):
 
         self.render("blog.html", user=self.user, posts=active_posts, TOTAL_POSTS=TOTAL_POSTS, TOTAL_PAGES=TOTAL_PAGES, 
 					hasNextPage=hasNextPage, hasPreviousPage=hasPreviousPage, currentPage=currentPage)               
+   
+class ViewPostHandler(Handler):
+    def get(self, resource):
+        self.login()        
         
+        if resource.isdigit():
+            post = Post.get_by_id(int(resource))
+                        
+        if post:
+            self.render("viewpost.html", user = self.user, post = post)
+     
 class ContactHandler(Handler):
     def get(self):
         self.login()  
-        messages = db.GqlQuery("SELECT * FROM Message")# ORDER BY ID")
-        self.render("contact.html", user = self.user, messages = list(messages), posts = list(posts))
+        messages = db.GqlQuery("SELECT * FROM Message")
+        self.render("contact.html", user = self.user, messages = list(messages))
     def post(self):
         self.login()
-        messages = db.GqlQuery("SELECT * FROM Message")# ORDER BY ID")
+        messages = db.GqlQuery("SELECT * FROM Message")
         sender_name = self.request.get('sender_name')
         sender_email = self.request.get('sender_email')
         sender_message = self.request.get('sender_message')
         if sender_message != "":
             newMessage = Message(name=sender_name, email=sender_email, message=sender_message)
             newMessage.put()
-        self.render("contact.html", user=self.user, messages = list(messages), posts = list(posts))
+        self.render("contact.html", user=self.user, messages = list(messages))
         
 class ControlHandler(Handler):
 	def get(self):
@@ -113,14 +125,13 @@ class ControlHandler(Handler):
 		createuser_submit = self.request.get("createuser_submit")
 		sponsors_submit = self.request.get("sponsors_submit")
 		if slideshow_submit:
-			if self.user and (CAN_POST in self.user.privileges or self.user.isadmin):
-				slide = Slide()
-				#image = self.request.get("image")
-				image = self.request.get('image')
+			if can_post(self.user):
+				image = self.request.get("image")
 				caption = self.request.get("caption")
 				link = self.request.get("link")
 				if image and caption:
-					image = images.resize(self.request.get('image'), 440, 270)
+					slide = Slide()
+					image = images.resize(image, 440, 270)
 					slide.image = db.Blob(image)
 					slide.caption = caption
 					slide.link = link
@@ -175,7 +186,7 @@ class ControlHandler(Handler):
 								fullname = fullname,
 								display = "block")
 		if sponsors_submit:
-			if self.user and (CAN_POST in self.user.privileges or self.user.isadmin):
+			if can_post(self.user):
 				name = self.request.get("name")
 				link = self.request.get("link")
 				image = self.request.get("image")
@@ -504,31 +515,19 @@ class UpdatePrivilegesHandler(Handler):
                     
         self.redirect(page)
         
-class ViewPostHandler(Handler):
-    def get(self, resource):
-        self.login()        
-        
-        if resource.isdigit():
-            post = Post.get_by_id(int(resource))
-                        
-        if post:
-            self.render("viewpost.html", user = self.user, post = post)
-   
 class NewPageHandler(Handler):
     def render_form(self, title="", location="", content="", error="",user=None):
         self.render("newpage.html", title=title, location=location, content=content, error=error, user=user)
-	
     def get(self):
         self.login()
         
-        if self.user and CAN_POST in self.user.privileges:
+        if can_post(self.user):
             self.render_form(user = self.user)
         else:
             self.redirect("/login")
-        
     def post(self):
         self.login()               
-        if self.user and CAN_POST in self.user.privileges:            
+        if can_post(self.user):            
             title = self.request.get("title")
             location = self.request.get("location")
             content = self.request.get("content")
@@ -538,32 +537,27 @@ class NewPageHandler(Handler):
                 page.put()                
                 self.redirect("/" + location)
             else:
-                self.render_form(title, location, content, "Please provide a title and content", user=self.user)
+                self.render_form(title, location, content, "Please provide a title, location, and content", user=self.user)
      
 class EditPageHandler(Handler):
     def render_form(self, title="", location="", content="", error="",user=None):
         self.render("newpage.html", title=title, location=location, content=content, error=error, user=user)
-	
     def get(self, resource):
         self.login()        
-        
-        if self.user and CAN_POST in self.user.privileges:
+        if can_post(self.user):
             page = get_page(resource)
-            
             if page:
                 self.render("newpage.html", user = self.user, 
 											title = page.title,
 											location = page.location,
 											content = page.content,
 											error = "")
-
         else:
-            self.redirect('/login')
-            
+            self.redirect('/login')     
     def post(self, resource):
         self.login()
         
-        if self.user and CAN_POST in self.user.privileges:        
+        if can_post:        
             page = get_page(resource)
             if page:     
                 title = self.request.get("title")
@@ -601,11 +595,11 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/newpost', NewpostHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
+                               ('/viewpost/(\d+)', ViewPostHandler),
                                ('/profile/(.+)', ProfileHandler),
                                ('/editprofile/(.+)', EditProfileHandler),
                                ('/deleteuser', DeleteUserHandler),
                                ('/updateprivileges', UpdatePrivilegesHandler),                            
-                               ('/viewpost/(\d+)', ViewPostHandler),
                                ('/newpage', NewPageHandler),
                                ('/editpage/(.+)', EditPageHandler),
 							   ('/image', ImageHandler),
