@@ -14,7 +14,7 @@
 	</section>
 	<section class="entry" id="slideshow">
 		<h2>Slideshow</h2>
-		{% if 1 in user.privileges or user.isadmin %}
+		{% if user %}
 			<form method="post" enctype="multipart/form-data">
 				<label>
 					<div>Image File</div>
@@ -57,7 +57,7 @@
 	</section>
 	<section class="entry" id="createuser">
 		<h2>Create User</h2>
-		{% if 2 in user.privileges or user.isadmin %}
+		{% if user.isadmin %}
 			<form id="createuserform" style="display: {{display}};" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
@@ -93,7 +93,7 @@
 	</section>
 	<section class="entry" id="sponsors">
 		<h2>Sponsors</h2>
-		{% if 1 in user.privileges or user.isadmin %}
+		{% if user %}
 			<form method="post" enctype="multipart/form-data">
 				<label>
 					<div>Image</div>

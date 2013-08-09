@@ -15,12 +15,6 @@ import json
 import logging
 import datetime
 
-CAN_POST     = 1
-CAN_MAKEUSER = 2
-IS_MEMBER    = 3
-
-privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users", IS_MEMBER : "is member"}
-
 def get_page(resource):
     pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
     pages = list(pages)
@@ -29,11 +23,6 @@ def get_page(resource):
     else:
 		return None
 		
-def can_post(user):
-	if user and (CAN_POST in user.privileges or user.isadmin):
-		return True
-	return False
-
 ##########################
 ### FRONTENDS HANDLERS ###
 ##########################
@@ -50,6 +39,7 @@ class GenericHandler(Handler):
         self.login()
         page_location = resource + ".html"
         page = get_page(resource)
+        if page != None: page_location = "generic.html"
         self.render(page_location, page=page, user=self.user)
                 
 class BlogHandler(Handler):
@@ -142,7 +132,7 @@ class ControlHandler(Handler):
 								image=image, caption=caption, link=link, 
 								error="Please provide an image and a caption")
 		if createuser_submit:
-			if self.user and (CAN_MAKEUSER in self.user.privileges or self.user.isadmin):
+			if self.user and self.user.isadmin:
 				username = self.request.get('username')
 				password = self.request.get('password')
 				verify = self.request.get('verify')
@@ -163,7 +153,7 @@ class ControlHandler(Handler):
 
 				if v_user and v_pass and v_verify and v_email and v_existing_user < 1:
 					password = make_pw_hash(username, password)
-					newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[IS_MEMBER])
+					newuser = User(username=username, password=password, email = email, isadmin=False)
 					if fullname: newuser.fullname = fullname
 					newuser.put()                
 					self.redirect('/control')
@@ -259,13 +249,13 @@ class NewpostHandler(Handler):
         self.render("newpost.html", subject=subject, content=content, error=error, user=user)
     def get(self):
         self.login()
-        if self.user and CAN_POST in self.user.privileges:
+        if self.user:
             self.render_form(user = self.user)
         else:
             self.redirect("/login")
     def post(self):
         self.login()               
-        if self.user and CAN_POST in self.user.privileges:            
+        if self.user:            
             subject = self.request.get("subject")
             content = self.request.get("content")
 
@@ -279,7 +269,7 @@ class NewpostHandler(Handler):
 class DeletepostHandler(Handler):    
     def post(self):
         self.login()            
-        if self.user and CAN_POST in self.user.privileges:
+        if self.user:
             post = self.request.get("post")
             if post.isdigit():
                 post = Post.get_by_id(int(post))
@@ -295,7 +285,7 @@ class EditPostHandler(Handler):
     def get(self, resource):
         self.login()        
         
-        if self.user and CAN_POST in self.user.privileges and resource.isdigit():
+        if self.user and resource.isdigit():
             post = Post.get_by_id(int(resource))      
             
             if post and (post.user == self.user.key().id() or self.user.isadmin):
@@ -308,7 +298,7 @@ class EditPostHandler(Handler):
     def post(self, ID):
         self.login()
         
-        if self.user and CAN_POST in self.user.privileges and ID.isdigit():        
+        if self.user and ID.isdigit():        
             post = Post.get_by_id(int(ID))           
             if post and (self.user.key().id() == post.user or self.user.isadmin):            
                 subject = self.request.get("subject")
@@ -334,152 +324,6 @@ class ImageHandler(Handler):
 		else:
 			self.response.out.write("No Image")
             
-class ProfileHandler(Handler):
-    def get(self, res):
-        self.login()
-        profile = db.GqlQuery("SELECT * FROM User WHERE username=:1 LIMIT 1", res)
-        profile = list(profile)
-        if len(profile) == 1:
-            self.render("profile.html", user = self.user, profile = profile[0], privileges = privileges)
-        else:
-            self.error(404)
-            
-class EditProfileHandler(Handler):
-    def genCurrentProjects(self, profile):
-        currentProjects = ""                                
-        for i in range(len(profile.currentProjects)):
-            if i == 0:
-                currentProjects += profile.currentProjects[i]
-            else:
-                currentProjects += ", " + profile.currentProjects[i]
-        return currentProjects
-    
-    def genPastProjects(self, profile):
-        pastProjects = ""                                
-        for i in range(len(profile.pastProjects)):
-            if i == 0:
-                pastProjects += profile.pastProjects[i]
-            else:
-                pastProjects += ", " + profile.pastProjects[i]
-        return pastProjects       
-    
-    def get(self, res):
-        self.login()
-        profile = db.GqlQuery("SELECT * FROM User WHERE username=:1 LIMIT 1", res)
-        profile = list(profile)
-        if len(profile) == 1:
-            profile = profile[0]
-            if self.user.key().id() == profile.key().id():
-                prog = ""
-                mec  = ""
-                out  = ""
-                mang = ""
-                ment = ""
-                
-                if profile.team == "Programming":
-                    prog = 'selected="selected"'
-                elif profile.team == "Mechanical":
-                    mec  = 'selected="selected"'
-                elif profile.team == "Outreach":
-                    out  = 'selected="selected"'
-                elif profile.team == "Management":
-                    mang = 'selected="selected"'
-                elif profile.team == "Mentoring":
-					ment = 'selected="selected"'
-
-                currentProjects = self.genCurrentProjects(profile)
-                pastProjects    = self.genPastProjects(profile)
-                
-                
-                self.render("editprofile.html", user = self.user, profile = profile,
-                            currentProjects=currentProjects ,pastProjects=pastProjects,
-                            prog=prog, mec=mec, out=out, mang=mang, ment=ment, display="none")
-            else:
-                self.redirect("/login")
-        else:
-            self.error(404)
-    def post(self, res):
-        self.login()        
-        profile = db.GqlQuery("SELECT * FROM User WHERE username=:1 LIMIT 1", res)
-        profile = list(profile)
-        if len(profile) == 1 and self.user and self.user.key().id() == profile[0].key().id():
-            profile = profile[0]
-            quote        = self.request.get("quote")
-            team         = self.request.get("team")
-            currentProjs = self.request.get("currentProjects")
-            pastProjs    = self.request.get("pastProjects")
-            email        = self.request.get("email")
-            fullname     = self.request.get("fullname")
-            oldpass      = self.request.get("oldpass")
-            newpass      = self.request.get("newpass")
-            v_newpass    = self.request.get("v_newpass")
-            
-            currentProjs = currentProjs.split(',')
-            for i in range(len(currentProjs)):
-                currentProjs[i] = currentProjs[i].strip()
-            
-            pastProjs = pastProjs.split(',')
-            for i in range(len(pastProjs)):
-                pastProjs[i] = pastProjs[i].strip()
-            
-            profile.quote           = quote
-            profile.team            = team
-            profile.currentProjects = currentProjs
-            profile.pastProjects    = pastProjs
-            profile.email           = email
-            
-            if fullname: profile.fullname = fullname
-            
-            
-            succsess = True
-            if oldpass:
-                v_old   = valid_pw(profile.username, oldpass, profile.password)
-                v_valid = match(PASS, newpass)
-                v_match = newpass == v_newpass
-                if v_old and v_valid and v_match:
-                    password = make_pw_hash(profile.username, newpass)
-                    profile.password = password
-                else:
-                    succsess = False
-                    m_old   = "incorrect password"
-                    m_valid = "not a valid password"
-                    m_match = "the passwords do not match"
-                    if v_old:   m_old   = ""
-                    if v_valid: m_valid = ""
-                    if v_match: m_match = ""
-                    currentProjects = self.genCurrentProjects(profile)
-                    pastProjects    = self.genPastProjects(profile)
-                    prog = ""
-                    mec  = ""
-                    out  = ""
-                    mang = ""
-                    ment = ""
-                    
-                    if profile.team == "Programming":
-                        prog = 'selected="selected"'
-                    elif profile.team == "Mechanical":
-                        mec  = 'selected="selected"'
-                    elif profile.team == "Outreach":
-                        out  = 'selected="selected"'
-                    elif profile.team == "Management":
-                        mang = 'selected="selected"'
-                    elif profile.team == "Mentoring":
-						ment = 'selected="selected"'
-                        
-                    self.render("editprofile.html", user = self.user, profile = profile,
-                            currentProjects=currentProjects ,pastProjects=pastProjects,
-                            prog=prog, mec=mec, out=out, mang=mang, ment=ment, display="block",
-                            old_err=m_old, valid_err=m_valid, match_err=m_match)                 
-                        
-                
-            
-            if succsess:
-                profile.put()
-                update_user(profile)
-                self.redirect("/profile/%s" % res)
-        else:
-            self.redirect("/login")
-            
 class DeleteUserHandler(Handler):
     def post(self):
         self.login()
@@ -493,28 +337,6 @@ class DeleteUserHandler(Handler):
         else:
             self.redirect("/login")
 
-class UpdatePrivilegesHandler(Handler):
-    def post(self):
-        self.login()
-        page = "/"
-        if self.user and self.user.isadmin:
-            privs    = self.request.get_all("privileges")
-            user_id = self.request.get("user")
-            
-            for i in range(len(privs)):
-                if privs[i].isdigit():
-                    privs[i] = int(privs[i])                
-           
-            if user_id.isdigit():
-                user = get_user(int(user_id))
-                if user:
-                    user.privileges = privs
-                    user.put()
-                    update_user(user)
-                    page = "/profile/%s" % user.username
-                    
-        self.redirect(page)
-        
 class NewPageHandler(Handler):
     def render_form(self, title="", location="", content="", error="",user=None):
         self.render("newpage.html", title=title, location=location, content=content, error=error, user=user)
@@ -595,11 +417,8 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/newpost', NewpostHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
-                               ('/viewpost/(\d+)', ViewPostHandler),
-                               ('/profile/(.+)', ProfileHandler),
-                               ('/editprofile/(.+)', EditProfileHandler),
-                               ('/deleteuser', DeleteUserHandler),
-                               ('/updateprivileges', UpdatePrivilegesHandler),                            
+                               ('/viewpost/(\d+)', ViewPostHandler),                              
+                               ('/deleteuser', DeleteUserHandler),                                                         
                                ('/newpage', NewPageHandler),
                                ('/editpage/(.+)', EditPageHandler),
 							   ('/image', ImageHandler),
