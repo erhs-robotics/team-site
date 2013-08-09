@@ -15,12 +15,6 @@ import json
 import logging
 import datetime
 
-CAN_POST     = 1
-CAN_MAKEUSER = 2
-IS_MEMBER    = 3
-
-privileges = {CAN_POST : "can post", CAN_MAKEUSER : "can create users", IS_MEMBER : "is member"}
-
 def get_page(resource):
     pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
     pages = list(pages)
@@ -29,11 +23,6 @@ def get_page(resource):
     else:
 		return None
 		
-def can_post(user):
-	if user and (CAN_POST in user.privileges or user.isadmin):
-		return True
-	return False
-
 ##########################
 ### FRONTENDS HANDLERS ###
 ##########################
@@ -143,7 +132,7 @@ class ControlHandler(Handler):
 								image=image, caption=caption, link=link, 
 								error="Please provide an image and a caption")
 		if createuser_submit:
-			if self.user and (CAN_MAKEUSER in self.user.privileges or self.user.isadmin):
+			if self.user and self.user.isadmin:
 				username = self.request.get('username')
 				password = self.request.get('password')
 				verify = self.request.get('verify')
@@ -164,7 +153,7 @@ class ControlHandler(Handler):
 
 				if v_user and v_pass and v_verify and v_email and v_existing_user < 1:
 					password = make_pw_hash(username, password)
-					newuser = User(username=username, password=password, email = email, isadmin=False, privileges=[IS_MEMBER])
+					newuser = User(username=username, password=password, email = email, isadmin=False)
 					if fullname: newuser.fullname = fullname
 					newuser.put()                
 					self.redirect('/control')
@@ -260,13 +249,13 @@ class NewpostHandler(Handler):
         self.render("newpost.html", subject=subject, content=content, error=error, user=user)
     def get(self):
         self.login()
-        if self.user and CAN_POST in self.user.privileges:
+        if self.user:
             self.render_form(user = self.user)
         else:
             self.redirect("/login")
     def post(self):
         self.login()               
-        if self.user and CAN_POST in self.user.privileges:            
+        if self.user:            
             subject = self.request.get("subject")
             content = self.request.get("content")
 
@@ -280,7 +269,7 @@ class NewpostHandler(Handler):
 class DeletepostHandler(Handler):    
     def post(self):
         self.login()            
-        if self.user and CAN_POST in self.user.privileges:
+        if self.user:
             post = self.request.get("post")
             if post.isdigit():
                 post = Post.get_by_id(int(post))
@@ -296,7 +285,7 @@ class EditPostHandler(Handler):
     def get(self, resource):
         self.login()        
         
-        if self.user and CAN_POST in self.user.privileges and resource.isdigit():
+        if self.user and resource.isdigit():
             post = Post.get_by_id(int(resource))      
             
             if post and (post.user == self.user.key().id() or self.user.isadmin):
@@ -309,7 +298,7 @@ class EditPostHandler(Handler):
     def post(self, ID):
         self.login()
         
-        if self.user and CAN_POST in self.user.privileges and ID.isdigit():        
+        if self.user and ID.isdigit():        
             post = Post.get_by_id(int(ID))           
             if post and (self.user.key().id() == post.user or self.user.isadmin):            
                 subject = self.request.get("subject")
