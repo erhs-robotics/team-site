@@ -71,7 +71,7 @@ class Sponsor(db.Model):
 	level = db.StringProperty()
 	description = db.StringProperty(multiline=True)
 	
-class User(db.Model):
+class Members(db.Model):
 	name = db.StringProperty()
 	idstr = db.StringProperty()
 	
