@@ -42,8 +42,7 @@ class User(db.Model):
     fullname        = db.StringProperty()
     password        = db.StringProperty(required = True)
     email           = db.StringProperty()
-    isadmin         = db.BooleanProperty(required = True)
-    privileges      = db.ListProperty(int)
+    isadmin         = db.BooleanProperty(required = True)    
 
 class Message(db.Model):
     name = db.StringProperty()
