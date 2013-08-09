@@ -70,3 +70,12 @@ class Sponsor(db.Model):
 	image = db.BlobProperty()
 	level = db.StringProperty()
 	description = db.StringProperty(multiline=True)
+	
+class User(db.Model):
+	name = db.StringProperty()
+	idstr = db.StringProperty()
+	
+class Attendence(db.Model):
+	date = db.DateProperty()
+	clockin = db.StringListProperty()
+	clockout = db.StringListProperty()
