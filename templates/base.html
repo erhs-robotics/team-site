@@ -23,20 +23,7 @@
 	</head>
 	<body>
 		{% block banner %}
-			<header id="banner" class="container_12">
-				<aside class="grid_12 login">
-					{% if user %}
-						{% if user.fullname %}
-							{{user.fullname}} <a href="/profile/{{user.username}}">{{user.username}}</a>
-						{% else %}
-							User: <a href="/profile/{{user.username}}">{{user.username}}</a>
-						{% endif %}
-						| <a href="/control">Control Center</a>						
-						| <a href="/logout">Logout</a>
-					{% else %}
-						<a href="/login">Login</a>
-					{% endif %}
-				</aside><!-- /#login -->
+			<header id="banner" class="container_12">				
 				<div id="text-banner">
 					<a class="grid_12" style="text-align: center" href="/">
 						<span class="maintitle"><img src="/images/logo/erhs-robotics-logo.jpg" alt="Banner"></span><!--<img class="grid_8" src="../images/logo/banner3.png" alt="ERHS Robotics Banner">--><br/>
@@ -149,27 +136,30 @@
 				
 				<div class="clear"></div>				
 				<div id="about-validators" class="grid_12 content" style="margin-top: 0;">
-					<section id="about" class="grid_8 alpha">
-						<span class="grid_7">
+					<section id="about" class="grid_12">						
 							© 2012 Eleanor Roosevelt Robotics Club | All Rights Reserved | 
-							<a href="/about/website">About this site</a>
-						</span>
-						<span class="grid_7">
-							The Eleanor Roosevelt Robotics Club website is built
-							and maintained by the students of the club
-						</span>
-					</section><!-- /#about -->
-					<!--
-					<section id="validators" class="grid_4 omega">
-						<img src="/images/html5val.jpg" alt="W3C HTML5 Validated">
-						<a href="http://jigsaw.w3.org/css-validator/check/referer">
-							<img style="border:0;width:88px;height:31px"
-									 src="http://jigsaw.w3.org/css-validator/images/vcss"
-									 alt="Valid CSS!">
-						</a>
+							<a href="/about/website">About this site</a>					
 					</section>
-					-->
-				</div>
+					<div class="clear"></div>
+					<section class="grid_7">
+						The Eleanor Roosevelt Robotics Club website is built
+						 and maintained by the students of the club
+					</section>				
+					
+					<section style = "float: right">
+						{% if user %}
+							{% if user.fullname %}
+								{{user.fullname}} <a href="/profile/{{user.username}}">{{user.username}}</a>
+							{% else %}
+								User: <a href="/profile/{{user.username}}">{{user.username}}</a>
+							{% endif %}
+							| <a href="/control">Control Center</a>						
+							| <a href="/logout">Logout</a>
+						{% else %}
+							<a href="/login">Login</a>
+						{% endif %}&nbsp;
+					</section><!-- /#login -->
+				</div><!-- /#about -->								
 			</footer>
 		{% endblock %}
 	</body>
