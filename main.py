@@ -50,6 +50,7 @@ class GenericHandler(Handler):
         self.login()
         page_location = resource + ".html"
         page = get_page(resource)
+        if page != None: page_location = "generic.html"
         self.render(page_location, page=page, user=self.user)
                 
 class BlogHandler(Handler):

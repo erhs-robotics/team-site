@@ -37,11 +37,7 @@ class Post(db.Model):
     content  = db.TextProperty(required = True)
     created  = db.DateTimeProperty(auto_now_add = True)
     
-class User(db.Model):
-    currentProjects = db.StringListProperty()
-    pastProjects    = db.StringListProperty()
-    team            = db.StringProperty()
-    quote           = db.TextProperty()    
+class User(db.Model):        
     username        = db.StringProperty(required = True)
     fullname        = db.StringProperty()
     password        = db.StringProperty(required = True)
