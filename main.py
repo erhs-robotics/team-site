@@ -14,6 +14,7 @@ from database import *
 import json
 import logging
 import datetime
+from google.appengine.api import urlfetch
 
 CAN_POST     = 1
 CAN_MAKEUSER = 2
@@ -587,6 +588,119 @@ class DeleteEntityHandler(Handler):
                 self.redirect(self.request.host_url)
         else:
             self.redirect("/login")
+
+class AddMemberHandler(Handler):
+	def post(self):
+		self.login()
+		name = self.request.get("name")
+		idstr = self.request.get("idstr")
+		inorout = self.request.get("inorout")
+		member = Member(name = name, idstr = idstr)
+		member.put()
+		data = urllib.urlencode({"idstr":idstr, "inorout":inorout})
+		app.post("/punch", data)
+				
+
+class PunchClockHandler(Handler):
+	def getid(self, x): return x.split("|")[0]
+	
+	def get_today(self):
+		attendence = list(db.GqlQuery("SELECT * FROM Attendence"))
+		today = None
+		now = datetime.date.today()
+		for day in attendence:
+			if now == day.date: today = day
+		if today == None:
+			today = Attendence(date = now, clockin = [], clockout = [])			
+			today.put()
+			
+		return today
+		
+	def get_time(self): 
+		time = datetime.datetime.now().time()
+		hours = str(time.hour)
+		minutes = str(time.minute)
+		if len(hours) == 1: hours = "0" + hours
+		if len(minutes) == 1: minutes = "0" + minutes
+		return hours + minutes
+		
+	def punched_in(self, idstr, attendance):
+		for x in attendance.punchcard:
+			parts = x.split("|")
+			if parts[0] == idstr and len(parts) == 2:
+				return True
+		return False
+		
+	def punched_out(self, idstr, attendance):
+		ret = False
+		for x in attendance.punchcard:
+			parts = x.split("|")
+			if parts[0] == idstr and len(parts) == 3:
+				ret = True
+			elif parts[0] == idstr and len(parts) == 2:
+				ret = False
+		return ret
+		
+	def get_name(self, idstr):
+		members = list(db.GqlQuery("SELECT * FROM Member"))
+		member = None
+		for x in members:
+			if x.idstr == idstr: member = x.name
+		if member == None:
+			x = self.request.get("name")
+			if x != "":
+				member = x
+				if len(idstr) == 9:
+					newmember = Member(name=member, idstr=idstr)
+					newmember.put()
+		return member		
+		
+	def validate(self, idstr, name, inorout, attendance):
+		if len(idstr) != 9: # ivalid id
+			getname = True if self.request.get("name") != "" else False
+			data = {"idstr":idstr, "inorout":inorout, "error":"Invalid ID!", "getname":getname, "name":name}
+			if getname: data["name"] = name
+			return ("/resources/punchclock.html", data)
+		if name is None:
+			data = {"idstr":idstr, "inorout":inorout, "name":"", "getname":True,
+					"error":"That id is not currently in our system. Please enter your name"}
+			return ("/resources/punchclock.html", data)
+		if name == "":
+			data = {"idstr":idstr, "inorout":inorout, "name":name, "error":"Please enter a name"}
+			return ("/resources/punchclock.html", data)
+		if inorout == "in" and self.punched_in(idstr, attendance):
+			data = {"error":"%s has already punched in!" % name}
+			return ("/resources/punchclock.html", data)
+		if inorout == "out" and self.punched_out(idstr, attendance):
+			data = {"error":"%s has already punched out!" % name}
+			return ("/resources/punchclock.html", data)
+		if inorout == "out" and not self.punched_in(idstr, attendance):
+			data = {"error":"%s cannot punch out. You never punched in!" % name}
+			return ("/resources/punchclock.html", data)	
+		
+	def post(self):		
+		self.login()
+		if self.user and self.user.isadmin:
+			inorout = self.request.get("inorout")
+			idstr = self.request.get("idstr")			
+			attendance = self.get_today()
+			name = self.get_name(idstr)
+			error = self.validate(idstr, name, inorout, attendance)			
+			if error: self.execute_error(error); return
+			time = self.get_time()
+			if inorout == "in":
+				attendance.punchcard.append(idstr + "|" + time)				
+			else:
+				for i in range(len(attendance.punchcard)):
+					parts = attendance.punchcard[i].split("|")
+					if idstr == parts[0] and len(parts) == 2:
+						attendance.punchcard[i] += "|" + time
+						break
+			attendance.put()
+			message="Succsess! %s punched %s at %s" % (name, inorout, time)
+			self.render("message.html", message=message)			
+		else:
+			self.redirect("/login")
             
 app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/blog/(\d+)', BlogHandler),
@@ -606,5 +720,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/control', ControlHandler),
 							   ('/sponsors', SponsorsHandler),
 							   ('/deleteentity', DeleteEntityHandler),
+							   ('/punch', PunchClockHandler),
+							   ('/addmember', AddMemberHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)

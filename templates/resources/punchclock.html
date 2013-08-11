@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="grid_12 content">	
+	<section class="entry" id="punchclock">
+		<h2>Punch Clock</h2>
+		<form method="post" action="/punch" enctype="multipart/form-data">
+			<div class="error">{{error}}</div>
+			{% if getname %}						
+				Name: <input type="text" name="name" value="{{name}}"><br>
+			{% endif %}
+			ID Number: <input type="text" name="idstr" value="{{idstr}}"><br>
+			{% if inorout == "out" %}
+				Punch: in <input type="radio" name="inorout" value="in">
+				out <input type="radio" name="inorout" value="out" checked><br>	
+			{% else %}	
+				Punch: in <input type="radio" name="inorout" value="in" checked>
+				out <input type="radio" name="inorout" value="out"><br>
+			{% endif %}			
+			<input type="submit">
+		</form>
+	</section>
+</section>
+{% endblock %}

@@ -71,11 +71,10 @@ class Sponsor(db.Model):
 	level = db.StringProperty()
 	description = db.StringProperty(multiline=True)
 	
-class Members(db.Model):
-	name = db.StringProperty()
-	idstr = db.StringProperty()
+class Member(db.Model):
+	name = db.StringProperty(required = True)
+	idstr = db.StringProperty(required = True)
 	
 class Attendence(db.Model):
 	date = db.DateProperty()
-	clockin = db.StringListProperty()
-	clockout = db.StringListProperty()
+	punchcard = db.StringListProperty()
