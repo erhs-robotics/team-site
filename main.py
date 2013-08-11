@@ -602,6 +602,12 @@ class AddMemberHandler(Handler):
 				
 
 class PunchClockHandler(Handler):
+	def get(self):
+		self.login()
+		cookie = self.request.cookies.get("inorout")
+		if cookie != "out": cookie = "in"		
+		self.render("/resources/punchclock.html", user=self.user, inorout=cookie, getname=False)
+		
 	def getid(self, x): return x.split("|")[0]
 	
 	def get_today(self):
@@ -678,7 +684,7 @@ class PunchClockHandler(Handler):
 			data = {"error":"%s cannot punch out. You never punched in!" % name}
 			return ("/resources/punchclock.html", data)	
 		
-	def post(self):		
+	def post(self):			
 		self.login()
 		if self.user and self.user.isadmin:
 			inorout = self.request.get("inorout")
@@ -698,6 +704,7 @@ class PunchClockHandler(Handler):
 						break
 			attendance.put()
 			message="Succsess! %s punched %s at %s" % (name, inorout, time)
+			self.response.headers.add_header('Set-Cookie', str('inorout=%s'%inorout))			
 			self.render("message.html", message=message)			
 		else:
 			self.redirect("/login")
@@ -720,7 +727,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/control', ControlHandler),
 							   ('/sponsors', SponsorsHandler),
 							   ('/deleteentity', DeleteEntityHandler),
-							   ('/punch', PunchClockHandler),
+							   ('/resources/punchclock', PunchClockHandler),
 							   ('/addmember', AddMemberHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)
