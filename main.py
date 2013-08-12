@@ -604,9 +604,12 @@ class AddMemberHandler(Handler):
 class PunchClockHandler(Handler):
 	def get(self):
 		self.login()
-		cookie = self.request.cookies.get("inorout")
-		if cookie != "out": cookie = "in"		
-		self.render("/resources/punchclock.html", user=self.user, inorout=cookie, getname=False)
+		if self.user and self.user.isadmin:
+			cookie = self.request.cookies.get("inorout")
+			if cookie != "out": cookie = "in"		
+			self.render("/resources/punchclock.html", user=self.user, inorout=cookie, getname=False)
+		else:
+			self.redirect("/login")
 		
 	def getid(self, x): return x.split("|")[0]
 	
