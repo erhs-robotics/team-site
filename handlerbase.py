@@ -48,6 +48,10 @@ class Handler(webapp2.RequestHandler):
             pass      
         
         return t
+    
+    def execute_error(self, error):
+		
+		self.render(error[0], **error[1])
 
     def render(self, template, **kw):
         kw['gravatar'] = gravatar

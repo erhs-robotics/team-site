@@ -65,3 +65,11 @@ class Sponsor(db.Model):
 	image = db.BlobProperty()
 	level = db.StringProperty()
 	description = db.StringProperty(multiline=True)
+	
+class Member(db.Model):
+	name = db.StringProperty(required = True)
+	idstr = db.StringProperty(required = True)
+	
+class Attendence(db.Model):
+	date = db.DateProperty()
+	punchcard = db.StringListProperty()

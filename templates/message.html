@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block head %}
+	{{super()}}
+	<script>
+		$(document).ready(function(){
+		  setInterval(function(){window.location="/resources/punchclock"}, 1500)
+		});
+	</script>
+{% endblock %}
+{% block content %}
+<section class="grid_12 content">	
+	<section class="entry" id="message">		
+			<h3>{{message}}</h3>		
+	</section>
+</section>
+{% endblock %}
