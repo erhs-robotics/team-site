@@ -15,6 +15,9 @@ import json
 import logging
 import datetime
 from google.appengine.api import urlfetch
+from collections import namedtuple
+
+Member = namedtuple('Member', ['name', 'in', 'out'])
 
 def get_page(resource):
     pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
@@ -533,7 +536,49 @@ class PunchClockHandler(Handler):
 			self.render("message.html", message=message)			
 		else:
 			self.redirect("/login")
-            
+			
+class AttendanceLogHandler(Handler):	
+	def get_name(members_db, idstr):
+		for member in members_db:
+			if member.idstr == idstr:
+				return member.name
+
+	def post(self, resource):
+		self.login()
+		if not self.user.isadmin:
+			self.redirect("/login")
+			return
+		year = 0
+		month = 0
+		day = 0
+		try:
+			year = int(resource[:4])
+			month = int(resource[4:6])
+			day = int(resource[6:])
+		except:
+			self.redirect("/")
+		attendance_list = list(db.GqlQuery("SELECT * FROM Attendence"))
+		day = None
+		for x in attendance_list:
+			d = x.date
+			if d.year == year and d.month == month and d.day == day:
+				day = x
+				break
+		if day == None:
+			self.redirect("/login")
+			return				
+		
+		members_db = list(db.GqlQuery("SELECT * FROM Member"))
+		members = []
+		for s in day.punchcard:
+			parts = s.split("|")
+			name = self.get_name(parts[0])
+			members.append(Member(name, parts[1], parts[2]))
+		self.render("attendance.html", members=members, user=self.user)
+		
+		
+		
+        
 app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/blog/(\d+)', BlogHandler),
                                ('/login', LoginHandler),
@@ -551,5 +596,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/deleteentity', DeleteEntityHandler),
 							   ('/resources/punchclock', PunchClockHandler),
 							   ('/addmember', AddMemberHandler),
+							   ('/attendance/(\d+)', AttendanceLogHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)
