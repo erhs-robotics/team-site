@@ -17,7 +17,7 @@ import datetime
 from google.appengine.api import urlfetch
 from collections import namedtuple
 
-Member = namedtuple('Member', ['name', 'in', 'out'])
+Member = namedtuple('Member', ['name', 'intime', 'outtime'])
 
 def get_page(resource):
     pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
