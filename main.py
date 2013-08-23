@@ -441,7 +441,11 @@ class PunchClockHandler(Handler):
 	def get_today(self):
 		attendence = list(db.GqlQuery("SELECT * FROM Attendence"))
 		today = None
-		now = datetime.date.today()
+		t = self.request.get("time")
+		year = int(t[:4])
+		month = int(t[4:6])
+		day = int(t[6:8])
+		now = datetime.date(year, month, day)
 		for day in attendence:
 			if now == day.date: today = day
 		if today == None:
@@ -450,13 +454,8 @@ class PunchClockHandler(Handler):
 			
 		return today
 		
-	def get_time(self): 
-		time = datetime.datetime.now().time()
-		hours = str(time.hour)
-		minutes = str(time.minute)
-		if len(hours) == 1: hours = "0" + hours
-		if len(minutes) == 1: minutes = "0" + minutes
-		return hours + minutes
+	def get_time(self):		
+		return self.request.get("time")[8:]
 		
 	def punched_in(self, idstr, attendance):
 		for x in attendance.punchcard:
@@ -510,7 +509,12 @@ class PunchClockHandler(Handler):
 			return ("/resources/punchclock.html", data)
 		if inorout == "out" and not self.punched_in(idstr, attendance):
 			data = {"error":"%s cannot punch out. You never punched in!" % name}
-			return ("/resources/punchclock.html", data)	
+			return ("/resources/punchclock.html", data)
+		t = self.request.get("time")
+		if len(t) != 12 or not t.isdigit():
+			data = {"error":"Invalid time!" % name}
+			return ("/resources/punchclock.html", data)
+			
 		
 	def post(self):			
 		self.login()
