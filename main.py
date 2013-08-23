@@ -542,43 +542,47 @@ class PunchClockHandler(Handler):
 			self.redirect("/login")
 			
 class AttendanceLogHandler(Handler):	
-	def get_name(members_db, idstr):
+	def get_name(self, members_db, idstr):
 		for member in members_db:
 			if member.idstr == idstr:
 				return member.name
 
-	def post(self, resource):
+	def get(self, resource):
 		self.login()
 		if not self.user.isadmin:
 			self.redirect("/login")
 			return
 		year = 0
 		month = 0
-		day = 0
+		day = 0		
+		
 		try:
 			year = int(resource[:4])
 			month = int(resource[4:6])
 			day = int(resource[6:])
 		except:
 			self.redirect("/")
+		
 		attendance_list = list(db.GqlQuery("SELECT * FROM Attendence"))
-		day = None
+		attendence = None
 		for x in attendance_list:
 			d = x.date
+			print "Looking for: (%s, %s, %s)" % (year, month, day)
+			print "Found: (%s, %s, %s)" % (d.year, d.month, d.day)			
 			if d.year == year and d.month == month and d.day == day:
-				day = x
+				attendence = x
 				break
-		if day == None:
+		if attendence == None:
 			self.redirect("/login")
 			return				
 		
 		members_db = list(db.GqlQuery("SELECT * FROM Member"))
 		members = []
-		for s in day.punchcard:
+		for s in attendence.punchcard:
 			parts = s.split("|")
-			name = self.get_name(parts[0])
+			name = self.get_name(members_db, parts[0])
 			members.append(MemberTuple(name, parts[1], parts[2]))
-		self.render("attendance.html", members=members, user=self.user)
+		self.render("attendence.html", members=members, user=self.user)
 		
 		
 		
@@ -600,6 +604,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/deleteentity', DeleteEntityHandler),
 							   ('/resources/punchclock', PunchClockHandler),
 							   ('/addmember', AddMemberHandler),
-							   ('/attendance/(\d+)', AttendanceLogHandler),
+							   ('/attendence/(\d+)', AttendanceLogHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="grid_12 content">
-	{%%
+<section class="grid_12 content">	
+	{% for member in members %}
+		{{ member.name }} In: {{member.intime}} Out: {{member.outtime}}	
+	{% endfor %}
 </section>
 {% endblock %}
