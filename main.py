@@ -44,7 +44,7 @@ class GenericHandler(Handler):
         page_location = resource + ".html"
         page = get_page(resource)
         if page != None: page_location = "generic.html"
-        self.render(page_location, page=page, user=self.user)
+        self.render(page_location, location=resource, page=page, user=self.user)
                 
 class BlogHandler(Handler):
     def getTotalPosts(self, post_list):
@@ -119,7 +119,7 @@ class ControlHandler(Handler):
 		createuser_submit = self.request.get("createuser_submit")
 		sponsors_submit = self.request.get("sponsors_submit")
 		if slideshow_submit:
-			if can_post(self.user):
+			if self.user:
 				image = self.request.get("image")
 				caption = self.request.get("caption")
 				link = self.request.get("link")
@@ -180,7 +180,7 @@ class ControlHandler(Handler):
 								fullname = fullname,
 								display = "block")
 		if sponsors_submit:
-			if can_post(self.user):
+			if self.user:
 				name = self.request.get("name")
 				link = self.request.get("link")
 				image = self.request.get("image")
@@ -347,13 +347,13 @@ class NewPageHandler(Handler):
     def get(self):
         self.login()
         
-        if can_post(self.user):
+        if self.user:
             self.render_form(user = self.user)
         else:
             self.redirect("/login")
     def post(self):
         self.login()               
-        if can_post(self.user):            
+        if self.user:            
             title = self.request.get("title")
             location = self.request.get("location")
             content = self.request.get("content")
@@ -370,7 +370,7 @@ class EditPageHandler(Handler):
         self.render("newpage.html", title=title, location=location, content=content, error=error, user=user)
     def get(self, resource):
         self.login()        
-        if can_post(self.user):
+        if self.user:
             page = get_page(resource)
             if page:
                 self.render("newpage.html", user = self.user, 
@@ -383,7 +383,7 @@ class EditPageHandler(Handler):
     def post(self, resource):
         self.login()
         
-        if can_post:        
+        if self.user:        
             page = get_page(resource)
             if page:     
                 title = self.request.get("title")
