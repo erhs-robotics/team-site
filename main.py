@@ -17,7 +17,7 @@ import datetime
 from google.appengine.api import urlfetch
 from collections import namedtuple
 
-Member = namedtuple('Member', ['name', 'intime', 'outtime'])
+MemberTuple = namedtuple('Member', ['name', 'intime', 'outtime'])
 
 def get_page(resource):
     pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
@@ -573,7 +573,7 @@ class AttendanceLogHandler(Handler):
 		for s in day.punchcard:
 			parts = s.split("|")
 			name = self.get_name(parts[0])
-			members.append(Member(name, parts[1], parts[2]))
+			members.append(MemberTuple(name, parts[1], parts[2]))
 		self.render("attendance.html", members=members, user=self.user)
 		
 		
