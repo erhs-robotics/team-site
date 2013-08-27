@@ -439,17 +439,17 @@ class PunchClockHandler(Handler):
 	def getid(self, x): return x.split("|")[0]
 	
 	def get_today(self):
-		attendence = list(db.GqlQuery("SELECT * FROM Attendence"))
+		attendance = list(db.GqlQuery("SELECT * FROM Attendance"))
 		today = None
 		t = self.request.get("time")
 		year = int(t[:4])
 		month = int(t[4:6])
 		day = int(t[6:8])
 		now = datetime.date(year, month, day)
-		for day in attendence:
+		for day in attendance:
 			if now == day.date: today = day
 		if today == None:
-			today = Attendence(date = now, clockin = [], clockout = [])			
+			today = Attendance(date = now, clockin = [], clockout = [])			
 			today.put()
 			
 		return today
@@ -537,7 +537,7 @@ class PunchClockHandler(Handler):
 			attendance.put()
 			message="Succsess! %s punched %s at %s" % (name, inorout, time)
 			self.response.headers.add_header('Set-Cookie', str('inorout=%s'%inorout))			
-			self.render("message.html", message=message)			
+			self.render("message.html", message=message, redirect=True)			
 		else:
 			self.redirect("/login")
 			
@@ -563,26 +563,26 @@ class AttendanceLogHandler(Handler):
 		except:
 			self.redirect("/")
 		
-		attendance_list = list(db.GqlQuery("SELECT * FROM Attendence"))
-		attendence = None
+		attendance_list = list(db.GqlQuery("SELECT * FROM Attendance"))
+		attendance = None
 		for x in attendance_list:
 			d = x.date
 			print "Looking for: (%s, %s, %s)" % (year, month, day)
 			print "Found: (%s, %s, %s)" % (d.year, d.month, d.day)			
 			if d.year == year and d.month == month and d.day == day:
-				attendence = x
+				attendance = x
 				break
-		if attendence == None:
-			self.redirect("/login")
+		if attendance == None:
+			self.render("message.html", message="No attendance found", redirect=False)
 			return				
 		
 		members_db = list(db.GqlQuery("SELECT * FROM Member"))
 		members = []
-		for s in attendence.punchcard:
+		for s in attendance.punchcard:
 			parts = s.split("|")
 			name = self.get_name(members_db, parts[0])
 			members.append(MemberTuple(name, parts[1], parts[2]))
-		self.render("attendence.html", members=members, user=self.user)
+		self.render("attendance.html", members=members, user=self.user)
 		
 		
 		
@@ -604,6 +604,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/deleteentity', DeleteEntityHandler),
 							   ('/resources/punchclock', PunchClockHandler),
 							   ('/addmember', AddMemberHandler),
-							   ('/attendence/(\d+)', AttendanceLogHandler),
+							   ('/attendance/(\d+)', AttendanceLogHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)

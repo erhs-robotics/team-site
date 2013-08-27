@@ -70,6 +70,6 @@ class Member(db.Model):
 	name = db.StringProperty(required = True)
 	idstr = db.StringProperty(required = True)
 	
-class Attendence(db.Model):
+class Attendance(db.Model):
 	date = db.DateProperty()
 	punchcard = db.StringListProperty()
