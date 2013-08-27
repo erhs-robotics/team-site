@@ -580,8 +580,10 @@ class AttendanceLogHandler(Handler):
 		members = []
 		for s in attendance.punchcard:
 			parts = s.split("|")
+			in_time = parts[1] if len(parts) >= 2 else "error"
+			out_time = parts[2] if len(parts) == 3 else "never punched out"			
 			name = self.get_name(members_db, parts[0])
-			members.append(MemberTuple(name, parts[1], parts[2]))
+			members.append(MemberTuple(name, in_time, out_time))
 		self.render("attendance.html", members=members, user=self.user)
 		
 		
