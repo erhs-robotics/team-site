@@ -1,4 +1,18 @@
 {% extends "base.html" %}
+{% block head %}
+	{{super()}}
+	<script type="text/javascript">
+		function submitAttendance() {
+			var year  = document.getElementById("year").value;
+			var month = document.getElementById("month").value;
+			var day   = document.getElementById("day").value;
+			if(month.length == 1) month = "0" + month;
+			if(day.length == 1) day = "0" + day;
+			var str = year + month + day;			
+			window.location.assign("/attendance/" + str);			  
+		}
+	</script>
+{% endblock %}
 {% block content %}
 <section class="grid_12 content">
 	<section class="entry" id="todo">
@@ -6,6 +20,7 @@
 		<h3>Things to do</h3>
 		<ul>
 			<li>Edit a page</li>
+			<li><a href="/newpage">Make a new page</a></li>
 			<li><a href="/newpost">Make a blog post</a></li>
 			<li><a href="#slideshow">Edit slideshow pictures</a></li>
 			<li><a href="#createuser">Make a new user account</a></li>
@@ -90,6 +105,17 @@
 		{% else %}
 			<p>You don't have permission to create users</p>
 		{% endif %}
+	</section>
+	<section class="entry" id="attendance">
+		<h2>Generate Attendance</h2>
+		{% if user and user.isadmin %}
+			Year: <input type="text" id="year" value="2013">
+			Month: <input type="text" id="month">
+			Day: <input type="text" id="day"><br>
+			<input type="submit" onclick="submitAttendance()" id="attendance_generate"value="Generate">
+		
+		
+		{% endif %}	
 	</section>
 	<section class="entry" id="sponsors">
 		<h2>Sponsors</h2>

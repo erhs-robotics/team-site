@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="grid_12 content">
+	<section class="entry" id="Attendance">
+			<div>
+				<h2 class="grid_2">Name</h2> 
+				<h2 class="grid_4">Time In</h2> 
+				<h2 class="grid_4">Time Out</h2>
+			</div>
+		{% for member in members %}		
+			<div>
+				<span style="{% if loop.index % 2 == 0 %} background-color: #dadada;{% endif %}" class="grid_2 label">{{member.name}}</span> 
+				<span style="{% if loop.index % 2 == 0 %} background-color: #dadada;{% endif %}" class="grid_4">{{member.intime}}</span> 
+				<span style="{% if loop.index % 2 == 0 %} background-color: #dadada;{% endif %}" class="grid_4">{{member.outtime}}</span>
+			</div>
+		{% endfor %}
+	</section>
+</section>
+{% endblock %}

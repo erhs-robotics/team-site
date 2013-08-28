@@ -3,7 +3,9 @@
 	{{super()}}
 	<script>
 		$(document).ready(function(){
+		{% if redirect %}
 		  setInterval(function(){window.location="/resources/punchclock"}, 1500)
+		{% endif %}
 		});
 	</script>
 {% endblock %}
