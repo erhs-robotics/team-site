@@ -489,7 +489,7 @@ class PunchClockHandler(Handler):
 		return member		
 		
 	def validate(self, idstr, name, inorout, attendance):
-		if len(idstr) != 9: # ivalid id
+		if not len(idstr) in [9,6] : # ivalid id
 			getname = True if self.request.get("name") != "" else False
 			data = {"idstr":idstr, "inorout":inorout, "error":"Invalid ID!", "getname":getname, "name":name}
 			if getname: data["name"] = name
