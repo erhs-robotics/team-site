@@ -584,6 +584,7 @@ class AttendanceLogHandler(Handler):
 			out_time = parts[2] if len(parts) == 3 else "never punched out"			
 			name = self.get_name(members_db, parts[0])
 			members.append(MemberTuple(name, in_time, out_time))
+		members = sorted(members, key = lambda x: x.name)
 		self.render("attendance.html", members=members, user=self.user)
 		
 		
