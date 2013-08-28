@@ -3,12 +3,8 @@
 	{{super()}}
 	<script type="text/javascript">
 		function submitAttendance() {
-			var year  = document.getElementById("year").value;
-			var month = document.getElementById("month").value;
-			var day   = document.getElementById("day").value;
-			if(month.length == 1) month = "0" + month;
-			if(day.length == 1) day = "0" + day;
-			var str = year + month + day;			
+			var parts = document.getElementById("date").value.split("-");			
+			var str = parts[0] + parts[1] + parts[2]		
 			window.location.assign("/attendance/" + str);			  
 		}
 	</script>
@@ -24,7 +20,8 @@
 			<li><a href="/newpost">Make a blog post</a></li>
 			<li><a href="#slideshow">Edit slideshow pictures</a></li>
 			<li><a href="#createuser">Make a new user account</a></li>
-			<li><a href="#sponsors">Edit sponsors</a></li>
+			<li><a href="#attendance">Generate attendance</a></li>
+			<li><a href="#sponsors">Edit sponsors</a></li>			
 		</ul>
 	</section>
 	<section class="entry" id="slideshow">
@@ -109,12 +106,8 @@
 	<section class="entry" id="attendance">
 		<h2>Generate Attendance</h2>
 		{% if user and user.isadmin %}
-			Year: <input type="text" id="year" value="2013">
-			Month: <input type="text" id="month">
-			Day: <input type="text" id="day"><br>
-			<input type="submit" onclick="submitAttendance()" id="attendance_generate"value="Generate">
-		
-		
+			Date: <input type="date" id="date">			
+			<input type="submit" onclick="submitAttendance()" id="attendance_generate"value="Generate">		
 		{% endif %}	
 	</section>
 	<section class="entry" id="sponsors">
