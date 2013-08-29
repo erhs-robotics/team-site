@@ -57,6 +57,7 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 
 .hcenter { text-align: center; }
 
+#banner { margin-bottom: 5px; }
 #banner a { text-decoration: none; }
 #banner a .maintitle {
 	color: black;
@@ -74,7 +75,6 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 }
 
 #content { background-color: #69f;}
-
 
 .blog-feed { height: 500px; overflow: auto;}
 .maincontent { height: 450px; }
@@ -167,7 +167,7 @@ color: #006;}
 .menu {
 	width: 100%;
 	position: relative;
-	margin: 10px auto 15px auto;
+	margin: 0px auto 0px auto;
 	height: 40px; 
 	/*background: #4c4e5a;*/
 	background: #1f2024;
