@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block head %}
+	{{super()}}
+	<script type="text/javascript">
+		function submitAttendance() {
+			var parts = document.getElementById("date").value.split("-");			
+			var str = parts[0] + parts[1] + parts[2]		
+			window.location.assign("/attendance/" + str);			  
+		}
+	</script>
+{% endblock %}
+{% block content %}
+<section class="grid_12 content">
+	<section class="entry" id="todo">
+		<h2>Control Center</h2>
+		<h3>Things to do</h3>
+		<ul>
+			<li>Edit a page</li>
+			<li><a href="/newpage">Make a new page</a></li>
+			<li><a href="/newpost">Make a blog post</a></li>
+			<li><a href="#slideshow">Edit slideshow pictures</a></li>
+			<li><a href="#createuser">Make a new user account</a></li>
+			<li><a href="#attendance">Generate attendance</a></li>
+			<li><a href="#sponsors">Edit sponsors</a></li>			
+		</ul>
+	</section>
+	<section class="entry" id="slideshow">
+		<h2>Slideshow</h2>
+		{% if user %}
+			<form method="post" enctype="multipart/form-data">
+				<label>
+					<div>Image File</div>
+					<input type="file" name="image">
+				</label>
+				<label>
+					<div>Caption</div>
+					<textarea style="width:920px; height:75px" name="caption">{{caption}}</textarea>
+				</label>
+				<label>
+					<div>Link</div>
+					<input type="text" value="{{link}}" name="link">
+				</label>
+				<div class="error">{{error}}</div>
+				<input type="submit" name="slideshow_submit">
+			</form>
+			<table>
+				<tr>
+					<th>Image</th>
+					<th>Caption</th>
+					<th>Link</th>
+					<th>Delete?</th>
+				</tr>
+				{% for slide in slides %}
+					<tr>
+						<td><img src="/image?img_id={{slide.key()}}" width="50%"></img></td>
+						<td>{{slide.caption}}</td>
+						<td>{% if slide.link %} <a href="{{slide.link}}" target="_blank">Link</a> {% else %} None {% endif %}</td>
+						<td><form method="POST" action="/deleteentity">
+									<input type="hidden" name="entity" value="{{slide.key()}}" />
+									<input type="submit" class="remove-button" value="">
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p>You don't have permission to edit the slideshow</p>
+		{% endif %}
+	</section>
+	<section class="entry" id="createuser">
+		<h2>Create User</h2>
+		{% if user.isadmin %}
+			<form id="createuserform" style="display: {{display}};" method="post" enctype="multipart/form-data">
+				<table>
+					<tr>
+						<td class="label">Full name (optional)</td>
+						<td><input type="text" name="fullname" value="{{fullname}}"></td>				  
+					</tr>
+					<tr>
+						<td class="label">Username</td>
+						<td><input type="text" name="username" value="{{name}}"></td>
+						<td>{{username}}</td>
+					</tr>
+					<tr>
+						<td class="label">Password</td>
+						<td><input type="password" name="password" value=""></td>
+						<td>{{password}}</td>
+					</tr>
+					<tr>
+						<td class="label">Verify Password</td>
+						<td><input type="password" name="verify" value=""></td>
+						<td>{{verify}}</td>
+					</tr>
+					<tr>
+						<td class="label">Email (optional)</td>
+						<td><input type="text" name="email" value="{{mail}}"></td>
+						<td>{{email}}</td>
+					</tr>
+				</table>
+			<input type="submit" name="createuser_submit">		
+			</form>
+		{% else %}
+			<p>You don't have permission to create users</p>
+		{% endif %}
+	</section>
+	<section class="entry" id="attendance">
+		<h2>Generate Attendance</h2>
+		{% if user and user.isadmin %}
+			Date: <input type="date" id="date">			
+			<input type="submit" onclick="submitAttendance()" id="attendance_generate"value="Generate">		
+		{% endif %}	
+	</section>
+	<section class="entry" id="sponsors">
+		<h2>Sponsors</h2>
+		{% if user %}
+			<form method="post" enctype="multipart/form-data">
+				<label>
+					<div>Image</div>
+					<input type="file" name="image">
+				</label>
+				<label>
+					<div>Name</div>
+					<input type="text" value="{{name}}" name="name">
+				</label>
+				<label>
+					<div>Link</div>
+					<input type="text" value="{{link}}" name="link">
+				</label>
+				<label>
+					<div>Sponsor Level</div>
+					<select name="level">
+						<option value="Platinum">Platinum</option>
+						<option value="Gold">Gold</option>
+						<option value="Silver">Silver</option>
+						<option value="Bronze">Bronze</option>
+					</select>
+				</label>
+				<div class="error">{{error}}</div>
+				<input type="submit" name="sponsors_submit">
+			</form>
+			<table>
+				<tr>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Link</th>
+					<th>Level</th>
+					<th>Delete?</th>
+				</tr>
+				{% for sponsor in sponsors %}
+					<tr>
+						<td><img src="/image?img_id={{sponsor.key()}}" width="50%"></img></td>
+						<td>{{sponsor.name}}</td>
+						<td>{% if sponsor.link %} <a href="{{sponsor.link}}" target="_blank">Link</a> {% else %} None {% endif %}</td>
+						<td>{{sponsor.level}}</td>
+						<td><form method="POST" action="/deleteentity">
+									<input type="hidden" name="entity" value="{{sponsor.key()}}" />
+									<input type="submit" class="remove-button" value="">
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p>You don't have permission to edit the sponsors</p>
+		{% endif %}
+	</section>
+</section>
+{% endblock %}

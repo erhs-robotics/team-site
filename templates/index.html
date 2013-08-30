@@ -52,6 +52,17 @@
 			<div class="entry">
 				<div id="slides">
 					<div class="slides_container">
+						{% for slide in slides %}
+							<div class="slide">
+								<a href={% if slide.link %}"{{slide.link}}"{%else%}"/"{%endif%}>
+									<img src="/image?img_id={{slide.key()}}" width="420" height="270">
+								</a>
+								<div class="caption">
+									<p>{{slide.caption}}</p>
+								</div>
+							</div>
+						{% endfor %}
+						<!--
 						<div class="slide">
 							<a href="/">
 								<img src="/images/slides/launcher-prototype.jpg" width="420" height="270" 
@@ -79,6 +90,7 @@
 								<p>The team mascot brightening our spirits after a long day at build</p>
 							</div>
 						</div>
+						-->
 					</div>
 					<a href="#" class="prev"><img src="images/slides/arrow-prev.png" width="18" height="40" alt="Arrow Prev"></a>
 					<a href="#" class="next"><img src="images/slides/arrow-next.png" width="18" height="40" alt="Arrow Next"></a>
@@ -101,6 +113,45 @@
 		</div>
 	</aside>
 </aside><!-- /#welcome -->
+<section id="blogandsocialfeeds">
+	<aside class="grid_7 content">
+		<div class="blog-feed entry">
+			<h2>Recent Announcements</h2>
+			<br>
+			{% if post|count >= 1 %}
+				<h3>{{post[0].subject}}</h3>
+				<div class="blog">{{post[0].content}}</div><hr>
+			{% endif %}
+			{% if post|count >= 2 %}
+				<h3>{{post[1].subject}}</h3>
+				<div class="blog">{{post[1].content}}</div><hr>
+			{% endif %}
+			{% if post|count >= 3 %}
+				<h3>{{post[2].subject}}</h3>
+				<div class="blog">{{post[2].content}}</div><hr>
+			{% endif %}
+			<p>For more announcements, see the <a href="/blog">blog</a> page.</p>
+		</div>
+	</aside>
+	<aside class="grid_5 content">
+		<div class="blog-feed entry">
+			<h2>Stay Connected</h2>
+			<a href="https://twitter.com/ERHSRobotics53" target="_blank"><img src="/images/logo/social-media/16/twitter.png" alt="Twitter Logo"></a>
+			Follow Us On Twitter
+			<a class="twitter-timeline" href="https://twitter.com/ERHSRobotics53" data-widget-id="283036805325004803">Tweets by @ERHSRobotics53</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			<br><br>
+			<a href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" target="_blank">
+				<img src="/images/logo/social-media/16/facebook.png" style="display: inline-block" alt="Facebook Logo"/>
+			</a> 
+			Like Us On Facebook
+			<div id="like-box" 	class="fb-like" data-href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" 
+			     data-send="true" data-layout="button_count" data-width="250" data-show-faces="false" data-font="verdana" 
+			     data-colorscheme="light">
+			</div>
+		</div>
+	</aside>
+</section>
 <section id="competitions">
 	<article id="frc" class="grid_4 maincontent content">
 		<div class="entry">
@@ -136,55 +187,4 @@
 		</div>
 	</article>
 </section>
-<section id="blogandsocialfeeds">
-	<aside class="grid_7 content">
-		<div class="blog-feed entry">
-			<h2>Recent Announcements</h2>
-			<br>
-			{% if post|count >= 1 %}
-				<h3>{{post[0].subject}}</h3>
-				<div class="blog">{{post[0].content}}</div><hr>
-			{% endif %}
-			{% if post|count >= 2 %}
-				<h3>{{post[1].subject}}</h3>
-				<div class="blog">{{post[1].content}}</div><hr>
-			{% endif %}
-			{% if post|count >= 3 %}
-				<h3>{{post[2].subject}}</h3>
-				<div class="blog">{{post[2].content}}</div><hr>
-			{% endif %}
-			<p>For more announcements, see the <a href="/blog">blog</a> page.</p>
-		</div>
-	</aside>
-	<aside class="grid_5 content">
-		<div class="blog-feed entry">
-			<h2>Stay Connected</h2>
-			<a href="https://twitter.com/ERHSRobotics53" target="_blank"><img src="/images/logo/twitter.jpg" alt="Twitter Logo"></a>
-			Follow Us On Twitter
-			<a class="twitter-timeline" href="https://twitter.com/ERHSRobotics53" data-widget-id="283036805325004803">Tweets by @ERHSRobotics53</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			<br><br>
-			<a href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" target="_blank">
-				<img src="/images/logo/facebook.jpg" style="display: inline-block" alt="Facebook Logo"/>
-			</a> 
-			Like Us On Facebook
-			<div id="like-box" 	class="fb-like" data-href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" 
-			     data-send="true" data-layout="button_count" data-width="250" data-show-faces="false" data-font="verdana" 
-			     data-colorscheme="light">
-			</div>
-		</div>
-	</aside>
-</section>
-<div id="calendar">
-	<div class="grid_12 content">
-		<div class="entry">
-			<h2>Team Schedule/Calendar</h2>
-			<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH&amp;height=360&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=erhsroboticsclub%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" 
-					style="border-width:0; overflow-y: hidden;" width="920" height="500">
-					Your browser currently does not support iFrames and is unable to view
-					the Robotics Club's Schedule/Calendar
-			</iframe>
-		</div>
-	</div>
-</div>
 {% endblock %}		

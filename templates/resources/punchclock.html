@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block head %}
+	{{super()}}
+	<script type="text/javascript">
+		function punchit() {
+			var d = new Date();
+			var year = String(d.getFullYear());
+			var month = String(d.getMonth()+1);
+			var day = String(d.getDate());
+			var hour = String(d.getHours());			
+			var minute = String(d.getMinutes());
+			
+			if(month.length == 1) month = "0" + month;
+			if(day.length == 1) day = "0" + day;
+			if(hour.length == 1) hour = "0" + hour;
+			if(minute.length == 1) minute = "0" + minute;
+			
+			var time = year + month + day + hour + minute;
+			
+			document.forms["punchform"].elements["time"].value = time
+			document.forms["punchform"].submit()
+		}
+	</script>
+{% endblock %}
+{% block content %}
+<section class="grid_12 content">	
+	<section class="entry" id="punchclock">
+		<h2>Punch Clock</h2>
+		<form id="punchform" method="post" enctype="multipart/form-data">
+			<div class="error">{{error}}</div>
+			{% if getname %}						
+				Name: <input type="text" name="name" value="{{name}}"><br>
+			{% endif %}
+			ID Number: <input type="text" name="idstr" value="{{idstr}}" autofocus><br>
+			{% if inorout == "out" %}
+				Punch: in <input type="radio" name="inorout" value="in">
+				out <input type="radio" name="inorout" value="out" checked><br>	
+			{% else %}	
+				Punch: in <input type="radio" name="inorout" value="in" checked>
+				out <input type="radio" name="inorout" value="out"><br>
+			{% endif %}
+			<input type="hidden" name="time">		
+			<input type="submit" onclick="punchit()">
+		</form>
+	</section>
+</section>
+{% endblock %}

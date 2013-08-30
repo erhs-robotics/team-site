@@ -37,19 +37,39 @@ class Post(db.Model):
     content  = db.TextProperty(required = True)
     created  = db.DateTimeProperty(auto_now_add = True)
     
-class User(db.Model):
-    currentProjects = db.StringListProperty()
-    pastProjects    = db.StringListProperty()
-    team            = db.StringProperty()
-    quote           = db.TextProperty()    
+class User(db.Model):        
     username        = db.StringProperty(required = True)
     fullname        = db.StringProperty()
     password        = db.StringProperty(required = True)
     email           = db.StringProperty()
-    isadmin         = db.BooleanProperty(required = True)
-    privileges      = db.ListProperty(int)
+    isadmin         = db.BooleanProperty(required = True)    
 
 class Message(db.Model):
     name = db.StringProperty()
     email = db.StringProperty()
     message = db.StringProperty()
+
+class Page(db.Model):
+	title = db.StringProperty()
+	location = db.StringProperty()
+	content = db.TextProperty()
+
+class Slide(db.Model):
+	image = db.BlobProperty()
+	caption = db.StringProperty(multiline=True)
+	link = db.StringProperty()
+	
+class Sponsor(db.Model):
+	name = db.StringProperty()
+	link = db.StringProperty()
+	image = db.BlobProperty()
+	level = db.StringProperty()
+	description = db.StringProperty(multiline=True)
+	
+class Member(db.Model):
+	name = db.StringProperty(required = True)
+	idstr = db.StringProperty(required = True)
+	
+class Attendance(db.Model):
+	date = db.DateProperty()
+	punchcard = db.StringListProperty()

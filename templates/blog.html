@@ -10,7 +10,7 @@
 	</script>
 {% endblock %}
 {% block content %}
-	{% if user and 1 in user.privileges %}
+	{% if user %}
 		<form class="grid_12 content" style="margin: 20px 0 0 10px; padding: 0;" action="/newpost" method="GET">
 			<button class="button" style="margin: 10px 0 0 10px;" id="submit">New Post</button>
 		</form>
