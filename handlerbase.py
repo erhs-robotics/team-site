@@ -21,7 +21,9 @@ def guess_autoescape(template_name):
     if template_name == "blog.html" or template_name == "index.html" or template_name == "viewpost.html":
         return False
     ext = template_name.rsplit('.', 1)[1]
-    return ext in ('html', 'htm', 'xml')
+    if ext in ('html'):
+        return False
+    return ext in ('htm', 'xml')
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
@@ -46,6 +48,10 @@ class Handler(webapp2.RequestHandler):
             pass      
         
         return t
+    
+    def execute_error(self, error):
+		
+		self.render(error[0], **error[1])
 
     def render(self, template, **kw):
         kw['gravatar'] = gravatar

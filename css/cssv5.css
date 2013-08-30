@@ -11,18 +11,15 @@
 
 body {
 	background-color: #adf;
-	/*background-image:url('/images/bg2.jpg');*/
-	background-attachment: fixed !important;
-	/*
+	
 	background-attachment: fixed !important;
 	background-repeat: no-repeat !important;
-	/*
-	background-color: linear-gradient(top, #bef 20%, #7ad 70%);
-		background-color: -webkit-linear-gradient(top, #bef 20%, #7ad 70%);
-		background-color: -moz-linear-gradient(top, #bef 20%, #7ad 70%);
-		background-color: -o-linear-gradient(top, #bef 20%, #7ad 70%);
-		background-color: -ms-linear-gradient(top, #bef 20%, #7ad 70%);
-	*/
+	background: linear-gradient(top, #adf 50%, #7ad 70%);
+		background: -webkit-linear-gradient(top, #adf 50%, #7ad 70%);
+		background: -moz-linear-gradient(top, #adf 50%, #7ad 70%);
+		background: -o-linear-gradient(top, #adf 50%, #7ad 70%);
+		background: -ms-linear-gradient(top, #adf 50%, #7ad 70%);
+		
 	color: #000;
 	font-size: 100%;
 	line-height: 1;
@@ -78,15 +75,7 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 
 #content { background-color: #69f;}
 
-.nav-logo { 
-	display: block;
-	position: absolute;
-	height: 130px;
-	width: 120px;
-	margin-top: -35px;
-	z-index: 9998;	
-	margin-left: -20px;
-}
+
 .blog-feed { height: 500px; overflow: auto;}
 .maincontent { height: 450px; }
 
@@ -95,7 +84,7 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	background-color: white;
 }
 .entry { 
-	background-color: white;
+	/*background-color: white;*/
 	margin: 10px;
 }
 
@@ -175,10 +164,9 @@ color: #f90;}
 }	
  
 .menu {
-	width: 875px;
+	width: 100%;
 	position: relative;
 	margin: 10px auto 15px auto;
-	float: right;
 	height: 40px; 
 	/*background: #4c4e5a;*/
 	background: #1f2024;
@@ -220,6 +208,14 @@ color: #f90;}
     -o-transition: color .2s ease-in-out;
     -ms-transition: color .2s ease-in-out;
     transition: color .2s ease-in-out;
+}
+.menu li a img {
+	display: inline;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	float: right;
 }
 .menu li:first-child a { border-left: none;}
 .menu li:last-child a{ border-right: none; }

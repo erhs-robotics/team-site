@@ -36,4 +36,26 @@ width: 38%;
 line-height: 1;
 }
 
+.sponsor {
+	display: inline;
+	margin-bottom: 10px;
+}
+
+.sponsor .name {
+	text-align: center;
+	color: blue;
+	font-size: 16px;
+}
+
+.sponsor .image img {
+	height: 200px;
+	max-width: 250px;
+	margin: 0 auto; 
+	display: block;
+}
+
+.major .image img {
+	height: 300px;
+	max-width: 350px;
+}
 
