@@ -1,9 +1,9 @@
 /*
- * css v5
+ * cssv5.css
  * Eleanor Roosvelt Robotics
- * October 2012
+ * October 2012 - August 2013
  * www.erhsroboticsclub.org
- * - Nick Yaculak nyaculak@gmail.com
+ * - Nick Yaculak
  * - Michael Stevens
  */
 
@@ -11,7 +11,6 @@
 
 body {
 	background-color: #adf;
-	
 	background-attachment: fixed !important;
 	background-repeat: no-repeat !important;
 	background: linear-gradient(top, #adf 50%, #7ad 70%);
@@ -19,7 +18,6 @@ body {
 		background: -moz-linear-gradient(top, #adf 50%, #7ad 70%);
 		background: -o-linear-gradient(top, #adf 50%, #7ad 70%);
 		background: -ms-linear-gradient(top, #adf 50%, #7ad 70%);
-		
 	color: #000;
 	font-size: 100%;
 	line-height: 1;
@@ -58,21 +56,6 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 .hcenter { text-align: center; }
 
 #banner { margin-bottom: 5px; }
-#banner a { text-decoration: none; }
-#banner a .maintitle {
-	color: black;
-	font-size: 60px;
-	font-family: "Arial", sans-serif;
-	text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
-}
-#banner a .subtitle{
-	color: black;
-	font-size: 14px;
-	font-style: italic;
-	font-family: arial;
-	font-weight: bold;
-	text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
-}
 
 #content { background-color: #69f;}
 
@@ -84,7 +67,6 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 	background-color: white;
 }
 .entry { 
-	/*background-color: white;*/
 	margin: 10px;
 }
 
@@ -142,10 +124,10 @@ color: #006;}
 	float: right;	
 	border: none;	
 	padding-top: 1px;
-	-o-background-size:100% 100%;				/*  Opera  		*/
+	-o-background-size:100% 100%;		/*  Opera  		*/
 	-webkit-background-size:100% 100%;	/*  Safari	 	*/
-	-khtml-background-size:100% 100%;		/*  Konqueror	*/
-	-moz-background-size:100% 100%;			/*	Firefox		*/
+	-khtml-background-size:100% 100%;	/*  Konqueror	*/
+	-moz-background-size:100% 100%;		/*	Firefox		*/
 }
 .remove-button:hover {
 	color:#FF001E;	
@@ -158,10 +140,10 @@ color: #006;}
 	float: right;
 	border: none;	
 	padding-top: 1px;
-	-o-background-size:100% 100%;				/*  Opera  		*/
+	-o-background-size:100% 100%;		/*  Opera  		*/
 	-webkit-background-size:100% 100%;	/*  Safari	 	*/
-	-khtml-background-size:100% 100%;		/*  Konqueror	*/
-	-moz-background-size:100% 100%;			/*	Firefox		*/
+	-khtml-background-size:100% 100%;	/*  Konqueror	*/
+	-moz-background-size:100% 100%;		/*	Firefox		*/
 }	
  
 .menu {
@@ -169,15 +151,8 @@ color: #006;}
 	position: relative;
 	margin: 0px auto 0px auto;
 	height: 40px; 
-	/*background: #4c4e5a;*/
+	border-radius: 10px 10px 0 0;
 	background: #1f2024;
-		/*
-		background-color: -webkit-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
-		background-color: -moz-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
-		background-color: -o-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
-		background-color: -ms-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
-		background-color: linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
-		*/
 }
 
 .menu li {
@@ -271,7 +246,6 @@ color: #006;}
 	width: 360px;
 	margin: 0 auto;
 }
-
 div#like-box {
     height: 20px;
     overflow: hidden;
