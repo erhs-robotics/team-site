@@ -1,11 +1,7 @@
 User-agent: *
-Disallow: /newpage
-Disallow: /editpage
 Disallow: /login
-Disallow: /logout
-Disallow: /newpost
 Disallow: /image
-Disallow: /profile
+Disallow: /profile/
 Disallow: /editprofile
 Disallow: /deleteuser
 Disallow: /updateprivileges
