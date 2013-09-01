@@ -29,8 +29,8 @@ body {
 h2 {font-size: 26px;}
 h3 {font-size: 20px;}
 h4 {font-size: 18px;}
-h5 {font-size: 14px;}
-h6 {font-size: 14px; text-align: center; font-style: italic;}
+h5 {font-size: 18px; font-style: italic;}
+h6 {font-size: 14px; font-style: italic;}
 h2, h3, h4, h5, h6 { 
 	font-weight: 400; 
 	line-height: 1;
@@ -60,7 +60,7 @@ header, section, footer, aside, nav, article, figure, login{ display: block;}
 #content { background-color: #69f;}
 
 .blog-feed { height: 500px; overflow: auto;}
-.maincontent { height: 450px; }
+.maincontent { height: 190px; }
 
 .content {
 	margin: 10px 0;
