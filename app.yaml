@@ -30,6 +30,10 @@ handlers:
   
 - url: /js
   static_dir: js
+  
+- url: /favicon.ico
+  static_files: images/logo/favicon.png
+  upload: images/logo/favicon.png
 
 - url: .*
   script: main.app
