@@ -16,6 +16,7 @@ import logging
 import datetime
 from google.appengine.api import urlfetch
 from collections import namedtuple
+from os.path import isfile
 
 MemberTuple = namedtuple('Member', ['name', 'intime', 'outtime'])
 
@@ -43,7 +44,7 @@ class GenericHandler(Handler):
         self.login()
         page_location = resource + ".html"
         page = get_page(resource)
-        if page != None: page_location = "generic.html"
+        if not isfile("templates/" + page_location): page_location = "generic.html"
         self.render(page_location, location=resource, page=page, user=self.user)
                 
 class BlogHandler(Handler):
