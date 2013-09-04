@@ -11,6 +11,7 @@ body {
 	*/
 	font-size: .938em;
 	line-height: 1.625em;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .content {
@@ -35,7 +36,6 @@ form { margin: 0; padding: 0}
 .button, input[type="submit"] { margin-bottom: 5px; }
 
 .band {
-	/*background: #f8f8f8;/*url(../images/bg_main.png) repeat #f8f8f8;*/
 	padding: 7px 0 14px 0;	
 }
 
@@ -45,9 +45,7 @@ form { margin: 0; padding: 0}
 
 .band.navigation {
 	background: /*url(../images/stitch_hr.png) left top repeat-x,
-				url(../images/bg_dark.png) repeat left 2px,
-				#343434;
-				*/
+				url(../images/bg_dark.png) repeat left 2px,*/
 				#2b3740;
 	padding: 0;
 	color: #e0e0e0; 
@@ -55,21 +53,18 @@ form { margin: 0; padding: 0}
 
 .band.footer {
 	background: /*url(../images/stitch_large.png) left top repeat-x,
-				url(../images/bg_dark.png) repeat left 2px,
-				#343434;*/
+				url(../images/bg_dark.png) repeat left 2px,*/
 				#80a6bf;
 	padding: 14px 0 14px 0;			
-	color: /*#e0e0e0; */#fff;
+	color: #fff;
 }
 
 .band.bottom {
 	background: /*url(../images/stitch_staggered.png) left top repeat-x,
-				url(../images/bg_bottom.png) repeat,
-				#343434;
-				#121212;*/
+				url(../images/bg_bottom.png) repeat,*/
 				#556f80;
 	padding: 14px 0 0px 0;
-	color: /*#e0e0e0;*/#fff;
+	color: #fff;
 }
 
 .welcome-content {
@@ -119,7 +114,7 @@ nav.primary ul li a:hover {
 	cursor: pointer;
 }
 
-/*sub menu*/
+/* Sub menu of the nav bar */
 nav.primary ul ul {
 	opacity: 0; 
   	filter: alpha(opacity=0); 
@@ -128,7 +123,7 @@ nav.primary ul ul {
 	top:100%;
 	left: 0;
 	z-index: 999;
-	background: #343434;/*url(../images/bg_bottom.png);*/
+	background: #343434;
 	
 	height: 0px;
 	overflow: hidden;
