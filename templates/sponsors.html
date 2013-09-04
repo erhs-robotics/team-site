@@ -1,141 +1,87 @@
 {% extends "base.html" %}
 {% block head %}
 	{{super()}}
-	<link rel="stylesheet" href="../css/sponsors.css">
+	<link rel="stylesheet" href="/css/sponsors.css">
 {% endblock %}
-{% block content %}
-<section class="grid_12 content">
-	<div id="sponsors" class="grid_8 alpha">
-		<div class="entry">
-			
-			<!--
-			<label for="platinum-sponsors-check" class="sponsor-name">Platinum Sponsors</label>
-				<input id="platinum-sponsors-check" type="checkbox" class="toggle" checked="checked"/>
-				<div class="sponsor-level" id="platinum-sponsors">
-					<div class="sponsor-block">			
-						<a href="http://www.arl.army.mil/www/default.cfm">Army Research Lab</a>
-						<img src="/images/sponsors/arl.png" height=145>
-						<font>The U.S. Army Research Laboratory (ARL) of
-							  the U.S. Army Research Development and Engineering 
-							  Command (RDECOM) is the Army's corporate, or central, 
-							  laboratory.</font>
-					</div>	
-				</div><!-- /#platinum-sponsors.sponsor-level -->
-
-			<!--
-			<div style="width:100%">
-				<div style="background-color:#E5E4E2;">
-					<h2 class="entry" style="margin-bottom:0;"><a href="http://www.arl.army.mil/www/default.cfm">Army Research Lab</a></h2>
-				</div>
-				<div id="image" style="background-color:#FFF;height:150px; display: block">
-					<img src="/images/sponsors/arl.png" height="145" style="margin: 0 auto; display: block">
-				</div>
-
-				<div style="background-color:#E5E4E2;clear:both">				
-				<p class="entry">		  The U.S. Army Research Laboratory (ARL) of
-						  the U.S. Army Research Development and Engineering 
-						  Command (RDECOM) is the Army's corporate, or central, 
-						  laboratory.
-				</p></div>
-			</div>
-			-->
-			
-			<!--
+	{% block page_title %}Sponsors{% endblock %}
+	{% block primary_content %}
+		Hi
+		{% for sponsor in platinum %}
 			<div class="grid_8 alpha omega sponsor major">
-				<div class="name" style="text-align: center">Army Research Laboratory</div>
+				<div class="name" style="text-align: center">{{sponsor.name}}</div>
 				<div class="image">
-					<img src="/images/sponsors/arl.png">
+					{% if sponsor.link %}
+						<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+					{% else %}
+						<img src="/image?img_id={{sponsor.key()}}">
+					{% endif %}
 				</div>
 			</div>
-			<div class="grid_4 alpha omega sponsor">
-				<div class="name">MSBR</div>
+		{% endfor %}
+		{% for sponsor in gold %}
+			<div class="grid_8 alpha omega sponsor major">
+				<div class="name" style="text-align: center">{{sponsor.name}}</div>
 				<div class="image">
-					<img src="http://www.mdspace.org/msbr_content/images/msbr_inside_shell_ir_01.gif">
+					{% if sponsor.link %}
+						<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+					{% else %}
+						<img src="/image?img_id={{sponsor.key()}}">
+					{% endif %}
 				</div>
-			-->
-			
-			{% for sponsor in platinum %}
-				<div class="grid_8 alpha omega sponsor major">
-					<div class="name" style="text-align: center">{{sponsor.name}}</div>
-					<div class="image">
-						{% if sponsor.link %}
-							<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
-						{% else %}
-							<img src="/image?img_id={{sponsor.key()}}">
-						{% endif %}
-					</div>
+			</div>
+		{% endfor %}
+		{% for sponsor in silver %}
+			<div class="grid_4 alpha omega sponsor">
+				<div class="name">{{sponsor.name}}</div>
+				<div class="image">
+					{% if sponsor.link %}
+						<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+					{% else %}
+						<img src="/image?img_id={{sponsor.key()}}">
+					{% endif %}
 				</div>
-			{% endfor %}
-			{% for sponsor in gold %}
-				<div class="grid_8 alpha omega sponsor major">
-					<div class="name" style="text-align: center">{{sponsor.name}}</div>
-					<div class="image">
-						{% if sponsor.link %}
-							<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
-						{% else %}
-							<img src="/image?img_id={{sponsor.key()}}">
-						{% endif %}
-					</div>
+			</div>
+		{% endfor %}
+		{% for sponsor in bronze %}
+			<div class="grid_4 alpha omega sponsor">
+				<div class="name">{{sponsor.name}}</div>
+				<div class="image">
+					{% if sponsor.link %}
+						<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+					{% else %}
+						<img src="/image?img_id={{sponsor.key()}}">
+					{% endif %}
 				</div>
-			{% endfor %}
-			{% for sponsor in silver %}
-				<div class="grid_4 alpha omega sponsor">
-					<div class="name">{{sponsor.name}}</div>
-					<div class="image">
-						{% if sponsor.link %}
-							<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
-						{% else %}
-							<img src="/image?img_id={{sponsor.key()}}">
-						{% endif %}
-					</div>
-				</div>
-			{% endfor %}
-			{% for sponsor in bronze %}
-				<div class="grid_4 alpha omega sponsor">
-					<div class="name">{{sponsor.name}}</div>
-					<div class="image">
-						{% if sponsor.link %}
-							<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
-						{% else %}
-							<img src="/image?img_id={{sponsor.key()}}">
-						{% endif %}
-					</div>
-				</div>
-			{% endfor %}
-			
-			<div class="clear"></div>
-			
-		</div>
-	</div>
-	<div id="sponsor-info" class="grid_4 omega">
-		<div class="sponsor-thanks entry">
+			</div>
+		{% endfor %}
+	{% endblock %}
+	{% block secondary_content %}
+		<div class="sponsor-thanks">
 			<h2>Thank you to our sponsors!</h2>
 			<p>Running a robotics program such as ours would not be
 			   possible without the generous donations received from
 			   you!</p>
 		</div>
 		<div class="sponsor-appeal">
-			<article class="entry">
-				<h2>Sponsorships</h2>
-				<p>Running a Robotics Club demands large amounts of supplies and monetary
-					 support.  Our club receives the bulk of its funding from generous corporate
-					 sponsors, many of which are part of the STEM community.</p>
-			</article>
-			<article class="entry">
-				<h2>Proposal Forms</h2>
-				<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
-					 Robotics Club?  If so, please take your time to download and review
-					 the following documents.  Your time and donations are much appreciated.
-				<ul>
-					<li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
-					<li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
-					<li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
-				</ul>
-					If you have any questions, please contact our club president Vishnu Rachakonda at
-					president@erhsroboticsclub.org
-				</p>
-			</article>
-		</div>
+		<article>
+			<h2>Sponsorships</h2>
+			<p>Running a Robotics Club demands large amounts of supplies and monetary
+				 support.  Our club receives the bulk of its funding from generous corporate
+				 sponsors, many of which are part of the STEM community.</p>
+		</article>
+		<article>
+			<h2>Proposal Forms</h2>
+			<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
+				 Robotics Club?  If so, please take your time to download and review
+				 the following documents.  Your time and donations are much appreciated.
+			<ul>
+				<li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
+				<li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
+				<li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
+			</ul>
+				If you have any questions, please contact our club president Vishnu Rachakonda at
+				president@erhsroboticsclub.org
+			</p>
+		</article>
 	</div>
-</section>
-{% endblock %}
+	{% endblock %}

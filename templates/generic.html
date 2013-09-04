@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% block content %}
-<section class="grid_12 content">
-	{% block dynamic %}
-		{{super()}}
-	{% endblock %}
-</section>
+{% block page_title %}{{page.title}}{% endblock %}
+{% block sub_nav %}
+	{% include "about/nav.html" %}
+	nav_file = {{nav_file}} - Should be this...
 {% endblock %}
+{% block primary_content %}
+	{{page.content}}
+{% endblock %}
+

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% block head %}
 	{{super()}}
 	<script type="text/javascript">
@@ -23,18 +23,18 @@
 	</script>
 {% endblock %}
 {% block content %}
-<section class="grid_12 content">	
+<section class="sixteen columns content">	
 	<section class="entry" id="punchclock">
 		<h2>Punch Clock</h2>
 		<form id="punchform" method="post" enctype="multipart/form-data">
 			<div class="error">{{error}}</div>
 			{% if getname %}						
-				Name: <input type="text" name="name" value="{{name}}"><br>
+				Name: <input type="text" name="name" value="{{name}}">
 			{% endif %}
-			ID Number: <input type="text" name="idstr" value="{{idstr}}" autofocus><br>
+			ID Number: <input type="text" name="idstr" value="{{idstr}}" autofocus>
 			{% if inorout == "out" %}
 				Punch: in <input type="radio" name="inorout" value="in">
-				out <input type="radio" name="inorout" value="out" checked><br>	
+				out <input type="radio" name="inorout" value="out" checked><br>
 			{% else %}	
 				Punch: in <input type="radio" name="inorout" value="in" checked>
 				out <input type="radio" name="inorout" value="out"><br>
