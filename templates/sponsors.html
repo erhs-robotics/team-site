@@ -3,85 +3,82 @@
 	{{super()}}
 	<link rel="stylesheet" href="/css/sponsors.css">
 {% endblock %}
-	{% block page_title %}Sponsors{% endblock %}
-	{% block primary_content %}
-		Hi
-		{% for sponsor in platinum %}
-			<div class="grid_8 alpha omega sponsor major">
-				<div class="name" style="text-align: center">{{sponsor.name}}</div>
-				<div class="image">
-					{% if sponsor.link %}
-						<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
-					{% else %}
-						<img src="/image?img_id={{sponsor.key()}}">
-					{% endif %}
-				</div>
+{% block page_title %}Sponsors{% endblock %}
+{% block primary_content %}
+	{% for sponsor in platinum %}
+		<div class="grid_8 alpha omega sponsor major">
+			<div class="name" style="text-align: center">{{sponsor.name}}</div>
+			<div class="image">
+				{% if sponsor.link %}
+					<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+				{% else %}
+					<img src="/image?img_id={{sponsor.key()}}">
+				{% endif %}
 			</div>
-		{% endfor %}
-		{% for sponsor in gold %}
-			<div class="grid_8 alpha omega sponsor major">
-				<div class="name" style="text-align: center">{{sponsor.name}}</div>
-				<div class="image">
-					{% if sponsor.link %}
-						<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
-					{% else %}
-						<img src="/image?img_id={{sponsor.key()}}">
-					{% endif %}
-				</div>
-			</div>
-		{% endfor %}
-		{% for sponsor in silver %}
-			<div class="grid_4 alpha omega sponsor">
-				<div class="name">{{sponsor.name}}</div>
-				<div class="image">
-					{% if sponsor.link %}
-						<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
-					{% else %}
-						<img src="/image?img_id={{sponsor.key()}}">
-					{% endif %}
-				</div>
-			</div>
-		{% endfor %}
-		{% for sponsor in bronze %}
-			<div class="grid_4 alpha omega sponsor">
-				<div class="name">{{sponsor.name}}</div>
-				<div class="image">
-					{% if sponsor.link %}
-						<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
-					{% else %}
-						<img src="/image?img_id={{sponsor.key()}}">
-					{% endif %}
-				</div>
-			</div>
-		{% endfor %}
-	{% endblock %}
-	{% block secondary_content %}
-		<div class="sponsor-thanks">
-			<h2>Thank you to our sponsors!</h2>
-			<p>Running a robotics program such as ours would not be
-			   possible without the generous donations received from
-			   you!</p>
 		</div>
-		<div class="sponsor-appeal">
-		<article>
-			<h2>Sponsorships</h2>
-			<p>Running a Robotics Club demands large amounts of supplies and monetary
-				 support.  Our club receives the bulk of its funding from generous corporate
-				 sponsors, many of which are part of the STEM community.</p>
-		</article>
-		<article>
-			<h2>Proposal Forms</h2>
-			<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
-				 Robotics Club?  If so, please take your time to download and review
-				 the following documents.  Your time and donations are much appreciated.
-			<ul>
-				<li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
-				<li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
-				<li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
-			</ul>
-				If you have any questions, please contact our club president Vishnu Rachakonda at
-				president@erhsroboticsclub.org
-			</p>
-		</article>
-	</div>
-	{% endblock %}
+	{% endfor %}
+	{% for sponsor in gold %}
+		<div class="grid_8 alpha omega sponsor major">
+			<div class="name" style="text-align: center">{{sponsor.name}}</div>
+			<div class="image">
+				{% if sponsor.link %}
+					<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+				{% else %}
+					<img src="/image?img_id={{sponsor.key()}}">
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+	{% for sponsor in silver %}
+		<div class="grid_4 alpha omega sponsor">
+			<div class="name">{{sponsor.name}}</div>
+			<div class="image">
+				{% if sponsor.link %}
+					<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+				{% else %}
+					<img src="/image?img_id={{sponsor.key()}}">
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+	{% for sponsor in bronze %}
+		<div class="grid_4 alpha omega sponsor">
+			<div class="name">{{sponsor.name}}</div>
+			<div class="image">
+				{% if sponsor.link %}
+					<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+				{% else %}
+					<img src="/image?img_id={{sponsor.key()}}">
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
+{% block secondary_content %}
+	<article>
+		<h2>Thank you to our sponsors!</h2>
+		<p>Running a robotics program such as ours would not be
+		   possible without the generous donations received from
+		   you!</p>
+	</article>
+	<article>
+		<h2>Sponsorships</h2>
+		<p>Running a Robotics Club demands large amounts of supplies and monetary
+			 support.  Our club receives the bulk of its funding from generous corporate
+			 sponsors, many of which are part of the STEM community.</p>
+	</article>
+	<article>
+		<h2>Proposal Forms</h2>
+		<p>Are you interested in becoming a sponsor for the Eleanor Roosevelt
+			 Robotics Club?  If so, please take your time to download and review
+			 the following documents.  Your time and donations are much appreciated.
+		<ul>
+			<li><a href="/files/proposal-forms/brochure-2012-2013.pdf">Sponsorship Brochure</a></li>
+			<li><a href="/files/proposal-forms/sponsor-proposal.pdf">Sponsor Proposal Letter</a></li>
+			<li><a href="/files/proposal-forms/proposal-forms.zip">Download Both (zip)</a></li>
+		</ul>
+			If you have any questions, please contact our club president Vishnu Rachakonda at
+			president@erhsroboticsclub.org
+		</p>
+	</article>
+{% endblock %}

@@ -79,10 +79,17 @@
 	<div class="band">
 		<div class="container" id="content">
 			{% block content %}
+				{% if user %}
+					{% if page != None %}
+						<a class="entry" href="/editpage/{{location}}" style="margin-bottom: 0">Edit</a>
+					{% else %}
+						<a class="entry" href="/newpage" style="margin-bottom: 0">Create Page</a>
+					{% endif %}
+				{% endif %}
 				<div class="sixteen columns content">
 					<header class="sixteen columns alpha omega" id="top-info" 
 							style="background: -webkit-linear-gradient(left, #fff 0%, #efefef 100%);">
-						<h2 class="entry">{% block page_title %}{% endblock %}</h2>
+						<h2 class="entry">{% block page_title %}{{page.title}}{% endblock %}</h2>
 					</header>
 					<nav class="sixteen columns alpha omega sub-nav" id="sub-navigation"
 						 style="background: -webkit-linear-gradient(left, #efefef 0%, #dfdfdf 100%);">
@@ -96,6 +103,7 @@
 					<div class="two-thirds column alpha">
 						<div class="entry">
 							{% block primary_content %}
+								{{page.content}}
 							{% endblock %}
 						</div>
 					</div>
