@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="/css/skeleton.css">
 	<link rel="stylesheet" href="/css/layout.css">
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/content.css">
 	
 	<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
 	
@@ -33,7 +34,7 @@
 	{% block header %}
 	<div class="band header">
 		<header class="container primary">
-			<img src="/images/logo/logo.png" style="display: block; margin: 0 auto;">
+			<img src="/images/logo/logo.png" style="display: block; margin: 0 auto; max-width: 100%">
 		</header>
 	</div>
 	{% endblock %}
@@ -86,20 +87,14 @@
 						<a class="entry" href="/newpage" style="margin-bottom: 0">Create Page</a>
 					{% endif %}
 				{% endif %}
-				<div class="sixteen columns content">
-					<header class="sixteen columns alpha omega" id="top-info" 
-							style="background: -webkit-linear-gradient(left, #fff 0%, #efefef 100%);">
+				<div class="sixteen columns clearfix content">
+					<header class="sixteen columns alpha omega content-header">
 						<h2 class="entry">{% block page_title %}{{page.title}}{% endblock %}</h2>
 					</header>
-					<nav class="sixteen columns alpha omega sub-nav" id="sub-navigation"
-						 style="background: -webkit-linear-gradient(left, #efefef 0%, #dfdfdf 100%);">
-						{% block sub_nav %}
-							
-						{% endblock %}
+					<nav class="sixteen columns alpha omega sub-nav">
+						{% block sub_nav %}{% endblock %}
 					</nav>
-					<aside class="sixteen columns alpha omega" id="gradient"
-						   style="height: 5px; background: -webkit-linear-gradient(left, #999 0%, #555 100%);">
-					</aside>
+					<hr class="sixteen columns alpha omega gradient-bar">
 					<div class="two-thirds column alpha">
 						<div class="entry">
 							{% block primary_content %}
@@ -107,7 +102,7 @@
 							{% endblock %}
 						</div>
 					</div>
-					<div class="one-third column omega" style="background: -webkit-linear-gradient(left, #efefef 0%, #fafafa 100%);">
+					<div class="one-third column omega content-secondary">
 						<div class="entry">
 							{% block secondary_content %}
 							{% endblock %}
