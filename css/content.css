@@ -16,4 +16,16 @@
 	margin: 0;
 }
 
+/* sub-nav for content pages */
+nav.sub-nav ul {
+	padding: 20px 0 0 10px;
+}
 
+nav.sub-nav ul li {
+	display: inline;
+	padding: 0 10px;
+}
+
+nav.sub-nav ul li:first-child {
+	padding-left: 0px;
+}
