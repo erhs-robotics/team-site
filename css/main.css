@@ -30,6 +30,13 @@ img.right, iframe.right {
 	float: right;
 	padding-left: 5px;
 }
+@media only screen and (min-width: 1px) and (max-width: 959px) {
+	img.left, iframe.left, img.right, iframe.right {
+		display: block;
+		margin: 0 auto;
+		float: none;
+	}
+}
 
 form { margin: 0; padding: 0}
 
@@ -67,17 +74,25 @@ form { margin: 0; padding: 0}
 	color: #fff;
 }
 
-.welcome-content {
-	height: 345px;
+@media only screen and (min-width: 960px) {
+	.welcome-content {
+		height: 345px;
+	}
+	.competition {
+		height: 190px;
+	}
+	.blog-feed {
+		height: 500px;
+		overflow-y: scroll;
+	}
 }
 
-.competition {
-	height: 190px;
-}
-
-.blog-feed {
-	height: 500px;
-	overflow-y: scroll;
+@media only screen and (min-width: 960px) {
+	.triple-bar {
+		height: 5px; 
+		background: -webkit-linear-gradient(left, #eee 33%, #999 33%, #999 67%, #555 67%, #555 100%);
+		margin: 0;
+	}
 }
 
 b {

@@ -86,3 +86,21 @@ nav.primary ul ul li a {
 nav.primary ul li:hover > a {
 	background: #424242;
 }
+
+/* should disable dropdown for anything "mobile" */
+@media only screen and (min-width: 1px) and (max-width: 959px) {
+	nav.primary ul ul {
+		display: none;
+	}
+	nav.primary ul li, nav.primary ul li a {
+		display: block;
+	}
+	
+	/* one item per line */
+	nav.primary ul li, nav.primary ul li a {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		line-height: 36px;
+	}
+}
