@@ -6,11 +6,11 @@
 {% block page_title %}Sponsors{% endblock %}
 {% block primary_content %}
 	{% for sponsor in platinum %}
-		<div class="grid_8 alpha omega sponsor major">
+		<div class="two-thirds column alpha omega sponsor major">
 			<div class="name" style="text-align: center">{{sponsor.name}}</div>
 			<div class="image">
 				{% if sponsor.link %}
-					<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+					<a href="{{sponsor.link}}" target="_blank"><img src="/image?img_id={{sponsor.key()}}"></a>
 				{% else %}
 					<img src="/image?img_id={{sponsor.key()}}">
 				{% endif %}
@@ -18,11 +18,11 @@
 		</div>
 	{% endfor %}
 	{% for sponsor in gold %}
-		<div class="grid_8 alpha omega sponsor major">
+		<div class="two-thirds column alpha omega sponsor major">
 			<div class="name" style="text-align: center">{{sponsor.name}}</div>
 			<div class="image">
 				{% if sponsor.link %}
-					<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+					<a href="{{sponsor.link}}" target="_blank"><img src="/image?img_id={{sponsor.key()}}"></a>
 				{% else %}
 					<img src="/image?img_id={{sponsor.key()}}">
 				{% endif %}
@@ -30,11 +30,11 @@
 		</div>
 	{% endfor %}
 	{% for sponsor in silver %}
-		<div class="grid_4 alpha omega sponsor">
+		<div class="one-third column alpha omega sponsor">
 			<div class="name">{{sponsor.name}}</div>
 			<div class="image">
 				{% if sponsor.link %}
-					<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+					<a href="{{sponsor.link}}" target="_blank"><img src="/image?img_id={{sponsor.key()}}"></a>
 				{% else %}
 					<img src="/image?img_id={{sponsor.key()}}">
 				{% endif %}
@@ -42,11 +42,11 @@
 		</div>
 	{% endfor %}
 	{% for sponsor in bronze %}
-		<div class="grid_4 alpha omega sponsor">
+		<div class="one-third column alpha omega sponsor">
 			<div class="name">{{sponsor.name}}</div>
 			<div class="image">
 				{% if sponsor.link %}
-					<a href="{{sponsor.link}}"><img src="/image?img_id={{sponsor.key()}}"></a>
+					<a href="{{sponsor.link}}" target="_blank"><img src="/image?img_id={{sponsor.key()}}"></a>
 				{% else %}
 					<img src="/image?img_id={{sponsor.key()}}">
 				{% endif %}
