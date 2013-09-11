@@ -6,14 +6,18 @@
 	background: -webkit-linear-gradient(left, #efefef 0%, #dfdfdf 100%);
 }
 
-.content-secondary {
-	background: -webkit-linear-gradient(left, #efefef 0%, #fafafa 100%);
+.content-primary, .content-secondary {
+	background: none;
 }
 
 .gradient-bar {
 	height: 5px; 
 	background: -webkit-linear-gradient(left, #999 0%, #555 100%);
 	margin: 0;
+}
+
+.last-third-gradient {
+	background: -webkit-linear-gradient(left, #fff 0%, #fff 66.6%, #efefef 66.6%, #fafafa 100%);
 }
 
 /* sub-nav for content pages */

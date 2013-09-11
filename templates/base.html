@@ -96,19 +96,21 @@
 						{% block sub_nav %}{% endblock %}
 					</nav>
 					<hr class="sixteen columns alpha omega gradient-bar">
-					<div class="two-thirds column alpha">
-						<div class="entry">
-							{% block primary_content %}
-								{{page.content}}
-							{% endblock %}
+					<section class="last-third-gradient">
+						<div class="two-thirds column alpha content-primary">
+							<div class="entry">
+								{% block primary_content %}
+									{{page.content}}
+								{% endblock %}
+							</div>
 						</div>
-					</div>
-					<div class="one-third column omega content-secondary">
-						<div class="entry">
-							{% block secondary_content %}
-							{% endblock %}
+						<div class="one-third column omega content-secondary">
+							<div class="entry">
+								{% block secondary_content %}
+								{% endblock %}
+							</div>
 						</div>
-					</div>
+					</section>
 				</div>
 			{% endblock %}
 		</div>
