@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /login
+Disallow: /image
+Disallow: /profile/
+Disallow: /editprofile
+Disallow: /deleteuser
+Disallow: /updateprivileges
