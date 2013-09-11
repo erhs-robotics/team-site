@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="band">
+	<div class="container" id="content">
+		<div class="sixteen columns content">
+			<header class="sixteen columns alpha omega" id="top-info" 
+					style="background: -webkit-linear-gradient(left, #fff 0%, #efefef 100%);">
+				<h2 class="entry">{% block page_title %}Page Title{% endblock %}</h2>
+			</header>
+			<nav class="sixteen columns alpha omega sub-nav" id="sub-navigation"
+				 style="background: -webkit-linear-gradient(left, #efefef 0%, #dfdfdf 100%);">
+				<ul>
+					<li><a href="#">Main Page</a></li>
+					<li><a href="#">Subpage 1</a></li>
+					<li><a href="#">Subpage 2</a></li>
+					<li><a href="#">Subpage 3</a></li>
+					<li><a href="#">Subpage 4</a></li>
+					<li><a href="#">Subpage 5</a></li>
+					<li><a href="#">Subpage 6</a></li>
+					<li><a href="#">Subpage 7</a></li>
+					<li><a href="#">Subpage 8</a></li>
+				</ul>
+			</nav>
+			<aside class="sixteen columns alpha omega" id="gradient"
+				   style="height: 5px; background: -webkit-linear-gradient(left, #999 0%, #555 100%);">
+			</aside>
+			<div class="two-thirds column alpha" style="">
+				<p class="entry">
+				{% block primary_content %}
+				<h3 class="entry">Primary Content</h3>
+				<p  class="entry">
+					<strong>This is where all of the important stuff goes.</strong>
+				</p>
+				<p class="entry">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis, neque et volutpat mattis, lectus tellus imperdiet justo, bibendum posuere nisl sapien ac felis. Vivamus facilisis rutrum diam, non varius libero pharetra sit amet. Curabitur eget sapien tortor. Vestibulum sed nisl vel est feugiat tempor nec quis elit. In egestas purus varius nibh eleifend faucibus. Duis enim leo, faucibus quis pulvinar a, auctor non enim. Vivamus placerat consequat nisi, nec convallis leo congue malesuada. Donec varius risus pellentesque dapibus luctus. Nam posuere, nisl non pretium fermentum, sapien enim pretium velit, in placerat ligula urna id justo. Fusce ultricies metus ut felis vulputate, non malesuada metus accumsan. Nullam eu felis elementum, porta massa a, porta urna. Donec elementum consequat faucibus. Quisque sit amet dui id elit elementum tincidunt gravida vitae mi.
+					Aliquam vitae erat non lectus tincidunt ultrices. Fusce purus mauris, pulvinar ut lobortis quis, gravida a ante. Fusce a justo eget magna iaculis commodo. Vestibulum eu rhoncus metus. Nam vel cursus nunc. Fusce ac nibh ullamcorper, hendrerit orci ac, aliquam tortor. Sed at tellus mi. In dignissim viverra nulla, non aliquam nisi. In dolor velit, egestas nec nisi eget, tempus aliquet ligula. In ac justo magna
+				</p>
+				{% endblock %}
+				</p>
+			</div>
+			<div class="one-third column omega" style="background: -webkit-linear-gradient(left, #efefef 0%, #fafafa 100%);">
+				{% block secondary_content %}
+				<h3 class="entry">Secondary Content</h3>
+				<p  class="entry">
+					<strong>
+					Less important stuff goes here.  This section
+					may or may not be used on every page.
+					</strong>
+				</p>
+				<p class="entry">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis, neque et volutpat mattis, lectus tellus imperdiet justo, bibendum posuere nisl sapien ac felis. Vivamus facilisis rutrum diam, non varius libero pharetra sit amet. Curabitur eget sapien tortor. Vestibulum sed nisl vel est feugiat tempor nec quis elit. In egestas purus varius nibh eleifend faucibus. Duis enim leo, faucibus quis pulvinar a, auctor non enim. Vivamus placerat consequat nisi, nec convallis leo congue malesuada. Donec varius risus pellentesque dapibus luctus.
+				</p>
+				{% endblock %}
+			</div>
+		</div>
+	</div><!-- /.container -->
+</div>
+{% endblock %}

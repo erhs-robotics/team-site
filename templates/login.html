@@ -1,26 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="grid_12 content">		
-	<form method="post">			
-		<table>
-			<tr>
-			<td class="label">Username: </td>
-			<td><input type="text" name="username" value="{{username}}"></td>    
-			</tr>
-			<tr>
-			<td class="label">Password: </td>
-			<td><input type="password" name="password" value="{{password}}"></td>    
-			</tr>
-			<tr>
-			<td class="label">Remember me?</td>
-			<td><input type="checkbox" name="remember" value="true"></td>
-			</tr>
-			<tr>
-			<td><input type="submit" class="button"></td>
-			<td><div class="error">{{error}}</div></td>
-			</tr>
-		</table>
-	</form>		
+<section class="sixteen columns content">		
+	<div class="entry">
+		<h2>Login</h2>
+		<form method="post">			
+				Username:
+				<input type="text" name="username" value="{{username}}">  
+				Password:
+				<input type="password" name="password" value="{{password}}">
+				Remember me?
+				<input type="checkbox" name="remember" value="true"><br>
+				<input type="submit" class="button">
+				<div class="error">{{error}}</div>
+		</form>	
+	</div>
 </section><!-- /#content -->
 {% endblock %}
 			

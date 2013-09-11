@@ -1,19 +1,14 @@
 {% extends "base.html" %}
-{% block content %}
 <section class="grid_12 content">
-	<article class="grid_8 alpha">
-		{% block dynamic %}
-			{{super()}}
-		{% endblock %}
-	</article>
-	<article class="grid_4 omega">
-		<div class="entry">
-			<h2>Team Resources</h2>
-			<p>Resources meant to be used solely by members of the ERHS Robotics Club</p>
-			<ul class="list">
-				<li><a href="/resources/punchclock">Punch Clock</a></li>
-			</ul>
-		</div>
-	</article>
+	{{page.content}}
 </section>
+{% block page_title %}Resources{% endblock %}
+{% block sub_nav %}{% include "resources/nav.html" %}{% endblock %}
+{% block primary_content %}{{page.content}}{% endblock %}
+{% block secondary_content %}
+	<h2>Team Resources</h2>
+	<p>Resources meant to be used solely by members of the ERHS Robotics Club</p>
+	<ul class="list">
+		<li><a href="/resources/punchclock">Punch Clock</a></li>
+	</ul>
 {% endblock %}
