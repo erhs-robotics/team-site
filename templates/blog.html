@@ -11,15 +11,16 @@
 {% endblock %}
 {% block content %}
 	{% if user %}
-		<form class="grid_12 content" style="margin: 20px 0 0 10px; padding: 0;" action="/newpost" method="GET">
-			<button class="button" style="margin: 10px 0 0 10px;" id="submit">New Post</button>
-		</form>
-		<div class="clear"></div>
+		<div class="grid_12 content">
+			<form class="entry" action="/newpost" method="GET">
+				<button class="button" id="submit">New Post</button>
+			</form>
+		</div>
 	{% endif %}
 	{% for post in posts%}
 		<div class="grid_12 blog-entry entry" style="margin-bottom: 0px;">
 			<aside class="entry">
-				<img style="float:left; width:100px; height:100px; margin-right: 10px;" src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/alien-head.jpg')}}" alt="Profile Picture of Blog Poster">
+				<img style="float:left; width:100px; height:100px; margin-right: 10px;" src="{{gravatar(get_user(post.user).email, default='http://www.erhsroboticsclub.org/images/logo/favicon.png')}}" alt="Profile Picture of Blog Poster">
 				{% if user %}
 					{% if user.key().id() == post.user or user.isadmin %}
 						<form method="POST" action="/deletepost" id="deletepost{{post.key().id()}}">
@@ -40,20 +41,21 @@
 			<div class="clear"></div>
 			<section class="entry">
 				<p>{{post.content}}</p>
-				<hr>
 			</section>
 		</div><!-- /.blog-entry -->
 	{% endfor %}
 	<div class="grid_12 content" id="page-navigation">
-		{% if hasPreviousPage %}
-			<div class="grid_2 alpha">
-			<a href="/blog/{{currentPage - 1}}">Previous Page</a>
-			</div>
-		{% endif %}
-		{% if hasNextPage %}
-			<div style="float:right; text-align:right;" class="grid_2 omega">
-			<a href="/blog/{{currentPage + 1 }}">Next Page</a>
-			</div>
-		{% endif %}
+		<div class="entry">
+			{% if hasPreviousPage %}
+				<div class="grid_2 alpha">
+				<a href="/blog/{{currentPage - 1}}">Previous Page</a>
+				</div>
+			{% endif %}
+			{% if hasNextPage %}
+				<div style="float:right; text-align:right;" class="grid_2 omega">
+				<a href="/blog/{{currentPage + 1 }}">Next Page</a>
+				</div>
+			{% endif %}
+		</div>
 	</div>
 {% endblock %}
