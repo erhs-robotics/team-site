@@ -64,9 +64,10 @@ form { margin: 0; padding: 0}
 }
 
 .band.footer {
-	background: /*url(../images/stitch_large.png) left top repeat-x,
-				url(../images/bg_dark.png) repeat left 2px,*/
-				#80a6bf;
+	/*background: url(../images/stitch_large.png) left top repeat-x,
+				url(../images/bg_dark.png) repeat left 2px,
+				#80a6bf;*/
+	background-image: url('/images/bg_footer.png');
 	padding: 14px 0 14px 0;			
 	color: #fff;
 }
@@ -75,6 +76,7 @@ form { margin: 0; padding: 0}
 	background: /*url(../images/stitch_staggered.png) left top repeat-x,
 				url(../images/bg_bottom.png) repeat,*/
 				#556f80;
+	background-image: url('/images/bg_bottom.png');
 	padding: 14px 0 0px 0;
 	color: #fff;
 }
