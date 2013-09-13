@@ -108,6 +108,15 @@ form { margin: 0; padding: 0}
 	}
 }
 
+.sm-icons img {
+	display: inline-block;
+	width: 32%;
+}
+
+.footer h4 {
+	color: #eaeaea;
+}
+
 b {
 	font-weight: bold;
 }

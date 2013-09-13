@@ -132,29 +132,31 @@
 	{% block footer %}
 	<div class="band footer">	
 		<footer class="container main">
-			<div class="eight columns">
-				<h3>Stay Connected</h3>
-				<strong>Social media icons will go here</strong>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis, neque et volutpat mattis, lectus tellus imperdiet justo, bibendum posuere nisl sapien ac felis. Vivamus facilisis rutrum diam, non varius libero pharetra sit amet. Curabitur eget sapien tortor. </p>
+			<div class="one-third column sm-icons">
+				<h4>Stay Connected</h4>
+				<img src="/images/logo/social-media/128/facebook.png" class="sm-icon">
+				<img src="/images/logo/social-media/128/twitter.png" class="sm-icon">
+				<img src="/images/logo/social-media/128/youtube.png" class="sm-icon">
+				<!--
+				<div class="one column alpha">
+					<img src="/images/logo/social-media/128/facebook.png" class="sm-icon">
+				</div>
+				<div class="one column">
+					<img src="/images/logo/social-media/128/twitter.png" class="sm-icon">
+				</div>
+				<div class="one column omega">
+					<img src="/images/logo/social-media/128/youtube.png" class="sm-icon">
+				</div> 
+				-->
 			</div>
-			<div class="four columns">
-				<h3>Recent Posts</h3>
+			<div class="two-thirds column">
+				<h4>Recent Updates</h4>
 					{% if post|count >= 1 %}
-						<h6><strong>{{post[0].subject}}</strong></h6>
-						<h6>{{post[0].created}}</h6>
+						<h6><strong>{{post[0].subject}}</strong> {{post[0].created}}</h6>
 					{% endif %}
 					{% if post|count >= 2 %}
-						<h6><strong>{{post[1].subject}}</strong></h6>
-						<h6>{{post[1].created}}</h6>
+						<h6><strong>{{post[1].subject}}</strong> {{post[1].created}}</h6>
 					{% endif %}
-					{% if post|count >= 3 %}
-						<h6><strong>{{post[2].subject}}</strong></h6>
-						<h6>{{post[2].created}}</h6>
-					{% endif %}
-			</div>
-			<div class="four columns">
-				<img src="/images/logo/erhs.png" width="100%">
-				<img src="/images/logo/favicon.png" style="height: 100px; display: block; margin: 0 auto;">
 			</div>
 		</footer>
 	</div><!-- /.band -->
@@ -168,7 +170,6 @@
 			<div class="six columns last-credit">
 				<p>Powered by Google App Engine<br/>
 				Maintained by students of ERHS Robotics</p>
-				
 			</div>
 			<div class="two columns login">
 				{% if not user %}<p><a href="/login">Login</a></p>{% endif %}
