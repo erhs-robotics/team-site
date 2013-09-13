@@ -1,9 +1,6 @@
 body {
 	background-image: url('/images/bg.png');
-	/*
-	background-size:100% 100%;
-	background-repeat:no-repeat;
-	*/
+	background-color: #adf;
 	/*
 	background-attachment: fixed !important;
 	background-repeat: no-repeat !important;
@@ -65,18 +62,18 @@ form { margin: 0; padding: 0}
 
 .band.footer {
 	/*background: url(../images/stitch_large.png) left top repeat-x,
-				url(../images/bg_dark.png) repeat left 2px,
-				#80a6bf;*/
-	background-image: url('/images/bg_footer.png');
+				url(../images/bg_dark.png) repeat left 2px*/
+	background: url('/images/bg_footer.png'),
+				#80a6bf;
 	padding: 14px 0 14px 0;			
 	color: #fff;
 }
 
 .band.bottom {
-	background: /*url(../images/stitch_staggered.png) left top repeat-x,
-				url(../images/bg_bottom.png) repeat,*/
+	/*background: url(../images/stitch_staggered.png) left top repeat-x,
+				url(../images/bg_bottom.png) repeat */
+	background: url('/images/bg_bottom.png'),
 				#556f80;
-	background-image: url('/images/bg_bottom.png');
 	padding: 14px 0 0px 0;
 	color: #fff;
 }
