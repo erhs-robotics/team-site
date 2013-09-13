@@ -48,6 +48,15 @@ form { margin: 0; padding: 0}
 	padding: 7px 0 14px 0;	
 }
 
+.band.admin_bar {
+	position: fixed;
+	z-index: 9999;
+	background: #343434;
+	width: 100%;
+	color: #efefef;
+	padding: 0;
+}
+
 .band.header {
 	padding: 7px 0;
 }

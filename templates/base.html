@@ -31,6 +31,19 @@
 	{% endblock %}
 </head>
 <body>
+	
+	{% block admin_bar %}
+	{% if user %}
+		<div class="band admin_bar">
+			<div class="container">
+				Welcome, {% if user.fullname %} {{user.fullname}} ({{user.username}}) {% else %} {{user.username}} {% endif %}
+				| <a href="/logout" style="color: #adf;"> Log out</a>
+				| <a href="/control" style="color: #adf;">Control Center</a>
+			</div>
+		</div>
+		<br class="clear"/>
+	{% endif %}
+	{% endblock %}
 
 	{% block header %}
 	<div class="band header">
@@ -152,9 +165,13 @@
 				<p>Copyright &copy; 2011-2013 <a href="#">ERHS Robotics Club</a> All Rights Reserved <br/>
 				<a href="#">About this site</a></p>
 			</div><!--end eight-->
-			<div class="eight columns last-credit">
+			<div class="six columns last-credit">
 				<p>Powered by Google App Engine<br/>
 				Maintained by students of ERHS Robotics</p>
+				
+			</div>
+			<div class="two columns login">
+				{% if not user %}<p><a href="/login">Login</a></p>{% endif %}
 			</div>
 		</footer>
 	</div><!--end band-->
