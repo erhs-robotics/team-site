@@ -210,6 +210,15 @@ class SponsorsHandler(Handler):
 				bronze.append(sponsor)
 		self.render("sponsors.html", user=self.user, platinum=platinum,
 					gold=gold, silver=silver, bronze=bronze)
+					
+class ViewPostHandler(Handler):
+	def get(self, resource):
+		self.login()        
+		if resource.isdigit():
+			post = Post.get_by_id(int(resource))
+			if post:
+				self.render("viewpost.html", user = self.user, 
+											post = post)
 			
 #########################  
 ### BACKENDS HANDLERS ###
@@ -633,6 +642,7 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/newpost', NewpostHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
+                               ('/viewpost/(\d+)', ViewPostHandler),
                                ('/deleteuser', DeleteUserHandler),                                                         
                                ('/newpage', NewPageHandler),
                                ('/editpage/(.+)', EditPageHandler),
