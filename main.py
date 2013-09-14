@@ -17,8 +17,12 @@ import datetime
 from google.appengine.api import urlfetch
 from collections import namedtuple
 from os.path import isfile
+import flickr
 
 MemberTuple = namedtuple('Member', ['name', 'intime', 'outtime'])
+Album = namedtuple("Album", ['albumid', 'name', 'date', 'cover'])
+Photo  = namedtuple("Photo", ['name', 'url'])
+request = flickr.getRequester(flickr.API_KEY)
 
 def get_page(resource):
     pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
@@ -589,6 +593,46 @@ class AttendanceLogHandler(Handler):
 		members = sorted(members, key = lambda x: x.name)
 		self.render("attendance.html", members=members, user=self.user)
 		
+class GalleryHandler(Handler):
+	def get(self, resource):			
+		self.login()
+		sets = request(method="flickr.photosets.getList", user_id=flickr.GROUP_ID)
+		if sets == None:
+			self.render("gallery.html", user=self.user, error=True)
+			return
+			
+		albums = []
+		#Album = namedtuple("Album", ['albumid', 'name', 'date', 'cover'])
+		for s in sets["photosets"]["photoset"]:
+			url = flickr.imageUrl(s["farm"], s["server"], s["primary"], s["secret"])			
+			a = Album(s["id"], s["title"]["_content"], s["date_create"], url)
+			albums.append(a)
+			
+		name = ""
+		featured = []
+		if resource == None or resource == "/": 
+			resource = albums[0].albumid
+			name = "Featured"
+		else:
+			resource = resource[1:]
+			info = request(method="flickr.photosets.getInfo", photoset_id=resource)
+			print info
+			name = info["photoset"]["title"]["_content"]		
+		
+		
+		photoset = request(method="flickr.photosets.getPhotos", photoset_id=resource)					
+		for photo in photoset["photoset"]["photo"]:
+			url = flickr.imageUrl(photo["farm"], photo["server"], photo["id"], photo["secret"])
+			print url
+			featured.append(Photo(photo["title"], url))
+			if name == "Featured" and len(featured) == 8: break
+		
+		self.render("gallery.html", user=self.user, albums=albums, featuredname=name, featured=featured,
+					error=False)
+			
+		
+		
+		
 		
 		
         
@@ -610,5 +654,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/resources/punchclock', PunchClockHandler),
 							   ('/addmember', AddMemberHandler),
 							   ('/attendance/(\d+)', AttendanceLogHandler),
+							   ('/gallery(/.*)?', GalleryHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)

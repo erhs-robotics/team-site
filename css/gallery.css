@@ -1,30 +1,38 @@
-.gallery_photo {
+.photo {
+	position: relative;
+	margin: 13px;
 	display: inline-block;
-	border: 1px solid blue;
-	width: 200px;
-	height: 200px;
-	padding: 5px;
-	margin: 5px 25px;
+    width: 200px;
+    height: 200px;
+    background-position: center;    
+    background-size: cover;
 }
 
-.gallery_photo img {	
-	width: 200px;
-	height: 200px;
-}
-
-.gallery_photo div {
-	display:none;
+.photo div.label {
+	margin: 5px;	
+	text-shadow: 1px 1px black;	
 	font-style: italic;
-	font-size: smaller;
-	text-indent: 0;
+	font-size: 13pt;
+	color: white;
+	
+
+}
+a.displayable {
+	display: inline-block;
+    
 }
 
-.album {
-	border: 1px solid black; 
-	max-height: 500px; 
-	overflow: auto;
-	padding: 2em;
-	margin: 2em;
+.photo a {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    text-decoration: none; /* No underlines on the link */
+    z-index: 10; /* Places the link above everything else in the div */
+    background-color: #FFF; /* Fix to make div clickable in IE */
+    opacity: 0; /* Fix to make div clickable in IE */
+    filter: alpha(opacity=1); /* Fix to make div clickable in IE */
 }
 
 
