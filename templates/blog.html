@@ -33,7 +33,7 @@
 				<a class="edit-button" href="/editpost/{{post.key().id()}}"></a>
 			{% endif %}
 		{% endif %}
-		<h2><a href="/viewpost/{{post.key().id()}}">{{post.subject}}</a></h2>
+		<h2>{{post.subject}}</h2>
 		<h3>Created by: {{post.username}}</h3>
 		<h3>Date: {{calendar.month_name[post.created.month]}} {{post.created.day}}, {{post.created.year}}</h3>
 	</aside>

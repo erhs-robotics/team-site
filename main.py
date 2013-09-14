@@ -86,16 +86,6 @@ class BlogHandler(Handler):
 
         self.render("blog.html", user=self.user, posts=active_posts, TOTAL_POSTS=TOTAL_POSTS, TOTAL_PAGES=TOTAL_PAGES, 
 					hasNextPage=hasNextPage, hasPreviousPage=hasPreviousPage, currentPage=currentPage)               
-   
-class ViewPostHandler(Handler):
-    def get(self, resource):
-        self.login()        
-        
-        if resource.isdigit():
-            post = Post.get_by_id(int(resource))
-                        
-        if post:
-            self.render("viewpost.html", user = self.user, post = post)
      
 class ContactHandler(Handler):
     def get(self):
@@ -643,7 +633,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
                                ('/newpost', NewpostHandler),
                                ('/deletepost', DeletepostHandler),
                                ('/editpost/(\d+)', EditPostHandler),
-                               ('/viewpost/(\d+)', ViewPostHandler),                              
                                ('/deleteuser', DeleteUserHandler),                                                         
                                ('/newpage', NewPageHandler),
                                ('/editpage/(.+)', EditPageHandler),
