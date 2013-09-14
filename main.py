@@ -596,6 +596,10 @@ class GalleryHandler(Handler):
 	def get(self):
 		self.login()
 		sets = request(method="flickr.photosets.getList", user_id=flickr.GROUP_ID)
+		if sets == None:
+			self.render("gallery.html", user=self.user, error=True)
+			return
+			
 		albums = []
 		Album = namedtuple("Album", ['albumid', 'name', 'date', 'cover'])
 		for s in sets["photosets"]["photoset"]:
@@ -604,7 +608,7 @@ class GalleryHandler(Handler):
 			a = Album(s["id"], s["title"]["_content"], s["date_create"], url)
 			albums.append(a)
 		
-		self.render("gallery.html", user=self.user, albums=albums)
+		self.render("gallery.html", user=self.user, albums=albums, error=False)
 			
 		
 		

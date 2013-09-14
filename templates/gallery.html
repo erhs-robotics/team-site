@@ -15,10 +15,18 @@
 {% endblock %}
 {% block content %}
 <section class="sixteen columns content">
+	
 	<div id="gallery" class="entry">
-		{% for album in albums %}
-		<div class="album" style="background-image: url('{{album.cover}}');" src="{{album.cover}}"> </div>
-		{% endfor %}
+		{% if not error %}
+			{% for album in albums %}
+			<div class="album" style="background-image: url('{{album.cover}}');" src="{{album.cover}}"> </div>
+			{% endfor %}
+		{% else %}
+			<h2>There was an error loading the gallery</h2>
+		{% endif %}
+		
+		
 	</div>
+	
 </section>
 {% endblock %}
