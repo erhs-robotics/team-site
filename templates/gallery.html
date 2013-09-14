@@ -15,8 +15,10 @@
 {% endblock %}
 {% block content %}
 <section class="sixteen columns content">
-	{% for album in albums %}
-	<img src="{{album.cover}}">
-	{% endfor %}
+	<div id="gallery" class="entry">
+		{% for album in albums %}
+		<div class="album" style="background-image: url('{{album.cover}}');" src="{{album.cover}}"> </div>
+		{% endfor %}
+	</div>
 </section>
 {% endblock %}
