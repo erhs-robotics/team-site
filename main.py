@@ -17,8 +17,11 @@ import datetime
 from google.appengine.api import urlfetch
 from collections import namedtuple
 from os.path import isfile
+import flickr
 
 MemberTuple = namedtuple('Member', ['name', 'intime', 'outtime'])
+Album = namedtuple("Album", ['albumid', 'name', 'date', 'cover'])
+request = flickr.getRequester(flickr.API_KEY)
 
 def get_page(resource):
     pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
@@ -589,6 +592,23 @@ class AttendanceLogHandler(Handler):
 		members = sorted(members, key = lambda x: x.name)
 		self.render("attendance.html", members=members, user=self.user)
 		
+class GalleryHandler(Handler):
+	def get(self):
+		self.login()
+		sets = request(method="flickr.photosets.getList", user_id=flickr.GROUP_ID)
+		albums = []
+		Album = namedtuple("Album", ['albumid', 'name', 'date', 'cover'])
+		for s in sets["photosets"]["photoset"]:
+			url = flickr.imageUrl(s["farm"], s["server"], s["primary"], s["secret"]) 
+			print url
+			a = Album(s["id"], s["title"]["_content"], s["date_create"], url)
+			albums.append(a)
+		
+		self.render("gallery.html", user=self.user, albums=albums)
+			
+		
+		
+		
 		
 		
         
@@ -610,5 +630,6 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/resources/punchclock', PunchClockHandler),
 							   ('/addmember', AddMemberHandler),
 							   ('/attendance/(\d+)', AttendanceLogHandler),
+							   ('/gallery', GalleryHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)
