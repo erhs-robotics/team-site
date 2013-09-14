@@ -117,6 +117,30 @@ form { margin: 0; padding: 0}
 	color: #eaeaea;
 }
 
+.remove-button {
+	background: url(../images/delete.png) no-repeat top;
+	width: 20px;
+	height: 20px;
+	padding: 0px;
+	float: right;	
+	padding-top: 1px;
+	-o-background-size:100% 100%;		/*  Opera  		*/
+	-webkit-background-size:100% 100%;	/*  Safari	 	*/
+	-khtml-background-size:100% 100%;	/*  Konqueror	*/
+	-moz-background-size:100% 100%;		/*	Firefox		*/
+}
+.edit-button {
+	background: url(../images/edit.png) no-repeat top;
+	width: 20px;
+	height: 20px;
+	float: right;
+	padding-top: 1px;
+	-o-background-size:100% 100%;		/*  Opera  		*/
+	-webkit-background-size:100% 100%;	/*  Safari	 	*/
+	-khtml-background-size:100% 100%;	/*  Konqueror	*/
+	-moz-background-size:100% 100%;		/*	Firefox		*/
+}	
+
 b {
 	font-weight: bold;
 }
