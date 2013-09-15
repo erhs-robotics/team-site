@@ -1,4 +1,9 @@
+import sys
+sys.path.append("./src/py/lib/db/")
+
+from google.appengine.ext import db
 from handlerbase import Handler
+from database import *
 
 class LogoutHandler(Handler):
     def get(self):
