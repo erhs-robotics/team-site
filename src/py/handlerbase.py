@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-sys.path.append("./lib/")
+sys.path.append("./src/py/lib/")
 
 import webapp2
 import os
@@ -25,7 +25,7 @@ def guess_autoescape(template_name):
         return False
     return ext in ('htm', 'xml')
 
-template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+template_dir = os.path.join(os.path.dirname(__file__), '../templates')
 env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                          autoescape=guess_autoescape,
                          extensions=['jinja2.ext.autoescape'])

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
-sys.path.append("./lib/")
-sys.path.append("./lib/db/")
+sys.path.append("./src/py/lib/")
+sys.path.append("./src/py/lib/db/")
 
 import webapp2
 import urllib
