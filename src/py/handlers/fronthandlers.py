@@ -11,7 +11,7 @@ import flickr
 MemberTuple = namedtuple('Member', ['name', 'intime', 'outtime'])
 Album = namedtuple("Album", ['albumid', 'name', 'date', 'cover'])
 Photo  = namedtuple("Photo", ['name', 'url'])
-request = flickr.getRequester(flickr.API_KEY)
+request = flickr.getRequester(api_key=flickr.API_KEY, format="json", nojsoncallback="1")
 
 def get_page(resource):
     pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
