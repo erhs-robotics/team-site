@@ -11,6 +11,13 @@ from cookie import *
 
 import datetime
 
+def get_page(resource):
+    pages = db.GqlQuery("SELECT * FROM Page WHERE location=:1 LIMIT 1", resource)
+    pages = list(pages)
+    if pages:
+        return pages[0]
+    else: return None
+
 class ControlHandler(Handler):
 	def get(self):
 		self.login()
