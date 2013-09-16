@@ -8,7 +8,7 @@ do
 	secret+=${str:$rand:1}
 done
 secret+="\""
-echo $secret > src/py/production.py
+echo $secret > src/py/lib/production.py
 
 sed 's/from password/from production/g' src/py/lib/cookie.py > out.txt
 
