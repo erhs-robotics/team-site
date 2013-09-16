@@ -8,12 +8,12 @@ do
 	secret+=${str:$rand:1}
 done
 secret+="\""
-echo $secret > production.py
+echo $secret > src/py/production.py
 
-sed 's/from password/from production/g' lib/cookie.py > out.txt
+sed 's/from password/from production/g' src/py/lib/cookie.py > out.txt
 
-rm lib/cookie.py
-mv out.txt lib/cookie.py
+rm src/py/lib/cookie.py
+mv out.txt src/py/lib/cookie.py
 
 appcfg.py update .
 
