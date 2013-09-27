@@ -93,7 +93,7 @@ form { margin: 0; padding: 0}
 
 @media only screen and (min-width: 960px) {
 	.welcome-content {
-		height: 397px;
+		height: 367px;
 	}
 	.competition {
 		height: 190px;
@@ -116,8 +116,15 @@ form { margin: 0; padding: 0}
 	display: inline-block;
 	width: 32%;
 }
+.sm-icons a {
+	text-decoration: none;
+}
 
 .footer h4 {
+	color: #eaeaea;
+}
+
+.footer a, .bottom a {
 	color: #eaeaea;
 }
 

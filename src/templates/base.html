@@ -153,6 +153,12 @@
 					{% if post|count >= 2 %}
 						<h6><strong>{{post[1].subject}}</strong> {{post[1].created}}</h6>
 					{% endif %}
+					{% if post|count >= 3 %}
+						<h6><strong>{{post[2].subject}}</strong> {{post[2].created}}</h6>
+					{% endif %}
+					{% if post|count >= 4 %}
+						<h6><strong>{{post[3].subject}}</strong> {{post[3].created}}</h6>
+					{% endif %}
 			</div>
 		</footer>
 	</div><!-- /.band -->

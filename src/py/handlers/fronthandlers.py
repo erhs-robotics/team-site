@@ -31,11 +31,12 @@ class MainHandler(Handler):
 class GenericHandler(Handler):
     def get(self, resource):
         self.login()
+        posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
         page_location = resource + ".html"
         page = get_page(resource)
         if not isfile("templates/" + page_location): page_location = "/generic.html" #resource.split("/")[0] + "/generic.html"
         nav_file = resource.split("/")[0] + "/nav.html"
-        self.render(page_location, location=resource, page=page, user=self.user, nav_file=nav_file)
+        self.render(page_location, location=resource, page=page, user=self.user, nav_file=nav_file, post=posts)
                 
 class BlogHandler(Handler):
     def getTotalPosts(self, post_list):
