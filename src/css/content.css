@@ -1,9 +1,17 @@
 .content-header {
-	background: -webkit-linear-gradient(left, #fff 0%, #efefef 100%);
+	background: linear-gradient(left, #fff 0%, #efefef 100%);
+		background: -webkit-linear-gradient(left, #fff 0%, #efefef 100%);
+		background: -moz-linear-gradient(left, #fff 0%, #efefef 100%);
+		background: -o-linear-gradient(left, #fff 0%, #efefef 100%);
+		background: -ms-linear-gradient(left, #fff 0%, #efefef 100%);
 }
 
 .sub-nav {
-	background: -webkit-linear-gradient(left, #efefef 0%, #dfdfdf 100%);
+	background: linear-gradient(left, #efefef 0%, #dfdfdf 100%);
+		background: -webkit-linear-gradient(left, #efefef 0%, #dfdfdf 100%);
+		background: -moz-linear-gradient(left, #efefef 0%, #dfdfdf 100%);
+		background: -o-linear-gradient(left, #efefef 0%, #dfdfdf 100%);
+		background: -ms-linear-gradient(left, #efefef 0%, #dfdfdf 100%);
 }
 
 .content-primary, .content-secondary {
@@ -12,10 +20,15 @@
 
 .gradient-bar {
 	height: 5px; 
-	background: -webkit-linear-gradient(left, #999 0%, #555 100%);
+	background: linear-gradient(left, #999 0%, #555 100%);
+		background: -webkit-linear-gradient(left, #999 0%, #555 100%);
+		background: -moz-linear-gradient(left, #999 0%, #555 100%);
+		background: -o-linear-gradient(left, #999 0%, #555 100%);
+		background: -ms-linear-gradient(left, #999 0%, #555 100%);
 	margin: 0;
 }
 
+/* not working */
 .last-third-gradient {
 	background: -webkit-linear-gradient(left, #fff 0%, #fff 66.6%, #efefef 66.6%, #fafafa 100%);
 }
