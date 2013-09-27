@@ -147,18 +147,12 @@
 			</div>
 			<div class="two-thirds column">
 				<h4>Recent Updates</h4>
-					{% if posts|count >= 1 %}
-						<h6><strong>{{posts[0].subject}}</strong> {{posts[0].created}}</h6>
-					{% endif %}
-					{% if posts|count >= 2 %}
-						<h6><strong>{{posts[1].subject}}</strong> {{posts[1].created}}</h6>
-					{% endif %}
-					{% if posts|count >= 3 %}
-						<h6><strong>{{posts[2].subject}}</strong> {{posts[2].created}}</h6>
-					{% endif %}
-					{% if posts|count >= 4 %}
-						<h6><strong>{{posts[3].subject}}</strong> {{posts[3].created}}</h6>
-					{% endif %}
+					{% for i in range(min(posts|count,4)) %}
+						<h6><a href="/viewpost/{{posts[i].key().id()}}" style="color: #343434;"><strong>
+								{{posts[i].subject}}
+							</strong>{{posts[i].created}}</a>
+						</h6>
+					{% endfor %}
 			</div>
 		</footer>
 	</div><!-- /.band -->
