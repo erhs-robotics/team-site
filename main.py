@@ -482,25 +482,29 @@ class PunchClockHandler(Handler):
 			if x.idstr == idstr: member = x.name
 		if member == None:
 			x = self.request.get("name")
-			if x != "":
+			if x != "":				
 				member = x
-				if len(idstr) == 9:
-					newmember = Member(name=member, idstr=idstr)
-					newmember.put()
+				newmember = Member(name=member, idstr=idstr)
+				newmember.put()			
 		return member		
 		
-	def validate(self, idstr, name, inorout, attendance):
-		if not len(idstr) in [9,6] : # ivalid id
+	def validate_pass1(self, idstr, name, inorout, time):
+		if not idstr.isdigit():
 			getname = True if self.request.get("name") != "" else False
-			data = {"idstr":idstr, "inorout":inorout, "error":"Invalid ID!", "getname":getname, "name":name}
-			if getname: data["name"] = name
+			data = {"idstr":idstr, "inorout":inorout, "name":name, "getname":getname,
+					"error":"An ID must contain only digits [0-9] and must contain at least one digit"}
+			return ("/resources/punchclock.html", data)				
+		if len(time) != 12 or not time.isdigit():
+			data = {"error":"Invalid time!" % name}
 			return ("/resources/punchclock.html", data)
+		if inorout != "in" and inorout != "out":
+			data = {"error":"Fatal form submission error!"}
+			return ("/resources/punchclock.html", data)
+		
+	def validate_pass2(self, idstr, name, inorout, attendance):
 		if name is None:
 			data = {"idstr":idstr, "inorout":inorout, "name":"", "getname":True,
 					"error":"That id is not currently in our system. Please enter your name"}
-			return ("/resources/punchclock.html", data)
-		if name == "":
-			data = {"idstr":idstr, "inorout":inorout, "name":name, "error":"Please enter a name"}
 			return ("/resources/punchclock.html", data)
 		if inorout == "in" and self.punched_in(idstr, attendance):
 			data = {"error":"%s has already punched in!" % name}
@@ -510,22 +514,26 @@ class PunchClockHandler(Handler):
 			return ("/resources/punchclock.html", data)
 		if inorout == "out" and not self.punched_in(idstr, attendance):
 			data = {"error":"%s cannot punch out. You never punched in!" % name}
-			return ("/resources/punchclock.html", data)
-		t = self.request.get("time")
-		if len(t) != 12 or not t.isdigit():
-			data = {"error":"Invalid time!" % name}
-			return ("/resources/punchclock.html", data)
-			
+			return ("/resources/punchclock.html", data)			
 		
 	def post(self):			
 		self.login()
 		if self.user and self.user.isadmin:
-			inorout = self.request.get("inorout")
-			idstr = self.request.get("idstr")			
+			name    = self.request.get("name")		
+			idstr   = self.request.get("idstr")
+			inorout = self.request.get("inorout")			
+			time    = self.request.get("time")
+			
+			
+			error = self.validate_pass1(idstr, name, inorout, time)			
+			if error: self.execute_error(error); return
+			
 			attendance = self.get_today()
 			name = self.get_name(idstr)
-			error = self.validate(idstr, name, inorout, attendance)			
+			
+			error = self.validate_pass2(idstr, name, inorout, attendance)			
 			if error: self.execute_error(error); return
+
 			time = self.get_time()
 			if inorout == "in":
 				attendance.punchcard.append(idstr + "|" + time)				
