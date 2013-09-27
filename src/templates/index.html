@@ -43,17 +43,17 @@
 
 <div class="sixteen columns content blog-feed">
 	<h2 class="entry">Recent Announcements</h2>
-	{% if post|count >= 1 %}
-		<h3 class="entry">{{post[0].subject}}</h3>
-		<div class="entry">{{post[0].content}}</div><hr>
+	{% if posts|count >= 1 %}
+		<h3 class="entry">{{posts[0].subject}}</h3>
+		<div class="entry">{{posts[0].content}}</div><hr>
 	{% endif %}
-	{% if post|count >= 2 %}
-		<h3 class="entry">{{post[1].subject}}</h3>
-		<div class="entry">{{post[1].content}}</div><hr>
+	{% if posts|count >= 2 %}
+		<h3 class="entry">{{posts[1].subject}}</h3>
+		<div class="entry">{{posts[1].content}}</div><hr>
 	{% endif %}
-	{% if post|count >= 3 %}
-		<h3 class="entry">{{post[2].subject}}</h3>
-		<div class="entry">{{post[2].content}}</div><hr>
+	{% if posts|count >= 3 %}
+		<h3 class="entry">{{posts[2].subject}}</h3>
+		<div class="entry">{{posts[2].content}}</div><hr>
 	{% endif %}
 	<p class="entry">For more announcements, see the <a href="/blog/1">blog</a> page.</p>
 </div>

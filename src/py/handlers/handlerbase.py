@@ -12,7 +12,7 @@ from collections import namedtuple
 from database import gravatar, get_user
 import calendar
 import logging
-
+from google.appengine.ext import db
 
 
 def guess_autoescape(template_name):
@@ -57,6 +57,7 @@ class Handler(webapp2.RequestHandler):
         kw['gravatar'] = gravatar
         kw['get_user'] = get_user
         kw['calendar'] = calendar
+        kw['posts']    = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
         v = self.render_str(template, **kw)
         if v == False:# v will be false if the page was not found
             self.error(404)

@@ -147,17 +147,17 @@
 			</div>
 			<div class="two-thirds column">
 				<h4>Recent Updates</h4>
-					{% if post|count >= 1 %}
-						<h6><strong>{{post[0].subject}}</strong> {{post[0].created}}</h6>
+					{% if posts|count >= 1 %}
+						<h6><strong>{{posts[0].subject}}</strong> {{posts[0].created}}</h6>
 					{% endif %}
-					{% if post|count >= 2 %}
-						<h6><strong>{{post[1].subject}}</strong> {{post[1].created}}</h6>
+					{% if posts|count >= 2 %}
+						<h6><strong>{{posts[1].subject}}</strong> {{posts[1].created}}</h6>
 					{% endif %}
-					{% if post|count >= 3 %}
-						<h6><strong>{{post[2].subject}}</strong> {{post[2].created}}</h6>
+					{% if posts|count >= 3 %}
+						<h6><strong>{{posts[2].subject}}</strong> {{posts[2].created}}</h6>
 					{% endif %}
-					{% if post|count >= 4 %}
-						<h6><strong>{{post[3].subject}}</strong> {{post[3].created}}</h6>
+					{% if posts|count >= 4 %}
+						<h6><strong>{{posts[3].subject}}</strong> {{posts[3].created}}</h6>
 					{% endif %}
 			</div>
 		</footer>

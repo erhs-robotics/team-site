@@ -26,17 +26,16 @@ class MainHandler(Handler):
         self.login()            
         posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
         slides = Slide.all()
-        self.render("index.html", user = self.user, post = posts, slides=slides)
+        self.render("index.html", user = self.user, slides=slides)
         
 class GenericHandler(Handler):
     def get(self, resource):
         self.login()
-        posts = list(db.GqlQuery("SELECT * FROM Post ORDER BY created DESC"))
         page_location = resource + ".html"
         page = get_page(resource)
         if not isfile("templates/" + page_location): page_location = "/generic.html" #resource.split("/")[0] + "/generic.html"
         nav_file = resource.split("/")[0] + "/nav.html"
-        self.render(page_location, location=resource, page=page, user=self.user, nav_file=nav_file, post=posts)
+        self.render(page_location, location=resource, page=page, user=self.user, nav_file=nav_file)
                 
 class BlogHandler(Handler):
     def getTotalPosts(self, post_list):
