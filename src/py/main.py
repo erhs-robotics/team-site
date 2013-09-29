@@ -5,6 +5,7 @@ sys.path.append("./src/py/handlers/")
 from fronthandlers import *
 from backhandlers import *
 from formhandlers import *
+from filehandlers import *
 import webapp2
 
 app = webapp2.WSGIApplication([('/', MainHandler),
@@ -26,5 +27,9 @@ app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/addmember', AddMemberHandler),
 							   ('/attendance/(\d+)', AttendanceLogHandler),
 							   ('/gallery(/.*)?', GalleryHandler),
+							   ('/filelist', FileListHandler),
+							   ('/uploadfile', UploadFileHandler),
+							   ('/deletefile/([^/]+)?', DeleteFileHandler),
+                               ('/file/([^/]+)?', ServeFileHandler),
                                ('/(.+)', GenericHandler)],
                                debug=True)
