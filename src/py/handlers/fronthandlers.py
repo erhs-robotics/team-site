@@ -1,7 +1,7 @@
 import sys
 sys.path.append("./src/py/lib/db/")
 
-from handlerbase import Handler
+from appbase import Handler
 from google.appengine.ext import db
 from database import *
 from os.path import isfile

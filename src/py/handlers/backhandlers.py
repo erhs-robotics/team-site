@@ -3,7 +3,7 @@ sys.path.append("./src/py/lib/db/")
 sys.path.append("./src/py/lib/")
 
 from google.appengine.ext import db
-from handlerbase import Handler
+from appbase import Handler
 from database import *
 from cookie import *
 

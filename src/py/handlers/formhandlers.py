@@ -2,7 +2,7 @@ import sys
 sys.path.append("./src/py/lib/db/")
 sys.path.append("./src/py/lib/")
 
-from handlerbase import Handler
+from appbase import Handler
 from google.appengine.api import images
 from google.appengine.ext import db
 from database import *

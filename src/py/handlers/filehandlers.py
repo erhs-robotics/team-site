@@ -3,7 +3,7 @@ sys.path.append("./src/py/lib/db/")
 
 import urllib
 
-from handlerbase import Handler
+from appbase import Handler
 from google.appengine.ext import db
 
 from google.appengine.ext import blobstore
