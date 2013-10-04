@@ -1,0 +1,32 @@
+/* Blog post display */
+
+.blog-entry .entry img {
+	float:left; width:100px; height:100px; margin-right: 10px;
+}
+
+.blog-entry .entry h2, .blog-entry .entry h3 {
+	margin: 0;
+	padding: 0;
+}
+
+.blog-entry .entry h2 {
+	font-size: 20px;
+}
+
+.blog-entry .entry h3 {
+	font-size: 16px;
+}
+
+/* Page Navigation */
+
+.blog-nav .entry .previous, .blog-nav .entry .next {
+	padding: 0 0 7px;
+}
+
+.blog-nav .entry .next {
+	float: right;
+}
+
+.blog-nav .entry .next a {
+	float: right;
+}

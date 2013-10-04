@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="sixteen columns content">
+	<div class="entry">
+		<h2 class="five columns alpha">Name</h2> 
+		<h2 class="five columns">Time In</h2> 
+		<h2 class="five columns omega">Time Out</h2>
+		{% for member in members %}		
+			<div>
+				<div style="{% if loop.index % 2 == 0 %} background-color: #dadada;{% endif %}" class="five columns alpha">{{member.name}}</div> 
+				<div style="{% if loop.index % 2 == 0 %} background-color: #dadada;{% endif %}" class="five columns">{{member.intime}}</div> 
+				<div style="{% if loop.index % 2 == 0 %} background-color: #dadada;{% endif %}" class="five columns omega">{{member.outtime}}</div>	
+			</div>			
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}

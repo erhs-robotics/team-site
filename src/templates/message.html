@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block head %}
+	{{super()}}
+	<script>
+		$(document).ready(function(){
+		{% if redirect %}
+		  setInterval(function(){window.location="/resources/punchclock"}, 1500)
+		{% endif %}
+		});
+	</script>
+{% endblock %}
+{% block content %}
+<section class="sixteen columns content">	
+	<section class="entry" id="message">		
+			<h3>{{message}}</h3>		
+	</section>
+</section>
+{% endblock %}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><html lang="en"> <![endif]-->
+<head>
+	{% block head %}
+	<meta charset="utf-8">
+	<title>{% block title %}ERHS Robotics{% endblock %}</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="stylesheet" href="/css/base.css">
+	<link rel="stylesheet" href="/css/skeleton.css">
+	<link rel="stylesheet" href="/css/layout.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/nav.css">
+	<link rel="stylesheet" href="/css/content.css">
+
+	<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+
+	<link rel="icon" type="image/png" href="/images/logo/favicon.png" />
+
+	<script src="/lib/jquery-1.8.2.min.js"></script>
+	<script src="/js/modernizr.js"></script>
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
+	<![endif]-->
+	{% endblock %}
+</head>
+<body>
+	
+	{% block admin_bar %}
+	{% if user %}
+		<div class="band admin_bar">
+			<div class="container">
+				Welcome, {% if user.fullname %} {{user.fullname}} ({{user.username}}) {% else %} {{user.username}} {% endif %}
+				| <a href="/logout" style="color: #adf;"> Log out</a>
+				| <a href="/control" style="color: #adf;">Control Center</a>
+			</div>
+		</div>
+		<br class="clear"/>
+	{% endif %}
+	{% endblock %}
+
+	{% block header %}
+	<div class="band header">
+		<header class="container primary">
+			<img src="/images/logo/logo.png" style="display: block; margin: 0 auto; max-width: 100%">
+		</header>
+	</div>
+	{% endblock %}
+
+	{% block nav %}
+	<div class="band navigation">
+		<nav class="container primary">
+			<div class="sixteen columns">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/about">About Us</a>
+						<ul>
+							<li><a href="/about/history">History</a></li>
+							<li><a href="/about/subteams">Subteams</a></li>
+							<li><a href="/about/outreach">Outreach</a></li>
+							<li><a href="/about/website">Website</a></li>
+						</ul>
+					</li>
+					<li><a href="/competitions">Competitions</a>
+						<ul>
+							<li><a href="/competitions/frc">FRC</a></li>
+							<li><a href="/competitions/vex">VEX</a></li>
+							<li><a href="/competitions/muc">MUC</a></li>
+						</ul>
+					</li>
+					<li><a href="/blog/1">Blog</a></li>
+					<li><a href="/sponsors">Sponsors</a></li>
+					<li><a href="/gallery">Gallery</a></li>
+					<li><a href="/resources">Resources</a>
+						<ul>
+							<li><a href="/resources/punchclock">Punch Clock</a></li>
+							<li><a href="/resources/parents">Parents</a></li>
+							<li><a href="/resources/calendar">Calendar</a></li>
+							<li><a href="/resources/contact">Contact Us</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav><!--end container-->
+	</div><!-- /.band navigation -->
+	{% endblock %}
+
+	<div class="band">
+		<div class="container" id="content">
+			{% block content %}
+				{% if user %}
+					{% if page != None %}
+						<a class="entry" href="/editpage/{{location}}" style="margin-bottom: 0">Edit</a>
+					{% else %}
+						<a class="entry" href="/newpage" style="margin-bottom: 0">Create Page</a>
+					{% endif %}
+				{% endif %}
+				<div class="sixteen columns clearfix content">
+					<header class="sixteen columns alpha omega content-header">
+						<h2 class="entry">{% block page_title %}{{page.title}}{% endblock %}</h2>
+					</header>
+					<nav class="sixteen columns alpha omega sub-nav">
+						{% block sub_nav %}{% endblock %}
+					</nav>
+					<hr class="sixteen columns alpha omega gradient-bar">
+					<section class="last-third-gradient">
+						<div class="two-thirds column alpha content-primary">
+							<div class="entry">
+								{% block primary_content %}
+									{{page.content}}
+								{% endblock %}
+							</div>
+						</div>
+						<div class="one-third column omega content-secondary">
+							<div class="entry">
+								{% block secondary_content %}
+								{% endblock %}
+							</div>
+						</div>
+					</section>
+				</div>
+			{% endblock %}
+		</div>
+	</div><!-- /.band -->
+
+	{% block footer %}
+	<div class="band footer">	
+		<footer class="container main">
+			<div class="one-third column sm-icons">
+				<h4>Stay Connected</h4>
+				<a href="http://www.facebook.com/pages/ERHS-Robotics-Club/184052998344999" target="_blank">
+					<img src="/images/logo/social-media/128/facebook.png" class="sm-icon">
+				</a>
+				<a href="https://twitter.com/Area53__" target="_blank">
+					<img src="/images/logo/social-media/128/twitter.png" class="sm-icon">
+				</a>
+				<a href="http://www.youtube.com/user/Area53Robotics" target="_blank">
+					<img src="/images/logo/social-media/128/youtube.png" class="sm-icon">
+				</a>
+			</div>
+			<div class="two-thirds column">
+				<h4>Recent Updates</h4>
+					{% for i in range(min(posts|count,4)) %}
+						<h6><a href="/viewpost/{{posts[i].key().id()}}" style="color: #343434;"><strong>
+								{{posts[i].subject}}
+							</strong>{{posts[i].created}}</a>
+						</h6>
+					{% endfor %}
+			</div>
+		</footer>
+	</div><!-- /.band -->
+
+	<div class="band bottom">	
+		<footer class="container">		
+			<div class="fourteen columns first-credit">
+				<p>Copyright &copy; 2012-2013 <a href="/">ERHS Robotics Club</a> | All Rights Reserved <br/>
+				Maintained by the students of the ERHS Robotics Club | <a href="about/website">About this site</a>
+				</p>
+			</div>
+			<div class="two columns login">
+				{% if not user %}<p><a href="/login">Login</a></p>{% endif %}
+			</div>
+		</footer>
+	</div><!--end band-->
+	{% endblock %}
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 application: erhs-team53
-version: 5-0-1
+version: v6beta
 runtime: python27
 api_version: 1
 threadsafe: yes
@@ -7,17 +7,11 @@ threadsafe: yes
 handlers:
 
 - url: /robots.txt
-  static_files: robots.txt
-  upload: robots.txt
+  static_files: /files/robots.txt
+  upload: /files/robots.txt
  
 - url: /css
-  static_dir: css
-
-- url: /res
-  static_dir: js
-
-- url: /yui
-  static_dir: yui
+  static_dir: src/css
   
 - url: /files
   static_dir: files
@@ -25,18 +19,18 @@ handlers:
 - url: /images
   static_dir: images
 
-- url: /fancybox
-  static_dir: fancybox
+- url: /lib
+  static_dir: src/libraries
   
 - url: /js
-  static_dir: js
+  static_dir: src/js
   
 - url: /favicon.ico
   static_files: images/logo/favicon.png
   upload: images/logo/favicon.png
 
 - url: .*
-  script: main.app
+  script: src.py.main.app
 
 libraries:
 - name: webapp2

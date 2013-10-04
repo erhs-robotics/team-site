@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block head %}
+	{{super()}}
+	<script src="/lib/jquery.flickrush.js"></script>	
+	<script src="/lib/jquery.flexslider.js"></script>		
+	<script src="/js/init.js"></script>
+{% endblock %}
+{% block content %}
+<div class="eight columns content welcome-content">
+	<div class="flexslider" style="margin: 0;">
+		<ul class="slides">
+			{% for slide in slides %}
+				<li>
+					<figure>
+						<img src="/image?img_id={{slide.key()}}" width="420" height="270">
+					</figure>
+					<div class="flex-caption">
+						<p class="entry">{{slide.caption}}</p>
+					</div>
+				</li>
+			{% endfor %}
+		</ul><!--end slides-->
+	</div><!--end flexslider-->				
+</div>						
+<div class="eight columns content welcome-content">
+	<h2 class="entry">ERHS Robotics</h2>
+	<p class="entry">
+	   The <strong>ERHS Robotics Club</strong> is a group of about 
+	   50 bright students from <strong>Eleanor Roosevelt High School</strong> in 
+	   Greenbelt, MD who come together to think of, design, and 
+	   develop creative solutions to a wide variety of challenges in the 
+	   Science, Technology, Engineering, and 
+	   Mathematics (STEM) Field.
+	</p>
+	<p class="entry">
+		<img src="images/first.jpg" class="right" style="height: 100px">
+		We compete in the <strong>FIRST Robotics Competition (FRC)</strong> as 
+		<strong>Team 53 - "Area 53"</strong>
+	</p>
+</div>
+
+<br class="clear"/>
+
+<div class="sixteen columns content blog-feed" style="word-wrap: break-word;">
+	<h2 class="entry">Recent Announcements</h2>
+	{% if posts|count >= 1 %}
+		<h3 class="entry">{{posts[0].subject}}</h3>
+		<div class="entry">{{posts[0].content}}</div><hr>
+	{% endif %}
+	{% if posts|count >= 2 %}
+		<h3 class="entry">{{posts[1].subject}}</h3>
+		<div class="entry">{{posts[1].content}}</div><hr>
+	{% endif %}
+	{% if posts|count >= 3 %}
+		<h3 class="entry">{{posts[2].subject}}</h3>
+		<div class="entry">{{posts[2].content}}</div><hr>
+	{% endif %}
+	<p class="entry">For more announcements, see the <a href="/blog/1">blog</a> page.</p>
+</div>
+
+<div class="sixteen columns content" id=competitions">
+	<div class="one-third column alpha competition">
+		<div class="entry">
+			<img src="images/first.jpg" alt="FIRST Logo" style="width:100%;">
+			<a href="/first"><h5>FIRST Robotics</h5></a>
+			<h6>FRC Team 53 - "Area 53"</h6>
+		</div>
+	</div>
+	<div class="one-third column competition">
+		<div class="entry">
+			<img src="images/vex.jpg" alt="Vex Robotics Logo" style="width: 100%">
+			<a href="/vex"><h5>VEX Robotics</h5></a>
+			<h6>Competition Information</h6>
+		</div>
+	</div>
+	<div class="one-third column omega competition">
+		<div class="entry">
+			<img src="images/muc.jpg" style="display: block; margin: 0 auto; height: 130px;" alt="Mini Urban Challenge">
+			<a href="/muc"><h5>Mini-Urban Challenge</h5></a>
+			<h6>Competition Information</h6>
+		</div>
+	</div>
+</div><!-- /.sixteen columns -->
+
+{% endblock %}
