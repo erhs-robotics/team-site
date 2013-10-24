@@ -1,9 +1,5 @@
 /* Blog post display */
 
-.blog-entry .entry img {
-	float:left; width:100px; height:100px; margin-right: 10px;
-}
-
 .blog-entry .entry h2, .blog-entry .entry h3 {
 	margin: 0;
 	padding: 0;
