@@ -148,9 +148,10 @@
 			<div class="two-thirds column">
 				<h4>Recent Updates</h4>
 					{% for i in range(min(posts|count,4)) %}
-						<h6><a href="/viewpost/{{posts[i].key().id()}}" style="color: #343434;"><strong>
+						<h6><a href="/viewpost/{{posts[i].key().id()}}" style="color: #eaeaea;">
+                            <strong style="color: #eaeaea">
 								{{posts[i].subject}}
-							</strong>{{posts[i].created}}</a>
+							</strong>{{calendar.month_name[posts[i].created.month]}} {{posts[i].created.day}}, {{posts[i].created.year}}</a>
 						</h6>
 					{% endfor %}
 			</div>
