@@ -95,3 +95,19 @@ html[xmlns] .slides {display: block;}
 }
 
 .flex-caption p { margin-bottom: 0 }
+
+.flexslider .slides li {
+    position:relative;
+}
+
+.flex-caption {
+    color: #fff;
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#232323;  
+    z-index:1;
+    padding:5px;
+    opacity: .9;
+}

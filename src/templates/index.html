@@ -11,12 +11,13 @@
 		<ul class="slides">
 			{% for slide in slides %}
 				<li>
-					<figure>
-						<img src="/image?img_id={{slide.key()}}" width="420" height="270">
-					</figure>
-					<div class="flex-caption">
+                    <img src="/image?img_id={{slide.key()}}" width="420" height="270">
+					<!--<div class="flex-caption">
 						<p class="entry">{{slide.caption}}</p>
-					</div>
+					</div>-->
+                    <div class="flex-caption">
+                        {{slide.caption}}
+                    </div>
 				</li>
 			{% endfor %}
 		</ul><!--end slides-->
