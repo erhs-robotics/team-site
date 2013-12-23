@@ -2,7 +2,7 @@ import urllib2
 import json
 
 API_KEY = ""
-GROUP_ID = "61141209%40N05"
+GROUP_ID = "108634667%40N06"
 
 def getRequester(**_kwargs):
 	def makeRequest(**kwargs):
